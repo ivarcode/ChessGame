@@ -13,7 +13,6 @@ import javax.swing.JApplet;
 public class Main extends JApplet {
 
 	public void paint(Graphics g) {
-		
 		int sqDim = 75;
 		int sideWidth = 150;
 		int topHeight = 50;

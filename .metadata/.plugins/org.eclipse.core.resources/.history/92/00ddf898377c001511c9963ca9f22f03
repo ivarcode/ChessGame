@@ -1,0 +1,22 @@
+/*
+ * Camden I. Wagner
+ * Chess Game
+ * project started on October 25 2015
+ */
+
+package camden.ivarcode.net;
+
+import java.awt.*;
+
+import javax.swing.JApplet;
+
+public class Main extends JApplet {
+
+	public void paint(Graphics g) {
+		//super.paint(g);
+		g.setColor(Color.BLACK);
+		g.drawRect(0, 0, 30, 30);
+		g.drawRect(30, 30, 30, 30);
+		
+	}
+}
