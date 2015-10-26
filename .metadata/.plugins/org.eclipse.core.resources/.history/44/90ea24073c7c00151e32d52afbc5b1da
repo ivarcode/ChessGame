@@ -20,9 +20,8 @@ public class Main extends JApplet {
 		
 		g.setColor(Color.BLACK);
 		//drawing board
-		drawBoard(g);
+		
 		//setting up board
-		setupBoard(g);
 		
 		
 	}

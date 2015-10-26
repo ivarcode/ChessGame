@@ -12,17 +12,16 @@ import javax.swing.JApplet;
 
 public class Main extends JApplet {
 	
-	private static int sqDim = 75;
-	private static int sideWidth = 150;
-	private static int topHeight = 50;
+	int sqDim = 75;
+	int sideWidth = 150;
+	int topHeight = 50;
 
 	public void paint(Graphics g) {
 		
 		g.setColor(Color.BLACK);
 		//drawing board
-		drawBoard(g);
+		
 		//setting up board
-		setupBoard(g);
 		
 		
 	}
