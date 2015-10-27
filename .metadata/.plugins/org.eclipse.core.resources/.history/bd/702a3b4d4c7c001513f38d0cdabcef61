@@ -1,8 +1,6 @@
 /*
  * Camden I. Wagner
  * Chess Game
- * currently not functioning, chess game designed to be embedded on a webpage
- * (ivarcode.net)
  * project started on October 25 2015
  */
 
@@ -24,7 +22,7 @@ public class Main extends JApplet {
 	 * inactive Global variables
 	 * private static String currentDirectory = new File("").getAbsolutePath();
 	 */
-	private static int sqDim = 60;
+	private static int sqDim = 75;
 	private static int sideWidth = 150;
 	private static int topHeight = 50;
 	private static BufferedImage 
@@ -63,7 +61,7 @@ public class Main extends JApplet {
 	
 	public static void setupBoard(Graphics g) {
 		//Rook
-		g.drawImage(bRook, sideWidth, topHeight, null);
+		g.drawImage(bRook, 0, 0, null);
 		//Knight
 		
 		//Bishop
