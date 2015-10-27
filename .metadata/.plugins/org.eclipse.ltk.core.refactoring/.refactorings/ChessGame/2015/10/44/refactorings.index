@@ -3,3 +3,6 @@
 1445906551375	Delete element
 1445916768340	Encapsulate field 'rank'
 1445916776706	Encapsulate field 'file'
+1445916981042	Encapsulate field 'loc'
+1445916985210	Encapsulate field 'color'
+1445917419162	Encapsulate field 'img'
