@@ -18,10 +18,7 @@ import javax.swing.JApplet;
 
 public class Main extends JApplet {
 	
-	/*
-	 * inactive Global variables
-	 * private static String currentDirectory = new File("").getAbsolutePath();
-	 */
+	private static String currentDirectory = new File("").getAbsolutePath();
 	private static int sqDim = 75;
 	private static int sideWidth = 150;
 	private static int topHeight = 50;
