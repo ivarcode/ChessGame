@@ -1,0 +1,11 @@
+package camden.ivarcode.net;
+
+public class Piece {
+
+	Location loc;
+	
+	public Piece(Location loc) {
+		loc = loc;
+	}
+	
+}

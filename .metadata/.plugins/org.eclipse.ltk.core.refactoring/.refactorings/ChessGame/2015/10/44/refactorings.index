@@ -1,3 +1,5 @@
 1445903971425	Rename package 'img'
 1445904641962	Delete element
 1445906551375	Delete element
+1445916768340	Encapsulate field 'rank'
+1445916776706	Encapsulate field 'file'
