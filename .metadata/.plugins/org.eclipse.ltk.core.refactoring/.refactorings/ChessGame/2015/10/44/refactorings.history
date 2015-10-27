@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;img&apos; to &apos;camden.ivarcode.net.img&apos;&#x0D;&#x0A;- Original project: &apos;ChessGame&apos;&#x0D;&#x0A;- Original element: &apos;ChessGame/src/img&apos;&#x0D;&#x0A;- Renamed element: &apos;ChessGame/src/camden.ivarcode.net.img&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;img&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;img" name="camden.ivarcode.net.img" qualified="false" references="true" stamp="1445903971425" textual="false" version="1.0"/>
+</session>

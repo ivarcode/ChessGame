@@ -48,14 +48,13 @@ public class Main extends JApplet {
 	}
 	
 	public static void setupBoard(Graphics g) {
-		g.drawImage(bRook, 0, 0, null);
+		
 	}
 	
 	public static void loadImages() {
 		try {
 		    bRook = ImageIO.read(new File("img/b_Rook.png"));
 		} catch (IOException e) {
-			System.out.println("img not found");
 		}
 	}
 	

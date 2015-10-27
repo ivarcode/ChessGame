@@ -55,7 +55,7 @@ public class Main extends JApplet {
 		try {
 		    bRook = ImageIO.read(new File("img/b_Rook.png"));
 		} catch (IOException e) {
-			System.out.println("img not found");
+			System.out.println("file not found");
 		}
 	}
 	

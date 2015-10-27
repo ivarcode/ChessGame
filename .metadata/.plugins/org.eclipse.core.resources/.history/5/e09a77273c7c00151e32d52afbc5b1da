@@ -7,11 +7,7 @@
 package camden.ivarcode.net;
 
 import java.awt.*;
-import java.awt.image.*;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.JApplet;
 
 public class Main extends JApplet {
@@ -19,12 +15,10 @@ public class Main extends JApplet {
 	private static int sqDim = 75;
 	private static int sideWidth = 150;
 	private static int topHeight = 50;
-	private static BufferedImage bRook;
 
 	public void paint(Graphics g) {
 		
 		g.setColor(Color.BLACK);
-		loadImages();
 		//drawing board
 		drawBoard(g);
 		//setting up board
@@ -48,15 +42,7 @@ public class Main extends JApplet {
 	}
 	
 	public static void setupBoard(Graphics g) {
-		g.drawImage(bRook, 0, 0, null);
-	}
-	
-	public static void loadImages() {
-		try {
-		    bRook = ImageIO.read(new File("img/b_Rook.png"));
-		} catch (IOException e) {
-			System.out.println("img not found");
-		}
+		j
 	}
 	
 }
