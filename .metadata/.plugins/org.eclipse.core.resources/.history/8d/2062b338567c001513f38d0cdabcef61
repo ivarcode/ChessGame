@@ -37,7 +37,7 @@ public class Main extends JApplet {
 
 	public void paint(Graphics g) {
 		
-		g.setColor(Color.DARK_GRAY);
+		g.setColor(Color.BLACK);
 		loadImages();
 		//drawing board
 		drawBoard(g);
@@ -64,30 +64,18 @@ public class Main extends JApplet {
 	public static void setupBoard(Graphics g) {
 		//Rook
 		g.drawImage(bRook, sideWidth, topHeight, null);
-		g.drawImage(bRook, sideWidth+(sqDim*7), topHeight, null);
-		g.drawImage(wRook, sideWidth, topHeight+(sqDim*7), null);
+		g.drawImage(bRook, sideWidth+(sqDim*7), topHeight+(sqDim*7), null);
+		g.drawImage(wRook, sideWidth, topHeight, null);
 		g.drawImage(wRook, sideWidth+(sqDim*7), topHeight+(sqDim*7), null);
 		//Knight
-		g.drawImage(bKnight, sideWidth+(sqDim*1), topHeight, null);
-		g.drawImage(bKnight, sideWidth+(sqDim*6), topHeight, null);
-		g.drawImage(wKnight, sideWidth+(sqDim*1), topHeight+(sqDim*7), null);
-		g.drawImage(wKnight, sideWidth+(sqDim*6), topHeight+(sqDim*7), null);
+		
 		//Bishop
-		g.drawImage(bBishop, sideWidth+(sqDim*2), topHeight, null);
-		g.drawImage(bBishop, sideWidth+(sqDim*5), topHeight, null);
-		g.drawImage(wBishop, sideWidth+(sqDim*2), topHeight+(sqDim*7), null);
-		g.drawImage(wBishop, sideWidth+(sqDim*5), topHeight+(sqDim*7), null);
+		
 		//Queen
-		g.drawImage(bQueen, sideWidth+(sqDim*3), topHeight, null);
-		g.drawImage(wQueen, sideWidth+(sqDim*3), topHeight+(sqDim*7), null);
+		
 		//King
-		g.drawImage(bKing, sideWidth+(sqDim*4), topHeight, null);
-		g.drawImage(wKing, sideWidth+(sqDim*4), topHeight+(sqDim*7), null);
+		
 		//Pawn
-		for (int i = 0; i < 8; i++) {
-			g.drawImage(bPawn, sideWidth+(sqDim*i), topHeight+(sqDim*1), null);
-			g.drawImage(wPawn, sideWidth+(sqDim*i), topHeight+(sqDim*6), null);
-		}
 		
 	}
 	
