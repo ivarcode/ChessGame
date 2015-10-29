@@ -94,6 +94,7 @@ public class Board {
 			r = blackKing.getLoc().getRank();
 			f = blackKing.getLoc().getFileByInt();
 		}
+		
 		return areThreats(r, f);
 	}
 	

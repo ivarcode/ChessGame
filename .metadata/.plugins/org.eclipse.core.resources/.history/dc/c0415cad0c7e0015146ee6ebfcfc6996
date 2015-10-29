@@ -91,16 +91,13 @@ public class Board {
 			r = whiteKing.getLoc().getRank();
 			f = whiteKing.getLoc().getFileByInt();
 		} else {
-			r = blackKing.getLoc().getRank();
-			f = blackKing.getLoc().getFileByInt();
+			
 		}
-		return areThreats(r, f);
+		
+		checkDiagonal()
+		return false;
 	}
 	
-	private boolean areThreats(int r, int f) {
-		
-	}
-
 	public void draw() {
 		//TODO
 		//DRAW BOARD
