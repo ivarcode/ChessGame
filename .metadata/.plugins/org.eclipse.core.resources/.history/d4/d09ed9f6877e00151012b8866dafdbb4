@@ -279,7 +279,8 @@ public class Board {
 		}
 		//up-right
 		if (r-1 > -1 && f+1 < 8) {
-			if (board[r-1][f+1] == whiteKing) {
+			if (board[r-1][f+1] == whiteKing
+					|| board[r-1][f+1] == blackPawn) {
 				isThreat = true;
 			}
 		}
@@ -291,8 +292,7 @@ public class Board {
 		}
 		//down-right
 		if (r+1 < 8 && f+1 < 8) {
-			if (board[r+1][f+1] == whiteKing
-					|| board[r+1][f+1] == whitePawn) {
+			if (board[r+1][f+1] == whiteKing) {
 				isThreat = true;
 			}
 		}
