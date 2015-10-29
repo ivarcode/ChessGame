@@ -4,10 +4,15 @@ public class Board {
 
 	private Piece[][] board = new Piece[8][8];
 	private Piece whiteKing, blackKing;
-	private String turn;
+	private boolean whiteTurn;
 	
 	public Board() {
-		//initialize nothing
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				//TODO
+				//initialize empty set of Pieces here?
+			}
+		}
 	}
 	
 	public Board(Piece wKing, Piece wQueen, Piece wBishop, Piece wKnight, Piece wRook, Piece wPawn,
@@ -16,25 +21,11 @@ public class Board {
 			board[1][j] = wPawn;
 			board[6][j] = bPawn;
 		}
-		turn = "white";
+		whiteTurn = true;
 		whiteKing = wKing;
 		blackKing = bKing;
 		board[0][4] = whiteKing;
 		board[7][4] = blackKing;
-		board[0][3] = wQueen;
-		board[7][3] = bQueen;
-		board[0][2] = wBishop;
-		board[0][5] = wBishop;
-		board[7][2] = bBishop;
-		board[7][5] = bBishop;
-		board[0][1] = wKnight;
-		board[0][6] = wKnight;
-		board[7][1] = bKnight;
-		board[7][6] = bKnight;
-		board[0][0] = wRook;
-		board[0][7] = wRook;
-		board[7][0] = bRook;
-		board[7][7] = bRook;
 	}
 	
 	public Piece getPiece(int rank, char file) {
@@ -52,17 +43,17 @@ public class Board {
 		return board[i][file];
 	}
 	
-	public void movePiece(Piece piece, int orig_rank, char orig_file, 
+	public static void movePiece(Piece piece, int orig_rank, char orig_file, 
 			int new_rank, char new_file) {
 		if (moveAllowed(piece, orig_rank, orig_file, new_rank, new_file)) {
 			//TODO move piece			
 		}
 	}
 	
-	public boolean moveAllowed(Piece piece, int orig_rank, char orig_file, 
-			int new_rank, char new_file) {
+	public boolean moveAllowed(Piece piece, char orig_rank, int orig_file, 
+			char new_rank, int new_file) {
 		if ((getPiece(orig_rank, orig_file) != piece) 
-				|| (ableToMove(new_rank, new_file)) 
+				|| (!piece.ableToMove(new_rank, new_file)) 
 				|| (kingInCheck())
 				|| (!isTurn(piece.getColor()))) {
 			return false;
@@ -71,27 +62,14 @@ public class Board {
 		return true;
 	}
 
-	private boolean ableToMove(int new_rank, char new_file) {
+	private boolean isTurn(String color) {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	private boolean isTurn(String color) {
-		if (turn == color) {
-			return true;
-		} else {
-			return false;
-		}
 	}
 
 	private boolean kingInCheck() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-	
-	public void draw() {
-		//TODO
-		//DRAW BOARD
 	}
 	
 }

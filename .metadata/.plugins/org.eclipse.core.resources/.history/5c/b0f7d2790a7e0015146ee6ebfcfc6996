@@ -43,5 +43,10 @@ public class Piece {
 	public void setImg(BufferedImage img) {
 		this.img = img;
 	}
+
+	public boolean ableToMove(int new_rank, char new_file) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

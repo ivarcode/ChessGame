@@ -7,7 +7,12 @@ public class Board {
 	private String turn;
 	
 	public Board() {
-		//initialize nothing
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				//TODO
+				//initialize empty set of Pieces here?
+			}
+		}
 	}
 	
 	public Board(Piece wKing, Piece wQueen, Piece wBishop, Piece wKnight, Piece wRook, Piece wPawn,
@@ -77,11 +82,7 @@ public class Board {
 	}
 
 	private boolean isTurn(String color) {
-		if (turn == color) {
-			return true;
-		} else {
-			return false;
-		}
+		if ()
 	}
 
 	private boolean kingInCheck() {
