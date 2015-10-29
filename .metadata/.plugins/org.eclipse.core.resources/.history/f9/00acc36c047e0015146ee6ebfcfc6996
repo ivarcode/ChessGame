@@ -14,7 +14,7 @@ public class Board {
 	}
 	
 	public Piece getPiece(char rank, int file) {
-		int i = -1; //throws error if case not 'a'-'h'
+		int i = -1;
 		switch (rank) {
 			case 'a':	i = 0;
 			case 'b':	i = 1;
@@ -39,9 +39,6 @@ public class Board {
 			char new_rank, int new_file) {
 		if (getPiece(orig_rank, orig_file) != piece) {
 			return false;
-		}
-		if (!piece.ableToMove(new_rank, new_file)) {
-			
 		}
 		
 		return true;

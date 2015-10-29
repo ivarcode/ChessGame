@@ -40,9 +40,6 @@ public class Board {
 		if (getPiece(orig_rank, orig_file) != piece) {
 			return false;
 		}
-		if (!piece.ableToMove(new_rank, new_file)) {
-			
-		}
 		
 		return true;
 	}
