@@ -308,6 +308,7 @@ public class Board {
 				isThreat = true;
 			}
 		}
+
 		return isThreat;
 	}
 

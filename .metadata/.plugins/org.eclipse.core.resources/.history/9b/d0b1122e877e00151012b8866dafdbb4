@@ -291,23 +291,24 @@ public class Board {
 		}
 		//up-left
 		if (r-1 > -1 && f-1 > -1) {
-			if (board[r-1][f-1] == blackKing
+			if (board[r-1][f] == blackKing
 					|| board[r-1][f-1] == blackPawn) {
 				isThreat = true;
 			}
 		}
 		//down-right
 		if (r+1 < 8 && f+1 < 8) {
-			if (board[r+1][f+1] == blackKing) {
+			if (board[r-1][f] == blackKing) {
 				isThreat = true;
 			}
 		}
 		//down-left
 		if (r+1 < 8 && f-1 > -1) {
-			if (board[r+1][f-1] == blackKing) {
+			if (board[r-1][f] == blackKing) {
 				isThreat = true;
 			}
 		}
+
 		return isThreat;
 	}
 

@@ -259,55 +259,38 @@ public class Board {
 		}
 		//around (king-check) && include pawn check here
 		//up
-		if (r-1 > -1) {
-			if (board[r-1][f] == blackKing) {
-				isThreat = true;
-			}
+		while (tR-1 > -1) {
+			
 		}
 		//down
-		if (r+1 < 8) {
-			if (board[r+1][f] == blackKing) {
-				isThreat = true;
-			}
+		while (tR+1 < 8) {
+			
 		}
 		//right
-		if (f+1 < 8) {
-			if (board[r][f+1] == blackKing) {
-				isThreat = true;
-			}
+		while (tF+1 < 8) {
+			
 		}
 		//left
-		if (f-1 > -1) {
-			if (board[r][f-1] == blackKing) {
-				isThreat = true;
-			}
+		while (tF-1 > -1) {
+			
 		}
 		//up-right
-		if (r-1 > -1 && f+1 < 8) {
-			if (board[r-1][f+1] == blackKing
-					|| board[r-1][f+1] == blackPawn) {
-				isThreat = true;
-			}
+		while (tR-1 > -1 && tF+1 < 8) {
+			
 		}
 		//up-left
-		if (r-1 > -1 && f-1 > -1) {
-			if (board[r-1][f-1] == blackKing
-					|| board[r-1][f-1] == blackPawn) {
-				isThreat = true;
-			}
+		while (tR-1 > -1 && tF-1 > -1) {
+			
 		}
 		//down-right
-		if (r+1 < 8 && f+1 < 8) {
-			if (board[r+1][f+1] == blackKing) {
-				isThreat = true;
-			}
+		while (tR+1 < 8 && tF+1 < 8) {
+			
 		}
 		//down-left
-		if (r+1 < 8 && f-1 > -1) {
-			if (board[r+1][f-1] == blackKing) {
-				isThreat = true;
-			}
+		while (tR+1 < 8 && tF-1 > -1) {
+			
 		}
+
 		return isThreat;
 	}
 
