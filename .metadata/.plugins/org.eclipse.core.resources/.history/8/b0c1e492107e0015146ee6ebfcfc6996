@@ -17,24 +17,13 @@ public class Board {
 	
 	public Board(Piece wKing, Piece wQueen, Piece wBishop, Piece wKnight, Piece wRook, Piece wPawn,
 			Piece bKing, Piece bQueen, Piece bBishop, Piece bKnight, Piece bRook, Piece bPawn) {
-		whiteKing = wKing;
-		blackKing = bKing;
-		whiteQueen = wQueen;
-		blackQueen = bQueen;
-		whiteBishop = wBishop;
-		blackBishop = bBishop;
-		whiteKnight = wKnight;
-		blackKnight = bKnight;
-		whiteRook = wRook;
-		blackRook = bRook;
-		whitePawn = wPawn;
-		blackPawn = bPawn;
-		turn = "white";
-		
 		for (int j = 0; j < 8; j++) {
 			board[1][j] = whitePawn;
 			board[6][j] = blackPawn;
 		}
+		turn = "white";
+		whiteKing = wKing;
+		blackKing = bKing;
 		board[0][4] = whiteKing;
 		board[7][4] = blackKing;
 		board[0][3] = whiteQueen;
@@ -125,57 +114,12 @@ public class Board {
 	private boolean whiteThreatens(int r, int f) {
 		boolean isThreat = false;
 		int tR = r, tF = f;
-		//up
-		while (tR-1 < 8) {
-			tR -= 1;
-			if (board[tR][tF] == blackRook 
-					|| board[tR][tF] == blackQueen) {
-				isThreat = true;
-			} else if (board[tR][tF] != null) {
-				break;
-			}
-		}
-		//down
 		while (tR+1 < 8) {
 			tR += 1;
-			if (board[tR][tF] == blackRook 
-					|| board[tR][tF] == blackQueen) {
-				isThreat = true;
-			} else if (board[tR][tF] != null) {
-				break;
+			if (board[tR][f] == bRook || board[tR][f] == bQueen) {
+				
 			}
 		}
-		//right
-		while (tF+1 < 8) {
-			tF += 1;
-			if (board[tR][tF] == blackRook 
-					|| board[tR][tF] == blackQueen) {
-				isThreat = true;
-			} else if (board[tR][tF] != null) {
-				break;
-			}
-		}
-		//left
-		while (tF-1 < 8) {
-			tF -= 1;
-			if (board[tR][tF] == blackRook 
-					|| board[tR][tF] == blackQueen) {
-				isThreat = true;
-			} else if (board[tR][tF] != null) {
-				break;
-			}
-		}
-		//up-right
-		
-		//up-left
-		
-		//down-right
-		
-		//down-left
-		
-		//knight
-		
-		//around (king-check)
 		
 		return isThreat;
 	}

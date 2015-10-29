@@ -131,8 +131,17 @@ public class Board {
 			if (board[tR][tF] == blackRook 
 					|| board[tR][tF] == blackQueen) {
 				isThreat = true;
-			} else if (board[tR][tF] != null) {
-				break;
+			} else if (board[tR][tF] == blackKing 
+					|| board[tR][tF] == blackBishop
+					|| board[tR][tF] == blackKnight
+					|| board[tR][tF] == blackPawn
+					|| board[tR][tF] == whiteKing
+					|| board[tR][tF] == whiteQueen
+					|| board[tR][tF] == whiteBishop
+					|| board[tR][tF] == whiteKnight
+					|| board[tR][tF] == whiteRook
+					|| board[tR][tF] == whitePawn) {
+				break; //angle checked if blocked by not-threatening piece
 			}
 		}
 		//down
@@ -141,30 +150,23 @@ public class Board {
 			if (board[tR][tF] == blackRook 
 					|| board[tR][tF] == blackQueen) {
 				isThreat = true;
-			} else if (board[tR][tF] != null) {
+			} else if (board[tR][tF] == blackKing 
+					|| board[tR][tF] == blackBishop
+					|| board[tR][tF] == blackKnight
+					|| board[tR][tF] == blackPawn
+					|| board[tR][tF] == whiteKing
+					|| board[tR][tF] == whiteQueen
+					|| board[tR][tF] == whiteBishop
+					|| board[tR][tF] == whiteKnight
+					|| board[tR][tF] == whiteRook
+					|| board[tR][tF] == whitePawn) {
 				break;
 			}
 		}
 		//right
-		while (tF+1 < 8) {
-			tF += 1;
-			if (board[tR][tF] == blackRook 
-					|| board[tR][tF] == blackQueen) {
-				isThreat = true;
-			} else if (board[tR][tF] != null) {
-				break;
-			}
-		}
+		
 		//left
-		while (tF-1 < 8) {
-			tF -= 1;
-			if (board[tR][tF] == blackRook 
-					|| board[tR][tF] == blackQueen) {
-				isThreat = true;
-			} else if (board[tR][tF] != null) {
-				break;
-			}
-		}
+		
 		//up-right
 		
 		//up-left

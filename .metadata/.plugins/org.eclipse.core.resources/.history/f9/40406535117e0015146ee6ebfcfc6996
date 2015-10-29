@@ -127,44 +127,24 @@ public class Board {
 		int tR = r, tF = f;
 		//up
 		while (tR-1 < 8) {
-			tR -= 1;
-			if (board[tR][tF] == blackRook 
-					|| board[tR][tF] == blackQueen) {
+			tR += 1;
+			if (board[tR][f] == blackRook || board[tR][f] == blackQueen) {
 				isThreat = true;
-			} else if (board[tR][tF] != null) {
-				break;
+			} else if () {
+				
 			}
 		}
 		//down
 		while (tR+1 < 8) {
 			tR += 1;
-			if (board[tR][tF] == blackRook 
-					|| board[tR][tF] == blackQueen) {
-				isThreat = true;
-			} else if (board[tR][tF] != null) {
-				break;
+			if (board[tR][f] == blackRook || board[tR][f] == blackQueen) {
+				
 			}
 		}
 		//right
-		while (tF+1 < 8) {
-			tF += 1;
-			if (board[tR][tF] == blackRook 
-					|| board[tR][tF] == blackQueen) {
-				isThreat = true;
-			} else if (board[tR][tF] != null) {
-				break;
-			}
-		}
+		
 		//left
-		while (tF-1 < 8) {
-			tF -= 1;
-			if (board[tR][tF] == blackRook 
-					|| board[tR][tF] == blackQueen) {
-				isThreat = true;
-			} else if (board[tR][tF] != null) {
-				break;
-			}
-		}
+		
 		//up-right
 		
 		//up-left
