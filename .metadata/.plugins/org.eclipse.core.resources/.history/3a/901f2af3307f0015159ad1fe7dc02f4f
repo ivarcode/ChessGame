@@ -13,6 +13,7 @@ public class Piece {
 		setLoc(loc);
 		setColor(color);
 		setImg(img);
+		updateGraphics(g);
 	}
 
 	public Location getLoc() {

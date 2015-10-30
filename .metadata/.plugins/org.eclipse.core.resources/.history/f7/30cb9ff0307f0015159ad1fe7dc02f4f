@@ -9,10 +9,15 @@ public class Piece {
 	private String color;
 	private BufferedImage img;
 	
-	public Piece(Location loc, String color, BufferedImage img) {
+	public Piece(Location loc, String color, BufferedImage img, Graphics g) {
 		setLoc(loc);
 		setColor(color);
 		setImg(img);
+		updateGraphics(g);
+	}
+
+	private void updateGraphics(Graphics g) {
+		//TODO do I need this method???
 	}
 
 	public Location getLoc() {

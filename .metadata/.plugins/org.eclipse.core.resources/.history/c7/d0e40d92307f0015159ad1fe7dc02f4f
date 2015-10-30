@@ -35,7 +35,7 @@ public class Main extends JApplet {
 	bQueen, wQueen,
 	bKing, wKing,
 	bPawn, wPawn;
-	private static BufferedImage  
+	private BufferedImage  
 	bRooki, wRooki, 
 	bKnighti, wKnighti, 
 	bBishopi, wBishopi,
@@ -60,8 +60,8 @@ public class Main extends JApplet {
 	}
 
 	private void loadPieces() {
-		wKing = new King(new Location(0,'e'), "white", wKingi);
-		//TODO
+		// TODO Auto-generated method stub
+		
 	}
 
 	public static void setupBoard(Graphics g) {

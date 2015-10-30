@@ -35,7 +35,7 @@ public class Main extends JApplet {
 	bQueen, wQueen,
 	bKing, wKing,
 	bPawn, wPawn;
-	private static BufferedImage  
+	private BufferedImage  
 	bRooki, wRooki, 
 	bKnighti, wKnighti, 
 	bBishopi, wBishopi,
@@ -45,7 +45,6 @@ public class Main extends JApplet {
 
 	public void paint(Graphics g) {
 		loadImages();
-		loadPieces();
 		Board board = new Board(wKing, wQueen, wBishop, wKnight, wRook, wPawn, 
 				bKing, bQueen, bBishop, bKnight, bRook, bPawn, g);
 
@@ -57,11 +56,6 @@ public class Main extends JApplet {
 		setupBoard(g);
 
 
-	}
-
-	private void loadPieces() {
-		wKing = new King(new Location(0,'e'), "white", wKingi);
-		//TODO
 	}
 
 	public static void setupBoard(Graphics g) {
@@ -96,62 +90,62 @@ public class Main extends JApplet {
 
 	public static void loadImages() {
 		try {
-			bRooki = ImageIO.read(new URL(
+			bRook = ImageIO.read(new URL(
 					"http://www.ivarcode.net/apps/chessgame/assets/b_Rook.png"));
 		} catch (IOException e) {
 			System.out.println("ERROR: img not found"); }
 		try {
-			wRooki = ImageIO.read(new URL(
+			wRook = ImageIO.read(new URL(
 					"http://www.ivarcode.net/apps/chessgame/assets/w_Rook.png"));
 		} catch (IOException e) {
 			System.out.println("ERROR: img not found"); }
 		try {
-			bKnighti = ImageIO.read(new URL(
+			bKnight = ImageIO.read(new URL(
 					"http://www.ivarcode.net/apps/chessgame/assets/b_Knight.png"));
 		} catch (IOException e) {
 			System.out.println("ERROR: img not found"); }
 		try {
-			wKnighti = ImageIO.read(new URL(
+			wKnight = ImageIO.read(new URL(
 					"http://www.ivarcode.net/apps/chessgame/assets/w_Knight.png"));
 		} catch (IOException e) {
 			System.out.println("ERROR: img not found"); }
 		try {
-			bBishopi = ImageIO.read(new URL(
+			bBishop = ImageIO.read(new URL(
 					"http://www.ivarcode.net/apps/chessgame/assets/b_Bishop.png"));
 		} catch (IOException e) {
 			System.out.println("ERROR: img not found"); }
 		try {
-			wBishopi = ImageIO.read(new URL(
+			wBishop = ImageIO.read(new URL(
 					"http://www.ivarcode.net/apps/chessgame/assets/w_Bishop.png"));
 		} catch (IOException e) {
 			System.out.println("ERROR: img not found"); }
 		try {
-			bQueeni = ImageIO.read(new URL(
+			bQueen = ImageIO.read(new URL(
 					"http://www.ivarcode.net/apps/chessgame/assets/b_Queen.png"));
 		} catch (IOException e) {
 			System.out.println("ERROR: img not found"); }
 		try {
-			wQueeni = ImageIO.read(new URL(
+			wQueen = ImageIO.read(new URL(
 					"http://www.ivarcode.net/apps/chessgame/assets/w_Queen.png"));
 		} catch (IOException e) {
 			System.out.println("ERROR: img not found"); }
 		try {
-			bKingi = ImageIO.read(new URL(
+			bKing = ImageIO.read(new URL(
 					"http://www.ivarcode.net/apps/chessgame/assets/b_King.png"));
 		} catch (IOException e) {
 			System.out.println("ERROR: img not found"); }
 		try {
-			wKingi = ImageIO.read(new URL(
+			wKing = ImageIO.read(new URL(
 					"http://www.ivarcode.net/apps/chessgame/assets/w_King.png"));
 		} catch (IOException e) {
 			System.out.println("ERROR: img not found"); }
 		try {
-			bPawni = ImageIO.read(new URL(
+			bPawn = ImageIO.read(new URL(
 					"http://www.ivarcode.net/apps/chessgame/assets/b_Pawn.png"));
 		} catch (IOException e) {
 			System.out.println("ERROR: img not found"); }
 		try {
-			wPawni = ImageIO.read(new URL(
+			wPawn = ImageIO.read(new URL(
 					"http://www.ivarcode.net/apps/chessgame/assets/w_Pawn.png"));
 		} catch (IOException e) {
 			System.out.println("ERROR: img not found"); }

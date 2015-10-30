@@ -7,8 +7,8 @@ public class Pawn extends Piece {
 	
 	public int pointValue = 1;
 	
-	public Pawn(Location loc, String color, BufferedImage img) {
-		super(loc, color, img);
+	public Pawn(Location loc, String color, BufferedImage img, Graphics g) {
+		super(loc, color, img, g);
 	}
 
 }

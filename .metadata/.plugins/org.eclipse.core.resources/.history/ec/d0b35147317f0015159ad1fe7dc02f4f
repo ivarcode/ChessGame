@@ -61,7 +61,6 @@ public class Main extends JApplet {
 
 	private void loadPieces() {
 		wKing = new King(new Location(0,'e'), "white", wKingi);
-		//TODO
 	}
 
 	public static void setupBoard(Graphics g) {
