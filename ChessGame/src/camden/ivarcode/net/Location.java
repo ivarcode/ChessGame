@@ -41,4 +41,8 @@ public class Location {
 		return i;
 	}
 	
+	public void printLoc() {
+		System.out.println(file + (rank+1));
+	}
+	
 }

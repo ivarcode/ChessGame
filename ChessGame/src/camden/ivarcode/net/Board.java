@@ -9,12 +9,9 @@ public class Board {
 	private static int sideWidth = 150;
 	private static int topHeight = 50;
 	private Piece[][] board = new Piece[8][8];
-	private Piece whiteKing, blackKing,
-	whiteQueen, blackQueen,
-	whiteBishop, blackBishop,
-	whiteKnight, blackKnight,
-	whiteRook, blackRook,
-	whitePawn, blackPawn;
+	private boolean[][] whiteThreats = new boolean[8][8];
+	private boolean[][] blackThreats = new boolean[8][8];
+	private Piece whiteKing, blackKing;
 	private String turn;
 	private Graphics g;
 
@@ -22,43 +19,75 @@ public class Board {
 		//initialize nothing
 	}
 
-	public Board(Piece wKing, Piece wQueen, Piece wBishop, Piece wKnight, Piece wRook, Piece wPawn,
-			Piece bKing, Piece bQueen, Piece bBishop, Piece bKnight, Piece bRook, Piece bPawn, Graphics g) {
+	public Board(Piece wRook1, Piece wKnight1, Piece wBishop1, Piece wQueen,
+			Piece wKing, Piece wBishop2, Piece wKnight2, Piece wRook2, 
+			Piece wPawn1, Piece wPawn2, Piece wPawn3, Piece wPawn4, 
+			Piece wPawn5, Piece wPawn6, Piece wPawn7, Piece wPawn8, 
+			Piece bRook1, Piece bKnight1, Piece bBishop1, Piece bQueen,
+			Piece bKing, Piece bBishop2, Piece bKnight2, Piece bRook2, 
+			Piece bPawn1, Piece bPawn2, Piece bPawn3, Piece bPawn4, 
+			Piece bPawn5, Piece bPawn6, Piece bPawn7, Piece bPawn8, Graphics g) {
+
 		this.g = g;
 		whiteKing = wKing;
 		blackKing = bKing;
-		whiteQueen = wQueen;
-		blackQueen = bQueen;
-		whiteBishop = wBishop;
-		blackBishop = bBishop;
-		whiteKnight = wKnight;
-		blackKnight = bKnight;
-		whiteRook = wRook;
-		blackRook = bRook;
-		whitePawn = wPawn;
-		blackPawn = bPawn;
 		turn = "white";
 
-		for (int j = 0; j < 8; j++) {
-			board[1][j] = whitePawn;
-			board[6][j] = blackPawn;
+		place(whiteKing, whiteKing.getLoc());
+		place(blackKing, blackKing.getLoc());
+		place(wQueen, wQueen.getLoc());
+		place(bQueen, bQueen.getLoc());
+		place(wBishop1, wBishop1.getLoc());
+		place(wBishop2, wBishop2.getLoc());
+		place(bBishop1, bBishop1.getLoc());
+		place(bBishop2, bBishop2.getLoc());
+		place(wKnight1, wKnight1.getLoc());
+		place(wKnight2, wKnight2.getLoc());
+		place(bKnight1, bKnight1.getLoc());
+		place(bKnight2, bKnight2.getLoc());
+		place(wRook1, wRook1.getLoc());
+		place(wRook2, wRook2.getLoc());
+		place(bRook1, bRook1.getLoc());
+		place(bRook2, bRook2.getLoc());
+
+		place(wPawn1, wPawn1.getLoc());
+		place(wPawn2, wPawn2.getLoc());
+		place(wPawn3, wPawn3.getLoc());
+		place(wPawn4, wPawn4.getLoc());
+		place(wPawn5, wPawn5.getLoc());
+		place(wPawn6, wPawn6.getLoc());
+		place(wPawn7, wPawn7.getLoc());
+		place(wPawn8, wPawn8.getLoc());
+		place(bPawn1, bPawn1.getLoc());
+		place(bPawn2, bPawn2.getLoc());
+		place(bPawn3, bPawn3.getLoc());
+		place(bPawn4, bPawn4.getLoc());
+		place(bPawn5, bPawn5.getLoc());
+		place(bPawn6, bPawn6.getLoc());
+		place(bPawn7, bPawn7.getLoc());
+		place(bPawn8, bPawn8.getLoc());
+
+		refreshThreats();
+
+		drawBoard();
+		drawPieces();
+	}
+
+	private void refreshThreats() {
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				whiteThreats[i][j] = whiteThreatens(i,j);
+			}
 		}
-		board[0][4] = whiteKing;
-		board[7][4] = blackKing;
-		board[0][3] = whiteQueen;
-		board[7][3] = blackQueen;
-		board[0][2] = whiteBishop;
-		board[0][5] = whiteBishop;
-		board[7][2] = blackBishop;
-		board[7][5] = blackBishop;
-		board[0][1] = whiteKnight;
-		board[0][6] = whiteKnight;
-		board[7][1] = blackKnight;
-		board[7][6] = blackKnight;
-		board[0][0] = whiteRook;
-		board[0][7] = whiteRook;
-		board[7][0] = blackRook;
-		board[7][7] = blackRook;
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				blackThreats[i][j] = blackThreatens(i,j);
+			}
+		}
+	}
+
+	private void place(Piece piece, Location loc) {
+		board[loc.getFileByInt()][loc.getRank()] = piece;
 	}
 
 	public Piece getPiece(int rank, char file) {
@@ -73,31 +102,11 @@ public class Board {
 		case 'g':	i = 6;
 		case 'h':	i = 7;
 		}
-		return board[i][file];
+		return board[i][rank];
 	}
 
-	public void movePiece(Piece piece, int orig_rank, char orig_file, 
-			int new_rank, char new_file) {
-		if (moveAllowed(piece, orig_rank, orig_file, new_rank, new_file)) {
-			//TODO move piece			
-		}
-	}
-
-	public boolean moveAllowed(Piece piece, int orig_rank, char orig_file, 
-			int new_rank, char new_file) {
-		if ((getPiece(orig_rank, orig_file) != piece) 
-				|| (ableToMove(new_rank, new_file)) 
-				|| (kingInCheck())
-				|| (!isTurn(piece.getColor()))) {
-			return false;
-		}
-
-		return true;
-	}
-
-	private boolean ableToMove(int new_rank, char new_file) {
-		// TODO Auto-generated method stub
-		return false;
+	public void movePiece(Piece piece, Location oldLoc, Location newLoc) {
+		//TODO
 	}
 
 	private boolean isTurn(String color) {
@@ -109,19 +118,11 @@ public class Board {
 	}
 
 	private boolean kingInCheck() {
-		int r;
-		int f;
+		refreshThreats();
 		if (isTurn("white")) {
-			r = whiteKing.getLoc().getRank();
-			f = whiteKing.getLoc().getFileByInt();
+			return blackThreats[whiteKing.getLoc().getFileByInt()][whiteKing.getLoc().getRank()];
 		} else {
-			r = blackKing.getLoc().getRank();
-			f = blackKing.getLoc().getFileByInt();
-		}
-		if (isTurn("white")) {
-			return whiteThreatens(r, f);
-		} else {
-			return blackThreatens(r, f);
+			return whiteThreats[blackKing.getLoc().getFileByInt()][blackKing.getLoc().getRank()];
 		}
 	}
 
@@ -131,8 +132,9 @@ public class Board {
 		//up
 		while (tR-1 > -1) {
 			tR -= 1;
-			if (board[tR][tF] == whiteRook 
-					|| board[tR][tF] == whiteQueen) {
+			if ((board[tR][tF] instanceof Rook 
+					|| board[tR][tF] instanceof Queen) 
+					&& board[tR][tF].getColor().equals("black")) {
 				isThreat = true;
 			} else if (board[tR][tF] != null) {
 				break;
@@ -142,8 +144,9 @@ public class Board {
 		tR = r; tF = f;
 		while (tR+1 < 8) {
 			tR += 1;
-			if (board[tR][tF] == whiteRook 
-					|| board[tR][tF] == whiteQueen) {
+			if ((board[tR][tF] instanceof Rook 
+					|| board[tR][tF] instanceof Queen) 
+					&& board[tR][tF].getColor().equals("black")) {
 				isThreat = true;
 			} else if (board[tR][tF] != null) {
 				break;
@@ -153,8 +156,9 @@ public class Board {
 		tR = r; tF = f;
 		while (tF+1 < 8) {
 			tF += 1;
-			if (board[tR][tF] == whiteRook 
-					|| board[tR][tF] == whiteQueen) {
+			if ((board[tR][tF] instanceof Rook 
+					|| board[tR][tF] instanceof Queen) 
+					&& board[tR][tF].getColor().equals("black")) {
 				isThreat = true;
 			} else if (board[tR][tF] != null) {
 				break;
@@ -164,8 +168,9 @@ public class Board {
 		tR = r; tF = f;
 		while (tF-1 > -1) {
 			tF -= 1;
-			if (board[tR][tF] == whiteRook 
-					|| board[tR][tF] == whiteQueen) {
+			if ((board[tR][tF] instanceof Rook 
+					|| board[tR][tF] instanceof Queen) 
+					&& board[tR][tF].getColor().equals("black")) {
 				isThreat = true;
 			} else if (board[tR][tF] != null) {
 				break;
@@ -176,8 +181,9 @@ public class Board {
 		while (tR-1 > -1 && tF+1 < 8) {
 			tR -= 1;
 			tF += 1;
-			if (board[tR][tF] == whiteBishop 
-					|| board[tR][tF] == whiteQueen) {
+			if ((board[tR][tF] instanceof Bishop 
+					|| board[tR][tF] instanceof Queen) 
+					&& board[tR][tF].getColor().equals("black")) {
 				isThreat = true;
 			} else if (board[tR][tF] != null) {
 				break;
@@ -188,8 +194,9 @@ public class Board {
 		while (tR-1 > -1 && tF-1 > -1) {
 			tR -= 1;
 			tF -= 1;
-			if (board[tR][tF] == whiteBishop 
-					|| board[tR][tF] == whiteQueen) {
+			if ((board[tR][tF] instanceof Bishop 
+					|| board[tR][tF] instanceof Queen) 
+					&& board[tR][tF].getColor().equals("black")) {
 				isThreat = true;
 			} else if (board[tR][tF] != null) {
 				break;
@@ -200,8 +207,9 @@ public class Board {
 		while (tR+1 < 8 && tF+1 < 8) {
 			tR += 1;
 			tF += 1;
-			if (board[tR][tF] == whiteBishop 
-					|| board[tR][tF] == whiteQueen) {
+			if ((board[tR][tF] instanceof Bishop 
+					|| board[tR][tF] instanceof Queen) 
+					&& board[tR][tF].getColor().equals("black")) {
 				isThreat = true;
 			} else if (board[tR][tF] != null) {
 				break;
@@ -212,8 +220,9 @@ public class Board {
 		while (tR+1 < 8 && tF-1 > -1) {
 			tR += 1;
 			tF -= 1;
-			if (board[tR][tF] == whiteBishop 
-					|| board[tR][tF] == whiteQueen) {
+			if ((board[tR][tF] instanceof Bishop 
+					|| board[tR][tF] instanceof Queen) 
+					&& board[tR][tF].getColor().equals("black")) {
 				isThreat = true;
 			} else if (board[tR][tF] != null) {
 				break;
@@ -221,93 +230,99 @@ public class Board {
 		}
 		//knight
 		if (r+2 < 8 && f+1 < 8)	{
-			if (board[r+2][f+1] == whiteKnight) {
+			if (board[r+2][f+1] instanceof Knight 
+					&& board[r+2][f+1].getColor().equals("black")) {
 				isThreat = true;
 			}
 		}
 		if (r+2 < 8 && f-1 > -1) {
-			if (board[r+2][f-1] == whiteKnight) {
+			if (board[r+2][f-1] instanceof Knight 
+					&& board[r+2][f-1].getColor().equals("black")) {
 				isThreat = true;
 			}
 		}
 		if (r+1 < 8 && f+2 < 8)	{
-			if (board[r+1][f+2] == whiteKnight) {
+			if (board[r+1][f+2] instanceof Knight 
+					&& board[r+1][f+2].getColor().equals("black")) {
 				isThreat = true;
 			}
 		}
 		if (r+1 < 8 && f-2 > -1) {
-			if (board[r+1][f-2] == whiteKnight) {
+			if (board[r+1][f-2] instanceof Knight 
+					&& board[r+1][f-2].getColor().equals("black")) {
 				isThreat = true;
 			}
 		}
 		if (r-1 > -1 && f+2 < 8) {
-			if (board[r-1][f+2] == whiteKnight) {
+			if (board[r-1][f+2] instanceof Knight 
+					&& board[r-1][f+2].getColor().equals("black")) {
 				isThreat = true;
 			}
 		}
 		if (r-1 > -1 && f-2 > -1) {
-			if (board[r-1][f-2] == whiteKnight) {
+			if (board[r-1][f-2] instanceof Knight 
+					&& board[r-1][f-2].getColor().equals("black")) {
 				isThreat = true;
 			}
 		}
 		if (r-2 > -1 && f+1 < 8) {
-			if (board[r-2][f+1] == whiteKnight) {
+			if (board[r-2][f+1] instanceof Knight 
+					&& board[r-2][f+1].getColor().equals("black")) {
 				isThreat = true;
 			}
 		}
 		if (r-2 > -1 && f-1 > -1) {
-			if (board[r-2][f-1] == whiteKnight) {
+			if (board[r-2][f-1] instanceof Knight 
+					&& board[r-2][f-1].getColor().equals("black")) {
 				isThreat = true;
 			}
 		}
 		//around (king-check) && include pawn check here
-		//up
 		if (r-1 > -1) {
-			if (board[r-1][f] == whiteKing) {
+			if (board[r-1][f] == blackKing) {
 				isThreat = true;
 			}
 		}
-		//down
 		if (r+1 < 8) {
-			if (board[r+1][f] == whiteKing) {
+			if (board[r+1][f] == blackKing) {
 				isThreat = true;
 			}
 		}
-		//right
 		if (f+1 < 8) {
-			if (board[r][f+1] == whiteKing) {
+			if (board[r][f+1] == blackKing) {
 				isThreat = true;
 			}
 		}
-		//left
 		if (f-1 > -1) {
-			if (board[r][f-1] == whiteKing) {
+			if (board[r][f-1] == blackKing) {
 				isThreat = true;
 			}
 		}
 		//up-right
-		if (r-1 > -1 && f+1 < 8) {
-			if (board[r-1][f+1] == whiteKing) {
+		if (r+1 < 8 && f+1 < 8) {
+			if ((board[r+1][f+1] == blackKing
+					|| board[r+1][f+1] instanceof Pawn)
+					&& board[r+1][f+1].getColor().equals("black")) {
 				isThreat = true;
 			}
 		}
 		//up-left
-		if (r-1 > -1 && f-1 > -1) {
-			if (board[r-1][f-1] == whiteKing) {
+		if (r+1 < 8 && f-1 > -1) {
+			if ((board[r+1][f-1] == blackKing
+					|| board[r+1][f-1] instanceof Pawn)
+					&& board[r+1][f-1].getColor().equals("black")) {
 				isThreat = true;
 			}
 		}
 		//down-right
-		if (r+1 < 8 && f+1 < 8) {
-			if (board[r+1][f+1] == whiteKing
-					|| board[r+1][f+1] == whitePawn) {
+		if (r-1 > -1 && f+1 < 8) {
+			if (board[r-1][f+1] == blackKing) {
 				isThreat = true;
 			}
 		}
 		//down-left
-		if (r+1 < 8 && f-1 > -1) {
-			if (board[r+1][f-1] == whiteKing
-					|| board[r+1][f-1] == whitePawn) {
+		if (r-1 > -1 && f-1 > -1) {
+			if (board[r-1][f-1] == blackKing) {
 				isThreat = true;
 			}
 		}
@@ -320,8 +335,9 @@ public class Board {
 		//up
 		while (tR-1 > -1) {
 			tR -= 1;
-			if (board[tR][tF] == blackRook 
-					|| board[tR][tF] == blackQueen) {
+			if ((board[tR][tF] instanceof Rook 
+					|| board[tR][tF] instanceof Queen) 
+					&& board[tR][tF].getColor().equals("white")) {
 				isThreat = true;
 			} else if (board[tR][tF] != null) {
 				break;
@@ -331,8 +347,9 @@ public class Board {
 		tR = r; tF = f;
 		while (tR+1 < 8) {
 			tR += 1;
-			if (board[tR][tF] == blackRook 
-					|| board[tR][tF] == blackQueen) {
+			if ((board[tR][tF] instanceof Rook 
+					|| board[tR][tF] instanceof Queen) 
+					&& board[tR][tF].getColor().equals("white")) {
 				isThreat = true;
 			} else if (board[tR][tF] != null) {
 				break;
@@ -342,8 +359,9 @@ public class Board {
 		tR = r; tF = f;
 		while (tF+1 < 8) {
 			tF += 1;
-			if (board[tR][tF] == blackRook 
-					|| board[tR][tF] == blackQueen) {
+			if ((board[tR][tF] instanceof Rook 
+					|| board[tR][tF] instanceof Queen) 
+					&& board[tR][tF].getColor().equals("white")) {
 				isThreat = true;
 			} else if (board[tR][tF] != null) {
 				break;
@@ -353,8 +371,9 @@ public class Board {
 		tR = r; tF = f;
 		while (tF-1 > -1) {
 			tF -= 1;
-			if (board[tR][tF] == blackRook 
-					|| board[tR][tF] == blackQueen) {
+			if ((board[tR][tF] instanceof Rook 
+					|| board[tR][tF] instanceof Queen) 
+					&& board[tR][tF].getColor().equals("white")) {
 				isThreat = true;
 			} else if (board[tR][tF] != null) {
 				break;
@@ -365,8 +384,9 @@ public class Board {
 		while (tR-1 > -1 && tF+1 < 8) {
 			tR -= 1;
 			tF += 1;
-			if (board[tR][tF] == blackBishop 
-					|| board[tR][tF] == blackQueen) {
+			if ((board[tR][tF] instanceof Bishop 
+					|| board[tR][tF] instanceof Queen) 
+					&& board[tR][tF].getColor().equals("white")) {
 				isThreat = true;
 			} else if (board[tR][tF] != null) {
 				break;
@@ -377,8 +397,9 @@ public class Board {
 		while (tR-1 > -1 && tF-1 > -1) {
 			tR -= 1;
 			tF -= 1;
-			if (board[tR][tF] == blackBishop 
-					|| board[tR][tF] == blackQueen) {
+			if ((board[tR][tF] instanceof Bishop 
+					|| board[tR][tF] instanceof Queen) 
+					&& board[tR][tF].getColor().equals("white")) {
 				isThreat = true;
 			} else if (board[tR][tF] != null) {
 				break;
@@ -389,8 +410,9 @@ public class Board {
 		while (tR+1 < 8 && tF+1 < 8) {
 			tR += 1;
 			tF += 1;
-			if (board[tR][tF] == blackBishop 
-					|| board[tR][tF] == blackQueen) {
+			if ((board[tR][tF] instanceof Bishop 
+					|| board[tR][tF] instanceof Queen) 
+					&& board[tR][tF].getColor().equals("white")) {
 				isThreat = true;
 			} else if (board[tR][tF] != null) {
 				break;
@@ -401,8 +423,9 @@ public class Board {
 		while (tR+1 < 8 && tF-1 > -1) {
 			tR += 1;
 			tF -= 1;
-			if (board[tR][tF] == blackBishop 
-					|| board[tR][tF] == blackQueen) {
+			if ((board[tR][tF] instanceof Bishop 
+					|| board[tR][tF] instanceof Queen) 
+					&& board[tR][tF].getColor().equals("white")) {
 				isThreat = true;
 			} else if (board[tR][tF] != null) {
 				break;
@@ -410,93 +433,99 @@ public class Board {
 		}
 		//knight
 		if (r+2 < 8 && f+1 < 8)	{
-			if (board[r+2][f+1] == blackKnight) {
+			if (board[r+2][f+1] instanceof Knight 
+					&& board[r+2][f+1].getColor().equals("white")) {
 				isThreat = true;
 			}
 		}
 		if (r+2 < 8 && f-1 > -1) {
-			if (board[r+2][f-1] == blackKnight) {
+			if (board[r+2][f-1] instanceof Knight 
+					&& board[r+2][f-1].getColor().equals("white")) {
 				isThreat = true;
 			}
 		}
 		if (r+1 < 8 && f+2 < 8)	{
-			if (board[r+1][f+2] == blackKnight) {
+			if (board[r+1][f+2] instanceof Knight 
+					&& board[r+1][f+2].getColor().equals("white")) {
 				isThreat = true;
 			}
 		}
 		if (r+1 < 8 && f-2 > -1) {
-			if (board[r+1][f-2] == blackKnight) {
+			if (board[r+1][f-2] instanceof Knight 
+					&& board[r+1][f-2].getColor().equals("white")) {
 				isThreat = true;
 			}
 		}
 		if (r-1 > -1 && f+2 < 8) {
-			if (board[r-1][f+2] == blackKnight) {
+			if (board[r-1][f+2] instanceof Knight 
+					&& board[r-1][f+2].getColor().equals("white")) {
 				isThreat = true;
 			}
 		}
 		if (r-1 > -1 && f-2 > -1) {
-			if (board[r-1][f-2] == blackKnight) {
+			if (board[r-1][f-2] instanceof Knight 
+					&& board[r-1][f-2].getColor().equals("white")) {
 				isThreat = true;
 			}
 		}
 		if (r-2 > -1 && f+1 < 8) {
-			if (board[r-2][f+1] == blackKnight) {
+			if (board[r-2][f+1] instanceof Knight 
+					&& board[r-2][f+1].getColor().equals("white")) {
 				isThreat = true;
 			}
 		}
 		if (r-2 > -1 && f-1 > -1) {
-			if (board[r-2][f-1] == blackKnight) {
+			if (board[r-2][f-1] instanceof Knight 
+					&& board[r-2][f-1].getColor().equals("white")) {
 				isThreat = true;
 			}
 		}
 		//around (king-check) && include pawn check here
-		//up
 		if (r-1 > -1) {
-			if (board[r-1][f] == blackKing) {
+			if (board[r-1][f] == whiteKing) {
 				isThreat = true;
 			}
 		}
-		//down
 		if (r+1 < 8) {
-			if (board[r+1][f] == blackKing) {
+			if (board[r+1][f] == whiteKing) {
 				isThreat = true;
 			}
 		}
-		//right
 		if (f+1 < 8) {
-			if (board[r][f+1] == blackKing) {
+			if (board[r][f+1] == whiteKing) {
 				isThreat = true;
 			}
 		}
-		//left
 		if (f-1 > -1) {
-			if (board[r][f-1] == blackKing) {
+			if (board[r][f-1] == whiteKing) {
 				isThreat = true;
 			}
 		}
 		//up-right
-		if (r-1 > -1 && f+1 < 8) {
-			if (board[r-1][f+1] == blackKing
-					|| board[r-1][f+1] == blackPawn) {
+		if (r+1 < 8 && f+1 < 8) {
+			if (board[r+1][f+1] == whiteKing) {
 				isThreat = true;
 			}
 		}
 		//up-left
-		if (r-1 > -1 && f-1 > -1) {
-			if (board[r-1][f-1] == blackKing
-					|| board[r-1][f-1] == blackPawn) {
+		if (r+1 < 8 && f-1 > -1) {
+			if (board[r+1][f-1] == whiteKing) {
 				isThreat = true;
 			}
 		}
 		//down-right
-		if (r+1 < 8 && f+1 < 8) {
-			if (board[r+1][f+1] == blackKing) {
+		if (r-1 > -1 && f+1 < 8) {
+			if ((board[r-1][f+1] == whiteKing
+					|| board[r-1][f+1] instanceof Pawn)
+					&& board[r-1][f+1].getColor().equals("white")) {
 				isThreat = true;
 			}
 		}
 		//down-left
-		if (r+1 < 8 && f-1 > -1) {
-			if (board[r+1][f-1] == blackKing) {
+		if (r-1 > -1 && f-1 > -1) {
+			if ((board[r-1][f-1] == whiteKing
+					|| board[r-1][f-1] instanceof Pawn)
+					&& board[r-1][f-1].getColor().equals("white")) {
 				isThreat = true;
 			}
 		}
@@ -517,11 +546,19 @@ public class Board {
 			}
 		}
 	}
-	
-	public void draw() {
-		//TODO
-		//DRAW BOARD
-		
+
+	public void drawPieces() {
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				if (board[i][j] != null) {
+					g.drawImage(board[i][j].getImg(), 
+							sideWidth+(board[i][j].getLoc().getFileByInt()*sqDim), 
+							topHeight+((7-board[i][j].getLoc().getRank())*sqDim), null);
+				}
+			}
+		}
 	}
+	//TODO FIX
+	//error drawing all elements
 
 }
