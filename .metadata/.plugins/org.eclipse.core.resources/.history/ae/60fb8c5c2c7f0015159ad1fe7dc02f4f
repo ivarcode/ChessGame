@@ -1,13 +1,7 @@
 package camden.ivarcode.net;
 
-import java.awt.Color;
-import java.awt.Graphics;
-
 public class Board {
 
-	private static int sqDim = 60;
-	private static int sideWidth = 150;
-	private static int topHeight = 50;
 	private Piece[][] board = new Piece[8][8];
 	private Piece whiteKing, blackKing,
 	whiteQueen, blackQueen,
@@ -23,8 +17,7 @@ public class Board {
 	}
 
 	public Board(Piece wKing, Piece wQueen, Piece wBishop, Piece wKnight, Piece wRook, Piece wPawn,
-			Piece bKing, Piece bQueen, Piece bBishop, Piece bKnight, Piece bRook, Piece bPawn, Graphics g) {
-		this.g = g;
+			Piece bKing, Piece bQueen, Piece bBishop, Piece bKnight, Piece bRook, Piece bPawn) {
 		whiteKing = wKing;
 		blackKing = bKing;
 		whiteQueen = wQueen;
@@ -503,25 +496,9 @@ public class Board {
 		return isThreat;
 	}
 
-	public void drawBoard() {
-		g.setColor(Color.DARK_GRAY);
-		g.drawRect(sideWidth, topHeight, sqDim*8, sqDim*8);
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 4; j++) {
-				g.fillRect(sideWidth+sqDim+(sqDim*2*j), 
-						topHeight+(sqDim*2*i), 
-						sqDim, sqDim);
-				g.fillRect(sideWidth+(sqDim*2*j), 
-						topHeight+sqDim+(sqDim*2*i), 
-						sqDim, sqDim);
-			}
-		}
-	}
-	
 	public void draw() {
 		//TODO
 		//DRAW BOARD
-		
 	}
 
 }
