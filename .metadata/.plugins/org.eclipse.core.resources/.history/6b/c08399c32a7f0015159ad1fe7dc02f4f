@@ -19,10 +19,6 @@ import javax.swing.JApplet;
 
 public class Main extends JApplet {
 	
-	/**
-	 * serial version
-	 */
-	private static final long serialVersionUID = 1L;
 	/*
 	 * inactive Global variables
 	 * private static String currentDirectory = new File("").getAbsolutePath();

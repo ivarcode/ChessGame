@@ -17,7 +17,7 @@ public class Piece {
 	}
 
 	private void updateGraphics(Graphics g) {
-		//TODO do I need this method???
+		//TODO
 	}
 
 	public Location getLoc() {
