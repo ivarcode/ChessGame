@@ -94,8 +94,8 @@ public class Main extends JApplet {
 					
 				} else if (x < sideWidth*7) {
 					
-				} else {
-					//do nothing as of now
+				} else if (x < sideWidth*) {
+					
 				}
 				// If mouse is over draggable checker at time
 				// of press (i.e., contains (x, y) returns
