@@ -15,7 +15,7 @@ public class Piece {
 		setImg(img);
 	}
 
-	public Location getLoc() {
+	public Location getLoc() {		
 		return loc;
 	}
 

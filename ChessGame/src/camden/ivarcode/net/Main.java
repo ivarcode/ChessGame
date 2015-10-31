@@ -34,6 +34,7 @@ public class Main extends JApplet {
 	private static int sqDim = 60;
 	private static int sideWidth = 150;
 	private static int topHeight = 50;
+	private Board board;
 	private Piece 
 	bRook1, bRook2, wRook1, wRook2, 
 	bKnight1, bKnight2, wKnight1, wKnight2, 
@@ -50,80 +51,57 @@ public class Main extends JApplet {
 	bKingi, wKingi,
 	bPawni, wPawni;
 	boolean inDrag = false;
+	int mouseX, mouseY;
+	private Piece clickedPiece;
 
-	public void init ()
-	{
-		// Obtain the size of the applet's drawing area.
-		width = getSize ().width;
-		height = getSize ().height;
-		// Create image buffer.
-		imBuffer = createImage (width, height);
-		// Retrieve graphics context associated with image buffer.
-		imG = imBuffer.getGraphics ();
-		// Initialize checkerboard's origin, so that board is centered.
-		boardx = (width - BOARDDIM) / 2 + 1;
-		boardy = (height - BOARDDIM) / 2 + 1;
-		// Initialize checker's rectangle's starting origin so that checker is
-		// centered in the square located in the top row and second column from
-		// the left.
-		ox = boardx + SQUAREDIM + (SQUAREDIM - CHECKERDIM) / 2 + 1;
-		oy = boardy + (SQUAREDIM - CHECKERDIM) / 2 + 1;
-		// Attach a mouse listener to the applet. That listener listens for
-		// mouse-button press and mouse-button release events.
-		addMouseListener (new MouseAdapter ()
-		{
-			public void mousePressed (MouseEvent e)
-			{
+	public void init() {
+
+		loadImages();
+		loadPieces();
+
+		board = new Board(wRook1, wKnight1, wBishop1, wQueen, wKing, wBishop2, wKnight2, wRook2, 
+				wPawn1, wPawn2, wPawn3, wPawn4, wPawn5, wPawn6, wPawn7, wPawn8,
+				bRook1, bKnight1, bBishop1, bQueen, bKing, bBishop2, bKnight2, bRook2, 
+				bPawn1, bPawn2, bPawn3, bPawn4, bPawn5, bPawn6, bPawn7, bPawn8);
+
+		System.out.println("init");
+
+		addMouseListener(new MouseAdapter() {
+			public void mousePressed (MouseEvent e) {
 				// Obtain mouse coordinates at time of press.
 				int x = e.getX ();
 				int y = e.getY ();
-				
+				int a = -1000, b = -1000;
+
+				System.out.println(x + " " + y);
+
 				if (x < sideWidth) {
 					//do nothing mouse off screen
-				} else if (x < sideWidth*1) {
-					
-				} else if (x < sideWidth*2) {
-					
-				} else if (x < sideWidth*3) {
-					
-				} else if (x < sideWidth*4) {
-					
-				} else if (x < sideWidth*5) {
-					
-				} else if (x < sideWidth*6) {
-					
-				} else if (x < sideWidth*7) {
-					
+				} else if (x < sideWidth+(sqDim*8)) {
+					a = x-sideWidth;
+					a = a/sqDim;
 				} else {
 					//do nothing as of now
 				}
-				// If mouse is over draggable checker at time
-				// of press (i.e., contains (x, y) returns
-				// true), save distance between current mouse
-				// coordinates and draggable checker origin
-				// (which will always be positive) and set drag
-				// flag to true (to indicate drag in progress).
-				if (contains (x, y))
-				{
-					relx = x - ox;
-					rely = y - oy;
-					inDrag = true;
+				if (y < topHeight) {
+					//do nothing mouse off screen
+				} else if (y < topHeight+(sqDim*8)) {
+					b = x-sideWidth;
+					b = b/sqDim;
+				} else {
+					//do nothing as of now
 				}
+				if (a != -1000 && b != -1000) {
+					if (board.getPiece(a, b) != null) {
+						clickedPiece = board.getPiece(a, b);
+					}
+				}
+				inDrag = true;
 			}
-			boolean contains (int x, int y)
+			public void mouseReleased(MouseEvent e)
 			{
-				// Calculate center of draggable checker.
-				int cox = ox + CHECKERDIM / 2;
-				int coy = oy + CHECKERDIM / 2;
-				// Return true if (x, y) locates with bounds
-				// of draggable checker. CHECKERDIM / 2 is the
-				// radius.
-				return (cox - x) * (cox - x) +
-						(coy - y) * (coy - y) <
-						CHECKERDIM / 2 * CHECKERDIM / 2;
-			}
-			public void mouseReleased (MouseEvent e)
-			{
+				//TODO MOVE PIECE HERE IF CONDITIONS MET
+				
 				// When mouse is released, clear inDrag (to
 				// indicate no drag in progress) if inDrag is
 				// already set.
@@ -142,8 +120,8 @@ public class Main extends JApplet {
 					// Calculate draggable checker's new
 					// origin (the upper-left corner of
 					// the checker rectangle).
-					int tmpox = e.getX () - relx;
-					int tmpoy = e.getY () - rely;
+					int tmpox = e.getX();
+					int tmpoy = e.getY();
 					// If the checker is not being moved
 					// (at least partly) off board, 
 					// assign the previously calculated
@@ -152,7 +130,7 @@ public class Main extends JApplet {
 					// redraw the display area (with the
 					// draggable checker at the new
 					// coordinates).
-					if (tmpox > boardx &&
+					/*if (tmpox > boardx &&
 							tmpoy > boardy &&
 							tmpox + CHECKERDIM
 							< boardx + BOARDDIM &&
@@ -162,26 +140,19 @@ public class Main extends JApplet {
 						ox = tmpox;
 						oy = tmpoy;
 						repaint ();
-					}
+					}*/
 				}
 			}
 		});
 	}
 
 	public void paint(Graphics g) {
-		loadImages();
-		loadPieces();
-		playGame(g);
-
+		drawBoard(g);
+		drawPieces(g);
 	}
 
-	public void playGame(Graphics g) {
-		Board board = new Board(wRook1, wKnight1, wBishop1, wQueen, wKing, wBishop2, wKnight2, wRook2, 
-				wPawn1, wPawn2, wPawn3, wPawn4, wPawn5, wPawn6, wPawn7, wPawn8,
-				bRook1, bKnight1, bBishop1, bQueen, bKing, bBishop2, bKnight2, bRook2, 
-				bPawn1, bPawn2, bPawn3, bPawn4, bPawn5, bPawn6, bPawn7, bPawn8, g);
-
-
+	public void update(Graphics g) {
+		paint(g);
 	}
 
 	private void loadPieces() {
@@ -283,5 +254,35 @@ public class Main extends JApplet {
 			System.out.println("ERROR: img not found"); }
 
 	}
+
+	public void drawBoard(Graphics g) {
+		g.setColor(Color.DARK_GRAY);
+		g.drawRect(sideWidth, topHeight, sqDim*8, sqDim*8);
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
+				g.fillRect(sideWidth+sqDim+(sqDim*2*j), 
+						topHeight+(sqDim*2*i), 
+						sqDim, sqDim);
+				g.fillRect(sideWidth+(sqDim*2*j), 
+						topHeight+sqDim+(sqDim*2*i), 
+						sqDim, sqDim);
+			}
+		}
+	}
+
+	public void drawPieces(Graphics g) {
+		board.print();
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				if (board.getPiece(i,j) != null) {
+					g.drawImage(board.getPiece(i,j).getImg(), 
+							sideWidth+(board.getPiece(i,j).getLoc().getFileByInt()*sqDim), 
+							topHeight+((7-board.getPiece(i,j).getLoc().getRank())*sqDim), null);
+				}
+			}
+		}
+	}
+	//TODO FIX
+	//error drawing all elements
 
 }

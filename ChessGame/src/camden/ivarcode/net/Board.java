@@ -5,15 +5,11 @@ import java.awt.Graphics;
 
 public class Board {
 
-	private static int sqDim = 60;
-	private static int sideWidth = 150;
-	private static int topHeight = 50;
 	private Piece[][] board = new Piece[8][8];
 	private boolean[][] whiteThreats = new boolean[8][8];
 	private boolean[][] blackThreats = new boolean[8][8];
 	private Piece whiteKing, blackKing;
 	private String turn;
-	private Graphics g;
 
 	public Board() {
 		//initialize nothing
@@ -26,9 +22,8 @@ public class Board {
 			Piece bRook1, Piece bKnight1, Piece bBishop1, Piece bQueen,
 			Piece bKing, Piece bBishop2, Piece bKnight2, Piece bRook2, 
 			Piece bPawn1, Piece bPawn2, Piece bPawn3, Piece bPawn4, 
-			Piece bPawn5, Piece bPawn6, Piece bPawn7, Piece bPawn8, Graphics g) {
+			Piece bPawn5, Piece bPawn6, Piece bPawn7, Piece bPawn8) {
 
-		this.g = g;
 		whiteKing = wKing;
 		blackKing = bKing;
 		turn = "white";
@@ -68,9 +63,6 @@ public class Board {
 		place(bPawn8, bPawn8.getLoc());
 
 		refreshThreats();
-
-		drawBoard();
-		drawPieces();
 	}
 
 	private void refreshThreats() {
@@ -90,7 +82,7 @@ public class Board {
 		board[loc.getFileByInt()][loc.getRank()] = piece;
 	}
 
-	public Piece getPiece(int rank, char file) {
+	public Piece getPiece(char file, int rank) {
 		int i = -1; //throws error if case not 'a'-'h'
 		switch (file) {
 		case 'a':	i = 0;
@@ -103,6 +95,10 @@ public class Board {
 		case 'h':	i = 7;
 		}
 		return board[i][rank];
+	}
+
+	public Piece getPiece(int fileByInt, int rank) {
+		return board[fileByInt][rank];
 	}
 
 	public void movePiece(Piece piece, Location oldLoc, Location newLoc) {
@@ -532,33 +528,50 @@ public class Board {
 		return isThreat;
 	}
 
-	public void drawBoard() {
-		g.setColor(Color.DARK_GRAY);
-		g.drawRect(sideWidth, topHeight, sqDim*8, sqDim*8);
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 4; j++) {
-				g.fillRect(sideWidth+sqDim+(sqDim*2*j), 
-						topHeight+(sqDim*2*i), 
-						sqDim, sqDim);
-				g.fillRect(sideWidth+(sqDim*2*j), 
-						topHeight+sqDim+(sqDim*2*i), 
-						sqDim, sqDim);
-			}
-		}
-	}
-
-	public void drawPieces() {
+	public void print() {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				if (board[i][j] != null) {
-					g.drawImage(board[i][j].getImg(), 
-							sideWidth+(board[i][j].getLoc().getFileByInt()*sqDim), 
-							topHeight+((7-board[i][j].getLoc().getRank())*sqDim), null);
+				if (board[i][j] instanceof King) {
+					if (board[i][j].getColor().equals("white")) {
+						System.out.print("[K]");
+					} else {
+						System.out.print("[k]");
+					}
+				} else if (board[i][j] instanceof Queen) {
+					if (board[i][j].getColor().equals("white")) {
+						System.out.print("[Q]");
+					} else {
+						System.out.print("[q]");
+					}
+				} else if (board[i][j] instanceof Bishop) {
+					if (board[i][j].getColor().equals("white")) {
+						System.out.print("[B]");
+					} else {
+						System.out.print("[b]");
+					}
+				} else if (board[i][j] instanceof Knight) {
+					if (board[i][j].getColor().equals("white")) {
+						System.out.print("[N]");
+					} else {
+						System.out.print("[n]");
+					}
+				} else if (board[i][j] instanceof Rook) {
+					if (board[i][j].getColor().equals("white")) {
+						System.out.print("[R]");
+					} else {
+						System.out.print("[r]");
+					}
+				} else if (board[i][j] instanceof Pawn) {
+					if (board[i][j].getColor().equals("white")) {
+						System.out.print("[P]");
+					} else {
+						System.out.print("[p]");
+					}
+				} else {
+					System.out.print("[ ]");
 				}
 			}
+			System.out.println();
 		}
 	}
-	//TODO FIX
-	//error drawing all elements
-
 }
