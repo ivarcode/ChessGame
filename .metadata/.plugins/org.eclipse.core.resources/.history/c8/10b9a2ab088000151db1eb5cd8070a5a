@@ -64,6 +64,8 @@ public class Main extends JApplet {
 				bRook1, bKnight1, bBishop1, bQueen, bKing, bBishop2, bKnight2, bRook2, 
 				bPawn1, bPawn2, bPawn3, bPawn4, bPawn5, bPawn6, bPawn7, bPawn8);
 
+		System.out.println("init");
+
 		addMouseListener(new MouseAdapter() {
 			public void mousePressed (MouseEvent e) {
 				// Obtain mouse coordinates at time of press.
@@ -155,39 +157,39 @@ public class Main extends JApplet {
 	}
 
 	private void loadPieces() {
-		wKing = new King(new Location('e',0), "white", wKingi);
-		wQueen = new Queen(new Location('d',0), "white", wQueeni);
-		wBishop1 = new Bishop(new Location('c',0), "white", wBishopi);
-		wBishop2 = new Bishop(new Location('f',0), "white", wBishopi);
-		wKnight1 = new Knight(new Location('b',0), "white", wKnighti);
-		wKnight2 = new Knight(new Location('g',0), "white", wKnighti);
-		wRook1 = new Rook(new Location('a',0), "white", wRooki);
-		wRook2 = new Rook(new Location('h',0), "white", wRooki);
-		wPawn1 = new Pawn(new Location('a',1), "white", wPawni);
-		wPawn2 = new Pawn(new Location('b',1), "white", wPawni);
-		wPawn3 = new Pawn(new Location('c',1), "white", wPawni);
-		wPawn4 = new Pawn(new Location('d',1), "white", wPawni);
-		wPawn5 = new Pawn(new Location('e',1), "white", wPawni);
-		wPawn6 = new Pawn(new Location('f',1), "white", wPawni);
-		wPawn7 = new Pawn(new Location('g',1), "white", wPawni);
-		wPawn8 = new Pawn(new Location('h',1), "white", wPawni);
+		wKing = new King(new Location(0,'e'), "white", wKingi);
+		wQueen = new Queen(new Location(0,'d'), "white", wQueeni);
+		wBishop1 = new Bishop(new Location(0,'c'), "white", wBishopi);
+		wBishop2 = new Bishop(new Location(0,'f'), "white", wBishopi);
+		wKnight1 = new Knight(new Location(0,'b'), "white", wKnighti);
+		wKnight2 = new Knight(new Location(0,'g'), "white", wKnighti);
+		wRook1 = new Rook(new Location(0,'a'), "white", wRooki);
+		wRook2 = new Rook(new Location(0,'h'), "white", wRooki);
+		wPawn1 = new Pawn(new Location(1,'a'), "white", wPawni);
+		wPawn2 = new Pawn(new Location(1,'b'), "white", wPawni);
+		wPawn3 = new Pawn(new Location(1,'c'), "white", wPawni);
+		wPawn4 = new Pawn(new Location(1,'d'), "white", wPawni);
+		wPawn5 = new Pawn(new Location(1,'e'), "white", wPawni);
+		wPawn6 = new Pawn(new Location(1,'f'), "white", wPawni);
+		wPawn7 = new Pawn(new Location(1,'g'), "white", wPawni);
+		wPawn8 = new Pawn(new Location(1,'h'), "white", wPawni);
 
-		bKing = new King(new Location('e',7), "black", bKingi);
-		bQueen = new Queen(new Location('d',7), "black", bQueeni);
-		bBishop1 = new Bishop(new Location('c',7), "black", bBishopi);
-		bBishop2 = new Bishop(new Location('f',7), "black", bBishopi);
-		bKnight1 = new Knight(new Location('b',7), "black", bKnighti);
-		bKnight2 = new Knight(new Location('g',7), "black", bKnighti);
-		bRook1 = new Rook(new Location('a',7), "black", bRooki);
-		bRook2 = new Rook(new Location('h',7), "black", bRooki);
-		bPawn1 = new Pawn(new Location('a',6), "black", bPawni);
-		bPawn2 = new Pawn(new Location('b',6), "black", bPawni);
-		bPawn3 = new Pawn(new Location('c',6), "black", bPawni);
-		bPawn4 = new Pawn(new Location('d',6), "black", bPawni);
-		bPawn5 = new Pawn(new Location('e',6), "black", bPawni);
-		bPawn6 = new Pawn(new Location('f',6), "black", bPawni);
-		bPawn7 = new Pawn(new Location('g',6), "black", bPawni);
-		bPawn8 = new Pawn(new Location('h',6), "black", bPawni);
+		bKing = new King(new Location(7,'e'), "black", bKingi);
+		bQueen = new Queen(new Location(7,'d'), "black", bQueeni);
+		bBishop1 = new Bishop(new Location(7,'c'), "black", bBishopi);
+		bBishop2 = new Bishop(new Location(7,'f'), "black", bBishopi);
+		bKnight1 = new Knight(new Location(7,'b'), "black", bKnighti);
+		bKnight2 = new Knight(new Location(7,'g'), "black", bKnighti);
+		bRook1 = new Rook(new Location(7,'a'), "black", bRooki);
+		bRook2 = new Rook(new Location(7,'h'), "black", bRooki);
+		bPawn1 = new Pawn(new Location(6,'a'), "black", bPawni);
+		bPawn2 = new Pawn(new Location(6,'b'), "black", bPawni);
+		bPawn3 = new Pawn(new Location(6,'c'), "black", bPawni);
+		bPawn4 = new Pawn(new Location(6,'d'), "black", bPawni);
+		bPawn5 = new Pawn(new Location(6,'e'), "black", bPawni);
+		bPawn6 = new Pawn(new Location(6,'f'), "black", bPawni);
+		bPawn7 = new Pawn(new Location(6,'g'), "black", bPawni);
+		bPawn8 = new Pawn(new Location(6,'h'), "black", bPawni);
 	}
 
 	public static void loadImages() {
@@ -270,6 +272,7 @@ public class Main extends JApplet {
 	}
 
 	public void drawPieces(Graphics g) {
+		board.print();
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				if (board.getPiece(i,j) != null) {

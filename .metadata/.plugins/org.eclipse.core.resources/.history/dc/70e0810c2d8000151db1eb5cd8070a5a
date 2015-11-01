@@ -100,7 +100,7 @@ public class Main extends JApplet {
 			public void mouseReleased(MouseEvent e)
 			{
 				//TODO MOVE PIECE HERE IF CONDITIONS MET
-				
+
 				// When mouse is released, clear inDrag (to
 				// indicate no drag in progress) if inDrag is
 				// already set.
@@ -272,11 +272,9 @@ public class Main extends JApplet {
 	public void drawPieces(Graphics g) {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				if (board.getPiece(i,j) != null) {
-					g.drawImage(board.getPiece(i,j).getImg(), 
-							sideWidth+(board.getPiece(i,j).getLoc().getFileByInt()*sqDim), 
-							topHeight+((7-board.getPiece(i,j).getLoc().getRank())*sqDim), null);
-				}
+				g.drawImage(board.getPiece(i,j).getImg(), 
+						sideWidth+(board.getPiece(i,j).getLoc().getFileByInt()*sqDim), 
+						topHeight+((7-board.getPiece(i,j).getLoc().getRank())*sqDim), null);
 			}
 		}
 	}

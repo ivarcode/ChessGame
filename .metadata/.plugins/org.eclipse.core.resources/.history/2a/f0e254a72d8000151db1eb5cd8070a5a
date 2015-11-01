@@ -44,7 +44,7 @@ public class Location {
 			i = 6;
 		} else if (file == 'h') {
 			i = 7;
-		} 
+		} else 
 		return i;
 	}
 	

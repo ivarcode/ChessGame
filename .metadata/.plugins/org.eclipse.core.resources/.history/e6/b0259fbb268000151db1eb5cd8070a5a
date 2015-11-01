@@ -16,6 +16,7 @@ public class Piece {
 	}
 
 	public Location getLoc() {
+		System.out.println(loc.getFile() + loc.getRank());
 		return loc;
 	}
 

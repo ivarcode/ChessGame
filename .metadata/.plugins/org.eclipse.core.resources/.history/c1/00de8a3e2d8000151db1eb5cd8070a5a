@@ -274,8 +274,8 @@ public class Main extends JApplet {
 			for (int j = 0; j < 8; j++) {
 				if (board.getPiece(i,j) != null) {
 					g.drawImage(board.getPiece(i,j).getImg(), 
-							sideWidth+(board.getPiece(i,j).getLoc().getFileByInt()*sqDim), 
-							topHeight+((7-board.getPiece(i,j).getLoc().getRank())*sqDim), null);
+							sideWidth+(board.getPiece(i,j).getLoc().getRank()*sqDim), 
+							topHeight+((7-board.getPiece(i,j).getLoc().getFileByInt())*sqDim), null);
 				}
 			}
 		}

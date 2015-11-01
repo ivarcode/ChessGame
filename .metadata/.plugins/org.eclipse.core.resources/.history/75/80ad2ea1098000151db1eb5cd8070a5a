@@ -64,6 +64,8 @@ public class Main extends JApplet {
 				bRook1, bKnight1, bBishop1, bQueen, bKing, bBishop2, bKnight2, bRook2, 
 				bPawn1, bPawn2, bPawn3, bPawn4, bPawn5, bPawn6, bPawn7, bPawn8);
 
+		System.out.println("init");
+
 		addMouseListener(new MouseAdapter() {
 			public void mousePressed (MouseEvent e) {
 				// Obtain mouse coordinates at time of press.
@@ -270,6 +272,7 @@ public class Main extends JApplet {
 	}
 
 	public void drawPieces(Graphics g) {
+		board.print();
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				if (board.getPiece(i,j) != null) {

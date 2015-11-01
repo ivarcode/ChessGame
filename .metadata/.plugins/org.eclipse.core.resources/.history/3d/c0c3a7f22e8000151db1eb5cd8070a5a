@@ -90,7 +90,7 @@ public class Main extends JApplet {
 					//do nothing as of now
 				}
 				if (a != -1000 && b != -1000) {
-					if (board.getPiece(a, b) != null) {
+					if (board.getPiece(b, a) != null) {
 						clickedPiece = board.getPiece(a, b);
 						System.out.println("Piece clicked on (" + a + "," + b + ")");
 					}

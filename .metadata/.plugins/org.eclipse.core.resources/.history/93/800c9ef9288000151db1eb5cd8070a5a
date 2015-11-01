@@ -273,9 +273,12 @@ public class Main extends JApplet {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				if (board.getPiece(i,j) != null) {
+					System.out.println((7-board.getPiece(i,j).getLoc().getRank()));
 					g.drawImage(board.getPiece(i,j).getImg(), 
 							sideWidth+(board.getPiece(i,j).getLoc().getFileByInt()*sqDim), 
-							topHeight+((7-board.getPiece(i,j).getLoc().getRank())*sqDim), null);
+							topHeight+((8-board.getPiece(i,j).getLoc().getRank())*sqDim), null);
+				} else {
+					System.out.println(":::::::::::::::::::::" + i + " " + j);
 				}
 			}
 		}

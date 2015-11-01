@@ -5,7 +5,7 @@ public class Location {
 	private int rank;
 	private char file;
 	
-	public Location(char file, int rank) {
+	public Location(int rank, char file) {
 		setRank(rank);
 		setFile(file);
 	}
@@ -28,23 +28,16 @@ public class Location {
 
 	public int getFileByInt() {
 		int i = -1; //throws error if case not 'a'-'h'
-		if (file == 'a') {
-			i = 0;
-		} else if (file == 'b') {
-			i = 1;
-		} else if (file == 'c') {
-			i = 2;
-		} else if (file == 'd') {
-			i = 3;
-		} else if (file == 'e') {
-			i = 4;
-		} else if (file == 'f') {
-			i = 5;
-		} else if (file == 'g') {
-			i = 6;
-		} else if (file == 'h') {
-			i = 7;
-		} 
+		switch (file) {
+			case 'a':	i = 0;
+			case 'b':	i = 1;
+			case 'c':	i = 2;
+			case 'd':	i = 3;
+			case 'e':	i = 4;
+			case 'f':	i = 5;
+			case 'g':	i = 6;
+			case 'h':	i = 7;
+		}
 		return i;
 	}
 	
