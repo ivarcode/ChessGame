@@ -118,7 +118,6 @@ public class Board {
 			tempSrc.setLoc(new Location(destX,destY));
 			place(null, new Location(srcX,srcY));
 			place(tempSrc, tempSrc.getLoc());
-			refreshThreats();
 			if (kingInCheck()) {
 				tempSrc.setLoc(new Location(srcX,srcY));
 				place(tempDest, new Location(destX,destY));

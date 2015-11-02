@@ -112,33 +112,22 @@ public class Board {
 	}
 
 	public void movePiece(int srcX, int srcY, int destX, int destY) {
-		if (isLegalMove(srcX, srcY, destX, destY)) {
-			Piece tempDest = getPiece(destX,destY);
-			Piece tempSrc = getPiece(srcX,srcY);
-			tempSrc.setLoc(new Location(destX,destY));
+		if (pieceCanMove(srcX, srcY, destX, destY)) {
+			Piece temp = getPiece(srcX,srcY);
+			temp.setLoc(new Location(destX,destY));
 			place(null, new Location(srcX,srcY));
-			place(tempSrc, tempSrc.getLoc());
-			refreshThreats();
-			if (kingInCheck()) {
-				tempSrc.setLoc(new Location(srcX,srcY));
-				place(tempDest, new Location(destX,destY));
-				place(tempSrc, tempSrc.getLoc());
+			place(temp, temp.getLoc());
+			if (isTurn("white")) {
+				turn = "black";
 			} else {
-				if (isTurn("white")) {
-					turn = "black";
-				} else {
-					turn = "white";
-				}
-				System.out.println("turn = " + turn);
-				print();
+				turn = "white";
 			}
+			print();
 		}
 	}
 
-	private boolean isLegalMove(int srcX, int srcY, int destX, int destY) {
-		if (getPiece(srcX, srcY).getColor() != turn) {
-			return false;
-		}
+	private boolean pieceCanMove(int srcX, int srcY, int destX, int destY) {
+		// TODO Auto-generated method stub
 		return true;
 	}
 

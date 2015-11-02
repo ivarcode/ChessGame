@@ -118,7 +118,6 @@ public class Board {
 			tempSrc.setLoc(new Location(destX,destY));
 			place(null, new Location(srcX,srcY));
 			place(tempSrc, tempSrc.getLoc());
-			refreshThreats();
 			if (kingInCheck()) {
 				tempSrc.setLoc(new Location(srcX,srcY));
 				place(tempDest, new Location(destX,destY));
@@ -136,7 +135,7 @@ public class Board {
 	}
 
 	private boolean isLegalMove(int srcX, int srcY, int destX, int destY) {
-		if (getPiece(srcX, srcY).getColor() != turn) {
+		if (getPiece(srcX, srcY).getColor() != turn || kingInCheck()) {
 			return false;
 		}
 		return true;
