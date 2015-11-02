@@ -333,13 +333,17 @@ public class Board {
 		}
 		//up-right
 		if (r+1 < 8 && f+1 < 8) {
-			if (board[r+1][f+1] == blackKing) {
+			if ((board[r+1][f+1] == blackKing
+					|| board[r+1][f+1] instanceof Pawn)
+					&& board[r+1][f+1].getColor().equals("black")) {
 				isThreat = true;
 			}
 		}
 		//up-left
 		if (r+1 < 8 && f-1 > -1) {
-			if (board[r+1][f-1] == blackKing) {
+			if ((board[r+1][f-1] == blackKing
+					|| board[r+1][f-1] instanceof Pawn)
+					&& board[r+1][f-1].getColor().equals("black")) {
 				isThreat = true;
 			}
 		}
@@ -348,18 +352,10 @@ public class Board {
 			if (board[r-1][f+1] == blackKing) {
 				isThreat = true;
 			}
-			if (board[r-1][f+1] instanceof Pawn 
-					&& board[r-1][f+1].getColor().equals("black")) {
-				isThreat = true;
-			}
 		}
 		//down-left
 		if (r-1 > -1 && f-1 > -1) {
 			if (board[r-1][f-1] == blackKing) {
-				isThreat = true;
-			}
-			if (board[r-1][f-1] instanceof Pawn 
-					&& board[r-1][f-1].getColor().equals("black")) {
 				isThreat = true;
 			}
 		}
@@ -543,33 +539,29 @@ public class Board {
 			if (board[r+1][f+1] == whiteKing) {
 				isThreat = true;
 			}
-			if (board[r+1][f+1] instanceof Pawn 
-					&& board[r+1][f+1].getColor().equals("white")) {
-				isThreat = true;
-			}
 		}
 		//up-left
 		if (r+1 < 8 && f-1 > -1) {
 			if (board[r+1][f-1] == whiteKing) {
 				isThreat = true;
 			}
-			if (board[r+1][f-1] instanceof Pawn 
-					&& board[r+1][f-1].getColor().equals("white")) {
-				isThreat = true;
-			}
 		}
 		//down-right
 		if (r-1 > -1 && f+1 < 8) {
-			if (board[r-1][f+1] == whiteKing) {
+			if ((board[r-1][f+1] == whiteKing
+					|| board[r-1][f+1] instanceof Pawn)
+					&& board[r-1][f+1].getColor().equals("white")) {
 				isThreat = true;
 			}
 		}
 		//down-left
 		if (r-1 > -1 && f-1 > -1) {
-			if (board[r-1][f-1] == whiteKing) {
+			if ((board[r-1][f-1] == whiteKing
+					|| board[r-1][f-1] instanceof Pawn)
+					&& board[r-1][f-1].getColor().equals("white")) {
 				isThreat = true;
 			}
-		}		
+		}
 		return isThreat;
 	}
 
