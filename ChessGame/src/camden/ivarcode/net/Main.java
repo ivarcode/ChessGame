@@ -58,6 +58,9 @@ public class Main extends JApplet {
 
 		loadImages();
 		loadPieces();
+		
+		Piece nullPiece = new Piece();
+		clickedPiece = nullPiece;
 
 		board = new Board(wRook1, wKnight1, wBishop1, wQueen, wKing, wBishop2, wKnight2, wRook2, 
 				wPawn1, wPawn2, wPawn3, wPawn4, wPawn5, wPawn6, wPawn7, wPawn8,
@@ -65,13 +68,13 @@ public class Main extends JApplet {
 				bPawn1, bPawn2, bPawn3, bPawn4, bPawn5, bPawn6, bPawn7, bPawn8);
 
 		addMouseListener(new MouseAdapter() {
+			int a = -1000, b = -1000;
+			int c = -1000, d = -1000;
+			
 			public void mousePressed (MouseEvent e) {
 				// Obtain mouse coordinates at time of press.
 				int x = e.getX ();
 				int y = e.getY ();
-				int a = -1000, b = -1000;
-
-				System.out.println(x + " " + y);
 
 				if (x < sideWidth) {
 					//do nothing mouse off screen
@@ -86,20 +89,51 @@ public class Main extends JApplet {
 				} else if (y < topHeight+(sqDim*8)) {
 					b = y-topHeight;
 					b = b/sqDim;
+					//flips board so that 0,0 is in bottom left corner
+					b = 7-b;
 				} else {
 					//do nothing as of now
 				}
 				if (a != -1000 && b != -1000) {
 					if (board.getPiece(a, b) != null) {
 						clickedPiece = board.getPiece(a, b);
-						System.out.println("Piece clicked on (" + a + "," + b + ")");
+						System.out.println("Piece(" + clickedPiece.getColor() + " " + clickedPiece.getID() + ") clicked on (" + a + "," + b + ")");
 					}
 				}
 				inDrag = true;
 			}
 			public void mouseReleased(MouseEvent e)
 			{
-				//TODO MOVE PIECE HERE IF CONDITIONS MET
+				int x = e.getX ();
+				int y = e.getY ();
+
+				if (x < sideWidth) {
+					//do nothing mouse off screen
+				} else if (x < sideWidth+(sqDim*8)) {
+					c = x-sideWidth;
+					c = c/sqDim;
+				} else {
+					//do nothing as of now
+				}
+				if (y < topHeight) {
+					//do nothing mouse off screen
+				} else if (y < topHeight+(sqDim*8)) {
+					d = y-topHeight;
+					d = d/sqDim;
+					//flips board so that 0,0 is in bottom left corner
+					d = 7-d;
+				} else {
+					//do nothing as of now
+				}
+								
+				board.movePiece(new Location(a,b), new Location(c,d));
+				repaint();
+				
+				a = -1000;
+				b = -1000;
+				c = -1000;
+				d = -1000;
+				clickedPiece = nullPiece;
 				
 				// When mouse is released, clear inDrag (to
 				// indicate no drag in progress) if inDrag is
@@ -116,36 +150,18 @@ public class Main extends JApplet {
 			{
 				if (inDrag)
 				{
-					// Calculate draggable checker's new
-					// origin (the upper-left corner of
-					// the checker rectangle).
-					int tmpox = e.getX();
-					int tmpoy = e.getY();
-					// If the checker is not being moved
-					// (at least partly) off board, 
-					// assign the previously calculated
-					// origin (tmpox, tmpoy) as the
-					// permanent origin (ox, oy), and
-					// redraw the display area (with the
-					// draggable checker at the new
-					// coordinates).
-					/*if (tmpox > boardx &&
-							tmpoy > boardy &&
-							tmpox + CHECKERDIM
-							< boardx + BOARDDIM &&
-							tmpoy + CHECKERDIM
-							< boardy + BOARDDIM)
-					{
-						ox = tmpox;
-						oy = tmpoy;
-						repaint ();
-					}*/
+					mouseX = e.getX();
+					mouseY = e.getY();
+					repaint();
 				}
 			}
 		});
 	}
 
 	public void paint(Graphics g) {
+		Dimension d = getSize();
+		g.setColor(Color.WHITE);
+		g.fillRect(0, 0, d.width, d.height);
 		drawBoard(g);
 		drawPieces(g);
 	}
@@ -272,15 +288,16 @@ public class Main extends JApplet {
 	public void drawPieces(Graphics g) {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				if (board.getPiece(i,j) != null) {
+				if (board.getPiece(i,j) != null && clickedPiece != board.getPiece(i, j)) {
 					g.drawImage(board.getPiece(i,j).getImg(), 
 							sideWidth+(board.getPiece(i,j).getLoc().getFileByInt()*sqDim), 
 							topHeight+((7-board.getPiece(i,j).getLoc().getRank())*sqDim), null);
 				}
+				if (clickedPiece == board.getPiece(i, j)) {
+					g.drawImage(board.getPiece(i, j).getImg(), mouseX-(sqDim/2), mouseY-(sqDim/2), null);
+				}
 			}
 		}
 	}
-	//TODO FIX
-	//error drawing all elements
 
 }

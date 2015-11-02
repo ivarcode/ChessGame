@@ -1,6 +1,5 @@
 package camden.ivarcode.net;
 
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 public class Piece {
@@ -8,6 +7,12 @@ public class Piece {
 	private Location loc;
 	private String color;
 	private BufferedImage img;
+	private int pointValue;
+	private String ID;
+	
+	public Piece() {
+		//nullPiece def
+	}
 	
 	public Piece(Location loc, String color, BufferedImage img) {
 		setLoc(loc);
@@ -37,6 +42,22 @@ public class Piece {
 
 	public void setImg(BufferedImage img) {
 		this.img = img;
+	}
+
+	public int getPointValue() {
+		return pointValue;
+	}
+
+	public void setPointValue(int pointValue) {
+		this.pointValue = pointValue;
+	}
+
+	public String getID() {
+		return ID;
+	}
+
+	public void setID(String iD) {
+		ID = iD;
 	}
 	
 }

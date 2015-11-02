@@ -9,6 +9,23 @@ public class Location {
 		setRank(rank);
 		setFile(file);
 	}
+	
+	public Location(int f, int rank) {
+		char file = 'z';
+		switch (f) {
+		case 0: file = 'a';
+		case 1: file = 'b';
+		case 2: file = 'c';
+		case 3: file = 'd';
+		case 4: file = 'e';
+		case 5: file = 'f';
+		case 6: file = 'g';
+		case 7: file = 'h';
+		}
+		
+		setRank(rank);
+		setFile(file);
+	}
 
 	public int getRank() {
 		return rank;

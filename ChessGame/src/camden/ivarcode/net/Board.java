@@ -27,41 +27,6 @@ public class Board {
 		whiteKing = wKing;
 		blackKing = bKing;
 		turn = "white";
-
-		/*
-		board[0][0] = wRook1;
-		board[0][1] = wKnight1;
-		board[0][2] = wBishop1;
-		board[0][3] = wQueen;
-		board[0][4] = wKing;
-		board[0][5] = wBishop2;
-		board[0][6] = wKnight2;
-		board[0][7] = wRook2;
-		board[1][0] = wPawn1;
-		board[1][1] = wPawn2;
-		board[1][2] = wPawn3;
-		board[1][3] = wPawn4;
-		board[1][4] = wPawn5;
-		board[1][5] = wPawn6;
-		board[1][6] = wPawn7;
-		board[1][7] = wPawn8;
-		
-		board[7][0] = bRook1;
-		board[7][1] = bKnight1;
-		board[7][2] = bBishop1;
-		board[7][3] = bQueen;
-		board[7][4] = bKing;
-		board[7][5] = bBishop2;
-		board[7][6] = bKnight2;
-		board[7][7] = bRook2;
-		board[6][0] = bPawn1;
-		board[6][1] = bPawn2;
-		board[6][2] = bPawn3;
-		board[6][3] = bPawn4;
-		board[6][4] = bPawn5;
-		board[6][5] = bPawn6;
-		board[6][6] = bPawn7;
-		board[6][7] = bPawn8;*/
 		
 		place(whiteKing, whiteKing.getLoc());
 		place(blackKing, blackKing.getLoc());
@@ -144,7 +109,7 @@ public class Board {
 		return board[fileByInt][rank];
 	}
 
-	public void movePiece(Piece piece, Location oldLoc, Location newLoc) {
+	public void movePiece(Location src, Location dest) {
 		//TODO
 	}
 
