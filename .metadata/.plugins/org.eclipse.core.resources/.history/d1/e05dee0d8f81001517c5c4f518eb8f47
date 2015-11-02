@@ -550,8 +550,13 @@ public class Board {
 	}
 
 	public void print() {
+		try {
+			Runtime.getRuntime().exec("cls");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// I know, bad practice, I was just too lazy to Find/Replace and switch all the board calls
-		System.out.println("------------------------");
 		for (int j = 7; j > -1; j--) {
 			for (int i = 0; i < 8; i++) {
 				if (board[i][j] instanceof King) {

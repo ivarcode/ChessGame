@@ -2,7 +2,6 @@ package camden.ivarcode.net;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.io.IOException;
 
 public class Board {
 
@@ -116,13 +115,13 @@ public class Board {
 			Piece temp = getPiece(srcX,srcY);
 			temp.setLoc(new Location(destX,destY));
 			place(null, new Location(srcX,srcY));
-			place(temp, temp.getLoc());
-			print();
+			place(temp, new Location(destX,destY));
 		}
 	}
 
 	private boolean pieceCanMove(int srcX, int srcY, int destX, int destY) {
 		// TODO Auto-generated method stub
+		System.out.println("::allowing piece to move");
 		return true;
 	}
 
@@ -551,8 +550,7 @@ public class Board {
 
 	public void print() {
 		// I know, bad practice, I was just too lazy to Find/Replace and switch all the board calls
-		System.out.println("------------------------");
-		for (int j = 7; j > -1; j--) {
+		for (int j = 0; j < 8; j++) {
 			for (int i = 0; i < 8; i++) {
 				if (board[i][j] instanceof King) {
 					if (board[i][j].getColor().equals("white")) {

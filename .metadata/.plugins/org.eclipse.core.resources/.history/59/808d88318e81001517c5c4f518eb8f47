@@ -28,7 +28,7 @@ public class Location {
 			file = 'g';
 		} else if (f == 7) {
 			file = 'h';
-		}
+		} else 
 		
 		setRank(rank);
 		setFile(file);

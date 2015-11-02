@@ -12,22 +12,15 @@ public class Location {
 	
 	public Location(int f, int rank) {
 		char file = 'z';
-		if (f == 0) {
-			file = 'a';
-		} else if (f == 1) {
-			file = 'b';
-		} else if (f == 2) {
-			file = 'c';
-		} else if (f == 3) {
-			file = 'd';
-		} else if (f == 4) {
-			file = 'e';
-		} else if (f == 5) {
-			file = 'f';
-		} else if (f == 6) {
-			file = 'g';
-		} else if (f == 7) {
-			file = 'h';
+		switch (f) {
+		case 0: file = 'a';
+		case 1: file = 'b';
+		case 2: file = 'c';
+		case 3: file = 'd';
+		case 4: file = 'e';
+		case 5: file = 'f';
+		case 6: file = 'g';
+		case 7: file = 'h';
 		}
 		
 		setRank(rank);

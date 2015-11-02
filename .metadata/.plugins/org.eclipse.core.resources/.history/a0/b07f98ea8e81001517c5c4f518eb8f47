@@ -97,6 +97,7 @@ public class Main extends JApplet {
 				if (a != -1000 && b != -1000) {
 					if (board.getPiece(a, b) != null) {
 						clickedPiece = board.getPiece(a, b);
+						System.out.println("Piece(" + clickedPiece.getColor() + " " + clickedPiece.getID() + ") clicked on (" + a + "," + b + ")");
 					}
 				}
 				inDrag = true;
@@ -125,6 +126,7 @@ public class Main extends JApplet {
 					//do nothing as of now
 				}
 				
+				System.out.println("::moving Piece from " + a + "," + b + " to " + c + "," + d);
 				board.movePiece(a,b,c,d);
 				repaint();
 				
