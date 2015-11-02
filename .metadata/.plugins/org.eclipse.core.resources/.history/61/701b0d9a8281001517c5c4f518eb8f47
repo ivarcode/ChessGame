@@ -113,7 +113,6 @@ public class Board {
 	public void movePiece(int srcX, int srcY, int destX, int destY) {
 		if (pieceCanMove(srcX, srcY, destX, destY)) {
 			//TODO remove piece from dest
-			//CHANGE PIECE LOC DATA
 			board[destX][destY] = board[srcX][srcY];
 			board[srcX][srcY] = null;
 		}

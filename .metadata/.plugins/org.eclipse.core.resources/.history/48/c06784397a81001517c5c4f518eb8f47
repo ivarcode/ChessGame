@@ -67,7 +67,6 @@ public class Board {
 	}
 
 	private void place(Piece piece, Location loc) {
-		//TODO remove any piece from underlying loc
 		board[loc.getFileByInt()][loc.getRank()] = piece;
 	}
 
@@ -110,19 +109,8 @@ public class Board {
 		return board[fileByInt][rank];
 	}
 
-	public void movePiece(int srcX, int srcY, int destX, int destY) {
-		if (pieceCanMove(srcX, srcY, destX, destY)) {
-			//TODO remove piece from dest
-			//CHANGE PIECE LOC DATA
-			board[destX][destY] = board[srcX][srcY];
-			board[srcX][srcY] = null;
-		}
-	}
-
-	private boolean pieceCanMove(int srcX, int srcY, int destX, int destY) {
-		// TODO Auto-generated method stub
-		System.out.println("::allowing piece to move");
-		return true;
+	public void movePiece(Location src, Location dest) {
+		//TODO
 	}
 
 	private boolean isTurn(String color) {

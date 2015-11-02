@@ -111,17 +111,15 @@ public class Board {
 	}
 
 	public void movePiece(int srcX, int srcY, int destX, int destY) {
-		if (pieceCanMove(srcX, srcY, destX, destY)) {
+		if (pieceCanMove(src, dest)) {
 			//TODO remove piece from dest
-			//CHANGE PIECE LOC DATA
 			board[destX][destY] = board[srcX][srcY];
 			board[srcX][srcY] = null;
 		}
 	}
 
-	private boolean pieceCanMove(int srcX, int srcY, int destX, int destY) {
+	private boolean pieceCanMove(Location src, Location dest) {
 		// TODO Auto-generated method stub
-		System.out.println("::allowing piece to move");
 		return true;
 	}
 

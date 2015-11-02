@@ -126,8 +126,8 @@ public class Main extends JApplet {
 					//do nothing as of now
 				}
 				
-				System.out.println("::moving Piece from " + a + "," + b + " to " + c + "," + d);
-				board.movePiece(a,b,c,d);
+				System.out.println("Moving Piece from " + a + "," + b + " to " + c + "," + d);
+				board.movePiece(new Location(a,b), new Location(c,d));
 				repaint();
 				
 				a = -1000;
