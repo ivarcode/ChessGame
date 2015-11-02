@@ -28,7 +28,6 @@ public class Board {
 		blackKing = bKing;
 		turn = "white";
 
-		/*
 		board[0][0] = wRook1;
 		board[0][1] = wKnight1;
 		board[0][2] = wBishop1;
@@ -61,7 +60,7 @@ public class Board {
 		board[6][4] = bPawn5;
 		board[6][5] = bPawn6;
 		board[6][6] = bPawn7;
-		board[6][7] = bPawn8;*/
+		board[6][7] = bPawn8;
 		
 		place(whiteKing, whiteKing.getLoc());
 		place(blackKing, blackKing.getLoc());
@@ -99,10 +98,6 @@ public class Board {
 
 		print();
 		refreshThreats();
-	}
-
-	private void place(Piece piece, Location loc) {
-		board[loc.getFileByInt()][loc.getRank()] = piece;
 	}
 
 	private void refreshThreats() {
