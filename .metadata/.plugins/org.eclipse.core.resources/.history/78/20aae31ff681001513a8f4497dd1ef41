@@ -1,7 +1,5 @@
 package camden.ivarcode.net;
 
-import java.util.ArrayList;
-
 public class Board {
 
 	private Piece[][] board = new Piece[8][8];
@@ -806,7 +804,6 @@ public class Board {
 	}
 
 	public String inCheckmate() {
-		//TODO
 		if (turn == "white") {
 			
 		} else {
@@ -814,11 +811,5 @@ public class Board {
 		}
 		return null;
 	}
-	
-	public ArrayList<Piece[][]> getPositions() {
-		ArrayList<Piece[][]> arr = new ArrayList<Piece[][]>();
-		//TODO
-		
-		return arr;
-	}
+	public 
 }

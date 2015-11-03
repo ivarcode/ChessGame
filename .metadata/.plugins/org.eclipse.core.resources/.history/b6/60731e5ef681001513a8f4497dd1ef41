@@ -806,7 +806,6 @@ public class Board {
 	}
 
 	public String inCheckmate() {
-		//TODO
 		if (turn == "white") {
 			
 		} else {
@@ -817,7 +816,7 @@ public class Board {
 	
 	public ArrayList<Piece[][]> getPositions() {
 		ArrayList<Piece[][]> arr = new ArrayList<Piece[][]>();
-		//TODO
+		
 		
 		return arr;
 	}
