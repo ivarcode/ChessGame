@@ -1165,13 +1165,13 @@ public class Board {
 			if (rank == 1) {
 				arr.add(new Move(loc,new Location(file,rank+2)));
 			}
-			arr.add(new Move(loc,new Location(file,rank+1)));
+			arr.add(loc,new Location(file,rank+1));
 			if (file+1 < 8 && rank+1 < 8) {
 				if (getPiece(file+1,rank+1) != null 
 						&& getPiece(file+1,rank+1).getColor().equals(turn)) {
 					//do nothing
 				} else {
-					arr.add(new Move(loc,new Location(file+1,rank+1)));
+					arr.add(loc,new Location(file+1,rank+1));
 				}
 			}
 			if (file-1 > -1 && rank+1 < 8) {
@@ -1179,21 +1179,21 @@ public class Board {
 						&& getPiece(file-1,rank+1).getColor().equals(turn)) {
 					//do nothing
 				} else {
-					arr.add(new Move(loc,new Location(file-1,rank+1)));
+					arr.add(loc,new Location(file-1,rank+1));
 				}
 			}
 		}
 		if (color == "black") {
 			if (rank == 6) {
-				arr.add(new Move(loc,new Location(file,rank-2)));
+				arr.add(loc,new Location(file,rank-2));
 			}
-			arr.add(new Move(loc,new Location(file,rank-1)));
+			arr.add(loc,new Location(file,rank-1));
 			if (file-1 > -1 && rank-1 > -1) {
 				if (getPiece(file-1,rank-1) != null 
 						&& getPiece(file-1,rank-1).getColor().equals(turn)) {
 					//do nothing
 				} else {
-					arr.add(new Move(loc,new Location(file-1,rank-1)));
+					arr.add(loc,new Location(file-1,rank-1));
 				}
 			}
 			if (file+1 < 8 && rank-1 > -1) {
@@ -1201,7 +1201,7 @@ public class Board {
 						&& getPiece(file+1,rank-1).getColor().equals(turn)) {
 					//do nothing
 				} else {
-					arr.add(new Move(loc,new Location(file+1,rank-1)));
+					arr.add(loc,new Location(file+1,rank-1));
 				}
 			}
 		}
