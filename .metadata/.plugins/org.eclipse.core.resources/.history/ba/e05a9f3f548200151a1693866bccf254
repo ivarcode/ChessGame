@@ -800,8 +800,12 @@ public class Board {
 		for (int i = 1; i < 8; i++) {
 			arr.add(new Location(file+i,rank+i));
 			arr.add(new Location(file+i,rank-i));
+			arr.add(new Location(file+i,rank));
+			arr.add(new Location(file,rank+i));
+			arr.add(new Location(file,rank-i));
 			arr.add(new Location(file-i,rank+i));
 			arr.add(new Location(file-i,rank-i));
+			arr.add(new Location(file-i,rank));
 		}
 
 		return arr;
@@ -809,17 +813,8 @@ public class Board {
 
 	private ArrayList<Location> knightMoves(Location loc) {
 		ArrayList<Location> arr = new ArrayList<Location>();
-		int file = loc.getFileByInt();
-		int rank = loc.getRank();
 
-		arr.add(new Location(file+1,rank+2));
-		arr.add(new Location(file+1,rank-2));
-		arr.add(new Location(file+2,rank+1));
-		arr.add(new Location(file+2,rank-1));
-		arr.add(new Location(file-1,rank+2));
-		arr.add(new Location(file-1,rank-2));
-		arr.add(new Location(file-2,rank+1));
-		arr.add(new Location(file-2,rank-1));
+
 
 		return arr;
 	}
@@ -841,11 +836,8 @@ public class Board {
 
 	private ArrayList<Location> pawnMoves(Location loc, String color) {
 		ArrayList<Location> arr = new ArrayList<Location>();
-		int file = loc.getFileByInt();
-		int rank = loc.getRank();
-		
-		//TODO implement en passant
-		
+
+
 
 		return arr;
 	}

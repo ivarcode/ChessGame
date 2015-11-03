@@ -841,11 +841,8 @@ public class Board {
 
 	private ArrayList<Location> pawnMoves(Location loc, String color) {
 		ArrayList<Location> arr = new ArrayList<Location>();
-		int file = loc.getFileByInt();
-		int rank = loc.getRank();
-		
-		//TODO implement en passant
-		
+
+
 
 		return arr;
 	}

@@ -844,7 +844,6 @@ public class Board {
 		int file = loc.getFileByInt();
 		int rank = loc.getRank();
 		
-		//TODO implement en passant
 		
 
 		return arr;

@@ -845,7 +845,7 @@ public class Board {
 		int rank = loc.getRank();
 		
 		//TODO implement en passant
-		
+		arr.add(new Location())
 
 		return arr;
 	}
