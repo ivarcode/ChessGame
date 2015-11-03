@@ -70,6 +70,19 @@ public class Board {
 		board[loc.getFileByInt()][loc.getRank()] = piece;
 	}
 
+	private void refreshThreats() {
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				whiteThreats[i][j] = whiteThreatens(i,j);
+			}
+		}
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				blackThreats[i][j] = blackThreatens(i,j);
+			}
+		}
+	}
+
 	public Piece getPiece(char file, int rank) {
 		int i = -1; //throws error if case not 'a'-'h'
 		if (file == 'a') {
@@ -320,18 +333,6 @@ public class Board {
 		}
 	}
 
-	private void refreshThreats() {
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
-				whiteThreats[i][j] = whiteThreatens(i,j);
-			}
-		}
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
-				blackThreats[i][j] = blackThreatens(i,j);
-			}
-		}
-	}
 	private boolean kingInCheck() {
 		refreshThreats();
 		if (isTurn("white")) {
