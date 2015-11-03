@@ -815,8 +815,8 @@ public class Board {
 		return null;
 	}
 	
-	public ArrayList<Piece[][]> getPositions() {
-		ArrayList<Piece[][]> arr = new ArrayList<Piece[][]>();
+	public ArrayList<Piece[][]> getMoveOptions() {
+		NOT ArrayList<Piece[][]> arr = new ArrayList<Piece[][]>();
 		//TODO
 		
 		return arr;

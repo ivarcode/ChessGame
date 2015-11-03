@@ -1,7 +1,6 @@
 package camden.ivarcode.net;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.util.ArrayList;
 
 public class Board {
 
@@ -27,7 +26,7 @@ public class Board {
 		whiteKing = wKing;
 		blackKing = bKing;
 		turn = "white";
-		
+
 		place(whiteKing, whiteKing.getLoc());
 		place(blackKing, blackKing.getLoc());
 		place(wQueen, wQueen.getLoc());
@@ -67,6 +66,7 @@ public class Board {
 	}
 
 	private void place(Piece piece, Location loc) {
+		//TODO remove any piece from underlying loc
 		board[loc.getFileByInt()][loc.getRank()] = piece;
 	}
 
@@ -109,17 +109,221 @@ public class Board {
 		return board[fileByInt][rank];
 	}
 
-	public void movePiece(Location src, Location dest) {
-		if (pieceCanMove(src, dest)) {
-			Piece temp = getPiece(src.getFile(), src.getRank());
-			place(temp, dest);
+	public void movePiece(int srcX, int srcY, int destX, int destY) {
+		if (isLegalMove(srcX, srcY, destX, destY)) {
+			Piece tempDest = getPiece(destX,destY);
+			Piece tempSrc = getPiece(srcX,srcY);
+			tempSrc.setLoc(new Location(destX,destY));
+			place(null, new Location(srcX,srcY));
+			place(tempSrc, tempSrc.getLoc());
+			refreshThreats();
+			if (kingInCheck()) {
+				tempSrc.setLoc(new Location(srcX,srcY));
+				place(tempDest, new Location(destX,destY));
+				place(tempSrc, tempSrc.getLoc());
+			} else {
+				if (isTurn("white")) {
+					turn = "black";
+				} else {
+					turn = "white";
+				}
+				System.out.println("turn = " + turn);
+				print();
+			}
 		}
 	}
 
-	private boolean pieceCanMove(Location src, Location dest) {
-		// TODO Auto-generated method stub
-		return true;
+	private boolean isLegalMove(int srcX, int srcY, int destX, int destY) {
+		try {
+			if (getPiece(srcX,srcY).getColor() != turn) {
+				return false;
+			}
+		} catch (Exception e) {
+			//do nothing ::     e.printStackTrace();
+		}
+
+		Piece piece = getPiece(srcX,srcY);
+		Piece victimPiece = getPiece(destX,destY);
+		if (victimPiece != null && victimPiece.getColor().equals(turn)) {
+			return false;
+		}
+		int sf = srcX;
+		int sr = srcY;
+		int df = destX;
+		int dr = destY;
+		int tempf = sf, tempr = sr;
+		if (piece instanceof King) {
+			if ((sf+1 == df && sr == dr)
+					|| (sf == df && sr+1 == dr)
+					|| (sf-1 == df && sr == dr)
+					|| (sf == df && sr-1 == dr)
+					|| (sf+1 == df && sr+1 == dr)
+					|| (sf+1 == df && sr-1 == dr)
+					|| (sf-1 == df && sr+1 == dr)
+					|| (sf-1 == df && sr-1 == dr)) {
+				return true;
+			} 
+		} else if (piece instanceof Queen) {
+			while (tempf < 8) {
+				if (tempf == df && tempr == dr) {
+					return true;
+				}				
+				tempf++;
+			}
+			tempf = sf; tempr = sr;
+			while (tempf > -1) {
+				if (tempf == df && tempr == dr) {
+					return true;
+				}				
+				tempf++;
+			}
+			tempf = sf; tempr = sr;
+			while (tempr < 8) {
+				if (tempf == df && tempr == dr) {
+					return true;
+				}				
+				tempr++;
+			}
+			tempf = sf; tempr = sr;
+			while (tempr > -1) {
+				if (tempf == df && tempr == dr) {
+					return true;
+				}				
+				tempr++;
+			}
+			tempf = sf; tempr = sr;
+			while (tempf < 8 && tempr < 8) {
+				if (tempf == df && tempr == dr) {
+					return true;
+				}				
+				tempf++;
+				tempr++;
+			}
+			tempf = sf; tempr = sr;
+			while (tempf > -1 && tempr < 8) {
+				if (tempf == df && tempr == dr) {
+					return true;
+				}				
+				tempf--;
+				tempr++;
+			}
+			tempf = sf; tempr = sr;
+			while (tempf < 8 && tempr > -1) {
+				if (tempf == df && tempr == dr) {
+					return true;
+				}				
+				tempf++;
+				tempr--;
+			}
+			tempf = sf; tempr = sr;
+			while (tempf > -1 && tempr > -1) {
+				if (tempf == df && tempr == dr) {
+					return true;
+				}				
+				tempf--;
+				tempr--;
+			}
+			tempf = sf; tempr = sr;
+		} else if (piece instanceof Bishop) {
+			while (tempf < 8 && tempr < 8) {
+				if (tempf == df && tempr == dr) {
+					return true;
+				}				
+				tempf++;
+				tempr++;
+			}
+			tempf = sf; tempr = sr;
+			while (tempf > -1 && tempr < 8) {
+				if (tempf == df && tempr == dr) {
+					return true;
+				}				
+				tempf--;
+				tempr++;
+			}
+			tempf = sf; tempr = sr;
+			while (tempf < 8 && tempr > -1) {
+				if (tempf == df && tempr == dr) {
+					return true;
+				}				
+				tempf++;
+				tempr--;
+			}
+			tempf = sf; tempr = sr;
+			while (tempf > -1 && tempr > -1) {
+				if (tempf == df && tempr == dr) {
+					return true;
+				}				
+				tempf--;
+				tempr--;
+			}
+			tempf = sf; tempr = sr;
+		} else if (piece instanceof Knight) {
+			if ((sf+1 == df && sr+2 == dr)
+					|| (sf+1 == df && sr-2 == dr)
+					|| (sf-1 == df && sr+2 == dr)
+					|| (sf-1 == df && sr-2 == dr)
+					|| (sf+2 == df && sr-1 == dr)
+					|| (sf+2 == df && sr+1 == dr)
+					|| (sf-2 == df && sr+1 == dr)
+					|| (sf-2 == df && sr-1 == dr)) {
+				return true;
+			} 
+		} else if (piece instanceof Rook) {
+			while (tempf < 8) {
+				if (tempf == df && tempr == dr) {
+					return true;
+				}				
+				tempf++;
+			}
+			tempf = sf; tempr = sr;
+			while (tempf > -1) {
+				if (tempf == df && tempr == dr) {
+					return true;
+				}				
+				tempf++;
+			}
+			tempf = sf; tempr = sr;
+			while (tempr < 8) {
+				if (tempf == df && tempr == dr) {
+					return true;
+				}				
+				tempr++;
+			}
+			tempf = sf; tempr = sr;
+			while (tempr > -1) {
+				if (tempf == df && tempr == dr) {
+					return true;
+				}				
+				tempr++;
+			}
+		} else if (piece instanceof Pawn) {
+			if (turn == "white") {
+				if (sf-1 == df && sr+1 == dr) {
+					return true;
+				} else if (sf+1 == df && sr+1 == dr) {
+					return true;
+				} else if (sr+1 == dr && sf == df) {
+					return true;
+				} else if (sr+2 == dr && dr == 3 && sf == df) {
+					return true;
+				}
+			} else {
+				if (sf-1 == df && sr-1 == dr) {
+					return true;
+				} else if (sf+1 == df && sr-1 == dr) {
+					return true;
+				} else if (sr-1 == dr && sf == df) {
+					return true;
+				} else if (sr-2 == dr && dr == 4 && sf == df) {
+					return true;
+				}
+			}
+			//TODO implement queening
+		} else {}
+
+		return false;
 	}
+
 
 	private boolean isTurn(String color) {
 		if (turn == color) {
@@ -312,23 +516,27 @@ public class Board {
 		}
 		//up-right
 		if (r+1 < 8 && f+1 < 8) {
-			if ((board[r+1][f+1] == blackKing
-					|| board[r+1][f+1] instanceof Pawn)
+			if (board[r+1][f+1] == blackKing) {
+				isThreat = true;
+			}
+			if (board[r+1][f+1] instanceof Pawn 
 					&& board[r+1][f+1].getColor().equals("black")) {
 				isThreat = true;
 			}
 		}
-		//up-left
+		//down-right
 		if (r+1 < 8 && f-1 > -1) {
-			if ((board[r+1][f-1] == blackKing
-					|| board[r+1][f-1] instanceof Pawn)
-					&& board[r+1][f-1].getColor().equals("black")) {
+			if (board[r+1][f-1] == blackKing) {
 				isThreat = true;
 			}
 		}
-		//down-right
+		//up-left
 		if (r-1 > -1 && f+1 < 8) {
 			if (board[r-1][f+1] == blackKing) {
+				isThreat = true;
+			}
+			if (board[r-1][f+1] instanceof Pawn 
+					&& board[r-1][f+1].getColor().equals("black")) {
 				isThreat = true;
 			}
 		}
@@ -519,24 +727,28 @@ public class Board {
 				isThreat = true;
 			}
 		}
-		//up-left
+		//down-right
 		if (r+1 < 8 && f-1 > -1) {
 			if (board[r+1][f-1] == whiteKing) {
 				isThreat = true;
 			}
+			if (board[r+1][f-1] instanceof Pawn 
+					&& board[r+1][f-1].getColor().equals("white")) {
+				isThreat = true;
+			}
 		}
-		//down-right
+		//up-left
 		if (r-1 > -1 && f+1 < 8) {
-			if ((board[r-1][f+1] == whiteKing
-					|| board[r-1][f+1] instanceof Pawn)
-					&& board[r-1][f+1].getColor().equals("white")) {
+			if (board[r-1][f+1] == whiteKing) {
 				isThreat = true;
 			}
 		}
 		//down-left
 		if (r-1 > -1 && f-1 > -1) {
-			if ((board[r-1][f-1] == whiteKing
-					|| board[r-1][f-1] instanceof Pawn)
+			if (board[r-1][f-1] == whiteKing) {
+				isThreat = true;
+			}
+			if (board[r-1][f-1] instanceof Pawn 
 					&& board[r-1][f-1].getColor().equals("white")) {
 				isThreat = true;
 			}
@@ -546,7 +758,8 @@ public class Board {
 
 	public void print() {
 		// I know, bad practice, I was just too lazy to Find/Replace and switch all the board calls
-		for (int j = 0; j < 8; j++) {
+		System.out.println("------------------------");
+		for (int j = 7; j > -1; j--) {
 			for (int i = 0; i < 8; i++) {
 				if (board[i][j] instanceof King) {
 					if (board[i][j].getColor().equals("white")) {
@@ -590,5 +803,22 @@ public class Board {
 			}
 			System.out.println();
 		}
+	}
+
+	public String inCheckmate() {
+		//TODO
+		if (turn == "white") {
+			
+		} else {
+			
+		}
+		return null;
+	}
+	
+	public ArrayList<Piece[][]> getMoveOptions() {
+		ArrayList<Piece[][]> arr = new ArrayList<Piece[][]>();
+		//TODO
+		
+		return arr;
 	}
 }
