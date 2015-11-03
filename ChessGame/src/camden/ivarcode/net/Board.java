@@ -761,92 +761,452 @@ public class Board {
 		int file = loc.getFileByInt();
 		int rank = loc.getRank();
 
-		arr.add(new Location(file+1,rank+1));
-		arr.add(new Location(file+1,rank-1));
-		arr.add(new Location(file+1,rank));
-		arr.add(new Location(file,rank+1));
-		arr.add(new Location(file,rank-1));
-		arr.add(new Location(file-1,rank+1));
-		arr.add(new Location(file-1,rank-1));
-		arr.add(new Location(file-1,rank));
+		if (file+1 < 8 && rank+1 < 8) {
+			Location l = new Location(file+1,rank+1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				//don't add(l)
+			} else {
+				arr.add(l);
+			}			
+		}
+		if (file+1 < 8 && rank-1 > -1) {
+			Location l = new Location(file+1,rank-1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				//don't add(l)
+			} else {
+				arr.add(l);
+			}			
+		}
+		if (file+1 < 8) {
+			Location l = new Location(file+1,rank);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				//don't add(l)
+			} else {
+				arr.add(l);
+			}			
+		}
+		if (rank+1 < 8) {
+			Location l = new Location(file,rank+1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				//don't add(l)
+			} else {
+				arr.add(l);
+			}			
+		}
+		if (rank-1 > -1) {
+			Location l = new Location(file,rank-1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				//don't add(l)
+			} else {
+				arr.add(l);
+			}			
+		}
+		if (file-1 > -1 && rank+1 < 8) {
+			Location l = new Location(file-1,rank+1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				//don't add(l)
+			} else {
+				arr.add(l);
+			}			
+		}
+		if (file-1 > -1 && rank-1 > -1) {
+			Location l = new Location(file-1,rank-1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				//don't add(l)
+			} else {
+				arr.add(l);
+			}			
+		}
+		if (file-1 > -1) {
+			Location l = new Location(file-1,rank);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				//don't add(l)
+			} else {
+				arr.add(l);
+			}			
+		}
 
 		return arr;
 	}
-
 	private ArrayList<Location> queenMoves(Location loc) {
 		ArrayList<Location> arr = new ArrayList<Location>();
 		int file = loc.getFileByInt();
 		int rank = loc.getRank();
+		int tempfile = file, temprank = rank;
 
-		for (int i = 1; i < 8; i++) {
-			arr.add(new Location(file+i,rank+i));
-			arr.add(new Location(file+i,rank-i));
-			arr.add(new Location(file+i,rank));
-			arr.add(new Location(file,rank+i));
-			arr.add(new Location(file,rank-i));
-			arr.add(new Location(file-i,rank+i));
-			arr.add(new Location(file-i,rank-i));
-			arr.add(new Location(file-i,rank));
+		while (tempfile+1 < 8 && temprank+1 < 8) {
+			Location l = new Location(tempfile+1,temprank+1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				break;
+			}
+			arr.add(l);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece) {
+				break;
+			}
+			tempfile++;
+			temprank++;
+		}
+		tempfile = file; temprank = rank;
+		while (tempfile+1 < 8 && temprank-1 > -1) {
+			Location l = new Location(tempfile+1,temprank-1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				break;
+			}
+			arr.add(l);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece) {
+				break;
+			}
+			tempfile++;
+			temprank--;
+		}
+		tempfile = file; temprank = rank;
+		while (tempfile+1 < 8) {
+			Location l = new Location(tempfile+1,temprank);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				break;
+			}
+			arr.add(l);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece) {
+				break;
+			}
+			tempfile++;
+		}
+		tempfile = file; temprank = rank;
+		while (tempfile-1 > -1 && temprank+1 < 8) {
+			Location l = new Location(tempfile-1,temprank+1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				break;
+			}
+			arr.add(l);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece) {
+				break;
+			}
+			tempfile--;
+			temprank++;
+		}
+		tempfile = file; temprank = rank;
+		while (tempfile-1 > -1 && temprank-1 > -1) {
+			Location l = new Location(tempfile-1,temprank-1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				break;
+			}
+			arr.add(l);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece) {
+				break;
+			}
+			tempfile--;
+			temprank--;
+		}
+		tempfile = file; temprank = rank;
+		while (tempfile-1 > -1) {
+			Location l = new Location(tempfile-1,temprank);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				break;
+			}
+			arr.add(l);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece) {
+				break;
+			}
+			tempfile--;
+		}
+		tempfile = file; temprank = rank;
+		while (temprank+1 < 8) {
+			Location l = new Location(tempfile,temprank+1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				break;
+			}
+			arr.add(l);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece) {
+				break;
+			}
+			temprank++;
+		}
+		tempfile = file; temprank = rank;
+		while (temprank-1 > -1) {
+			Location l = new Location(tempfile,temprank-1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				break;
+			}
+			arr.add(l);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece) {
+				break;
+			}
+			temprank--;
 		}
 
 		return arr;
 	}
-
 	private ArrayList<Location> bishopMoves(Location loc) {
 		ArrayList<Location> arr = new ArrayList<Location>();
 		int file = loc.getFileByInt();
 		int rank = loc.getRank();
+		int tempfile = file, temprank = rank;
 
-		for (int i = 1; i < 8; i++) {
-			arr.add(new Location(file+i,rank+i));
-			arr.add(new Location(file+i,rank-i));
-			arr.add(new Location(file-i,rank+i));
-			arr.add(new Location(file-i,rank-i));
+		while (tempfile+1 < 8 && temprank+1 < 8) {
+			Location l = new Location(tempfile+1,temprank+1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				break;
+			}
+			arr.add(l);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece) {
+				break;
+			}
+			tempfile++;
+			temprank++;
+		}
+		tempfile = file; temprank = rank;
+		while (tempfile+1 < 8 && temprank-1 > -1) {
+			Location l = new Location(tempfile+1,temprank-1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				break;
+			}
+			arr.add(l);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece) {
+				break;
+			}
+			tempfile++;
+			temprank--;
+		}
+		tempfile = file; temprank = rank;
+		while (tempfile-1 > -1 && temprank+1 < 8) {
+			Location l = new Location(tempfile-1,temprank+1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				break;
+			}
+			arr.add(l);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece) {
+				break;
+			}
+			tempfile--;
+			temprank++;
+		}
+		tempfile = file; temprank = rank;
+		while (tempfile-1 > -1 && temprank-1 > -1) {
+			Location l = new Location(tempfile-1,temprank-1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				break;
+			}
+			arr.add(l);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece) {
+				break;
+			}
+			tempfile--;
+			temprank--;
 		}
 
 		return arr;
 	}
-
 	private ArrayList<Location> knightMoves(Location loc) {
 		ArrayList<Location> arr = new ArrayList<Location>();
 		int file = loc.getFileByInt();
 		int rank = loc.getRank();
-
-		arr.add(new Location(file+1,rank+2));
-		arr.add(new Location(file+1,rank-2));
-		arr.add(new Location(file+2,rank+1));
-		arr.add(new Location(file+2,rank-1));
-		arr.add(new Location(file-1,rank+2));
-		arr.add(new Location(file-1,rank-2));
-		arr.add(new Location(file-2,rank+1));
-		arr.add(new Location(file-2,rank-1));
-
-		return arr;
-	}
-
-	private ArrayList<Location> rookMoves(Location loc) {
-		ArrayList<Location> arr = new ArrayList<Location>();
-		int file = loc.getFileByInt();
-		int rank = loc.getRank();
-
-		for (int i = 1; i < 8; i++) {
-			arr.add(new Location(file+i,rank));
-			arr.add(new Location(file,rank+i));
-			arr.add(new Location(file,rank-i));
-			arr.add(new Location(file-i,rank));
+		
+		if (file+2 < 8 && rank+1 < 8) {
+			Location l = new Location(file+2,rank+1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				//don't add(l)
+			} else {
+				arr.add(l);
+			}			
+		}
+		if (file+2 < 8 && rank-1 > -1) {
+			Location l = new Location(file+2,rank-1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				//don't add(l)
+			} else {
+				arr.add(l);
+			}			
+		}
+		if (file-2 > -1 && rank+1 < 8) {
+			Location l = new Location(file-2,rank+1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				//don't add(l)
+			} else {
+				arr.add(l);
+			}			
+		}
+		if (file-2 > -1 && rank-1 > -1) {
+			Location l = new Location(file-2,rank-1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				//don't add(l)
+			} else {
+				arr.add(l);
+			}			
+		}
+		if (file+1 < 8 && rank+2 < 8) {
+			Location l = new Location(file+1,rank+2);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				//don't add(l)
+			} else {
+				arr.add(l);
+			}			
+		}
+		if (file+1 < 8 && rank-2 > -1) {
+			Location l = new Location(file+1,rank-2);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				//don't add(l)
+			} else {
+				arr.add(l);
+			}			
+		}
+		if (file-1 > -1 && rank+2 < 8) {
+			Location l = new Location(file-1,rank+2);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				//don't add(l)
+			} else {
+				arr.add(l);
+			}			
+		}
+		if (file-1 > -1 && rank-2 > -1) {
+			Location l = new Location(file-1,rank-2);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				//don't add(l)
+			} else {
+				arr.add(l);
+			}			
 		}
 
 		return arr;
 	}
+	private ArrayList<Location> rookMoves(Location loc) {
+		ArrayList<Location> arr = new ArrayList<Location>();
+		int file = loc.getFileByInt();
+		int rank = loc.getRank();
+		int tempfile = file, temprank = rank;
+		
+		while (tempfile+1 < 8) {
+			Location l = new Location(tempfile+1,temprank);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				break;
+			}
+			arr.add(l);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece) {
+				break;
+			}
+			tempfile++;
+		}
+		tempfile = file; temprank = rank;
+		while (tempfile-1 > -1) {
+			Location l = new Location(tempfile-1,temprank);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				break;
+			}
+			arr.add(l);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece) {
+				break;
+			}
+			tempfile--;
+		}
+		tempfile = file; temprank = rank;
+		while (temprank+1 < 8) {
+			Location l = new Location(tempfile,temprank+1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				break;
+			}
+			arr.add(l);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece) {
+				break;
+			}
+			temprank++;
+		}
+		tempfile = file; temprank = rank;
+		while (temprank-1 > -1) {
+			Location l = new Location(tempfile,temprank-1);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
+					&& getPiece(l.getFileByInt(),l.getRank()).getColor() == turn) {
+				break;
+			}
+			arr.add(l);
+			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece) {
+				break;
+			}
+			temprank--;
+		}
 
+		return arr;
+	}
 	private ArrayList<Location> pawnMoves(Location loc, String color) {
 		ArrayList<Location> arr = new ArrayList<Location>();
 		int file = loc.getFileByInt();
 		int rank = loc.getRank();
 		
-		//TODO implement en passant
-		
+		if (color == "white") {
+			if (rank == 1) {
+				arr.add(new Location(file,rank+2));
+			}
+			arr.add(new Location(file,rank+1));
+			if (file+1 < 8 && rank+1 < 8) {
+				if (getPiece(file+1,rank+1) != null 
+						&& getPiece(file+1,rank+1).getColor().equals(turn)) {
+					//do nothing
+				} else {
+					arr.add(new Location(file+1,rank+1));
+				}
+			}
+			if (file-1 > -1 && rank+1 < 8) {
+				if (getPiece(file-1,rank+1) != null 
+						&& getPiece(file-1,rank+1).getColor().equals(turn)) {
+					//do nothing
+				} else {
+					arr.add(new Location(file-1,rank+1));
+				}
+			}
+		}
+		if (color == "black") {
+			if (rank == 6) {
+				arr.add(new Location(file,rank-2));
+			}
+			arr.add(new Location(file,rank-1));
+			if (file-1 > -1 && rank-1 > -1) {
+				if (getPiece(file-1,rank-1) != null 
+						&& getPiece(file-1,rank-1).getColor().equals(turn)) {
+					//do nothing
+				} else {
+					arr.add(new Location(file-1,rank-1));
+				}
+			}
+			if (file+1 < 8 && rank-1 > -1) {
+				if (getPiece(file+1,rank-1) != null 
+						&& getPiece(file+1,rank-1).getColor().equals(turn)) {
+					//do nothing
+				} else {
+					arr.add(new Location(file+1,rank-1));
+				}
+			}
+		}
 
+		//TODO implement en passant
 		return arr;
 	}
 
@@ -916,21 +1276,20 @@ public class Board {
 	}
 
 	public ArrayList<Move> getMoveOptions() {
-		ArrayList<Move> arr = new ArrayList<Move>();
+		ArrayList<Move> moves = new ArrayList<Move>();
 		//TODO
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				Piece piece = getPiece(i,j);
-				if (piece != null) {				
-					if (piece.getColor().equals(turn)) {
-
-
-
+				if (piece != null && piece.getColor().equals(turn)) {				
+					if (piece instanceof King) {
+						moves.addAll(kingMoves(new Location(i,j)));
+					} else {
+						
 					}
 				}
 			}
 		}
-
-		return arr;
+		return moves;
 	}
 }
