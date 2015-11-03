@@ -139,14 +139,14 @@ public class Board {
 		} catch (Exception e) {
 			//do nothing ::     e.printStackTrace();
 		}
-
+		
 		Piece piece = getPiece(srcX,srcY);
 		Piece victimPiece = getPiece(destX,destY);
 		if (victimPiece != null && victimPiece.getColor().equals(turn)) {
 			return false;
 		}
-		int sf = srcX;
-		int sr = srcY;
+		int sf = piece.getLoc().getFileByInt();
+		int sr = piece.getLoc().getRank();
 		int df = destX;
 		int dr = destY;
 		int tempf = sf, tempr = sr;
@@ -296,32 +296,23 @@ public class Board {
 			}
 		} else if (piece instanceof Pawn) {
 			if (turn == "white") {
-				if (sf-1 == df && sr+1 == dr) {
-					return true;
-				} else if (sf+1 == df && sr+1 == dr) {
-					return true;
-				} else if (sr+1 == dr && sf == df) {
-					return true;
-				} else if (sr+2 == dr && dr == 3 && sf == df) {
-					return true;
-				}
-			} else {
 				if (sf-1 == df && sr-1 == dr) {
 					return true;
 				} else if (sf+1 == df && sr-1 == dr) {
 					return true;
-				} else if (sr-1 == dr && sf == df) {
+				}
+			} else {
+				if (sf-1 == df && sr+1 == dr) {
 					return true;
-				} else if (sr-2 == dr && dr == 4 && sf == df) {
+				} else if (sf+1 == df && sr+1 == dr) {
 					return true;
 				}
 			}
-			//TODO implement queening
 		} else {}
-
+		
 		return false;
 	}
-
+	
 
 	private boolean isTurn(String color) {
 		if (turn == color) {

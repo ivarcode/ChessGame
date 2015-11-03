@@ -139,7 +139,7 @@ public class Board {
 		} catch (Exception e) {
 			//do nothing ::     e.printStackTrace();
 		}
-
+		
 		Piece piece = getPiece(srcX,srcY);
 		Piece victimPiece = getPiece(destX,destY);
 		if (victimPiece != null && victimPiece.getColor().equals(turn)) {
@@ -300,28 +300,19 @@ public class Board {
 					return true;
 				} else if (sf+1 == df && sr+1 == dr) {
 					return true;
-				} else if (sr+1 == dr && sf == df) {
-					return true;
-				} else if (sr+2 == dr && dr == 3 && sf == df) {
-					return true;
 				}
 			} else {
 				if (sf-1 == df && sr-1 == dr) {
 					return true;
 				} else if (sf+1 == df && sr-1 == dr) {
 					return true;
-				} else if (sr-1 == dr && sf == df) {
-					return true;
-				} else if (sr-2 == dr && dr == 4 && sf == df) {
-					return true;
 				}
 			}
-			//TODO implement queening
 		} else {}
-
+		
 		return false;
 	}
-
+	
 
 	private boolean isTurn(String color) {
 		if (turn == color) {

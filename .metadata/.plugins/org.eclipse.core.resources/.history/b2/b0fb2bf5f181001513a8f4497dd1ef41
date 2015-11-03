@@ -137,18 +137,18 @@ public class Board {
 				return false;
 			}
 		} catch (Exception e) {
-			//do nothing ::     e.printStackTrace();
+			e.printStackTrace();
 		}
-
+		
 		Piece piece = getPiece(srcX,srcY);
 		Piece victimPiece = getPiece(destX,destY);
 		if (victimPiece != null && victimPiece.getColor().equals(turn)) {
 			return false;
 		}
-		int sf = srcX;
-		int sr = srcY;
-		int df = destX;
-		int dr = destY;
+		int sf = piece.getLoc().getFileByInt();
+		int sr = piece.getLoc().getRank();
+		int df = victimPiece.getLoc().getFileByInt();
+		int dr = victimPiece.getLoc().getRank();
 		int tempf = sf, tempr = sr;
 		if (piece instanceof King) {
 			if ((sf+1 == df && sr == dr)
@@ -260,8 +260,8 @@ public class Board {
 					|| (sf+1 == df && sr-2 == dr)
 					|| (sf-1 == df && sr+2 == dr)
 					|| (sf-1 == df && sr-2 == dr)
+					|| (sf+2 == df && sr-2 == dr)
 					|| (sf+2 == df && sr-1 == dr)
-					|| (sf+2 == df && sr+1 == dr)
 					|| (sf-2 == df && sr+1 == dr)
 					|| (sf-2 == df && sr-1 == dr)) {
 				return true;
@@ -296,32 +296,23 @@ public class Board {
 			}
 		} else if (piece instanceof Pawn) {
 			if (turn == "white") {
-				if (sf-1 == df && sr+1 == dr) {
-					return true;
-				} else if (sf+1 == df && sr+1 == dr) {
-					return true;
-				} else if (sr+1 == dr && sf == df) {
-					return true;
-				} else if (sr+2 == dr && dr == 3 && sf == df) {
-					return true;
-				}
-			} else {
 				if (sf-1 == df && sr-1 == dr) {
 					return true;
 				} else if (sf+1 == df && sr-1 == dr) {
 					return true;
-				} else if (sr-1 == dr && sf == df) {
+				}
+			} else {
+				if (sf-1 == df && sr+1 == dr) {
 					return true;
-				} else if (sr-2 == dr && dr == 4 && sf == df) {
+				} else if (sf+1 == df && sr+1 == dr) {
 					return true;
 				}
 			}
-			//TODO implement queening
 		} else {}
-
+		
 		return false;
 	}
-
+	
 
 	private boolean isTurn(String color) {
 		if (turn == color) {

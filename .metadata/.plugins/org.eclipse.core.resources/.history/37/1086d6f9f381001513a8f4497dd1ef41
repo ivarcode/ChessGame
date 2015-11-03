@@ -316,7 +316,6 @@ public class Board {
 					return true;
 				}
 			}
-			//TODO implement queening
 		} else {}
 
 		return false;
