@@ -756,48 +756,6 @@ public class Board {
 		return isThreat;
 	}
 
-	private ArrayList<Location> kingMoves(Location loc) {
-		ArrayList<Location> arr = new ArrayList<Location>();
-		
-		
-		return arr;
-	}
-
-	private ArrayList<Location> queenMoves(Location loc) {
-		ArrayList<Location> arr = new ArrayList<Location>();
-
-		
-		return arr;
-	}
-	
-	private ArrayList<Location> bishopMoves(Location loc) {
-		ArrayList<Location> arr = new ArrayList<Location>();
-
-		
-		return arr;
-	}
-	
-	private ArrayList<Location> knightMoves(Location loc) {
-		ArrayList<Location> arr = new ArrayList<Location>();
-
-		
-		return arr;
-	}
-	
-	private ArrayList<Location> rookMoves(Location loc) {
-		ArrayList<Location> arr = new ArrayList<Location>();
-
-		
-		return arr;
-	}
-	
-	private ArrayList<Location> pawnMoves(Location loc, String color) {
-		ArrayList<Location> arr = new ArrayList<Location>();
-		
-		
-		return arr;
-	}
-
 	public void print() {
 		// I know, bad practice, I was just too lazy to Find/Replace and switch all the board calls
 		System.out.println("------------------------");
@@ -852,33 +810,29 @@ public class Board {
 		//temp board
 		ArrayList<Move> moves = getMoveOptions();
 		for (int i = 0; i < moves.size(); i++) {
-
+			
 		}
-
+		
 		if (turn == "white") {
-
+			
 		} else {
-
+			
 		}
-		return "NOT";
+		return null;
 	}
-
-	public ArrayList<Move> getMoveOptions() {
+	
+	public ArrayList<String> getMoveOptions() {
 		ArrayList<Move> arr = new ArrayList<Move>();
 		//TODO
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				Piece piece = getPiece(i,j);
-				if (piece != null) {				
-					if (piece.getColor().equals(turn)) {
-
-
-
-					}
+				if (piece.getColor().equals(turn)) {
+					
 				}
 			}
 		}
-
+		
 		return arr;
 	}
 }

@@ -1,0 +1,12 @@
+package camden.ivarcode.net;
+
+public class Move {
+	
+	Location src;
+	Location dest;
+	
+	public Move(Location src, Location dest) {
+		
+	}
+
+}

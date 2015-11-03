@@ -130,7 +130,7 @@ public class Main extends JApplet {
 					board.movePiece(a,b,c,d);
 
 					if (board.inCheckmate().equals("NOT")) {
-						//none
+						
 					} else if (board.inCheckmate().equals("white")) {
 						System.out.println("White wins by checkmate!");
 					} else if (board.inCheckmate().equals("black")) {

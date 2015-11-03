@@ -758,7 +758,7 @@ public class Board {
 
 	private ArrayList<Location> kingMoves(Location loc) {
 		ArrayList<Location> arr = new ArrayList<Location>();
-		
+
 		
 		return arr;
 	}
@@ -791,7 +791,7 @@ public class Board {
 		return arr;
 	}
 	
-	private ArrayList<Location> pawnMoves(Location loc, String color) {
+	private ArrayList<Location> pawnMoves(Location loc) {
 		ArrayList<Location> arr = new ArrayList<Location>();
 		
 		

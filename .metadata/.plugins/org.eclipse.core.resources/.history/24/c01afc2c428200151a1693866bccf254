@@ -57,7 +57,7 @@ public class Main extends JApplet {
 
 		loadImages();
 		loadPieces();
-
+		
 		Piece nullPiece = new Piece();
 		clickedPiece = nullPiece;
 
@@ -69,7 +69,7 @@ public class Main extends JApplet {
 		addMouseListener(new MouseAdapter() {
 			int a = -1000, b = -1000;
 			int c = -1000, d = -1000;
-
+			
 			public void mousePressed (MouseEvent e) {
 				// Obtain mouse coordinates at time of press.
 				int x = e.getX ();
@@ -123,31 +123,23 @@ public class Main extends JApplet {
 				} else {
 					//do nothing as of now
 				}
-
-				if (a == c && b == d) {
-
-				} else {
-					board.movePiece(a,b,c,d);
-
-					if (board.inCheckmate().equals("NOT")) {
-						//none
-					} else if (board.inCheckmate().equals("white")) {
-						System.out.println("White wins by checkmate!");
-					} else if (board.inCheckmate().equals("black")) {
-						System.out.println("Black wins by checkmate!");
-					} else if (board.inCheckmate().equals("draw")) {
-						System.out.println("Draw by stalemate.");
-					}
-					repaint();
+				
+				board.movePiece(a,b,c,d);
+				if (board.inCheckmate().equals("white")) {
+					System.out.println("White wins by checkmate!");
+				} else if (board.inCheckmate().equals("black")) {
+					System.out.println("Black wins by checkmate!");
+				} else if (board.inCheckmate().equals("draw")) {
+					System.out.println("Draw by stalemate.");
 				}
-
-
+				repaint();
+				
 				a = -1000;
 				b = -1000;
 				c = -1000;
 				d = -1000;
 				clickedPiece = nullPiece;
-
+				
 				// When mouse is released, clear inDrag (to
 				// indicate no drag in progress) if inDrag is
 				// already set.

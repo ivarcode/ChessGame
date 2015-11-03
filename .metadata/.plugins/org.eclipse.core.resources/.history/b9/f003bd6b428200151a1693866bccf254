@@ -129,9 +129,7 @@ public class Main extends JApplet {
 				} else {
 					board.movePiece(a,b,c,d);
 
-					if (board.inCheckmate().equals("NOT")) {
-						//none
-					} else if (board.inCheckmate().equals("white")) {
+					if (board.inCheckmate().equals("white")) {
 						System.out.println("White wins by checkmate!");
 					} else if (board.inCheckmate().equals("black")) {
 						System.out.println("Black wins by checkmate!");
