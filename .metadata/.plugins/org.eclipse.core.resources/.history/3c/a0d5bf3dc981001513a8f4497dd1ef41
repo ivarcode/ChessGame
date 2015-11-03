@@ -1,5 +1,9 @@
 package camden.ivarcode.net;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.io.IOException;
+
 public class Board {
 
 	private Piece[][] board = new Piece[8][8];

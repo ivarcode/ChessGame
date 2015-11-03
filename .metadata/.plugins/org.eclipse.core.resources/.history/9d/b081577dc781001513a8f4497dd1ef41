@@ -1,5 +1,9 @@
 package camden.ivarcode.net;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.io.IOException;
+
 public class Board {
 
 	private Piece[][] board = new Piece[8][8];
@@ -24,7 +28,7 @@ public class Board {
 		whiteKing = wKing;
 		blackKing = bKing;
 		turn = "white";
-
+		
 		place(whiteKing, whiteKing.getLoc());
 		place(blackKing, blackKing.getLoc());
 		place(wQueen, wQueen.getLoc());
@@ -332,30 +336,30 @@ public class Board {
 			if (board[r+1][f+1] == blackKing) {
 				isThreat = true;
 			}
-			if (board[r+1][f+1] instanceof Pawn 
-					&& board[r+1][f+1].getColor().equals("black")) {
-				isThreat = true;
-			}
 		}
-		//down-right
+		//up-left
 		if (r+1 < 8 && f-1 > -1) {
 			if (board[r+1][f-1] == blackKing) {
 				isThreat = true;
 			}
-		}
-		//up-left
-		if (r-1 > -1 && f+1 < 8) {
-			if (board[r-1][f+1] == blackKing) {
+			if (board[r+1][f-1] instanceof Pawn 
+					&& board[r+1][f-1].getColor().equals("black")) {
 				isThreat = true;
 			}
-			if (board[r-1][f+1] instanceof Pawn 
-					&& board[r-1][f+1].getColor().equals("black")) {
+		}
+		//down-right
+		if (r-1 > -1 && f+1 < 8) {
+			if (board[r-1][f+1] == blackKing) {
 				isThreat = true;
 			}
 		}
 		//down-left
 		if (r-1 > -1 && f-1 > -1) {
 			if (board[r-1][f-1] == blackKing) {
+				isThreat = true;
+			}
+			if (board[r-1][f-1] instanceof Pawn 
+					&& board[r-1][f-1].getColor().equals("black")) {
 				isThreat = true;
 			}
 		}
@@ -539,8 +543,12 @@ public class Board {
 			if (board[r+1][f+1] == whiteKing) {
 				isThreat = true;
 			}
+			if (board[r+1][f+1] instanceof Pawn 
+					&& board[r+1][f+1].getColor().equals("white")) {
+				isThreat = true;
+			}
 		}
-		//down-right
+		//up-left
 		if (r+1 < 8 && f-1 > -1) {
 			if (board[r+1][f-1] == whiteKing) {
 				isThreat = true;
@@ -550,7 +558,7 @@ public class Board {
 				isThreat = true;
 			}
 		}
-		//up-left
+		//down-right
 		if (r-1 > -1 && f+1 < 8) {
 			if (board[r-1][f+1] == whiteKing) {
 				isThreat = true;
@@ -561,11 +569,7 @@ public class Board {
 			if (board[r-1][f-1] == whiteKing) {
 				isThreat = true;
 			}
-			if (board[r-1][f-1] instanceof Pawn 
-					&& board[r-1][f-1].getColor().equals("white")) {
-				isThreat = true;
-			}
-		}
+		}		
 		return isThreat;
 	}
 
