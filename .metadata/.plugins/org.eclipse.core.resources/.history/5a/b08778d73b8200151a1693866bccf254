@@ -127,6 +127,9 @@ public class Board {
 				} else {
 					turn = "white";
 				}
+				if (inCheckmate()) {
+					
+				}
 				System.out.println("turn = " + turn);
 				print();
 			}
@@ -807,12 +810,6 @@ public class Board {
 
 	public String inCheckmate() {
 		//TODO
-		//temp board
-		ArrayList<String> moves = getMoveOptions();
-		for (int i = 0; i < moves.size(); i++) {
-			
-		}
-		
 		if (turn == "white") {
 			
 		} else {

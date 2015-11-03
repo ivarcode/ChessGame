@@ -807,12 +807,6 @@ public class Board {
 
 	public String inCheckmate() {
 		//TODO
-		//temp board
-		ArrayList<String> moves = getMoveOptions();
-		for (int i = 0; i < moves.size(); i++) {
-			
-		}
-		
 		if (turn == "white") {
 			
 		} else {
@@ -824,14 +818,7 @@ public class Board {
 	public ArrayList<String> getMoveOptions() {
 		ArrayList<String> arr = new ArrayList<String>();
 		//TODO
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
-				Piece piece = getPiece(i,j);
-				if (piece.getColor().equals(turn)) {
-					
-				}
-			}
-		}
+		
 		
 		return arr;
 	}
