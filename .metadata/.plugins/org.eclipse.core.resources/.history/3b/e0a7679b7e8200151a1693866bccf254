@@ -1257,27 +1257,19 @@ public class Board {
 	}
 
 	public String inCheckmate() {
-		Piece[][] tempBoard = board;
+		//TODO
+		//temp board
 		ArrayList<Move> moves = getMoveOptions();
 		for (int i = 0; i < moves.size(); i++) {
-			Piece tempPiece = board[moves.get(i).getSrc().getFileByInt()][moves.get(i).getSrc().getRank()];
-			board[moves.get(i).getDest().getFileByInt()][moves.get(i).getDest().getRank()] = tempPiece;
-			board[moves.get(i).getSrc().getFileByInt()][moves.get(i).getSrc().getRank()] = null;
-			if (kingInCheck()) {
-				//do nothing
-			} else {
-				board = tempBoard;
-				return "NOT";
-			}
-			board = tempBoard;
+			
 		}
-		if (!kingInCheck()) {
-			return "draw";
-		} else if (turn == "white") {
-			return "white";
+
+		if (turn == "white") {
+
 		} else {
-			return "black";
+
 		}
+		return null;
 	}
 
 	public ArrayList<Move> getMoveOptions() {

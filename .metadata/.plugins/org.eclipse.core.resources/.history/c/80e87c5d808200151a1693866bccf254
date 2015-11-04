@@ -1260,23 +1260,20 @@ public class Board {
 		Piece[][] tempBoard = board;
 		ArrayList<Move> moves = getMoveOptions();
 		for (int i = 0; i < moves.size(); i++) {
-			Piece tempPiece = board[moves.get(i).getSrc().getFileByInt()][moves.get(i).getSrc().getRank()];
-			board[moves.get(i).getDest().getFileByInt()][moves.get(i).getDest().getRank()] = tempPiece;
-			board[moves.get(i).getSrc().getFileByInt()][moves.get(i).getSrc().getRank()] = null;
+			Piece tempPiece = tempBoard[moves.get(i).getSrc().getFileByInt()][moves.get(i).getSrc().getRank()];
+			tempBoard[moves.get(i).getDest().getFileByInt()][moves.get(i).getDest().getRank()] = tempPiece;
+			tempBoard[moves.get(i).getSrc().getFileByInt()][moves.get(i).getSrc().getRank()] = null;
 			if (kingInCheck()) {
 				//do nothing
 			} else {
-				board = tempBoard;
 				return "NOT";
 			}
-			board = tempBoard;
 		}
-		if (!kingInCheck()) {
-			return "draw";
-		} else if (turn == "white") {
-			return "white";
+		if (kingInCheck())
+		if (turn == "white") {
+			
 		} else {
-			return "black";
+
 		}
 	}
 

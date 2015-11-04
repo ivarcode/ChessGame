@@ -1266,17 +1266,17 @@ public class Board {
 			if (kingInCheck()) {
 				//do nothing
 			} else {
-				board = tempBoard;
 				return "NOT";
 			}
 			board = tempBoard;
 		}
 		if (!kingInCheck()) {
 			return "draw";
-		} else if (turn == "white") {
-			return "white";
+		}
+		if (turn == "white") {
+			
 		} else {
-			return "black";
+
 		}
 	}
 

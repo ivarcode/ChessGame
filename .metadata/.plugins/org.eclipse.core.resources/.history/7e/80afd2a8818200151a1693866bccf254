@@ -1266,7 +1266,6 @@ public class Board {
 			if (kingInCheck()) {
 				//do nothing
 			} else {
-				board = tempBoard;
 				return "NOT";
 			}
 			board = tempBoard;
