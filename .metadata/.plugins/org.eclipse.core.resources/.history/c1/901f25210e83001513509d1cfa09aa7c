@@ -20,6 +20,7 @@ public class Board {
 	public Board() {
 		//initialize nothing
 	}
+
 	public Board(Piece wRook1, Piece wKnight1, Piece wBishop1, Piece wQueen,
 			Piece wKing, Piece wBishop2, Piece wKnight2, Piece wRook2, 
 			Piece wPawn1, Piece wPawn2, Piece wPawn3, Piece wPawn4, 
@@ -97,6 +98,7 @@ public class Board {
 		} 
 		return board[i][rank];
 	}
+
 	public Piece getPiece(int fileByInt, int rank) {
 		return board[fileByInt][rank];
 	}

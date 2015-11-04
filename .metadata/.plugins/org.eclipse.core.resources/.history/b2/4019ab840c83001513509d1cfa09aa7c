@@ -20,6 +20,7 @@ public class Board {
 	public Board() {
 		//initialize nothing
 	}
+
 	public Board(Piece wRook1, Piece wKnight1, Piece wBishop1, Piece wQueen,
 			Piece wKing, Piece wBishop2, Piece wKnight2, Piece wRook2, 
 			Piece wPawn1, Piece wPawn2, Piece wPawn3, Piece wPawn4, 
@@ -97,6 +98,7 @@ public class Board {
 		} 
 		return board[i][rank];
 	}
+
 	public Piece getPiece(int fileByInt, int rank) {
 		return board[fileByInt][rank];
 	}
@@ -127,13 +129,12 @@ public class Board {
 			for (int i = 0; i < moves.size(); i++) {
 				if (move.getDest().getFile() == moves.get(i).getDest().getFile()
 						&& move.getDest().getRank() == moves.get(i).getDest().getRank()) {
-					System.out.print("LEGAL MOVE");
+					System.out.print("moves contains "+i+"  ");
 					move.print();
 					place(piece,new Location(destX,destY));
 					place(null,new Location(srcX,srcY));
 					if (kingInCheck()) {
 						board = tempBoard;
-						System.out.println("board = tempBoard;");
 					} else {
 						if (isTurn("white")) {
 							turn = "black";
@@ -1304,7 +1305,6 @@ public class Board {
 			}
 			System.out.println();
 		}
-		System.out.println("turn = "+turn);
 	}
 
 	public String inCheckmate() {
