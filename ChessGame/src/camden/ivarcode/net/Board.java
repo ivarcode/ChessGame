@@ -97,6 +97,51 @@ public class Board {
 	}
 
 	public void movePiece(int srcX, int srcY, int destX, int destY) {
+		Move move = new Move(new Location(srcX,srcY), new Location(destX,destY));
+		Piece piece = getPiece(srcX,srcY);
+		ArrayList<Move> moves;
+		if (piece instanceof King) {
+			moves = kingMoves(new Location(srcX,srcY));
+		} else if (piece instanceof Queen) {
+			moves = queenMoves(new Location(srcX,srcY));
+		} else if (piece instanceof Bishop) {
+			moves = bishopMoves(new Location(srcX,srcY));
+		} else if (piece instanceof Knight) {
+			moves = knightMoves(new Location(srcX,srcY));
+		} else if (piece instanceof Rook) {
+			moves = rookMoves(new Location(srcX,srcY));
+		} else if (piece instanceof Pawn) {
+			moves = pawnMoves(new Location(srcX,srcY), turn);
+		} else {
+			moves = null;
+		}
+
+		Piece[][] tempBoard = board;
+
+		if (moves != null) {
+			for (int i = 0; i < moves.size(); i++) {
+				if (move.getDest().getFile() == moves.get(i).getDest().getFile()
+						&& move.getDest().getRank() == moves.get(i).getDest().getRank()) {
+					System.out.print("moves contains "+i+"  ");
+					move.print();
+					place(piece,new Location(destX,destY));
+					place(null,new Location(srcX,srcY));
+					if (kingInCheck()) {
+						board = tempBoard;
+					} else {
+						if (isTurn("white")) {
+							turn = "black";
+						} else {
+							turn = "white";
+						}
+					}
+					break;
+				}
+			}
+		}
+		print();
+
+		/*
 		if (isLegalMove(srcX, srcY, destX, destY)) {
 			Piece tempDest = getPiece(destX,destY);
 			Piece tempSrc = getPiece(srcX,srcY);
@@ -117,7 +162,7 @@ public class Board {
 				System.out.println("turn = " + turn);
 				print();
 			}
-		}
+		}*/
 	}
 
 	private boolean isLegalMove(int srcX, int srcY, int destX, int destY) {
@@ -310,7 +355,6 @@ public class Board {
 
 		return false;
 	}
-
 
 	private boolean isTurn(String color) {
 		if (turn == color) {
@@ -1017,7 +1061,7 @@ public class Board {
 		ArrayList<Move> arr = new ArrayList<Move>();
 		int file = loc.getFileByInt();
 		int rank = loc.getRank();
-		
+
 		if (file+2 < 8 && rank+1 < 8) {
 			Location l = new Location(file+2,rank+1);
 			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
@@ -1098,7 +1142,7 @@ public class Board {
 		int file = loc.getFileByInt();
 		int rank = loc.getRank();
 		int tempfile = file, temprank = rank;
-		
+
 		while (tempfile+1 < 8) {
 			Location l = new Location(tempfile+1,temprank);
 			if (getPiece(l.getFileByInt(), l.getRank()) instanceof Piece 
@@ -1157,7 +1201,7 @@ public class Board {
 		ArrayList<Move> arr = new ArrayList<Move>();
 		int file = loc.getFileByInt();
 		int rank = loc.getRank();
-		
+
 		if (color == "white") {
 			if (rank == 1) {
 				arr.add(new Move(loc,new Location(file,rank+2)));
@@ -1257,19 +1301,19 @@ public class Board {
 	}
 
 	public String inCheckmate() {
-		Piece[][] tempBoard = board;
+		Board tempBoard = this;
 		ArrayList<Move> moves = getMoveOptions();
 		for (int i = 0; i < moves.size(); i++) {
-			Piece tempPiece = board[moves.get(i).getSrc().getFileByInt()][moves.get(i).getSrc().getRank()];
-			board[moves.get(i).getDest().getFileByInt()][moves.get(i).getDest().getRank()] = tempPiece;
-			board[moves.get(i).getSrc().getFileByInt()][moves.get(i).getSrc().getRank()] = null;
+			Piece tempPiece = tempBoard.getPiece(moves.get(i).getSrc().getFileByInt(),moves.get(i).getSrc().getRank());
+			tempBoard.place(tempPiece,new Location(moves.get(i).getDest().getFileByInt(),moves.get(i).getDest().getRank()));
+			tempBoard.place(null,new Location(moves.get(i).getSrc().getFileByInt(),moves.get(i).getSrc().getRank()));
 			if (kingInCheck()) {
 				//do nothing
 			} else {
-				board = tempBoard;
+				tempBoard = this;
 				return "NOT";
 			}
-			board = tempBoard;
+			tempBoard = this;
 		}
 		if (!kingInCheck()) {
 			return "draw";

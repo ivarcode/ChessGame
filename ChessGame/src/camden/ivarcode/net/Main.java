@@ -125,7 +125,7 @@ public class Main extends JApplet {
 				}
 
 				if (a == c && b == d) {
-
+					//do nothing;
 				} else {
 					board.movePiece(a,b,c,d);
 
@@ -138,15 +138,16 @@ public class Main extends JApplet {
 					} else if (board.inCheckmate().equals("draw")) {
 						System.out.println("Draw by stalemate.");
 					}
-					repaint();
+					
 				}
 
-
 				a = -1000;
-				b = -1000;
+				b = -1000; 
 				c = -1000;
 				d = -1000;
 				clickedPiece = nullPiece;
+				
+				repaint();
 
 				// When mouse is released, clear inDrag (to
 				// indicate no drag in progress) if inDrag is

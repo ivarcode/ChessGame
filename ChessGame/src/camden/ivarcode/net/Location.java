@@ -72,7 +72,7 @@ public class Location {
 		return i;
 	}
 	
-	public void printLoc() {
+	public void print() {
 		System.out.println(file + (rank+1));
 	}
 	
