@@ -27,7 +27,7 @@ public class Move {
 	}
 	
 	public void print() {
-		System.out.println(""+dest.getFile()+dest.getRank());
+		System.out.println(dest.getFile()+dest.getRank());
 	}
 
 }

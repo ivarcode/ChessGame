@@ -135,7 +135,7 @@ public class Main extends JApplet {
 					//do nothing;
 				} else {
 					board.movePiece(a,b,c,d);
-/*
+
 					if (board.inCheckmate().equals("NOT")) {
 						//none
 					} else if (board.inCheckmate().equals("white")) {
@@ -144,7 +144,7 @@ public class Main extends JApplet {
 						System.out.println("Black wins by checkmate!");
 					} else if (board.inCheckmate().equals("draw")) {
 						System.out.println("Draw by stalemate.");
-					}*/
+					}
 					
 				}
 
@@ -154,8 +154,6 @@ public class Main extends JApplet {
 				d = -1000;
 				clickedPiece = nullPiece;
 				
-				board.print();
-				System.out.println("got to repaint()");
 				repaint();
 
 				// When mouse is released, clear inDrag (to
@@ -163,7 +161,8 @@ public class Main extends JApplet {
 				// already set.
 				if (inDrag)
 					inDrag = false;
-
+				
+				repaint();
 			}
 		});
 		// Attach a mouse motion listener to the applet. That listener listens
@@ -186,7 +185,6 @@ public class Main extends JApplet {
 		Dimension d = getSize();
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, d.width, d.height);
-		System.out.println("PAINTING NOW");
 		drawBoard(g);
 		drawPieces(g);
 	}

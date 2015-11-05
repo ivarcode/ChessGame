@@ -71,7 +71,7 @@ public class Board {
 		refreshThreats();
 	}
 
-	public void place(Piece piece, Location loc) {
+	private void place(Piece piece, Location loc) {
 		//TODO remove any piece from underlying loc
 		board[loc.getFileByInt()][loc.getRank()] = piece;
 	}
@@ -127,7 +127,7 @@ public class Board {
 			for (int i = 0; i < moves.size(); i++) {
 				if (move.getDest().getFile() == moves.get(i).getDest().getFile()
 						&& move.getDest().getRank() == moves.get(i).getDest().getRank()) {
-					System.out.print("LEGAL MOVE   ");
+					System.out.print("LEGAL MOVE ");
 					move.print();
 					takenPiece = getPiece(destX,destY);
 					place(piece,new Location(destX,destY));

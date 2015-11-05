@@ -71,7 +71,7 @@ public class Board {
 		refreshThreats();
 	}
 
-	public void place(Piece piece, Location loc) {
+	private void place(Piece piece, Location loc) {
 		//TODO remove any piece from underlying loc
 		board[loc.getFileByInt()][loc.getRank()] = piece;
 	}

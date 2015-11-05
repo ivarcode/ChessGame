@@ -186,7 +186,6 @@ public class Main extends JApplet {
 		Dimension d = getSize();
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, d.width, d.height);
-		System.out.println("PAINTING NOW");
 		drawBoard(g);
 		drawPieces(g);
 	}
