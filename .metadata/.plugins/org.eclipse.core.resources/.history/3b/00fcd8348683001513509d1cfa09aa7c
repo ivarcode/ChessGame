@@ -120,8 +120,8 @@ public class Board {
 		} else {
 			moves = null;
 		}
-		
-		Piece takenPiece;
+
+		Piece[][] tempBoard = board;
 
 		if (moves != null) {
 			for (int i = 0; i < moves.size(); i++) {
@@ -129,12 +129,10 @@ public class Board {
 						&& move.getDest().getRank() == moves.get(i).getDest().getRank()) {
 					System.out.print("LEGAL MOVE");
 					move.print();
-					takenPiece = getPiece(destX,destY);
 					place(piece,new Location(destX,destY));
 					place(null,new Location(srcX,srcY));
 					if (kingInCheck()) {
-						place(piece,new Location(srcX,srcY));
-						place(takenPiece,new Location(destX,destY));
+						board = tempBoard;
 						System.out.println("board = tempBoard;");
 					} else {
 						if (isTurn("white")) {
@@ -173,7 +171,7 @@ public class Board {
 		}*/
 	}
 
-/*	private boolean isLegalMove(int srcX, int srcY, int destX, int destY) {
+	private boolean isLegalMove(int srcX, int srcY, int destX, int destY) {
 		try {
 			if (getPiece(srcX,srcY).getColor() != turn) {
 				return false;
@@ -362,7 +360,7 @@ public class Board {
 		} else {}
 
 		return false;
-	}*/
+	}
 
 	private boolean isTurn(String color) {
 		if (turn == color) {

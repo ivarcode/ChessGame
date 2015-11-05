@@ -161,8 +161,6 @@ public class Main extends JApplet {
 				// already set.
 				if (inDrag)
 					inDrag = false;
-				
-				repaint();
 			}
 		});
 		// Attach a mouse motion listener to the applet. That listener listens

@@ -173,7 +173,7 @@ public class Board {
 		}*/
 	}
 
-/*	private boolean isLegalMove(int srcX, int srcY, int destX, int destY) {
+	private boolean isLegalMove(int srcX, int srcY, int destX, int destY) {
 		try {
 			if (getPiece(srcX,srcY).getColor() != turn) {
 				return false;
@@ -362,7 +362,7 @@ public class Board {
 		} else {}
 
 		return false;
-	}*/
+	}
 
 	private boolean isTurn(String color) {
 		if (turn == color) {
