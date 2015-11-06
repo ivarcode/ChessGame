@@ -40,19 +40,35 @@ public class Main extends JApplet {
 	private static int sqDim = 60;
 	private static int sideWidth = 150;
 	private static int topHeight = 50;
-	private Game game;
+	private Board board;
+	private Piece 
+	bRook1, bRook2, wRook1, wRook2, 
+	bKnight1, bKnight2, wKnight1, wKnight2, 
+	bBishop1, bBishop2, wBishop1, wBishop2,
+	bQueen, wQueen,
+	bKing, wKing,
+	bPawn1, bPawn2, bPawn3, bPawn4, bPawn5, bPawn6, bPawn7, bPawn8, 
+	wPawn1, wPawn2, wPawn3, wPawn4, wPawn5, wPawn6, wPawn7, wPawn8;
+	private static BufferedImage  
+	bRooki, wRooki, 
+	bKnighti, wKnighti, 
+	bBishopi, wBishopi,
+	bQueeni, wQueeni,
+	bKingi, wKingi,
+	bPawni, wPawni;
 	boolean inDrag = false;
 	int mouseX, mouseY;
 	private Piece clickedPiece;
 
 	public void init() {
 
-		
-		
 		Piece nullPiece = new Piece();
 		clickedPiece = nullPiece;
 
-		game = new Game(g);
+		board = new Board(wRook1, wKnight1, wBishop1, wQueen, wKing, wBishop2, wKnight2, wRook2, 
+				wPawn1, wPawn2, wPawn3, wPawn4, wPawn5, wPawn6, wPawn7, wPawn8,
+				bRook1, bKnight1, bBishop1, bQueen, bKing, bBishop2, bKnight2, bRook2, 
+				bPawn1, bPawn2, bPawn3, bPawn4, bPawn5, bPawn6, bPawn7, bPawn8);
 
 		addMouseListener(new MouseAdapter() {
 			int a = -1000, b = -1000;

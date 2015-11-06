@@ -52,7 +52,7 @@ public class Main extends JApplet {
 		Piece nullPiece = new Piece();
 		clickedPiece = nullPiece;
 
-		game = new Game(g);
+		game = new Game(Graphics g);
 
 		addMouseListener(new MouseAdapter() {
 			int a = -1000, b = -1000;

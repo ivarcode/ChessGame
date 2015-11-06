@@ -1,7 +1,6 @@
 package camden.ivarcode.net;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -20,25 +19,10 @@ public class Board {
 	private Piece[][] board = new Piece[8][8];
 	private boolean[][] whiteThreats = new boolean[8][8];
 	private boolean[][] blackThreats = new boolean[8][8];
-	private Piece whiteKing, blackKing, whiteQueen, blackQueen,
-					whiteBishop1, whiteBishop2, blackBishop1, blackBishop2, 
-					whiteKnight1, whiteKnight2, blackKnight1, blackKnight2, 
-					whiteRook1, whiteRook2, blackRook1, blackRook2, 
-					whitePawn1, whitePawn2, whitePawn3, whitePawn4, 
-					whitePawn5, whitePawn6, whitePawn7, whitePawn8, 
-					blackPawn1, blackPawn2, blackPawn3, blackPawn4, 
-					blackPawn5, blackPawn6, blackPawn7, blackPawn8;
-	private Image whiteKing_img, blackKing_img, whiteQueen_img, blackQueen_img,
-					whiteBishop1_img, whiteBishop2_img, blackBishop1_img, blackBishop2_img, 
-					whiteKnight1_img, whiteKnight2_img, blackKnight1_img, blackKnight2_img, 
-					whiteRook1_img, whiteRook2_img, blackRook1_img, blackRook2_img, 
-					whitePawn1_img, whitePawn2_img, whitePawn3_img, whitePawn4_img,
-					whitePawn5_img, whitePawn6_img, whitePawn7_img, whitePawn8_img, 
-					blackPawn1_img, blackPawn2_img, blackPawn3_img, blackPawn4_img, 
-					blackPawn5_img, blackPawn6_img, blackPawn7_img, blackPawn8_img;
+	private Piece whiteKing, blackKing;
+	private String turn;
 	
-	
-	public Board(Graphics g) {
+	public Board(Graphics g)); {
 
 /*
 		loadImages();

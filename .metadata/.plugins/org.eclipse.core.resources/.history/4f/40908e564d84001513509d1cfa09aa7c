@@ -10,8 +10,8 @@ public class Game {
 		setTurn("white");
 	}
 	
-	public void play() {
-		//TODO
+	public play() {
+		
 	}
 
 	public String getTurn() {

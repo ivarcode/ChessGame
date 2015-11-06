@@ -1,0 +1,13 @@
+package camden.ivarcode.net;
+
+import java.awt.Graphics;
+
+public class Game {
+
+	private String turn;
+	
+	public Game(Graphics g) {
+		turn = "white";
+	}
+	
+}
