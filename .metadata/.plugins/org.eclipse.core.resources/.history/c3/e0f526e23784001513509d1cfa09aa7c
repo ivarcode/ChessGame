@@ -33,10 +33,10 @@ public class Board {
 			Piece bPawn1, Piece bPawn2, Piece bPawn3, Piece bPawn4, 
 			Piece bPawn5, Piece bPawn6, Piece bPawn7, Piece bPawn8) {
 
-/*
+
 		loadImages();
 		loadPieces();
-		*/
+		
 		
 		whiteKing = wKing;
 		blackKing = bKing;

@@ -1,0 +1,13 @@
+package camden.ivarcode.net;
+
+public class Game {
+
+	public Game() {
+		//null
+	}
+	
+	public Game(Graphics g) {
+		
+	}
+	
+}

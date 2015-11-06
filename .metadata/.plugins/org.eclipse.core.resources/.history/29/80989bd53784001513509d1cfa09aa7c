@@ -33,10 +33,10 @@ public class Board {
 			Piece bPawn1, Piece bPawn2, Piece bPawn3, Piece bPawn4, 
 			Piece bPawn5, Piece bPawn6, Piece bPawn7, Piece bPawn8) {
 
-/*
+
 		loadImages();
 		loadPieces();
-		*/
+		
 		
 		whiteKing = wKing;
 		blackKing = bKing;
@@ -1367,7 +1367,6 @@ public class Board {
 		return moves;
 	}
 
-	/*
 	private void loadPieces() {
 		wKing = new King(new Location('e',0), "white", wKingi);
 		wQueen = new Queen(new Location('d',0), "white", wQueeni);
@@ -1467,7 +1466,7 @@ public class Board {
 
 	}
 
-*/
+
 
 }
 
