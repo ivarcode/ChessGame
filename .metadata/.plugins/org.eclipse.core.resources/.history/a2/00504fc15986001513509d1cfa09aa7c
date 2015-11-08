@@ -1,7 +1,5 @@
 package camden.ivarcode.net;
 
-import java.awt.Graphics;
-
 public class Game {
 
 	private Graphics g;
