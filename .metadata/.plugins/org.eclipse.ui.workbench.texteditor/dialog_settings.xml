@@ -2,19 +2,19 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="arr.add(new Move(loc,l));" key="selection"/>
+		<item value="white" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="white"/>
 			<item value="arr.add(l);"/>
 			<item value="mouseX"/>
-			<item value="white"/>
 		</list>
 		<list key="replacehistory">
-			<item value="arr.add(new Move(loc,l));"/>
 			<item value="black"/>
+			<item value="arr.add(new Move(loc,l));"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
