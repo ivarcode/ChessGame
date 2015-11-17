@@ -42,7 +42,6 @@ public class Main extends JApplet {
 	private static int topHeight = 50;
 	private Graphics g;
 	private Game game;
-	private Location src, dest;
 	boolean inDrag = false;
 	int mouseX, mouseY;
 
@@ -78,9 +77,8 @@ public class Main extends JApplet {
 					//do nothing as of now
 				}
 				if (a != -1000 && b != -1000) {
-					src = new Location(a,b);
-					if (game.findPiece(src) != null) {
-						clickedPiece = game.findPiece(src);
+					if (board.getPiece(a, b) != null) {
+						clickedPiece = board.getPiece(a, b);
 					}
 				}
 				inDrag = true;
