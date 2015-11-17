@@ -113,7 +113,7 @@ public class Main extends JApplet {
 					//do nothing;
 				} else {
 					dest = new Location(c,d);
-					game.makeMove(src,dest);
+					board.movePiece(a,b,c,d);
 /*
 					if (board.inCheckmate().equals("NOT")) {
 						//none

@@ -12,6 +12,18 @@ public class Game {
 		this.g = g;
 		setTurn("white");
 	}
+	
+	public void play() {
+		//TODO
+		
+		
+		
+		
+		
+		
+		
+	}
+
 	public String getTurn() {
 		return turn;
 	}
@@ -26,11 +38,6 @@ public class Game {
 	}
 	
 
-	public void play() {
-		//TODO		
-		
-	}
-	
 	public void changeTurn() {
 		if (getTurn().equals("white")) {
 			setTurn("black");

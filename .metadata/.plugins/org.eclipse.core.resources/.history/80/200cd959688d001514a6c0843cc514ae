@@ -41,9 +41,11 @@ public class dump {
 	
 	
 	public Board(Graphics g) {
-s
+
+/*
 		loadImages();
 		loadPieces();
+		*/
 		
 		whiteKing = wKing;
 		blackKing = bKing;
@@ -165,6 +167,7 @@ s
 		}
 		print();
 
+		/*
 		if (isLegalMove(srcX, srcY, destX, destY)) {
 			Piece tempDest = getPiece(destX,destY);
 			Piece tempSrc = getPiece(srcX,srcY);
@@ -185,10 +188,10 @@ s
 				System.out.println("turn = " + turn);
 				print();
 			}
-		}
+		}*/
 	}
 
-	private boolean isLegalMove(int srcX, int srcY, int destX, int destY) {
+/*	private boolean isLegalMove(int srcX, int srcY, int destX, int destY) {
 		try {
 			if (getPiece(srcX,srcY).getColor() != turn) {
 				return false;
@@ -377,7 +380,7 @@ s
 		} else {}
 
 		return false;
-	}
+	}*/
 
 	private boolean isTurn(String color) {
 		if (turn == color) {

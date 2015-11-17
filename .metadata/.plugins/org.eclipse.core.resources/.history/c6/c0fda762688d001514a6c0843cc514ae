@@ -41,9 +41,11 @@ public class dump {
 	
 	
 	public Board(Graphics g) {
-s
+
+/*
 		loadImages();
 		loadPieces();
+		*/
 		
 		whiteKing = wKing;
 		blackKing = bKing;

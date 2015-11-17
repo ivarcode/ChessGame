@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;camden.ivarcode.net.Game.currentPiece&apos; in &apos;camden.ivarcode.net.Game&apos;&#x0D;&#x0A;- Original project: &apos;ChessGame&apos;&#x0D;&#x0A;- Original element: &apos;camden.ivarcode.net.Game.currentPiece&apos;&#x0D;&#x0A;- Getter method name: &apos;getCurrentPiece&apos;&#x0D;&#x0A;- Setter method name: &apos;setCurrentPiece&apos;&#x0D;&#x0A;- Field visibility: &apos;public&apos;&#x0D;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;currentPiece&apos;" flags="589830" getter="getCurrentPiece" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;camden.ivarcode.net{Game.java[Game^currentPiece" insertion="7" setter="setCurrentPiece" stamp="1447792548383" version="1.0" visibility="1"/>
+</session>

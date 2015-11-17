@@ -89,6 +89,7 @@ public class Main extends JApplet {
 			{
 				int x = e.getX ();
 				int y = e.getY ();
+				dest = new Location(x,y);
 
 				if (x < sideWidth) {
 					//do nothing mouse off screen
@@ -112,8 +113,7 @@ public class Main extends JApplet {
 				if (a == c && b == d) {
 					//do nothing;
 				} else {
-					dest = new Location(c,d);
-					game.makeMove(src,dest);
+					board.movePiece(a,b,c,d);
 /*
 					if (board.inCheckmate().equals("NOT")) {
 						//none

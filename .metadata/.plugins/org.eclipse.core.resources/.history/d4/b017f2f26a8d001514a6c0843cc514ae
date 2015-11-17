@@ -12,23 +12,24 @@ public class Game {
 		this.g = g;
 		setTurn("white");
 	}
+	
+	public void play() {
+		//TODO
+		
+		
+		
+		
+		
+		
+		
+	}
+
 	public String getTurn() {
 		return turn;
 	}
+
 	public void setTurn(String turn) {
 		this.turn = turn;
-	}
-	public Piece getCurrentPiece() {
-		return currentPiece;
-	}
-	public void setCurrentPiece(Piece currentPiece) {
-		this.currentPiece = currentPiece;
-	}
-	
-
-	public void play() {
-		//TODO		
-		
 	}
 	
 	public void changeTurn() {
@@ -53,4 +54,11 @@ public class Game {
 		
 	}
 
+	public Piece getCurrentPiece() {
+		return currentPiece;
+	}
+	public void setCurrentPiece(Piece currentPiece) {
+		this.currentPiece = currentPiece;
+	}
+	
 }
