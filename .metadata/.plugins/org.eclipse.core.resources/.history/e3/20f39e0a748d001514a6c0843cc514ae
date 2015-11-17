@@ -15,11 +15,7 @@ public class Game {
 		board = new Board(loadPieces());
 	}
 	private Piece[] loadPieces() {
-		Piece[] pieces = new Piece[12];
 		
-		//TODO
-		
-		return pieces;
 	}
 	
 	public String getTurn() {
