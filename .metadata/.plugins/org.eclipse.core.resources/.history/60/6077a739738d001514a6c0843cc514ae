@@ -14,10 +14,6 @@ public class Game {
 		setTurn("white");
 		board = new Board(loadPieces());
 	}
-	private Piece[] loadPieces() {
-		
-	}
-	
 	public String getTurn() {
 		return turn;
 	}

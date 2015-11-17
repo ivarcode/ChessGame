@@ -7,17 +7,11 @@ public class Game {
 	private Piece currentPiece;
 	private Graphics g;
 	private String turn;
-	private Board board;
 	
 	public Game(Graphics g) {
 		this.g = g;
 		setTurn("white");
-		board = new Board(loadPieces());
 	}
-	private Piece[] loadPieces() {
-		
-	}
-	
 	public String getTurn() {
 		return turn;
 	}
