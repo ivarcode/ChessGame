@@ -93,31 +93,31 @@ public class Board {
 		board[6][0] = new Knight(new Location('g',0), "white", wKnighti);
 		board[0][0] = new Rook(new Location('a',0), "white", wRooki);
 		board[7][0] = new Rook(new Location('h',0), "white", wRooki);
-		board[0][1] = new Pawn(new Location('a',1), "white", wPawni);
-		board[1][1] = new Pawn(new Location('b',1), "white", wPawni);
-		board[2][1] = new Pawn(new Location('c',1), "white", wPawni);
-		board[3][1] = new Pawn(new Location('d',1), "white", wPawni);
-		board[4][1] = new Pawn(new Location('e',1), "white", wPawni);
-		board[5][1] = new Pawn(new Location('f',1), "white", wPawni);
-		board[6][1] = new Pawn(new Location('g',1), "white", wPawni);
-		board[7][1] = new Pawn(new Location('h',1), "white", wPawni);
+		board[][1] = new Pawn(new Location('a',1), "white", wPawni);
+		board[][1] = new Pawn(new Location('b',1), "white", wPawni);
+		board[][1] = new Pawn(new Location('c',1), "white", wPawni);
+		board[][1] = new Pawn(new Location('d',1), "white", wPawni);
+		board[][1] = new Pawn(new Location('e',1), "white", wPawni);
+		board[][1] = new Pawn(new Location('f',1), "white", wPawni);
+		board[][1] = new Pawn(new Location('g',1), "white", wPawni);
+		board[][1] = new Pawn(new Location('h',1), "white", wPawni);
 
-		board[4][7] = new King(new Location('e',7), "black", bKingi);
-		board[3][7] = new Queen(new Location('d',7), "black", bQueeni);
-		board[2][7] = new Bishop(new Location('c',7), "black", bBishopi);
-		board[5][7] = new Bishop(new Location('f',7), "black", bBishopi);
-		board[1][7] = new Knight(new Location('b',7), "black", bKnighti);
-		board[6][7] = new Knight(new Location('g',7), "black", bKnighti);
-		board[0][7] = new Rook(new Location('a',7), "black", bRooki);
-		board[7][7] = new Rook(new Location('h',7), "black", bRooki);
-		board[0][6] = new Pawn(new Location('a',6), "black", bPawni);
-		board[1][6] = new Pawn(new Location('b',6), "black", bPawni);
-		board[2][6] = new Pawn(new Location('c',6), "black", bPawni);
-		board[3][6] = new Pawn(new Location('d',6), "black", bPawni);
-		board[4][6] = new Pawn(new Location('e',6), "black", bPawni);
-		board[5][6] = new Pawn(new Location('f',6), "black", bPawni);
-		board[6][6] = new Pawn(new Location('g',6), "black", bPawni);
-		board[7][6] = new Pawn(new Location('h',6), "black", bPawni);
+		board[16] = new King(new Location('e',7), "black", bKingi);
+		board[17] = new Queen(new Location('d',7), "black", bQueeni);
+		board[18] = new Bishop(new Location('c',7), "black", bBishopi);
+		board[19] = new Bishop(new Location('f',7), "black", bBishopi);
+		board[20] = new Knight(new Location('b',7), "black", bKnighti);
+		board[21] = new Knight(new Location('g',7), "black", bKnighti);
+		board[22] = new Rook(new Location('a',7), "black", bRooki);
+		board[23] = new Rook(new Location('h',7), "black", bRooki);
+		board[24] = new Pawn(new Location('a',6), "black", bPawni);
+		board[25] = new Pawn(new Location('b',6), "black", bPawni);
+		board[26] = new Pawn(new Location('c',6), "black", bPawni);
+		board[27] = new Pawn(new Location('d',6), "black", bPawni);
+		board[28] = new Pawn(new Location('e',6), "black", bPawni);
+		board[29] = new Pawn(new Location('f',6), "black", bPawni);
+		board[30] = new Pawn(new Location('g',6), "black", bPawni);
+		board[31] = new Pawn(new Location('h',6), "black", bPawni);
 	}
 
 }
