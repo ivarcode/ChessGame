@@ -1,6 +1,6 @@
 package camden.ivarcode.net;
 
-import java.awt.image.BufferedImage;
+import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
 
@@ -11,7 +11,7 @@ import camden.ivarcode.net.piece.*;
 public class Board {
 	
 	private Piece[][] board;
-	private BufferedImage wKingi, bKingi, wQueeni, bQueeni, wBishopi, bBishopi,
+	private Image wKingi, bKingi, wQueeni, bQueeni, wBishopi, bBishopi,
 	wKnighti, bKnighti, wRooki, bRooki, wPawni, bPawni;
 
 	public Board() {
@@ -27,10 +27,6 @@ public class Board {
 	}
 	
 	public void movePiece(Location src, Location dest) {
-		
-	}
-	
-	public void placePiece(Piece piece, Location loc) {
 		
 	}
 	

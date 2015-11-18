@@ -80,7 +80,7 @@ public class Main extends JApplet {
 				if (a != -1000 && b != -1000) {
 					src = new Location(a,b);
 					if (game.findPiece(src) != null) {
-			//			clickedPiece = game.findPiece(src);
+						clickedPiece = game.findPiece(src);
 					}
 				}
 				inDrag = true;
@@ -131,9 +131,9 @@ public class Main extends JApplet {
 				b = -1000; 
 				c = -1000;
 				d = -1000;
-			//	clickedPiece = nullPiece;
+				clickedPiece = nullPiece;
 				
-			//	board.print();
+				board.print();
 				System.out.println("got to repaint()");
 				repaint();
 
@@ -166,8 +166,8 @@ public class Main extends JApplet {
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, d.width, d.height);
 		System.out.println("PAINTING NOW");
-//		drawBoard(g);
-//		drawPieces(g);
+		drawBoard(g);
+		drawPieces(g);
 	}
 
 	public void update(Graphics g) {
