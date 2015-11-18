@@ -166,22 +166,7 @@ public class Main extends JApplet {
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, d.width, d.height);
 		System.out.println("PAINTING NOW");
-		game.drawBoard(g);
-		drawPieces(g);
-	}
-	private void drawPieces(Graphics g) {
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
-				if (game.getPiece(i,j) != null && clickedPiece != board.getPiece(i, j)) {
-					g.drawImage(getPiece(i,j).getImg(), 
-							sideWidth+(getPiece(i,j).getLoc().getFileByInt()*sqDim), 
-							topHeight+((7-getPiece(i,j).getLoc().getRank())*sqDim), null);
-				}
-				if (clickedPiece == getPiece(i, j)) {
-					g.drawImage(getPiece(i, j).getImg(), mouseX-(sqDim/2), mouseY-(sqDim/2), null);
-				}
-			}
-		}
+		game.paintGame(g);
 	}
 
 	public void update(Graphics g) {
