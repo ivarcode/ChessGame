@@ -72,7 +72,7 @@ public class Game {
 		g.drawImage(getPiece(loc).getImg(), 
 				sideWidth+(loc.getFileByInt()*sqDim), 
 				topHeight+(loc.getRank()*(7-sqDim)), 
-				null);
+				null)
 	}
 
 }

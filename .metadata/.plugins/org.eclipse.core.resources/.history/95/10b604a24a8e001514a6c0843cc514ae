@@ -54,7 +54,6 @@ public class Main extends JApplet {
 		addMouseListener(new MouseAdapter() {
 			int a = -1000, b = -1000;
 			int c = -1000, d = -1000;
-			Piece nullPiece = new Piece();
 
 			public void mousePressed (MouseEvent e) {
 				// Obtain mouse coordinates at time of press.
@@ -136,8 +135,10 @@ public class Main extends JApplet {
 				b = -1000; 
 				c = -1000;
 				d = -1000;
-				clickedPiece = nullPiece;
+			//	clickedPiece = nullPiece;
 				
+			//	board.print();
+				System.out.println("got to repaint()");
 				repaint();
 
 				// When mouse is released, clear inDrag (to
@@ -158,7 +159,7 @@ public class Main extends JApplet {
 				{
 					mouseX = e.getX();
 					mouseY = e.getY();
-					//TODO repaint();
+					repaint();
 				}
 			}
 		});

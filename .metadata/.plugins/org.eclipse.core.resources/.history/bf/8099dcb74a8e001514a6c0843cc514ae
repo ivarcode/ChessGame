@@ -158,7 +158,7 @@ public class Main extends JApplet {
 				{
 					mouseX = e.getX();
 					mouseY = e.getY();
-					//TODO repaint();
+					repaint();
 				}
 			}
 		});

@@ -54,7 +54,6 @@ public class Main extends JApplet {
 		addMouseListener(new MouseAdapter() {
 			int a = -1000, b = -1000;
 			int c = -1000, d = -1000;
-			Piece nullPiece = new Piece();
 
 			public void mousePressed (MouseEvent e) {
 				// Obtain mouse coordinates at time of press.
@@ -136,8 +135,10 @@ public class Main extends JApplet {
 				b = -1000; 
 				c = -1000;
 				d = -1000;
-				clickedPiece = nullPiece;
+			//	clickedPiece = nullPiece;
 				
+			//	board.print();
+				System.out.println("got to repaint()");
 				repaint();
 
 				// When mouse is released, clear inDrag (to
@@ -158,7 +159,7 @@ public class Main extends JApplet {
 				{
 					mouseX = e.getX();
 					mouseY = e.getY();
-					//TODO repaint();
+					repaint();
 				}
 			}
 		});
@@ -175,7 +176,14 @@ public class Main extends JApplet {
 	private void drawPieces(Graphics g) {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				game.drawPiece(g, new Location(i,j));
+				if (game.getPiece(new Location(i,j)) != null && clickedPiece != game.getPiece(new Location(i,j))) {
+					g.drawImage(game.getPiece(new Location(i,j)).getImg(), 
+							sideWidth+(game.getPiece(new Location(i,j)).getLoc().getFileByInt()*sqDim), 
+							topHeight+((7-game.getPiece(new Location(i,j)).getLoc().getRank())*sqDim), null);
+				}
+				if (clickedPiece == game.getPiece(new Location(i,j))) {
+					g.drawImage(game.getPiece(new Location(i,j)).getImg(), mouseX-(sqDim/2), mouseY-(sqDim/2), null);
+				}
 			}
 		}
 	}
