@@ -65,7 +65,7 @@ public class Game {
 	}
 	public void drawPiece(Graphics g, Location loc) {
 		g.drawImage(getPiece(loc).getImg(), 
-				sideWidth+(sqDim*loc.getFileByInt()), 
+				sideWidth+(loc.getFileByInt()*sqDim), 
 				topHeight+(sqDim*(7-loc.getRank())), 
 				null);
 	}

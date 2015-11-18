@@ -178,8 +178,9 @@ public class Main extends JApplet {
 			for (int j = 0; j < 8; j++) {
 				loc = new Location(i,j);
 				if (game.getPiece(loc) != null) {
-					game.drawPiece(g, new Location(i,j));
+					
 				}
+				game.drawPiece(g, new Location(i,j));
 			}
 		}
 	}

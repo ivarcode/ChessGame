@@ -55,29 +55,27 @@ public class Game {
 	}
 
 	public void drawBoard(Graphics g) {
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
-				drawSquare(g, new Location(i,j));
+		g.setColor(Color.DARK_GRAY);
+		g.drawRect(sideWidth, topHeight, sqDim*8, sqDim*8);
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
+				g.fillRect(sideWidth+sqDim+(sqDim*2*j), 
+						topHeight+(sqDim*2*i), 
+						sqDim, sqDim);
+				g.fillRect(sideWidth+(sqDim*2*j), 
+						topHeight+sqDim+(sqDim*2*i), 
+						sqDim, sqDim);
 			}
 		}
-		g.setColor(Color.BLACK);
-		g.drawRect(sideWidth, topHeight, sqDim*8, sqDim*8);
 	}
 	public void drawPiece(Graphics g, Location loc) {
 		g.drawImage(getPiece(loc).getImg(), 
-				sideWidth+(sqDim*loc.getFileByInt()), 
-				topHeight+(sqDim*(7-loc.getRank())), 
+				sideWidth+(loc.getFileByInt()*sqDim), 
+				topHeight+(loc.getRank()*(7-sqDim)), 
 				null);
 	}
 	public void drawSquare(Graphics g, Location loc) {
-		if ((loc.getFileByInt()+loc.getRank())%2 == 0) {
-			g.setColor(Color.DARK_GRAY);
-		} else {
-			g.setColor(Color.WHITE);
-		}
-		g.fillRect(sideWidth+(sqDim*loc.getFileByInt()), 
-				topHeight+(sqDim*(7-loc.getRank())), 
-				sqDim, sqDim);
+		
 	}
 
 }
