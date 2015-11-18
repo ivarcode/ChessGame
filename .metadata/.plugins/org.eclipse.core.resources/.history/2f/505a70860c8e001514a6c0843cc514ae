@@ -48,7 +48,7 @@ public class Main extends JApplet {
 
 	public void init() {
 
-		game = new Game(sideWidth, topHeight, sqDim);
+		game = new Game(g);
 
 		addMouseListener(new MouseAdapter() {
 			int a = -1000, b = -1000;
@@ -166,7 +166,7 @@ public class Main extends JApplet {
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, d.width, d.height);
 		System.out.println("PAINTING NOW");
-		game.paintGame(g);
+		game.paintGame();
 	}
 
 	public void update(Graphics g) {

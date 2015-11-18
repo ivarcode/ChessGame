@@ -6,11 +6,13 @@ import java.awt.Graphics;
 public class Game {
 
 	private Piece currentPiece;
+	private Graphics g;
 	private String turn;
 	private Board board;
 	private int sideWidth, topHeight, sqDim;
 
-	public Game(int sW, int tH, int sD) {
+	public Game(Graphics g, int sW, int tH, int sD) {
+		this.g = g;
 		setTurn("white");
 		board = new Board();
 		this.sideWidth = sW;
@@ -55,11 +57,11 @@ public class Game {
 		return null;
 	}
 
-	public void paintGame(Graphics g) {
+	public void paintGame() {
 		//TODO
-		drawBoard(g);
+		drawBoard();
 	}
-	private void drawBoard(Graphics g) {
+	private void drawBoard() {
 		g.setColor(Color.DARK_GRAY);
 		g.drawRect(sideWidth, topHeight, sqDim*8, sqDim*8);
 		for (int i = 0; i < 4; i++) {

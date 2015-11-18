@@ -55,9 +55,9 @@ public class Game {
 		return null;
 	}
 
-	public void paintGame(Graphics g) {
+	public void paintGame() {
 		//TODO
-		drawBoard(g);
+		drawBoard();
 	}
 	private void drawBoard(Graphics g) {
 		g.setColor(Color.DARK_GRAY);
