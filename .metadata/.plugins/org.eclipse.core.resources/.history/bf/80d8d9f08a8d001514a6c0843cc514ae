@@ -1,0 +1,161 @@
+package camden.ivarcode.net;
+
+import java.awt.Graphics;
+
+public class Game {
+
+	private Piece currentPiece;
+	private Graphics g;
+	private String turn;
+	private Board board;
+
+	public Game(Graphics g) {
+		this.g = g;
+		setTurn("white");
+		loadPieceImages();
+		board = new Board();
+	}
+	private void loadPieceImages() {
+		try {
+			bRooki = ImageIO.read(new URL(
+					"http://www.ivarcode.net/apps/chessgame/assets/b_Rook.png"));
+		} catch (IOException e) {
+			System.out.println("ERROR: img not found"); }
+		try {
+			wRooki = ImageIO.read(new URL(
+					"http://www.ivarcode.net/apps/chessgame/assets/w_Rook.png"));
+		} catch (IOException e) {
+			System.out.println("ERROR: img not found"); }
+		try {
+			bKnighti = ImageIO.read(new URL(
+					"http://www.ivarcode.net/apps/chessgame/assets/b_Knight.png"));
+		} catch (IOException e) {
+			System.out.println("ERROR: img not found"); }
+		try {
+			wKnighti = ImageIO.read(new URL(
+					"http://www.ivarcode.net/apps/chessgame/assets/w_Knight.png"));
+		} catch (IOException e) {
+			System.out.println("ERROR: img not found"); }
+		try {
+			bBishopi = ImageIO.read(new URL(
+					"http://www.ivarcode.net/apps/chessgame/assets/b_Bishop.png"));
+		} catch (IOException e) {
+			System.out.println("ERROR: img not found"); }
+		try {
+			wBishopi = ImageIO.read(new URL(
+					"http://www.ivarcode.net/apps/chessgame/assets/w_Bishop.png"));
+		} catch (IOException e) {
+			System.out.println("ERROR: img not found"); }
+		try {
+			bQueeni = ImageIO.read(new URL(
+					"http://www.ivarcode.net/apps/chessgame/assets/b_Queen.png"));
+		} catch (IOException e) {
+			System.out.println("ERROR: img not found"); }
+		try {
+			wQueeni = ImageIO.read(new URL(
+					"http://www.ivarcode.net/apps/chessgame/assets/w_Queen.png"));
+		} catch (IOException e) {
+			System.out.println("ERROR: img not found"); }
+		try {
+			bKingi = ImageIO.read(new URL(
+					"http://www.ivarcode.net/apps/chessgame/assets/b_King.png"));
+		} catch (IOException e) {
+			System.out.println("ERROR: img not found"); }
+		try {
+			wKingi = ImageIO.read(new URL(
+					"http://www.ivarcode.net/apps/chessgame/assets/w_King.png"));
+		} catch (IOException e) {
+			System.out.println("ERROR: img not found"); }
+		try {
+			bPawni = ImageIO.read(new URL(
+					"http://www.ivarcode.net/apps/chessgame/assets/b_Pawn.png"));
+		} catch (IOException e) {
+			System.out.println("ERROR: img not found"); }
+		try {
+			wPawni = ImageIO.read(new URL(
+					"http://www.ivarcode.net/apps/chessgame/assets/w_Pawn.png"));
+		} catch (IOException e) {
+			System.out.println("ERROR: img not found"); }
+	}
+	private Piece[] loadPieces() {
+		Piece[] pieces = new Piece[32];
+
+		wKing = new King(new Location('e',0), "white", wKingi);
+		wQueen = new Queen(new Location('d',0), "white", wQueeni);
+		wBishop1 = new Bishop(new Location('c',0), "white", wBishopi);
+		wBishop2 = new Bishop(new Location('f',0), "white", wBishopi);
+		wKnight1 = new Knight(new Location('b',0), "white", wKnighti);
+		wKnight2 = new Knight(new Location('g',0), "white", wKnighti);
+		wRook1 = new Rook(new Location('a',0), "white", wRooki);
+		wRook2 = new Rook(new Location('h',0), "white", wRooki);
+		wPawn1 = new Pawn(new Location('a',1), "white", wPawni);
+		wPawn2 = new Pawn(new Location('b',1), "white", wPawni);
+		wPawn3 = new Pawn(new Location('c',1), "white", wPawni);
+		wPawn4 = new Pawn(new Location('d',1), "white", wPawni);
+		wPawn5 = new Pawn(new Location('e',1), "white", wPawni);
+		wPawn6 = new Pawn(new Location('f',1), "white", wPawni);
+		wPawn7 = new Pawn(new Location('g',1), "white", wPawni);
+		wPawn8 = new Pawn(new Location('h',1), "white", wPawni);
+
+		bKing = new King(new Location('e',7), "black", bKingi);
+		bQueen = new Queen(new Location('d',7), "black", bQueeni);
+		bBishop1 = new Bishop(new Location('c',7), "black", bBishopi);
+		bBishop2 = new Bishop(new Location('f',7), "black", bBishopi);
+		bKnight1 = new Knight(new Location('b',7), "black", bKnighti);
+		bKnight2 = new Knight(new Location('g',7), "black", bKnighti);
+		bRook1 = new Rook(new Location('a',7), "black", bRooki);
+		bRook2 = new Rook(new Location('h',7), "black", bRooki);
+		bPawn1 = new Pawn(new Location('a',6), "black", bPawni);
+		bPawn2 = new Pawn(new Location('b',6), "black", bPawni);
+		bPawn3 = new Pawn(new Location('c',6), "black", bPawni);
+		bPawn4 = new Pawn(new Location('d',6), "black", bPawni);
+		bPawn5 = new Pawn(new Location('e',6), "black", bPawni);
+		bPawn6 = new Pawn(new Location('f',6), "black", bPawni);
+		bPawn7 = new Pawn(new Location('g',6), "black", bPawni);
+		bPawn8 = new Pawn(new Location('h',6), "black", bPawni);
+
+		return pieces;
+	}
+
+	public String getTurn() {
+		return turn;
+	}
+	public void setTurn(String turn) {
+		this.turn = turn;
+	}
+	public Piece getCurrentPiece() {
+		return currentPiece;
+	}
+	public void setCurrentPiece(Piece currentPiece) {
+		this.currentPiece = currentPiece;
+	}
+
+
+	public void play() {
+		//TODO		
+
+	}
+
+	public void changeTurn() {
+		if (getTurn().equals("white")) {
+			setTurn("black");
+		} else {
+			setTurn("white");
+		}
+	}
+
+	public void makeMove(Location src, Location dest) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public Piece findPiece(Location src) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void paintGame() {
+
+	}
+
+}

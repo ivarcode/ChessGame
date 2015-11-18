@@ -6,17 +6,13 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import camden.ivarcode.net.piece.*;
-
 public class Board {
 
 	private Image wKingi, bKingi, wQueeni, bQueeni, wBishopi, bBishopi,
 	wKnighti, bKnighti, wRooki, bRooki, wPawni, bPawni;
 
+
 	public Board(Piece[] pieces) {
-		loadPieceImages();
-		
-		
 		//TODO
 	}
 
@@ -85,39 +81,39 @@ public class Board {
 	private Piece[] loadPieces() {
 		Piece[] pieces = new Piece[32];
 
-		pieces[0] = new King(new Location('e',0), "white", wKingi);
-		pieces[1] = new Queen(new Location('d',0), "white", wQueeni);
-		pieces[2] = new Bishop(new Location('c',0), "white", wBishopi);
-		pieces[3] = new Bishop(new Location('f',0), "white", wBishopi);
-		pieces[4] = new Knight(new Location('b',0), "white", wKnighti);
-		pieces[5] = new Knight(new Location('g',0), "white", wKnighti);
-		pieces[6] = new Rook(new Location('a',0), "white", wRooki);
-		pieces[7] = new Rook(new Location('h',0), "white", wRooki);
-		pieces[8] = new Pawn(new Location('a',1), "white", wPawni);
-		pieces[9] = new Pawn(new Location('b',1), "white", wPawni);
-		pieces[10] = new Pawn(new Location('c',1), "white", wPawni);
-		pieces[11] = new Pawn(new Location('d',1), "white", wPawni);
-		pieces[12] = new Pawn(new Location('e',1), "white", wPawni);
-		pieces[13] = new Pawn(new Location('f',1), "white", wPawni);
-		pieces[14] = new Pawn(new Location('g',1), "white", wPawni);
-		pieces[15] = new Pawn(new Location('h',1), "white", wPawni);
+		whiteKing = new King(new Location('e',0), "white", wKingi);
+		whiteQueen = new Queen(new Location('d',0), "white", wQueeni);
+		whiteBishop1 = new Bishop(new Location('c',0), "white", wBishopi);
+		whiteBishop2 = new Bishop(new Location('f',0), "white", wBishopi);
+		whiteKnight1 = new Knight(new Location('b',0), "white", wKnighti);
+		whiteKnight2 = new Knight(new Location('g',0), "white", wKnighti);
+		whiteRook1 = new Rook(new Location('a',0), "white", wRooki);
+		whiteRook2 = new Rook(new Location('h',0), "white", wRooki);
+		whitePawn1 = new Pawn(new Location('a',1), "white", wPawni);
+		whitePawn2 = new Pawn(new Location('b',1), "white", wPawni);
+		whitePawn3 = new Pawn(new Location('c',1), "white", wPawni);
+		whitePawn4 = new Pawn(new Location('d',1), "white", wPawni);
+		whitePawn5 = new Pawn(new Location('e',1), "white", wPawni);
+		whitePawn6 = new Pawn(new Location('f',1), "white", wPawni);
+		whitePawn7 = new Pawn(new Location('g',1), "white", wPawni);
+		whitePawn8 = new Pawn(new Location('h',1), "white", wPawni);
 
-		pieces[16] = new King(new Location('e',7), "black", bKingi);
-		pieces[17] = new Queen(new Location('d',7), "black", bQueeni);
-		pieces[18] = new Bishop(new Location('c',7), "black", bBishopi);
-		pieces[19] = new Bishop(new Location('f',7), "black", bBishopi);
-		pieces[20] = new Knight(new Location('b',7), "black", bKnighti);
-		pieces[21] = new Knight(new Location('g',7), "black", bKnighti);
-		pieces[22] = new Rook(new Location('a',7), "black", bRooki);
-		pieces[23] = new Rook(new Location('h',7), "black", bRooki);
-		pieces[24] = new Pawn(new Location('a',6), "black", bPawni);
-		pieces[25] = new Pawn(new Location('b',6), "black", bPawni);
-		pieces[26] = new Pawn(new Location('c',6), "black", bPawni);
-		pieces[27] = new Pawn(new Location('d',6), "black", bPawni);
-		pieces[28] = new Pawn(new Location('e',6), "black", bPawni);
-		pieces[29] = new Pawn(new Location('f',6), "black", bPawni);
-		pieces[30] = new Pawn(new Location('g',6), "black", bPawni);
-		pieces[31] = new Pawn(new Location('h',6), "black", bPawni);
+		blackKing = new King(new Location('e',7), "black", bKingi);
+		blackQueen = new Queen(new Location('d',7), "black", bQueeni);
+		blackBishop1 = new Bishop(new Location('c',7), "black", bBishopi);
+		blackBishop2 = new Bishop(new Location('f',7), "black", bBishopi);
+		blackKnight1 = new Knight(new Location('b',7), "black", bKnighti);
+		blackKnight2 = new Knight(new Location('g',7), "black", bKnighti);
+		blackRook1 = new Rook(new Location('a',7), "black", bRooki);
+		blackRook2 = new Rook(new Location('h',7), "black", bRooki);
+		blackPawn1 = new Pawn(new Location('a',6), "black", bPawni);
+		blackPawn2 = new Pawn(new Location('b',6), "black", bPawni);
+		blackPawn3 = new Pawn(new Location('c',6), "black", bPawni);
+		blackPawn4 = new Pawn(new Location('d',6), "black", bPawni);
+		blackPawn5 = new Pawn(new Location('e',6), "black", bPawni);
+		blackPawn6 = new Pawn(new Location('f',6), "black", bPawni);
+		blackPawn7 = new Pawn(new Location('g',6), "black", bPawni);
+		blackPawn8 = new Pawn(new Location('h',6), "black", bPawni);
 
 		return pieces;
 	}

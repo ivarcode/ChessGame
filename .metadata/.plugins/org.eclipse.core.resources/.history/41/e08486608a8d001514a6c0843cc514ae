@@ -3,17 +3,23 @@ package camden.ivarcode.net;
 import java.awt.Graphics;
 
 public class Game {
-
+	
 	private Piece currentPiece;
 	private Graphics g;
 	private String turn;
 	private Board board;
-
+	
 	public Game(Graphics g) {
 		this.g = g;
 		setTurn("white");
-		loadPieceImages();
-		board = new Board();
+		board = new Board(loadPieces());
+	}
+	private Piece[] loadPieces() {
+		Piece[] pieces = new Piece[12];
+		
+		//TODO
+		
+		return pieces;
 	}
 	
 	public String getTurn() {
@@ -28,13 +34,13 @@ public class Game {
 	public void setCurrentPiece(Piece currentPiece) {
 		this.currentPiece = currentPiece;
 	}
-
+	
 
 	public void play() {
 		//TODO		
-
+		
 	}
-
+	
 	public void changeTurn() {
 		if (getTurn().equals("white")) {
 			setTurn("black");
@@ -45,16 +51,16 @@ public class Game {
 
 	public void makeMove(Location src, Location dest) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	public Piece findPiece(Location src) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	public void paintGame() {
-
+		
 	}
 
 }
