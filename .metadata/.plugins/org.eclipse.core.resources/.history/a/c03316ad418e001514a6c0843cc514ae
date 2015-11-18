@@ -41,7 +41,6 @@ public class Main extends JApplet {
 	private static int sideWidth = 150;
 	private static int topHeight = 50;
 	private Graphics g;
-	private Piece clickedPiece;
 	private Game game;
 	private Location src, dest;
 	boolean inDrag = false;
@@ -80,11 +79,8 @@ public class Main extends JApplet {
 				}
 				if (a != -1000 && b != -1000) {
 					src = new Location(a,b);
-					Piece nullPiece = new Piece();
 					if (game.getPiece(src) != null) {
-						clickedPiece = game.getPiece(src);
-					} else {
-						clickedPiece = nullPiece;
+			//			clickedPiece = game.findPiece(src);
 					}
 				}
 				inDrag = true;

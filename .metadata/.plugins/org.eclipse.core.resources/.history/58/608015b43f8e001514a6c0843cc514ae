@@ -51,7 +51,8 @@ public class Game {
 	}
 
 	public Piece getPiece(Location src) {
-		return board.getPiece(src);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public void drawBoard(Graphics g) {
@@ -69,7 +70,8 @@ public class Game {
 		}
 	}
 	private void drawPiece(Graphics g) {
-			
+		
+		
 		
 	}
 

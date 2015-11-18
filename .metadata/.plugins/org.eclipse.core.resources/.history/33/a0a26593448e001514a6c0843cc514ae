@@ -69,7 +69,8 @@ public class Game {
 		}
 	}
 	private void drawPiece(Graphics g) {
-			
+		
+		
 		
 	}
 

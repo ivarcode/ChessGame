@@ -23,7 +23,6 @@ public class Board {
 	}
 
 	private void print() {
-		System.out.println("------------------------");
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				if (board[i][j] instanceof King) {
@@ -32,35 +31,35 @@ public class Board {
 					} else {
 						System.out.print("[k]");
 					}
-				} else if (board[i][j] instanceof Queen) {
+				} else if (board[i][j] instanceof King) {
 					if (board[i][j].getColor().equals("white")) {
-						System.out.print("[Q]");
+						System.out.print("[K]");
 					} else {
-						System.out.print("[q]");
+						System.out.print("[k]");
 					}
-				} else if (board[i][j] instanceof Bishop) {
+				} else if (board[i][j] instanceof King) {
 					if (board[i][j].getColor().equals("white")) {
-						System.out.print("[B]");
+						System.out.print("[K]");
 					} else {
-						System.out.print("[b]");
+						System.out.print("[k]");
 					}
-				} else if (board[i][j] instanceof Knight) {
+				} else if (board[i][j] instanceof King) {
 					if (board[i][j].getColor().equals("white")) {
-						System.out.print("[N]");
+						System.out.print("[K]");
 					} else {
-						System.out.print("[n]");
+						System.out.print("[k]");
 					}
-				} else if (board[i][j] instanceof Rook) {
+				} else if (board[i][j] instanceof King) {
 					if (board[i][j].getColor().equals("white")) {
-						System.out.print("[R]");
+						System.out.print("[K]");
 					} else {
-						System.out.print("[r]");
+						System.out.print("[k]");
 					}
-				} else if (board[i][j] instanceof Pawn) {
+				} else if (board[i][j] instanceof King) {
 					if (board[i][j].getColor().equals("white")) {
-						System.out.print("[P]");
+						System.out.print("[K]");
 					} else {
-						System.out.print("[p]");
+						System.out.print("[k]");
 					}
 				} else {
 					System.out.print("[ ]");
@@ -68,7 +67,6 @@ public class Board {
 			}
 			System.out.println();
 		}
-		System.out.println("------------------------");
 	}
 
 	public Piece getPiece(Location src) {

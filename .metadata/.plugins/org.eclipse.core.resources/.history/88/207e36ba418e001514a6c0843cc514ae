@@ -80,11 +80,8 @@ public class Main extends JApplet {
 				}
 				if (a != -1000 && b != -1000) {
 					src = new Location(a,b);
-					Piece nullPiece = new Piece();
 					if (game.getPiece(src) != null) {
-						clickedPiece = game.getPiece(src);
-					} else {
-						clickedPiece = nullPiece;
+						clickedPiece = game.findPiece(src);
 					}
 				}
 				inDrag = true;
