@@ -23,9 +23,8 @@ public class Board {
 	}
 
 	public Piece getPiece(Location src) {
-		return board[src.getFileByInt()][src.getRank()];
+		
 	}
-	
 	public void movePiece(Location src, Location dest) {
 		
 	}

@@ -22,14 +22,6 @@ public class Board {
 		//TODO
 	}
 
-	public Piece getPiece(Location src) {
-		return board[src.getFileByInt()][src.getRank()];
-	}
-	
-	public void movePiece(Location src, Location dest) {
-		
-	}
-	
 	private void loadPieceImages() {
 		try {
 			bRooki = ImageIO.read(new URL(

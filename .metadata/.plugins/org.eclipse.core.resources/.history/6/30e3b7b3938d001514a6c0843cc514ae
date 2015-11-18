@@ -14,7 +14,7 @@ public class Game {
 		setTurn("white");
 		board = new Board();
 	}
-	//Getters & Setters
+	
 	public String getTurn() {
 		return turn;
 	}
@@ -27,7 +27,7 @@ public class Game {
 	public void setCurrentPiece(Piece currentPiece) {
 		this.currentPiece = currentPiece;
 	}
-	//
+
 
 	public void play() {
 		//TODO	do I need this?	
@@ -53,7 +53,7 @@ public class Game {
 	}
 
 	public void paintGame() {
-		//TODO
+
 	}
 
 }

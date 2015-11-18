@@ -14,7 +14,7 @@ public class Board {
 	private Image wKingi, bKingi, wQueeni, bQueeni, wBishopi, bBishopi,
 	wKnighti, bKnighti, wRooki, bRooki, wPawni, bPawni;
 
-	public Board() {
+	public Board(Piece[] pieces) {
 		board = new Piece[8][8];
 		loadPieceImages();
 		loadPieces();
@@ -22,14 +22,6 @@ public class Board {
 		//TODO
 	}
 
-	public Piece getPiece(Location src) {
-		return board[src.getFileByInt()][src.getRank()];
-	}
-	
-	public void movePiece(Location src, Location dest) {
-		
-	}
-	
 	private void loadPieceImages() {
 		try {
 			bRooki = ImageIO.read(new URL(
