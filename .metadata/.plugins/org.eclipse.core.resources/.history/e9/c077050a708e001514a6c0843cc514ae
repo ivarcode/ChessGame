@@ -37,7 +37,6 @@ public class Main extends JApplet {
 	 * private static String currentDirectory = new File("").getAbsolutePath();
 	 */
 
-	private boolean refresh_full_board;
 	private static int sqDim = 60;
 	private static int sideWidth = 150;
 	private static int topHeight = 50;
@@ -50,9 +49,7 @@ public class Main extends JApplet {
 
 	public void init() {
 
-		refresh_full_board = true;
 		game = new Game(sideWidth, topHeight, sqDim);
-		refresh_full_board = false;
 
 		addMouseListener(new MouseAdapter() {
 			int a = -1000, b = -1000;
@@ -106,7 +103,7 @@ public class Main extends JApplet {
 				d = -1000;
 				clickedPiece = nullPiece;
 				
-				repaint();
+				confirmPieceMovement();
 
 				// When mouse is released, clear inDrag (to
 				// indicate no drag in progress) if inDrag is
