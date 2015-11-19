@@ -46,7 +46,6 @@ public class Game {
 	public void makeMove(Location src, Location dest) {
 		// TODO Auto-generated method stub
 		System.out.println("making move");
-		board.movePiece(src, dest);
 	}
 
 	public void drawBoard(Graphics g) {

@@ -35,6 +35,11 @@ public class Game {
 	}
 	//
 
+	public void play() {
+		//TODO	do I need this?	
+
+	}
+
 	public void changeTurn() {
 		if (getTurn().equals("white")) {
 			setTurn("black");
@@ -46,7 +51,6 @@ public class Game {
 	public void makeMove(Location src, Location dest) {
 		// TODO Auto-generated method stub
 		System.out.println("making move");
-		board.movePiece(src, dest);
 	}
 
 	public void drawBoard(Graphics g) {
@@ -86,9 +90,9 @@ public class Game {
 	}
 	public void drawSquareTinted(Graphics g, Location loc) {
 		if ((loc.getFileByInt()+loc.getRank())%2 == 0) {
-			g.setColor(Color.YELLOW); // TODO change
+			g.setColor(Color.YELLOW); // to change
 		} else {
-			g.setColor(Color.YELLOW); // TODO change
+			g.setColor(Color.YELLOW); // to change
 		}
 		g.fillRect(sideWidth+(sqDim*loc.getFileByInt()), 
 				topHeight+(sqDim*(7-loc.getRank())), 

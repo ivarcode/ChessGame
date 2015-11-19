@@ -40,6 +40,7 @@ public class Main extends JApplet {
 	private static int sqDim = 60;
 	private static int sideWidth = 150;
 	private static int topHeight = 50;
+	private Graphics g;
 	private Piece clickedPiece;
 	private Game game;
 	private Location src, dest;
@@ -149,7 +150,7 @@ public class Main extends JApplet {
 								b != dest.getRank()) {
 							old_dest = dest;
 							dest = new Location(a,b);
-							//System.out.println(a + " " + b);
+							System.out.println(a + " " + b);
 							repaint();
 						}
 					}
@@ -163,7 +164,7 @@ public class Main extends JApplet {
 		if (inDrag) {
 			updateSquares(g);
 		} else {
-			//System.out.println("PAINTING NOW");
+			System.out.println("PAINTING NOW");
 			Dimension d = getSize();
 			g.setColor(Color.WHITE);
 			g.fillRect(0, 0, d.width, d.height);

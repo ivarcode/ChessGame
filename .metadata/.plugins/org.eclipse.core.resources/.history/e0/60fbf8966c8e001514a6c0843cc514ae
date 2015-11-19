@@ -76,11 +76,7 @@ public class Board {
 	}
 	
 	public void movePiece(Location src, Location dest) {
-		if (getPiece(dest) != null) {
-			//TODO move to captured pieces column/s
-		}
-		placePiece(getPiece(src),dest);
-		placePiece(null,src);
+		
 	}
 	
 	public void placePiece(Piece piece, Location loc) {

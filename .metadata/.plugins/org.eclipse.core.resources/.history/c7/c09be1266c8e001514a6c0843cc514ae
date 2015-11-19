@@ -149,7 +149,7 @@ public class Main extends JApplet {
 								b != dest.getRank()) {
 							old_dest = dest;
 							dest = new Location(a,b);
-							//System.out.println(a + " " + b);
+							System.out.println(a + " " + b);
 							repaint();
 						}
 					}
