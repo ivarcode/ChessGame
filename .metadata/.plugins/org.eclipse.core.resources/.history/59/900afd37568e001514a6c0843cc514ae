@@ -73,8 +73,8 @@ public class Game {
 	public void drawPieceAt(Graphics g, Location loc, Location newloc) {
 		if (getPiece(loc) != null) {
 			g.drawImage(getPiece(loc).getImg(), 
-					sideWidth+(sqDim*newloc.getFileByInt()), 
-					topHeight+(sqDim*(7-newloc.getRank())), 
+					sideWidth+(sqDim*loc.getFileByInt()), 
+					topHeight+(sqDim*(7-loc.getRank())), 
 					null);
 		}
 	}
@@ -83,16 +83,6 @@ public class Game {
 			g.setColor(Color.DARK_GRAY);
 		} else {
 			g.setColor(Color.WHITE);
-		}
-		g.fillRect(sideWidth+(sqDim*loc.getFileByInt()), 
-				topHeight+(sqDim*(7-loc.getRank())), 
-				sqDim, sqDim);
-	}
-	public void drawSquareTinted(Graphics g, Location loc) {
-		if ((loc.getFileByInt()+loc.getRank())%2 == 0) {
-			g.setColor(Color.YELLOW); // to change
-		} else {
-			g.setColor(Color.YELLOW); // to change
 		}
 		g.fillRect(sideWidth+(sqDim*loc.getFileByInt()), 
 				topHeight+(sqDim*(7-loc.getRank())), 

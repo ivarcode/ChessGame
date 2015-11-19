@@ -90,9 +90,9 @@ public class Game {
 	}
 	public void drawSquareTinted(Graphics g, Location loc) {
 		if ((loc.getFileByInt()+loc.getRank())%2 == 0) {
-			g.setColor(Color.YELLOW); // to change
+			g.setColor(Color.YELLOW);
 		} else {
-			g.setColor(Color.YELLOW); // to change
+			g.setColor(Color.YELLOW);
 		}
 		g.fillRect(sideWidth+(sqDim*loc.getFileByInt()), 
 				topHeight+(sqDim*(7-loc.getRank())), 

@@ -150,7 +150,6 @@ public class Main extends JApplet {
 								b != dest.getRank()) {
 							old_dest = dest;
 							dest = new Location(a,b);
-							System.out.println(a + " " + b);
 							repaint();
 						}
 					}
@@ -161,16 +160,12 @@ public class Main extends JApplet {
 	}
 
 	public void paint(Graphics g) {
-		if (inDrag) {
-			updateSquares(g);
-		} else {
-			System.out.println("PAINTING NOW");
-			Dimension d = getSize();
-			g.setColor(Color.WHITE);
-			g.fillRect(0, 0, d.width, d.height);
-			game.drawBoard(g);
-			drawPieces(g);
-		}
+		Dimension d = getSize();
+		g.setColor(Color.WHITE);
+		g.fillRect(0, 0, d.width, d.height);
+		System.out.println("PAINTING NOW");
+		game.drawBoard(g);
+		drawPieces(g);
 	}
 	private void drawPieces(Graphics g) {
 		Location loc;
@@ -184,11 +179,10 @@ public class Main extends JApplet {
 		}
 	}
 
-	public void updateSquares(Graphics g) {
+	public void update() {
 		game.drawSquare(g, old_dest);
-		game.drawSquareTinted(g, dest);
+		game.drawSquare(g, dest);
 		game.drawPiece(g, old_dest);
-		game.drawSquare(g, src);
-		game.drawPieceAt(g, src, dest);
+		game.drawPiece(g, dest);
 	}
 }

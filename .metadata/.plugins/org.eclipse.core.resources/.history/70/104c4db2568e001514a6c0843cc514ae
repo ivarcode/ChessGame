@@ -186,7 +186,7 @@ public class Main extends JApplet {
 
 	public void updateSquares(Graphics g) {
 		game.drawSquare(g, old_dest);
-		game.drawSquareTinted(g, dest);
+		game.drawSquare(g, dest);
 		game.drawPiece(g, old_dest);
 		game.drawSquare(g, src);
 		game.drawPieceAt(g, src, dest);
