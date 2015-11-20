@@ -688,9 +688,6 @@ public class Game {
 			file--;
 			rank--;
 		}
-		
-		file = loc.getFileByInt();
-		rank = loc.getRank();
 	}
 
 	//Draw
