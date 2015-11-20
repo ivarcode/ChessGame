@@ -697,18 +697,7 @@ public class Game {
 		file = loc.getFileByInt();
 		rank = loc.getRank();
 
-		if (getPiece(new Location(file+1,rank)) instanceof King
-				|| getPiece(new Location(file-1,rank)) instanceof King
-				|| getPiece(new Location(file,rank+1)) instanceof King
-				|| getPiece(new Location(file,rank-1)) instanceof King
-				|| getPiece(new Location(file+1,rank+1)) instanceof King
-				|| getPiece(new Location(file+1,rank-1)) instanceof King
-				|| getPiece(new Location(file-1,rank+1)) instanceof King
-				|| getPiece(new Location(file-1,rank-1)) instanceof King) {
-			return true;
-		}
-		
-		
+		if (getPiece(new Location(file,rank)))
 
 	}
 
