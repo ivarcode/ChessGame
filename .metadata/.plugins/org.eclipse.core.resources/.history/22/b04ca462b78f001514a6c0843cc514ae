@@ -577,13 +577,12 @@ public class Game {
 		}
 		if (loc == null) {
 			System.out.println("NO [" + turn + "] KING ON BOARD");
-			return false;
+			return 
 		}
 		boolean check = false;
 		int file, rank;
 		file = loc.getFileByInt();
 		rank = loc.getRank();
-		
 	}
 
 	//Draw

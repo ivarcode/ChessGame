@@ -565,7 +565,7 @@ public class Game {
 	//
 	
 	private boolean kingInCheck() {
-		Location loc = null;
+		Location loc;
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				if (getPiece(new Location(i,j)) instanceof King &&
@@ -575,15 +575,11 @@ public class Game {
 				}
 			}
 		}
-		if (loc == null) {
-			System.out.println("NO [" + turn + "] KING ON BOARD");
-			return false;
+		if (true) {
+			
+		} else {
+			
 		}
-		boolean check = false;
-		int file, rank;
-		file = loc.getFileByInt();
-		rank = loc.getRank();
-		
 	}
 
 	//Draw
