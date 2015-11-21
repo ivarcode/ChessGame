@@ -696,7 +696,7 @@ public class Game {
 
 		file = loc.getFileByInt();
 		rank = loc.getRank();
-
+		
 		//King
 		if (getPiece(new Location(file+1,rank)) instanceof King
 				|| getPiece(new Location(file-1,rank)) instanceof King
@@ -708,7 +708,7 @@ public class Game {
 				|| getPiece(new Location(file-1,rank-1)) instanceof King) {
 			return true;
 		}
-
+		
 		//Knight
 		if ((getPiece(new Location(file+1,rank+2)) instanceof Knight &&
 				getPiece(new Location(file+1,rank+2)).getColor() != turn)
@@ -730,21 +730,7 @@ public class Game {
 		}
 
 		//Pawn
-		if (turn == "white") {
-			if ((getPiece(new Location(file+1,rank+1)) instanceof Pawn &&
-					getPiece(new Location(file+1,rank+1)).getColor() != turn)
-					|| (getPiece(new Location(file-1,rank+1)) instanceof Pawn &&
-							getPiece(new Location(file-1,rank+1)).getColor() != turn)) {
-				return true;
-			}
-		} else {
-			if ((getPiece(new Location(file+1,rank-1)) instanceof Pawn &&
-					getPiece(new Location(file+1,rank-1)).getColor() != turn)
-					|| (getPiece(new Location(file-1,rank-1)) instanceof Pawn &&
-							getPiece(new Location(file-1,rank-1)).getColor() != turn)) {
-				return true;
-			}
-		}
+				
 
 		return false;
 	}

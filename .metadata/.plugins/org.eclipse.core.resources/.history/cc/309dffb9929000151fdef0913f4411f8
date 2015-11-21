@@ -738,12 +738,7 @@ public class Game {
 				return true;
 			}
 		} else {
-			if ((getPiece(new Location(file+1,rank-1)) instanceof Pawn &&
-					getPiece(new Location(file+1,rank-1)).getColor() != turn)
-					|| (getPiece(new Location(file-1,rank-1)) instanceof Pawn &&
-							getPiece(new Location(file-1,rank-1)).getColor() != turn)) {
-				return true;
-			}
+
 		}
 
 		return false;
