@@ -2,17 +2,25 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="white" key="selection"/>
+		<item value="l" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="l.getFileByInt(),l.getRank()"/>
+			<item value="l.getFileByInt(), l.getRank()"/>
+			<item value="j"/>
+			<item value="pieces"/>
 			<item value="white"/>
 			<item value="arr.add(l);"/>
 			<item value="mouseX"/>
 		</list>
 		<list key="replacehistory">
+			<item value="l"/>
+			<item value="7-j"/>
+			<item value="board"/>
+			<item value="boardd"/>
 			<item value="black"/>
 			<item value="arr.add(new Move(loc,l));"/>
 		</list>
