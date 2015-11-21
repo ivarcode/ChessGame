@@ -722,14 +722,11 @@ public class Game {
 						getPiece(new Location(file-1,rank-2)).getColor() != turn)
 				|| (getPiece(new Location(file-2,rank+1)) instanceof Knight &&
 						getPiece(new Location(file-2,rank+1)).getColor() != turn)
-				|| (getPiece(new Location(file-2,rank-1)) instanceof Knight &&
-						getPiece(new Location(file-2,rank-1)).getColor() != turn)) {
-			return true;
+				|| (getPiece(new Location(file-2,rank+2)) instanceof Knight &&
+						getPiece(new Location(file-2,rank+2)).getColor() != turn)) {
+			
 		}
-		
-				
-		
-		return false;
+
 	}
 
 	//Draw

@@ -726,10 +726,7 @@ public class Game {
 						getPiece(new Location(file-2,rank-1)).getColor() != turn)) {
 			return true;
 		}
-		
-				
-		
-		return false;
+
 	}
 
 	//Draw
