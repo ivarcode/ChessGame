@@ -46,7 +46,6 @@ public class Game {
 		} else {
 			setTurn("white");
 		}
-		System.out.println(turn + " turn");
 	}
 	//
 
