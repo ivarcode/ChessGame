@@ -13,6 +13,8 @@ public class Board {
 	private Piece[][] board;
 	private BufferedImage wKingi, bKingi, wQueeni, bQueeni, wBishopi, bBishopi,
 	wKnighti, bKnighti, wRooki, bRooki, wPawni, bPawni;
+	private Location lastSrc, lastDest;
+	private Piece lastCapPiece;
 
 	public Board() {
 		board = new Piece[8][8];
@@ -76,11 +78,18 @@ public class Board {
 	}
 	
 	public void movePiece(Location src, Location dest) {
+		lastCapPiece = getPiece(dest);
+		lastSrc = src;
+		lastDest = dest;
 		if (getPiece(dest) != null) {
 			//TODO move to captured pieces column/s
 		}
 		placePiece(getPiece(src),dest);
 		placePiece(null,src);
+	}
+	public void takeBack() {
+		placePiece(getPiece(lastDest),lastSrc);
+		placePiece(lastCapPiece,lastDest);
 	}
 	
 	public void placePiece(Piece piece, Location loc) {

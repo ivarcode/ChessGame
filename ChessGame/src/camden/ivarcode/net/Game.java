@@ -95,7 +95,9 @@ public class Game {
 				}
 			}
 		}
-		
+		for (int i = 0; i < moves.size(); i++) {
+			
+		}
 		return moves;
 	}
 
