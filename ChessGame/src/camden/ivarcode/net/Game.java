@@ -66,7 +66,7 @@ public class Game {
 					src.getRank() == moves.get(i).getSrc().getRank() && 
 					dest.getFile() == moves.get(i).getDest().getFile() && 
 					dest.getRank() == moves.get(i).getDest().getRank()) {
-				return !kingInCheck();
+				return true;
 			}
 		}
 		return false;
@@ -95,6 +95,7 @@ public class Game {
 				}
 			}
 		}
+		
 		return moves;
 	}
 

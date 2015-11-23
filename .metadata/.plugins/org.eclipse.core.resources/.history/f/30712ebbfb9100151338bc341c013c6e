@@ -21,7 +21,12 @@ public class Game {
 	}
 	//Getters & Setters
 	public Piece getPiece(Location src) {
-		return board.getPiece(src);
+		if (src.getFileByInt() < 8 && src.getFileByInt() > -1
+				&& src.getRank() < 8 && src.getRank() > -1) {
+			return board.getPiece(src);
+		} else {
+			return null;
+		}
 	}
 	public String getTurn() {
 		return turn;
@@ -41,6 +46,7 @@ public class Game {
 		} else {
 			setTurn("white");
 		}
+		System.out.println(turn + " turn");
 	}
 	//
 
@@ -91,7 +97,7 @@ public class Game {
 		}
 		return moves;
 	}
-	
+
 	//PieceMoves
 	private ArrayList<Move> kingMoves(Location loc) {
 		ArrayList<Move> arr = new ArrayList<Move>();
@@ -104,7 +110,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (file+1 < 8 && rank-1 > -1) {
@@ -113,7 +121,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (file+1 < 8) {
@@ -122,7 +132,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (rank+1 < 8) {
@@ -131,7 +143,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (rank-1 > -1) {
@@ -140,7 +154,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (file-1 > -1 && rank+1 < 8) {
@@ -149,7 +165,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (file-1 > -1 && rank-1 > -1) {
@@ -158,7 +176,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (file-1 > -1) {
@@ -167,7 +187,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 
@@ -286,7 +308,12 @@ public class Game {
 			}
 			temprank--;
 		}
-
+		
+		//print
+		for (int i = 0; i < arr.size(); i++) {
+			arr.get(i).print();
+		}
+		
 		return arr;
 	}
 	private ArrayList<Move> bishopMoves(Location loc) {
@@ -547,6 +574,186 @@ public class Game {
 		return arr;
 	}
 	//
+
+	private boolean kingInCheck() {
+		Location loc = null;
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				if (getPiece(new Location(i,j)) instanceof King &&
+						getPiece(new Location(i,j)).getColor() == turn) {
+					loc = new Location(i,j);
+					break;
+				}
+			}
+		}
+		if (loc == null) {
+			System.out.println("NO [" + turn + "] KING ON BOARD");
+			return false;
+		}
+		int file, rank;
+		file = loc.getFileByInt()+1;
+		rank = loc.getRank();
+		while (file < 8) {
+			if (getPiece(new Location(file,rank)) instanceof Queen ||
+					getPiece(new Location(file,rank)) instanceof Rook) {
+				if (getPiece(new Location(file,rank)).getColor() == turn) {
+					break;
+				} else {
+					return true;
+				}
+			}
+			file++;
+		}
+		file = loc.getFileByInt()-1;
+		rank = loc.getRank();
+		while (file > -1) {
+			if (getPiece(new Location(file,rank)) instanceof Queen ||
+					getPiece(new Location(file,rank)) instanceof Rook) {
+				if (getPiece(new Location(file,rank)).getColor() == turn) {
+					break;
+				} else {
+					return true;
+				}
+			}
+			file--;
+		}
+		file = loc.getFileByInt();
+		rank = loc.getRank()+1;
+		while (rank < 8) {
+			if (getPiece(new Location(file,rank)) instanceof Queen ||
+					getPiece(new Location(file,rank)) instanceof Rook) {
+				if (getPiece(new Location(file,rank)).getColor() == turn) {
+					break;
+				} else {
+					return true;
+				}
+			}
+			rank++;
+		}
+		file = loc.getFileByInt();
+		rank = loc.getRank()-1;
+		while (rank > -1) {
+			if (getPiece(new Location(file,rank)) instanceof Queen ||
+					getPiece(new Location(file,rank)) instanceof Rook) {
+				if (getPiece(new Location(file,rank)).getColor() == turn) {
+					break;
+				} else {
+					return true;
+				}
+			}
+			rank--;
+		}
+		file = loc.getFileByInt()+1;
+		rank = loc.getRank()+1;
+		while (file < 8 && rank < 8) {
+			if (getPiece(new Location(file,rank)) instanceof Queen ||
+					getPiece(new Location(file,rank)) instanceof Bishop) {
+				if (getPiece(new Location(file,rank)).getColor() == turn) {
+					break;
+				} else {
+					return true;
+				}
+			}
+			file++;
+			rank++;
+		}
+		file = loc.getFileByInt()+1;
+		rank = loc.getRank()-1;
+		while (file < 8 && rank > -1) {
+			if (getPiece(new Location(file,rank)) instanceof Queen ||
+					getPiece(new Location(file,rank)) instanceof Bishop) {
+				if (getPiece(new Location(file,rank)).getColor() == turn) {
+					break;
+				} else {
+					return true;
+				}
+			}
+			file++;
+			rank--;
+		}
+		file = loc.getFileByInt()-1;
+		rank = loc.getRank()+1;
+		while (file > -1 && rank < 8) {
+			if (getPiece(new Location(file,rank)) instanceof Queen ||
+					getPiece(new Location(file,rank)) instanceof Bishop) {
+				if (getPiece(new Location(file,rank)).getColor() == turn) {
+					break;
+				} else {
+					return true;
+				}
+			}
+			file--;
+			rank++;
+		}
+		file = loc.getFileByInt()-1;
+		rank = loc.getRank()-1;
+		while (file > -1 && rank > -1) {
+			if (getPiece(new Location(file,rank)) instanceof Queen ||
+					getPiece(new Location(file,rank)) instanceof Bishop) {
+				if (getPiece(new Location(file,rank)).getColor() == turn) {
+					break;
+				} else {
+					return true;
+				}
+			}
+			file--;
+			rank--;
+		}
+
+		file = loc.getFileByInt();
+		rank = loc.getRank();
+
+		//King
+		if (getPiece(new Location(file+1,rank)) instanceof King
+				|| getPiece(new Location(file-1,rank)) instanceof King
+				|| getPiece(new Location(file,rank+1)) instanceof King
+				|| getPiece(new Location(file,rank-1)) instanceof King
+				|| getPiece(new Location(file+1,rank+1)) instanceof King
+				|| getPiece(new Location(file+1,rank-1)) instanceof King
+				|| getPiece(new Location(file-1,rank+1)) instanceof King
+				|| getPiece(new Location(file-1,rank-1)) instanceof King) {
+			return true;
+		}
+
+		//Knight
+		if ((getPiece(new Location(file+1,rank+2)) instanceof Knight &&
+				getPiece(new Location(file+1,rank+2)).getColor() != turn)
+				|| (getPiece(new Location(file+1,rank-2)) instanceof Knight &&
+						getPiece(new Location(file+1,rank-2)).getColor() != turn)
+				|| (getPiece(new Location(file+2,rank+1)) instanceof Knight &&
+						getPiece(new Location(file+2,rank+1)).getColor() != turn)
+				|| (getPiece(new Location(file+2,rank-1)) instanceof Knight &&
+						getPiece(new Location(file+2,rank-1)).getColor() != turn)
+				|| (getPiece(new Location(file-1,rank+2)) instanceof Knight &&
+						getPiece(new Location(file-1,rank+2)).getColor() != turn)
+				|| (getPiece(new Location(file-1,rank-2)) instanceof Knight &&
+						getPiece(new Location(file-1,rank-2)).getColor() != turn)
+				|| (getPiece(new Location(file-2,rank+1)) instanceof Knight &&
+						getPiece(new Location(file-2,rank+1)).getColor() != turn)
+				|| (getPiece(new Location(file-2,rank-1)) instanceof Knight &&
+						getPiece(new Location(file-2,rank-1)).getColor() != turn)) {
+			return true;
+		}
+
+		//Pawn
+		if (turn == "white") {
+			if ((getPiece(new Location(file+1,rank+1)) instanceof Pawn &&
+					getPiece(new Location(file+1,rank+1)).getColor() != turn)
+					|| (getPiece(new Location(file-1,rank+1)) instanceof Pawn &&
+							getPiece(new Location(file-1,rank+1)).getColor() != turn)) {
+				return true;
+			}
+		} else {
+			if ((getPiece(new Location(file+1,rank-1)) instanceof Pawn &&
+					getPiece(new Location(file+1,rank-1)).getColor() != turn)
+					|| (getPiece(new Location(file-1,rank-1)) instanceof Pawn &&
+							getPiece(new Location(file-1,rank-1)).getColor() != turn)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
 
 	//Draw
 	public void drawBoard(Graphics g) {
