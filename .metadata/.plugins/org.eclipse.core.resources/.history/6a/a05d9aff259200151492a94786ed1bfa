@@ -8,13 +8,13 @@ import camden.ivarcode.net.piece.*;
 public class Game {
 
 	private String turn;
-	private Board board, checkBoard;
+	private Board board, backupBoard;
 	private int sideWidth, topHeight, sqDim;
 
 	public Game(int sW, int tH, int sD) {
 		setTurn("white");
 		board = new Board();
-		checkBoard = new Board();
+		backupBoard = new Board();
 		this.sideWidth = sW;
 		this.topHeight = tH;
 		this.sqDim = sD;

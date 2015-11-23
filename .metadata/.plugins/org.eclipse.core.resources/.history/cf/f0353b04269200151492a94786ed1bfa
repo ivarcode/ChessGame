@@ -14,7 +14,7 @@ public class Game {
 	public Game(int sW, int tH, int sD) {
 		setTurn("white");
 		board = new Board();
-		checkBoard = new Board();
+		backupBoard = new Board();
 		this.sideWidth = sW;
 		this.topHeight = tH;
 		this.sqDim = sD;
