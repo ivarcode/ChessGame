@@ -15,7 +15,7 @@ public class Game {
 	public Game(int sW, int tH, int sD) {
 		setTurn("white");
 		board = new Board();
-		backupBoard = new Board();
+		testBoard = new Board();
 		this.sideWidth = sW;
 		this.topHeight = tH;
 		this.sqDim = sD;
@@ -69,14 +69,8 @@ public class Game {
 					dest.getFile() == moves.get(i).getDest().getFile() && 
 					dest.getRank() == moves.get(i).getDest().getRank()) {
 				boardCopy(board,backupBoard);
-				board.movePiece(src, dest);
-				changeTurn();
-				boolean kingInCheck = kingInCheck();
-				changeTurn();
-				boardCopy(backupBoard,board);
-				if (kingInCheck) {
-					return false;
-				}
+				backupBoard.movePiece(src, dest);
+				
 				return true;
 			}
 		}

@@ -72,10 +72,12 @@ public class Game {
 				board.movePiece(src, dest);
 				changeTurn();
 				boolean kingInCheck = kingInCheck();
-				changeTurn();
-				boardCopy(backupBoard,board);
 				if (kingInCheck) {
+					changeTurn();
+					boardCopy(backupBoard,board);
 					return false;
+				} else {
+					
 				}
 				return true;
 			}

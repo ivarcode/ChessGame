@@ -69,13 +69,13 @@ public class Game {
 					dest.getFile() == moves.get(i).getDest().getFile() && 
 					dest.getRank() == moves.get(i).getDest().getRank()) {
 				boardCopy(board,backupBoard);
-				board.movePiece(src, dest);
-				changeTurn();
-				boolean kingInCheck = kingInCheck();
-				changeTurn();
-				boardCopy(backupBoard,board);
-				if (kingInCheck) {
+				makeMove(src, dest);
+				if (kingInCheck()) {
+					changeTurn();
 					return false;
+					boardCopy(backupBoard,board);
+				} else {
+					
 				}
 				return true;
 			}

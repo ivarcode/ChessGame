@@ -9,13 +9,13 @@ public class Game {
 
 	private Piece currentPiece;
 	private String turn;
-	private Board board, backupBoard;
+	private Board board, testBoard;
 	private int sideWidth, topHeight, sqDim;
 
 	public Game(int sW, int tH, int sD) {
 		setTurn("white");
 		board = new Board();
-		backupBoard = new Board();
+		testBoard = new Board();
 		this.sideWidth = sW;
 		this.topHeight = tH;
 		this.sqDim = sD;
@@ -68,15 +68,7 @@ public class Game {
 					src.getRank() == moves.get(i).getSrc().getRank() && 
 					dest.getFile() == moves.get(i).getDest().getFile() && 
 					dest.getRank() == moves.get(i).getDest().getRank()) {
-				boardCopy(board,backupBoard);
-				board.movePiece(src, dest);
-				changeTurn();
-				boolean kingInCheck = kingInCheck();
-				changeTurn();
-				boardCopy(backupBoard,board);
-				if (kingInCheck) {
-					return false;
-				}
+				boardCopy(board,testBoard);
 				return true;
 			}
 		}
