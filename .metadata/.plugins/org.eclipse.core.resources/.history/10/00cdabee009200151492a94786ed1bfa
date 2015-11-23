@@ -95,15 +95,11 @@ public class Game {
 				}
 			}
 		}
-		
-		//TODO doesn't work
 		for (int i = 0; i < moves.size(); i++) {
 			board.movePiece(moves.get(i).getSrc(),moves.get(i).getDest());
 			boolean kingInCheck = kingInCheck();
 			board.takeBack();
-			if (kingInCheck) {
-				moves.remove(i);
-			}
+			
 		}
 		return moves;
 	}
