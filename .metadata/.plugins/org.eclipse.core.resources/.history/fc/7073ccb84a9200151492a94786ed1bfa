@@ -95,6 +95,16 @@ public class Game {
 				}
 			}
 		}
+
+		//TODO doesn't work
+		for (int i = 0; i < moves.size(); i++) {
+			board.movePiece(moves.get(i).getSrc(),moves.get(i).getDest());
+			boolean kingInCheck = kingInCheck();
+			board.takeBack();
+			if (kingInCheck) {
+				moves.remove(i);
+			}
+		}
 		return moves;
 	}
 
@@ -290,7 +300,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (file+1 < 8 && rank-1 > -1) {
@@ -299,7 +311,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (file+1 < 8) {
@@ -308,7 +322,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (rank+1 < 8) {
@@ -317,7 +333,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (rank-1 > -1) {
@@ -326,7 +344,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (file-1 > -1 && rank+1 < 8) {
@@ -335,7 +355,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (file-1 > -1 && rank-1 > -1) {
@@ -344,7 +366,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (file-1 > -1) {
@@ -353,7 +377,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 

@@ -353,7 +353,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 

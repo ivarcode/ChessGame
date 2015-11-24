@@ -299,7 +299,7 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+					arr.add(new Move(loc,l));
 			}			
 		}
 		if (file+1 < 8) {
@@ -308,7 +308,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (rank+1 < 8) {
@@ -317,7 +319,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (rank-1 > -1) {
@@ -326,7 +330,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (file-1 > -1 && rank+1 < 8) {
@@ -335,7 +341,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (file-1 > -1 && rank-1 > -1) {
@@ -344,7 +352,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 		if (file-1 > -1) {
@@ -353,7 +363,9 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				arr.add(new Move(loc,l));
+				if (!kingInCheck()) {
+					arr.add(new Move(loc,l));
+				}
 			}			
 		}
 
