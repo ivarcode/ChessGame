@@ -55,10 +55,24 @@ public class Game {
 	}
 
 	private boolean isLegalMove(Location src, Location dest) {
-		boardCopy(board,checkBoard);
-		
-		
-		
+		ArrayList<Move> moves = getMoveOptions();
+		for (int i = 0; i < moves.size(); i++) {
+			if (src.getFile() == moves.get(i).getSrc().getFile() && 
+					src.getRank() == moves.get(i).getSrc().getRank() && 
+					dest.getFile() == moves.get(i).getDest().getFile() && 
+					dest.getRank() == moves.get(i).getDest().getRank()) {
+				boardCopy(board,backupBoard);
+				board.movePiece(src, dest);
+				changeTurn();
+				boolean kingInCheck = kingInCheck();
+				changeTurn();
+				boardCopy(backupBoard,board);
+				if (kingInCheck) {
+					return false;
+				}
+				return true;
+			}
+		}
 		return false;
 	}
 

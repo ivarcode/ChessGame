@@ -56,7 +56,7 @@ public class Game {
 
 	private boolean isLegalMove(Location src, Location dest) {
 		boardCopy(board,checkBoard);
-		
+		checkBoard.print();
 		
 		
 		return false;

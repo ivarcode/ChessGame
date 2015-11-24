@@ -58,7 +58,6 @@ public class Game {
 		boardCopy(board,checkBoard);
 		
 		
-		
 		return false;
 	}
 
