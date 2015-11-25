@@ -99,7 +99,7 @@ public class Game {
 				}
 			}
 		}
-		//print TODO remove
+		//print
 		for (int i = 0; i < moves.size(); i++) {
 			moves.get(i).print();
 		}
