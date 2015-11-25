@@ -13,9 +13,7 @@ public class Game {
 
 	public Game(int sW, int tH, int sD) {
 		setTurn("white");
-		System.out.println("creating board...");
 		board = new Board();
-		System.out.println("creating checkBoard...");
 		checkBoard = new Board();
 		this.sideWidth = sW;
 		this.topHeight = tH;
@@ -65,12 +63,9 @@ public class Game {
 					dest.getRank() == moves.get(i).getDest().getRank()) {
 				boardCopy(board,checkBoard);
 				checkBoard.movePiece(src, dest);
-				checkBoard.print();
 				if (!kingInCheck(checkBoard)) {
-					System.out.println("true");
 					return true;
 				}
-				System.out.println("false");
 				return false;
 			}
 		}
@@ -103,8 +98,8 @@ public class Game {
 		return moves;
 	}
 
-	private boolean kingInCheck(Board b) {
-		Location loc = null;
+	private boolean kingInCheck(Location kingLoc, Board b) {
+		Location loc = kingLoc;
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				if (b.getPiece(new Location(i,j)) instanceof King &&

@@ -78,7 +78,7 @@ public class Board {
 				&& src.getRank() < 8 && src.getRank() > -1) {
 			return board[src.getFileByInt()][src.getRank()];
 		}
-		return null;
+		return null'
 	}
 
 	public void movePiece(Location src, Location dest) {
