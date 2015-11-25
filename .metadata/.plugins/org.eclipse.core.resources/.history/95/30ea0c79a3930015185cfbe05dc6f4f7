@@ -47,12 +47,6 @@ public class Game {
 		}
 		System.out.println(turn + " turn");
 	}
-	public Move getMove(int i) {
-		if (i <= record.size()) {
-			return record.get(i);
-		}
-		return null;
-	}
 	//
 
 	public void makeMove(Move move) {

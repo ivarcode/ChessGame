@@ -99,7 +99,7 @@ public class Main extends JApplet {
 			}
 			public void mouseReleased(MouseEvent e)
 			{
-				game.makeMove(new Move(src,dest));
+				game.makeMove(new Move(src,dest)0;
 
 				a = -1000;
 				b = -1000; 

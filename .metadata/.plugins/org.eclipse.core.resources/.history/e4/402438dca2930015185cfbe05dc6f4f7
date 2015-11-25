@@ -47,36 +47,27 @@ public class Game {
 		}
 		System.out.println(turn + " turn");
 	}
-	public Move getMove(int i) {
-		if (i <= record.size()) {
-			return record.get(i);
-		}
-		return null;
-	}
 	//
 
 	public void makeMove(Move move) {
 		if (isLegalMove(move)) {
 			System.out.println("isLegalMove");
 			changeTurn();
-			board.movePiece(move.getSrc(), move.getDest());
-			recordMove(move);	
+			board.movePiece(src, dest);
+			//TODO record move	
 			//TODO check for mate
 		}
 	}
-	private void recordMove(Move move) {
-		record.add(move);
-	}
 
-	private boolean isLegalMove(Move move) {
+	private boolean isLegalMove(Location src, Location dest) {
 		ArrayList<Move> moves = getMoveOptions();
 		for (int i = 0; i < moves.size(); i++) {
-			if (move.getSrc().getFile() == moves.get(i).getSrc().getFile() && 
-					move.getSrc().getRank() == moves.get(i).getSrc().getRank() && 
-					move.getDest().getFile() == moves.get(i).getDest().getFile() && 
-					move.getDest().getRank() == moves.get(i).getDest().getRank()) {
+			if (src.getFile() == moves.get(i).getSrc().getFile() && 
+					src.getRank() == moves.get(i).getSrc().getRank() && 
+					dest.getFile() == moves.get(i).getDest().getFile() && 
+					dest.getRank() == moves.get(i).getDest().getRank()) {
 				boardCopy(board,checkBoard);
-				checkBoard.movePiece(move.getSrc(), move.getDest());
+				checkBoard.movePiece(src, dest);
 				checkBoard.print();
 				if (!kingInCheck(checkBoard)) {
 					System.out.println("King["+turn+"] is safe");
