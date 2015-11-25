@@ -67,9 +67,10 @@ public class Game {
 				checkBoard.movePiece(src, dest);
 				checkBoard.print();
 				if (!kingInCheck(checkBoard)) {
-					System.out.println("King["+turn+"] is safe");
+					System.out.println("true");
 					return true;
 				}
+				System.out.println("false");
 				return false;
 			}
 		}
@@ -98,10 +99,6 @@ public class Game {
 					}
 				}
 			}
-		}
-		//print
-		for (int i = 0; i < moves.size(); i++) {
-			moves.get(i).print();
 		}
 		return moves;
 	}
@@ -480,6 +477,12 @@ public class Game {
 			}
 			temprank--;
 		}
+
+		//print
+		for (int i = 0; i < arr.size(); i++) {
+			arr.get(i).print();
+		}
+
 		return arr;
 	}
 	private ArrayList<Move> bishopMoves(Location loc) {

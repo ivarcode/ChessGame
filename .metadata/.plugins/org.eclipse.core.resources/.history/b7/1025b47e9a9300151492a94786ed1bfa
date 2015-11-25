@@ -100,9 +100,9 @@ public class Game {
 			}
 		}
 		//print
-		for (int i = 0; i < moves.size(); i++) {
-			moves.get(i).print();
-		}
+				for (int i = 0; i < moves.size(); i++) {
+					moves.get(i).print();
+				}
 		return moves;
 	}
 
