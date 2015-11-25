@@ -9,12 +9,17 @@ public class Game {
 
 	private String turn;
 	private Board board, checkBoard;
+	private ArrayList<Move> record;
 	private int sideWidth, topHeight, sqDim;
 
 	public Game(int sW, int tH, int sD) {
 		setTurn("white");
+		System.out.println("creating board...");
 		board = new Board();
+		System.out.println("creating checkBoard...");
 		checkBoard = new Board();
+		System.out.println("creating record...");
+		record = new ArrayList<Move>();
 		this.sideWidth = sW;
 		this.topHeight = tH;
 		this.sqDim = sD;
@@ -42,22 +47,46 @@ public class Game {
 		}
 		System.out.println(turn + " turn");
 	}
+	public Move getMove(int i) {
+		if (i <= record.size()) {
+			return record.get(i);
+		}
+		return null;
+	}
 	//
 
-	public void makeMove(Location src, Location dest) {
-		if (isLegalMove(src,dest)) {
+	public void makeMove(Move move) {
+		if (isLegalMove(move)) {
 			System.out.println("isLegalMove");
 			changeTurn();
-			board.movePiece(src, dest);
-			//TODO record move	
+			board.movePiece(move.getSrc(), move.getDest());
+			recordMove(move);	
 			//TODO check for mate
 		}
 	}
+	private void recordMove(Move move) {
+		record.add(move);
+		//TODO remove
+		printMove(move);
+	}
 
-	private boolean isLegalMove(Location src, Location dest) {
-		boardCopy(board,checkBoard)
-		
-		
+	private boolean isLegalMove(Move move) {
+		ArrayList<Move> moves = getMoveOptions();
+		for (int i = 0; i < moves.size(); i++) {
+			if (move.getSrc().getFile() == moves.get(i).getSrc().getFile() && 
+					move.getSrc().getRank() == moves.get(i).getSrc().getRank() && 
+					move.getDest().getFile() == moves.get(i).getDest().getFile() && 
+					move.getDest().getRank() == moves.get(i).getDest().getRank()) {
+				boardCopy(board,checkBoard);
+				checkBoard.movePiece(move.getSrc(), move.getDest());
+				checkBoard.print();
+				if (!kingInCheck(checkBoard)) {
+					System.out.println("King["+turn+"] is safe");
+					return true;
+				}
+				return false;
+			}
+		}
 		return false;
 	}
 
@@ -84,25 +113,19 @@ public class Game {
 				}
 			}
 		}
-		
-		//TODO doesn't work
+		//print TODO remove
 		for (int i = 0; i < moves.size(); i++) {
-			board.movePiece(moves.get(i).getSrc(),moves.get(i).getDest());
-			boolean kingInCheck = kingInCheck();
-			board.takeBack();
-			if (kingInCheck) {
-				moves.remove(i);
-			}
+			moves.get(i).print();
 		}
 		return moves;
 	}
 
-	private boolean kingInCheck() {
+	private boolean kingInCheck(Board b) {
 		Location loc = null;
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				if (getPiece(new Location(i,j)) instanceof King &&
-						getPiece(new Location(i,j)).getColor() == turn) {
+				if (b.getPiece(new Location(i,j)) instanceof King &&
+						b.getPiece(new Location(i,j)).getColor() == turn) {
 					loc = new Location(i,j);
 					break;
 				}
@@ -116,9 +139,9 @@ public class Game {
 		file = loc.getFileByInt()+1;
 		rank = loc.getRank();
 		while (file < 8) {
-			if (getPiece(new Location(file,rank)) instanceof Queen ||
-					getPiece(new Location(file,rank)) instanceof Rook) {
-				if (getPiece(new Location(file,rank)).getColor() == turn) {
+			if (b.getPiece(new Location(file,rank)) instanceof Queen ||
+					b.getPiece(new Location(file,rank)) instanceof Rook) {
+				if (b.getPiece(new Location(file,rank)).getColor() == turn) {
 					break;
 				} else {
 					return true;
@@ -129,9 +152,9 @@ public class Game {
 		file = loc.getFileByInt()-1;
 		rank = loc.getRank();
 		while (file > -1) {
-			if (getPiece(new Location(file,rank)) instanceof Queen ||
-					getPiece(new Location(file,rank)) instanceof Rook) {
-				if (getPiece(new Location(file,rank)).getColor() == turn) {
+			if (b.getPiece(new Location(file,rank)) instanceof Queen ||
+					b.getPiece(new Location(file,rank)) instanceof Rook) {
+				if (b.getPiece(new Location(file,rank)).getColor() == turn) {
 					break;
 				} else {
 					return true;
@@ -142,9 +165,9 @@ public class Game {
 		file = loc.getFileByInt();
 		rank = loc.getRank()+1;
 		while (rank < 8) {
-			if (getPiece(new Location(file,rank)) instanceof Queen ||
-					getPiece(new Location(file,rank)) instanceof Rook) {
-				if (getPiece(new Location(file,rank)).getColor() == turn) {
+			if (b.getPiece(new Location(file,rank)) instanceof Queen ||
+					b.getPiece(new Location(file,rank)) instanceof Rook) {
+				if (b.getPiece(new Location(file,rank)).getColor() == turn) {
 					break;
 				} else {
 					return true;
@@ -155,9 +178,9 @@ public class Game {
 		file = loc.getFileByInt();
 		rank = loc.getRank()-1;
 		while (rank > -1) {
-			if (getPiece(new Location(file,rank)) instanceof Queen ||
-					getPiece(new Location(file,rank)) instanceof Rook) {
-				if (getPiece(new Location(file,rank)).getColor() == turn) {
+			if (b.getPiece(new Location(file,rank)) instanceof Queen ||
+					b.getPiece(new Location(file,rank)) instanceof Rook) {
+				if (b.getPiece(new Location(file,rank)).getColor() == turn) {
 					break;
 				} else {
 					return true;
@@ -168,9 +191,9 @@ public class Game {
 		file = loc.getFileByInt()+1;
 		rank = loc.getRank()+1;
 		while (file < 8 && rank < 8) {
-			if (getPiece(new Location(file,rank)) instanceof Queen ||
-					getPiece(new Location(file,rank)) instanceof Bishop) {
-				if (getPiece(new Location(file,rank)).getColor() == turn) {
+			if (b.getPiece(new Location(file,rank)) instanceof Queen ||
+					b.getPiece(new Location(file,rank)) instanceof Bishop) {
+				if (b.getPiece(new Location(file,rank)).getColor() == turn) {
 					break;
 				} else {
 					return true;
@@ -182,9 +205,9 @@ public class Game {
 		file = loc.getFileByInt()+1;
 		rank = loc.getRank()-1;
 		while (file < 8 && rank > -1) {
-			if (getPiece(new Location(file,rank)) instanceof Queen ||
-					getPiece(new Location(file,rank)) instanceof Bishop) {
-				if (getPiece(new Location(file,rank)).getColor() == turn) {
+			if (b.getPiece(new Location(file,rank)) instanceof Queen ||
+					b.getPiece(new Location(file,rank)) instanceof Bishop) {
+				if (b.getPiece(new Location(file,rank)).getColor() == turn) {
 					break;
 				} else {
 					return true;
@@ -196,9 +219,9 @@ public class Game {
 		file = loc.getFileByInt()-1;
 		rank = loc.getRank()+1;
 		while (file > -1 && rank < 8) {
-			if (getPiece(new Location(file,rank)) instanceof Queen ||
-					getPiece(new Location(file,rank)) instanceof Bishop) {
-				if (getPiece(new Location(file,rank)).getColor() == turn) {
+			if (b.getPiece(new Location(file,rank)) instanceof Queen ||
+					b.getPiece(new Location(file,rank)) instanceof Bishop) {
+				if (b.getPiece(new Location(file,rank)).getColor() == turn) {
 					break;
 				} else {
 					return true;
@@ -210,9 +233,9 @@ public class Game {
 		file = loc.getFileByInt()-1;
 		rank = loc.getRank()-1;
 		while (file > -1 && rank > -1) {
-			if (getPiece(new Location(file,rank)) instanceof Queen ||
-					getPiece(new Location(file,rank)) instanceof Bishop) {
-				if (getPiece(new Location(file,rank)).getColor() == turn) {
+			if (b.getPiece(new Location(file,rank)) instanceof Queen ||
+					b.getPiece(new Location(file,rank)) instanceof Bishop) {
+				if (b.getPiece(new Location(file,rank)).getColor() == turn) {
 					break;
 				} else {
 					return true;
@@ -226,60 +249,62 @@ public class Game {
 		rank = loc.getRank();
 
 		//King
-		if (getPiece(new Location(file+1,rank)) instanceof King
-				|| getPiece(new Location(file-1,rank)) instanceof King
-				|| getPiece(new Location(file,rank+1)) instanceof King
-				|| getPiece(new Location(file,rank-1)) instanceof King
-				|| getPiece(new Location(file+1,rank+1)) instanceof King
-				|| getPiece(new Location(file+1,rank-1)) instanceof King
-				|| getPiece(new Location(file-1,rank+1)) instanceof King
-				|| getPiece(new Location(file-1,rank-1)) instanceof King) {
+		if (b.getPiece(new Location(file+1,rank)) instanceof King
+				|| b.getPiece(new Location(file-1,rank)) instanceof King
+				|| b.getPiece(new Location(file,rank+1)) instanceof King
+				|| b.getPiece(new Location(file,rank-1)) instanceof King
+				|| b.getPiece(new Location(file+1,rank+1)) instanceof King
+				|| b.getPiece(new Location(file+1,rank-1)) instanceof King
+				|| b.getPiece(new Location(file-1,rank+1)) instanceof King
+				|| b.getPiece(new Location(file-1,rank-1)) instanceof King) {
 			return true;
 		}
 
 		//Knight
-		if ((getPiece(new Location(file+1,rank+2)) instanceof Knight &&
-				getPiece(new Location(file+1,rank+2)).getColor() != turn)
-				|| (getPiece(new Location(file+1,rank-2)) instanceof Knight &&
-						getPiece(new Location(file+1,rank-2)).getColor() != turn)
-				|| (getPiece(new Location(file+2,rank+1)) instanceof Knight &&
-						getPiece(new Location(file+2,rank+1)).getColor() != turn)
-				|| (getPiece(new Location(file+2,rank-1)) instanceof Knight &&
-						getPiece(new Location(file+2,rank-1)).getColor() != turn)
-				|| (getPiece(new Location(file-1,rank+2)) instanceof Knight &&
-						getPiece(new Location(file-1,rank+2)).getColor() != turn)
-				|| (getPiece(new Location(file-1,rank-2)) instanceof Knight &&
-						getPiece(new Location(file-1,rank-2)).getColor() != turn)
-				|| (getPiece(new Location(file-2,rank+1)) instanceof Knight &&
-						getPiece(new Location(file-2,rank+1)).getColor() != turn)
-				|| (getPiece(new Location(file-2,rank-1)) instanceof Knight &&
-						getPiece(new Location(file-2,rank-1)).getColor() != turn)) {
+		if ((b.getPiece(new Location(file+1,rank+2)) instanceof Knight &&
+				b.getPiece(new Location(file+1,rank+2)).getColor() != turn)
+				|| (b.getPiece(new Location(file+1,rank-2)) instanceof Knight &&
+						b.getPiece(new Location(file+1,rank-2)).getColor() != turn)
+				|| (b.getPiece(new Location(file+2,rank+1)) instanceof Knight &&
+						b.getPiece(new Location(file+2,rank+1)).getColor() != turn)
+				|| (b.getPiece(new Location(file+2,rank-1)) instanceof Knight &&
+						b.getPiece(new Location(file+2,rank-1)).getColor() != turn)
+				|| (b.getPiece(new Location(file-1,rank+2)) instanceof Knight &&
+						b.getPiece(new Location(file-1,rank+2)).getColor() != turn)
+				|| (b.getPiece(new Location(file-1,rank-2)) instanceof Knight &&
+						b.getPiece(new Location(file-1,rank-2)).getColor() != turn)
+				|| (b.getPiece(new Location(file-2,rank+1)) instanceof Knight &&
+						b.getPiece(new Location(file-2,rank+1)).getColor() != turn)
+				|| (b.getPiece(new Location(file-2,rank-1)) instanceof Knight &&
+						b.getPiece(new Location(file-2,rank-1)).getColor() != turn)) {
 			return true;
 		}
 
 		//Pawn
 		if (turn == "white") {
-			if ((getPiece(new Location(file+1,rank+1)) instanceof Pawn &&
-					getPiece(new Location(file+1,rank+1)).getColor() != turn)
-					|| (getPiece(new Location(file-1,rank+1)) instanceof Pawn &&
-							getPiece(new Location(file-1,rank+1)).getColor() != turn)) {
+			if ((b.getPiece(new Location(file+1,rank+1)) instanceof Pawn &&
+					b.getPiece(new Location(file+1,rank+1)).getColor() != turn)
+					|| (b.getPiece(new Location(file-1,rank+1)) instanceof Pawn &&
+							b.getPiece(new Location(file-1,rank+1)).getColor() != turn)) {
 				return true;
 			}
 		} else {
-			if ((getPiece(new Location(file+1,rank-1)) instanceof Pawn &&
-					getPiece(new Location(file+1,rank-1)).getColor() != turn)
-					|| (getPiece(new Location(file-1,rank-1)) instanceof Pawn &&
-							getPiece(new Location(file-1,rank-1)).getColor() != turn)) {
+			if ((b.getPiece(new Location(file+1,rank-1)) instanceof Pawn &&
+					b.getPiece(new Location(file+1,rank-1)).getColor() != turn)
+					|| (b.getPiece(new Location(file-1,rank-1)) instanceof Pawn &&
+							b.getPiece(new Location(file-1,rank-1)).getColor() != turn)) {
 				return true;
 			}
 		}
 
 		return false;
 	}
-	
+
 	//PieceMoves
 	private ArrayList<Move> kingMoves(Location loc) {
 		ArrayList<Move> arr = new ArrayList<Move>();
+		//TODO castling
+		
 		int file = loc.getFileByInt();
 		int rank = loc.getRank();
 
@@ -289,9 +314,7 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				if (!kingInCheck()) {
-					arr.add(new Move(loc,l));
-				}
+				arr.add(new Move(loc,l));
 			}			
 		}
 		if (file+1 < 8 && rank-1 > -1) {
@@ -300,9 +323,7 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				if (!kingInCheck()) {
-					arr.add(new Move(loc,l));
-				}
+				arr.add(new Move(loc,l));
 			}			
 		}
 		if (file+1 < 8) {
@@ -311,9 +332,7 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				if (!kingInCheck()) {
-					arr.add(new Move(loc,l));
-				}
+				arr.add(new Move(loc,l));
 			}			
 		}
 		if (rank+1 < 8) {
@@ -322,9 +341,7 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				if (!kingInCheck()) {
-					arr.add(new Move(loc,l));
-				}
+				arr.add(new Move(loc,l));
 			}			
 		}
 		if (rank-1 > -1) {
@@ -333,9 +350,7 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				if (!kingInCheck()) {
-					arr.add(new Move(loc,l));
-				}
+				arr.add(new Move(loc,l));
 			}			
 		}
 		if (file-1 > -1 && rank+1 < 8) {
@@ -344,9 +359,7 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				if (!kingInCheck()) {
-					arr.add(new Move(loc,l));
-				}
+				arr.add(new Move(loc,l));
 			}			
 		}
 		if (file-1 > -1 && rank-1 > -1) {
@@ -355,9 +368,7 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				if (!kingInCheck()) {
-					arr.add(new Move(loc,l));
-				}
+				arr.add(new Move(loc,l));
 			}			
 		}
 		if (file-1 > -1) {
@@ -366,9 +377,7 @@ public class Game {
 					&& getPiece(l).getColor() == turn) {
 				//don't add(l)
 			} else {
-				if (!kingInCheck()) {
-					arr.add(new Move(loc,l));
-				}
+				arr.add(new Move(loc,l));
 			}			
 		}
 
@@ -487,12 +496,6 @@ public class Game {
 			}
 			temprank--;
 		}
-		
-		//print
-		for (int i = 0; i < arr.size(); i++) {
-			arr.get(i).print();
-		}
-		
 		return arr;
 	}
 	private ArrayList<Move> bishopMoves(Location loc) {
@@ -705,45 +708,45 @@ public class Game {
 		int rank = loc.getRank();
 
 		if (color == "white") {
-			if (rank == 1) {
+			if (rank == 1
+					&& getPiece(new Location(file,rank+1)) == null
+					&& getPiece(new Location(file,rank+2)) == null) {
 				arr.add(new Move(loc,new Location(file,rank+2)));
 			}
-			arr.add(new Move(loc,new Location(file,rank+1)));
+			if (getPiece(new Location(file,rank+1)) == null) {
+				arr.add(new Move(loc,new Location(file,rank+1)));
+			}
 			if (file+1 < 8 && rank+1 < 8) {
 				if (getPiece(new Location(file+1,rank+1)) != null 
 						&& getPiece(new Location(file+1,rank+1)).getColor().equals(turn)) {
-					//do nothing
-				} else {
 					arr.add(new Move(loc,new Location(file+1,rank+1)));
 				}
 			}
 			if (file-1 > -1 && rank+1 < 8) {
 				if (getPiece(new Location(file-1,rank+1)) != null 
 						&& getPiece(new Location(file-1,rank+1)).getColor().equals(turn)) {
-					//do nothing
-				} else {
 					arr.add(new Move(loc,new Location(file-1,rank+1)));
 				}
 			}
 		}
 		if (color == "black") {
-			if (rank == 6) {
+			if (rank == 6
+					&& getPiece(new Location(file,rank-1)) == null
+					&& getPiece(new Location(file,rank-2)) == null) {
 				arr.add(new Move(loc,new Location(file,rank-2)));
 			}
-			arr.add(new Move(loc,new Location(file,rank-1)));
+			if (getPiece(new Location(file,rank-1)) == null) {
+				arr.add(new Move(loc,new Location(file,rank-1)));
+			}
 			if (file-1 > -1 && rank-1 > -1) {
 				if (getPiece(new Location(file-1,rank-1)) != null 
 						&& getPiece(new Location(file-1,rank-1)).getColor().equals(turn)) {
-					//do nothing
-				} else {
 					arr.add(new Move(loc,new Location(file-1,rank-1)));
 				}
 			}
 			if (file+1 < 8 && rank-1 > -1) {
 				if (getPiece(new Location(file+1,rank-1)) != null 
 						&& getPiece(new Location(file+1,rank-1)).getColor().equals(turn)) {
-					//do nothing
-				} else {
 					arr.add(new Move(loc,new Location(file+1,rank-1)));
 				}
 			}
@@ -801,7 +804,24 @@ public class Game {
 				sqDim, sqDim);
 	}
 	//
-	
+
+	public void printMove(Move move) {
+		Piece piece = getPiece(new Location(move.getDest().getFileByInt(),move.getDest().getRank()));
+		if (piece instanceof King) {
+			System.out.print("K");
+		} else if (piece instanceof Queen) {
+			System.out.print("Q");
+		} else if (piece instanceof Bishop) {
+			System.out.print("B");
+		} else if (piece instanceof Knight) {
+			System.out.print("N");
+		} else if (piece instanceof Rook) {
+			System.out.print("R");
+		} else if (piece instanceof Pawn) {
+			System.out.print("");
+		}
+		System.out.print(""+move.getDest().getFile()+(move.getDest().getRank()+1));
+	}
 	public void boardCopy(Board a, Board b) {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {

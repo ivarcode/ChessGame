@@ -303,6 +303,8 @@ public class Game {
 	//PieceMoves
 	private ArrayList<Move> kingMoves(Location loc) {
 		ArrayList<Move> arr = new ArrayList<Move>();
+		//TODO castling
+		
 		int file = loc.getFileByInt();
 		int rank = loc.getRank();
 
