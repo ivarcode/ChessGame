@@ -336,6 +336,7 @@ public class Game {
 	//PieceMoves
 	private ArrayList<Move> kingMoves(Location loc) {
 		ArrayList<Move> arr = new ArrayList<Move>();
+		//TODO castling
 		
 		int file = loc.getFileByInt();
 		int rank = loc.getRank();
@@ -410,16 +411,7 @@ public class Game {
 				//don't add(l)
 			} else {
 				arr.add(new Move(loc,l));
-			}
-		}
-		
-		//TODO implement castling
-		if (turn == "white") {
-			if (file == 4 && rank == 0) {
-				
-			}
-		} else {
-			
+			}			
 		}
 
 		return arr;

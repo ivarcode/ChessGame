@@ -410,10 +410,10 @@ public class Game {
 				//don't add(l)
 			} else {
 				arr.add(new Move(loc,l));
-			}
+			}			
 		}
 		
-		//TODO implement castling
+		//castling
 		if (turn == "white") {
 			if (file == 4 && rank == 0) {
 				

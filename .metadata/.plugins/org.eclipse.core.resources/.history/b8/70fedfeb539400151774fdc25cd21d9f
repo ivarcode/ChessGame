@@ -410,7 +410,7 @@ public class Game {
 				//don't add(l)
 			} else {
 				arr.add(new Move(loc,l));
-			}
+			}			
 		}
 		
 		//TODO implement castling

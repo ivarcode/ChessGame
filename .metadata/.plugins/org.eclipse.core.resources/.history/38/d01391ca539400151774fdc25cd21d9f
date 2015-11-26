@@ -62,13 +62,5 @@ public class Piece {
 	public void setID(String iD) {
 		ID = iD;
 	}
-
-	public boolean hasMoved() {
-		return hasMoved;
-	}
-
-	public void setHasMoved(boolean hasMoved) {
-		this.hasMoved = hasMoved;
-	}
 	
 }
