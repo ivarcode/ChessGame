@@ -462,10 +462,10 @@ public class Game {
 		return arr;
 	}
 	private ArrayList<Move> queenMoves(Location loc) {
+
 		ArrayList<Move> arr = new ArrayList<Move>();
 		arr.addAll(bishopMoves(loc));
 		arr.addAll(rookMoves(loc));
-		
 		return arr;
 	}
 	private ArrayList<Move> bishopMoves(Location loc) {

@@ -462,10 +462,120 @@ public class Game {
 		return arr;
 	}
 	private ArrayList<Move> queenMoves(Location loc) {
-		ArrayList<Move> arr = new ArrayList<Move>();
-		arr.addAll(bishopMoves(loc));
-		arr.addAll(rookMoves(loc));
+		//TODO calculate using calls to bishopMoves() and rookMoves()
 		
+		ArrayList<Move> arr = new ArrayList<Move>();
+		int file = loc.getFileByInt();
+		int rank = loc.getRank();
+		int tempfile = file, temprank = rank;
+
+		while (tempfile+1 < 8 && temprank+1 < 8) {
+			Location l = new Location(tempfile+1,temprank+1);
+			if (getPiece(l) instanceof Piece 
+					&& getPiece(l).getColor() == turn) {
+				break;
+			}
+			arr.add(new Move(loc,l));
+			if (getPiece(l) instanceof Piece) {
+				break;
+			}
+			tempfile++;
+			temprank++;
+		}
+		tempfile = file; temprank = rank;
+		while (tempfile+1 < 8 && temprank-1 > -1) {
+			Location l = new Location(tempfile+1,temprank-1);
+			if (getPiece(l) instanceof Piece 
+					&& getPiece(l).getColor() == turn) {
+				break;
+			}
+			arr.add(new Move(loc,l));
+			if (getPiece(l) instanceof Piece) {
+				break;
+			}
+			tempfile++;
+			temprank--;
+		}
+		tempfile = file; temprank = rank;
+		while (tempfile+1 < 8) {
+			Location l = new Location(tempfile+1,temprank);
+			if (getPiece(l) instanceof Piece 
+					&& getPiece(l).getColor() == turn) {
+				break;
+			}
+			arr.add(new Move(loc,l));
+			if (getPiece(l) instanceof Piece) {
+				break;
+			}
+			tempfile++;
+		}
+		tempfile = file; temprank = rank;
+		while (tempfile-1 > -1 && temprank+1 < 8) {
+			Location l = new Location(tempfile-1,temprank+1);
+			if (getPiece(l) instanceof Piece 
+					&& getPiece(l).getColor() == turn) {
+				break;
+			}
+			arr.add(new Move(loc,l));
+			if (getPiece(l) instanceof Piece) {
+				break;
+			}
+			tempfile--;
+			temprank++;
+		}
+		tempfile = file; temprank = rank;
+		while (tempfile-1 > -1 && temprank-1 > -1) {
+			Location l = new Location(tempfile-1,temprank-1);
+			if (getPiece(l) instanceof Piece 
+					&& getPiece(l).getColor() == turn) {
+				break;
+			}
+			arr.add(new Move(loc,l));
+			if (getPiece(l) instanceof Piece) {
+				break;
+			}
+			tempfile--;
+			temprank--;
+		}
+		tempfile = file; temprank = rank;
+		while (tempfile-1 > -1) {
+			Location l = new Location(tempfile-1,temprank);
+			if (getPiece(l) instanceof Piece 
+					&& getPiece(l).getColor() == turn) {
+				break;
+			}
+			arr.add(new Move(loc,l));
+			if (getPiece(l) instanceof Piece) {
+				break;
+			}
+			tempfile--;
+		}
+		tempfile = file; temprank = rank;
+		while (temprank+1 < 8) {
+			Location l = new Location(tempfile,temprank+1);
+			if (getPiece(l) instanceof Piece 
+					&& getPiece(l).getColor() == turn) {
+				break;
+			}
+			arr.add(new Move(loc,l));
+			if (getPiece(l) instanceof Piece) {
+				break;
+			}
+			temprank++;
+		}
+		tempfile = file; temprank = rank;
+		while (temprank-1 > -1) {
+			Location l = new Location(tempfile,temprank-1);
+			if (getPiece(l) instanceof Piece 
+					&& getPiece(l).getColor() == turn) {
+				break;
+			}
+			arr.add(new Move(loc,l));
+			if (getPiece(l) instanceof Piece) {
+				break;
+			}
+			temprank--;
+		}
 		return arr;
 	}
 	private ArrayList<Move> bishopMoves(Location loc) {
