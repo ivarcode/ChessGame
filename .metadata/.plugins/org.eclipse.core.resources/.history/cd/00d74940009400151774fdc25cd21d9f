@@ -14,8 +14,11 @@ public class Game {
 
 	public Game(int sW, int tH, int sD) {
 		setTurn("white");
+		System.out.println("creating board...");
 		board = new Board();
+		System.out.println("creating checkBoard...");
 		checkBoard = new Board();
+		System.out.println("creating record...");
 		record = new ArrayList<Move>();
 		this.sideWidth = sW;
 		this.topHeight = tH;
