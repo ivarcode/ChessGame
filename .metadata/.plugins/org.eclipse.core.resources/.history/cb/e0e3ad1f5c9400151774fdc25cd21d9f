@@ -61,7 +61,7 @@ public class Game {
 			board.movePiece(move.getSrc(), move.getDest());
 			//TODO check for if castling, if so, make second move (rook)
 			recordMove(move);
-			//TODO check for mate
+			//FIXME check for mate
 		}
 	}
 	private void recordMove(Move move) {

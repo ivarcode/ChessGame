@@ -65,9 +65,6 @@ public class Game {
 		}
 	}
 	private void recordMove(Move move) {
-		//TODO record castling properly
-		//TODO record captures properly
-		//TODO record checks properly
 		record.add(move);
 	}
 
