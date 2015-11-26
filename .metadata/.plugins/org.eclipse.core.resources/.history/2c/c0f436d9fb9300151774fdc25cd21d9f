@@ -120,13 +120,12 @@ public class Game {
 			checkBoard.movePiece(moves.get(i).getSrc(), moves.get(i).getDest());
 			if (kingInCheck(checkBoard)) {
 				moves.remove(i);
-				i--; //increment i to avoid skipping
 			}
 		}
 		
 		//print TODO remove
 		for (int i = 0; i < moves.size(); i++) {
-			printMove(moves.get(i));
+			moves.get(i).print();
 		}
 		return moves;
 	}
