@@ -462,8 +462,6 @@ public class Game {
 		return arr;
 	}
 	private ArrayList<Move> queenMoves(Location loc) {
-		//TODO calculate using calls to bishopMoves() and rookMoves()
-		
 		ArrayList<Move> arr = new ArrayList<Move>();
 		int file = loc.getFileByInt();
 		int rank = loc.getRank();
