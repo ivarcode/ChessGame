@@ -77,7 +77,6 @@ public class Game {
 					move.getSrc().getRank() == moves.get(i).getSrc().getRank() && 
 					move.getDest().getFile() == moves.get(i).getDest().getFile() && 
 					move.getDest().getRank() == moves.get(i).getDest().getRank()) {
-				//TODO remove block once its deemed unnecessary
 				boardCopy(board,checkBoard);
 				checkBoard.movePiece(move.getSrc(), move.getDest());
 				checkBoard.print();
@@ -86,7 +85,6 @@ public class Game {
 					return true;
 				}
 				return false;
-				//replace "return true;"
 			}
 		}
 		return false;
