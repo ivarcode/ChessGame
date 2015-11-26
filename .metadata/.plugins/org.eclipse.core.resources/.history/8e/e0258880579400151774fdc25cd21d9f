@@ -13,7 +13,6 @@ public class Game {
 	private int sideWidth, topHeight, sqDim;
 
 	public Game(int sW, int tH, int sD) {
-		System.out.println("Preparing new game...");
 		setTurn("white");
 		board = new Board();
 		checkBoard = new Board();
@@ -21,7 +20,6 @@ public class Game {
 		this.sideWidth = sW;
 		this.topHeight = tH;
 		this.sqDim = sD;
-		System.out.println("Ready to play.");
 	}
 	//Getters & Setters
 	public Piece getPiece(Location src) {

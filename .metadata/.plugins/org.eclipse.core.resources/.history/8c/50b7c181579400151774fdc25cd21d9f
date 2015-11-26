@@ -13,7 +13,7 @@ public class Game {
 	private int sideWidth, topHeight, sqDim;
 
 	public Game(int sW, int tH, int sD) {
-		System.out.println("Preparing new game...");
+		System.out.println("Preparing new game...")
 		setTurn("white");
 		board = new Board();
 		checkBoard = new Board();

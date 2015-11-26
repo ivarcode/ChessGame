@@ -13,7 +13,6 @@ public class Game {
 	private int sideWidth, topHeight, sqDim;
 
 	public Game(int sW, int tH, int sD) {
-		System.out.println("Preparing new game...");
 		setTurn("white");
 		board = new Board();
 		checkBoard = new Board();
@@ -21,7 +20,6 @@ public class Game {
 		this.sideWidth = sW;
 		this.topHeight = tH;
 		this.sqDim = sD;
-		System.out.println("Ready to play.");
 	}
 	//Getters & Setters
 	public Piece getPiece(Location src) {
@@ -44,7 +42,7 @@ public class Game {
 		} else {
 			setTurn("white");
 		}
-		//System.out.println(turn + " turn");
+		System.out.println(turn + " turn");
 	}
 	public Move getMove(int i) {
 		if (i <= record.size()) {
@@ -56,7 +54,7 @@ public class Game {
 
 	public void makeMove(Move move) {
 		if (isLegalMove(move)) {
-			//System.out.println("isLegalMove");
+			System.out.println("isLegalMove");
 			changeTurn();
 			board.movePiece(move.getSrc(), move.getDest());
 			//TODO check for if castling, if so, make second move (rook)
