@@ -120,7 +120,23 @@ public class Game {
 		return moves;
 	}
 
-	private boolean squareIsThreatened(Board b, Location loc) {
+	private boolean kingInCheck(Board b) {
+		//TODO rework using submethod (squareIsThreatened)
+		
+		Location loc = null;
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				if (b.getPiece(new Location(i,j)) instanceof King &&
+						b.getPiece(new Location(i,j)).getColor() == turn) {
+					loc = new Location(i,j);
+					break;
+				}
+			}
+		}
+		if (loc == null) {
+			System.out.println("NO [" + turn + "] KING ON BOARD");
+			return false;
+		}
 		int file, rank;
 		file = loc.getFileByInt()+1;
 		rank = loc.getRank();
@@ -324,25 +340,6 @@ public class Game {
 		}
 
 		return false;
-	}
-	
-	private boolean kingInCheck(Board b) {		
-		Location loc = null;
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
-				if (b.getPiece(new Location(i,j)) instanceof King &&
-						b.getPiece(new Location(i,j)).getColor() == turn) {
-					loc = new Location(i,j);
-					break;
-				}
-			}
-		}
-		if (loc == null) {
-			System.out.println("NO [" + turn + "] KING ON BOARD");
-			return false;
-		}
-		
-		return squareIsThreatened(b,loc);
 	}
 
 	//PieceMoves

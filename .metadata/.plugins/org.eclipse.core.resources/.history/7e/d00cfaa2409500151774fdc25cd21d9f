@@ -326,7 +326,9 @@ public class Game {
 		return false;
 	}
 	
-	private boolean kingInCheck(Board b) {		
+	private boolean kingInCheck(Board b) {
+		//TODO rework using submethod (squareIsThreatened)
+		
 		Location loc = null;
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
@@ -342,7 +344,6 @@ public class Game {
 			return false;
 		}
 		
-		return squareIsThreatened(b,loc);
 	}
 
 	//PieceMoves
