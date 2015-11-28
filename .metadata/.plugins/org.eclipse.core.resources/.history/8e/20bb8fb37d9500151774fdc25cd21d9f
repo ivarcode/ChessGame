@@ -109,13 +109,6 @@ public class Game {
 		}
 		return false;
 	}
-	
-	public ArrayList<Move> getAllPossibleMoves() {
-		ArrayList<Move> moves = new ArrayList<Move>();
-		//FIXME getAllPossibleMoves for color(turn)
-		
-		return moves;
-	}
 
 	public ArrayList<Move> getMoveOptions() {
 		ArrayList<Move> moves = new ArrayList<Move>();
