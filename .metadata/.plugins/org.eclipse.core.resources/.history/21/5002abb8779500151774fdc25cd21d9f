@@ -65,9 +65,7 @@ public class Game {
 			//TODO check for mate
 		}
 	}
-	private void recordMove(Move move, 
-			boolean check, boolean checkmate, 
-			boolean capture, boolean castling) {
+	private void recordMove(Move move) {
 		//TODO record castling properly
 		//TODO record captures properly
 		//TODO record checks properly
@@ -427,6 +425,7 @@ public class Game {
 			}
 		}
 
+		//FIXME include checking for movement through check
 		if (turn == "white") {
 			if (file == 4 && rank == 0) {
 				if (!getPiece(new Location(file,rank)).hasMoved()) {

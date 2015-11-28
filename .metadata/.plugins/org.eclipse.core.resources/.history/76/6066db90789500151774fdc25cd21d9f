@@ -65,9 +65,7 @@ public class Game {
 			//TODO check for mate
 		}
 	}
-	private void recordMove(Move move, 
-			boolean check, boolean checkmate, 
-			boolean capture, boolean castling) {
+	private void recordMove(Move move) {
 		//TODO record castling properly
 		//TODO record captures properly
 		//TODO record checks properly
