@@ -109,21 +109,19 @@ public class Game {
 			boolean check, boolean checkmate, boolean stalemate, 
 			boolean capture, boolean castling) {
 		String moveRecord = "";
-		//TODO add original file if another piece of same type can go to dest
 		if (piece instanceof King) {
 			moveRecord += "K";
 		} else if (piece instanceof Queen) {
-			moveRecord += "Q";
+			moveRecord += "K";
 		} else if (piece instanceof Bishop) {
-			moveRecord += "B";
+			moveRecord += "K";
 		} else if (piece instanceof Knight) {
-			moveRecord += "N";
+			moveRecord += "K";
 		} else if (piece instanceof Rook) {
-			moveRecord += "R";
+			moveRecord += "K";
 		} else {
 			//do nothing (pawn)
 		}
-		
 		
 		move.setRecord(moveRecord);
 		record.add(move);

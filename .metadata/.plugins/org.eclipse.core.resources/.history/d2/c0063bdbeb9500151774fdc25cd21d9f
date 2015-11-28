@@ -32,8 +32,9 @@ public class Move {
 		if (move == null) {
 			return ""+src.getFile()+(src.getRank()+1)+
 					" --> "+dest.getFile()+(dest.getRank()+1);	
+		} else {
+			return move;
 		}
-		return move;
 	}
 
 	public String getRecord() {

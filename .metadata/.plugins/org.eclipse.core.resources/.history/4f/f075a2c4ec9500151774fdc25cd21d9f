@@ -109,7 +109,7 @@ public class Game {
 			boolean check, boolean checkmate, boolean stalemate, 
 			boolean capture, boolean castling) {
 		String moveRecord = "";
-		//TODO add original file if another piece of same type can go to dest
+		//TODO add original file if another piece of same type can go to a dest
 		if (piece instanceof King) {
 			moveRecord += "K";
 		} else if (piece instanceof Queen) {
@@ -123,7 +123,6 @@ public class Game {
 		} else {
 			//do nothing (pawn)
 		}
-		
 		
 		move.setRecord(moveRecord);
 		record.add(move);

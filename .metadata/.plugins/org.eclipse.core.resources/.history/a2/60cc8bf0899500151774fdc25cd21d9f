@@ -62,7 +62,6 @@ public class Game {
 			if (getPiece(move.getDest()) != null) {
 				capture = true;
 			}
-			Piece piece = getPiece(move.getSrc());
 			if (getPiece(move.getSrc()) instanceof King 
 					&& Math.abs(move.getSrc().getFileByInt() - move.getDest().getFileByInt()) == 2) {
 				castling = true;
@@ -83,49 +82,18 @@ public class Game {
 			if (kingInCheck(board)) {
 				check = true;
 			}
-			ArrayList<Move> moveOptions = getMoveOptions();
-			for (int i = 0; i < moveOptions.size(); i++) {
-				boardCopy(board,checkBoard);
-				checkBoard.movePiece(moveOptions.get(i).getSrc(), moveOptions.get(i).getDest());
-				if (kingInCheck(checkBoard)) {
-					moveOptions.remove(i);
-					i--;
-				}
-			}
-			if (moveOptions.size() == 0) {
-				if (check) {
-					checkmate = true;
-				} else {
-					stalemate = true;
-				}
-			}
+			
+			//TODO check if there is a legal move: result with checkmate or stalemate
 
-			recordMove(move, piece, check, checkmate, stalemate, capture, castling);
+			recordMove(move, check, checkmate, stalemate, capture, castling);
 			
 			//TODO execute end of game if checkmate or stalemate
 		}
 	}
-	private void recordMove(Move move, Piece piece, 
+	private void recordMove(Move move, 
 			boolean check, boolean checkmate, boolean stalemate, 
 			boolean capture, boolean castling) {
-		String moveRecord = "";
-		//TODO add original file if another piece of same type can go to dest
-		if (piece instanceof King) {
-			moveRecord += "K";
-		} else if (piece instanceof Queen) {
-			moveRecord += "Q";
-		} else if (piece instanceof Bishop) {
-			moveRecord += "B";
-		} else if (piece instanceof Knight) {
-			moveRecord += "N";
-		} else if (piece instanceof Rook) {
-			moveRecord += "R";
-		} else {
-			//do nothing (pawn)
-		}
-		
-		
-		move.setRecord(moveRecord);
+		//TODO record moves
 		record.add(move);
 	}
 
@@ -140,6 +108,13 @@ public class Game {
 			}
 		}
 		return false;
+	}
+	
+	public ArrayList<Move> getAllPossibleMoves() {
+		ArrayList<Move> moves = new ArrayList<Move>();
+		//FIXME getAllPossibleMoves for color(turn)
+		
+		return moves;
 	}
 
 	public ArrayList<Move> getMoveOptions() {

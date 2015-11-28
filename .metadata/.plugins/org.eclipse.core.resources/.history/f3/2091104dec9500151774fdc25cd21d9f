@@ -62,7 +62,6 @@ public class Game {
 			if (getPiece(move.getDest()) != null) {
 				capture = true;
 			}
-			Piece piece = getPiece(move.getSrc());
 			if (getPiece(move.getSrc()) instanceof King 
 					&& Math.abs(move.getSrc().getFileByInt() - move.getDest().getFileByInt()) == 2) {
 				castling = true;
@@ -109,20 +108,6 @@ public class Game {
 			boolean check, boolean checkmate, boolean stalemate, 
 			boolean capture, boolean castling) {
 		String moveRecord = "";
-		//TODO add original file if another piece of same type can go to dest
-		if (piece instanceof King) {
-			moveRecord += "K";
-		} else if (piece instanceof Queen) {
-			moveRecord += "Q";
-		} else if (piece instanceof Bishop) {
-			moveRecord += "B";
-		} else if (piece instanceof Knight) {
-			moveRecord += "N";
-		} else if (piece instanceof Rook) {
-			moveRecord += "R";
-		} else {
-			//do nothing (pawn)
-		}
 		
 		
 		move.setRecord(moveRecord);

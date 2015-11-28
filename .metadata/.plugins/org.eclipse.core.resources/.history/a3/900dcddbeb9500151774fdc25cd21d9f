@@ -33,7 +33,7 @@ public class Move {
 			return ""+src.getFile()+(src.getRank()+1)+
 					" --> "+dest.getFile()+(dest.getRank()+1);	
 		}
-		return move;
+			return move;
 	}
 
 	public String getRecord() {
