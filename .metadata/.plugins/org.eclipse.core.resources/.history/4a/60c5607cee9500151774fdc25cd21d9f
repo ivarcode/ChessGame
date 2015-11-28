@@ -118,7 +118,7 @@ public class Game {
 				if (move.getDest().getFileByInt() == 6) {
 					moveRecord = "0-0";
 				} else {
-					moveRecord = "0-0-0";
+					moveRecord = "0-0-0;"
 				}
 			}
 		} else if (piece instanceof Queen) {

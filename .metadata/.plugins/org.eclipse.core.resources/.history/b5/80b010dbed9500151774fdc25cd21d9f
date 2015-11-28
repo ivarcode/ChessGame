@@ -114,13 +114,6 @@ public class Game {
 		//TODO add original file if another piece of same type can go to dest
 		if (piece instanceof King) {
 			moveRecord += "K";
-			if (castling) {
-				if (move.getDest().getFileByInt() == 6) {
-					moveRecord = "0-0";
-				} else {
-					moveRecord = "0-0-0";
-				}
-			}
 		} else if (piece instanceof Queen) {
 			moveRecord += "Q";
 		} else if (piece instanceof Bishop) {
@@ -129,18 +122,10 @@ public class Game {
 			moveRecord += "N";
 		} else if (piece instanceof Rook) {
 			moveRecord += "R";
-		}
-		if (capture) {
-			moveRecord += "x";
+		} else {
+			//do nothing (pawn)
 		}
 		moveRecord += move.getDest().getFile()+move.getDest().getRank();
-		if (check && !checkmate) {
-			moveRecord += "+";
-		} else if (checkmate) {
-			moveRecord += "#";
-		} else if (stalemate) {
-			moveRecord = "Draw";
-		}
 		
 		move.setRecord(moveRecord);
 		record.add(move);

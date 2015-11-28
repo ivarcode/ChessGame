@@ -114,13 +114,6 @@ public class Game {
 		//TODO add original file if another piece of same type can go to dest
 		if (piece instanceof King) {
 			moveRecord += "K";
-			if (castling) {
-				if (move.getDest().getFileByInt() == 6) {
-					moveRecord = "0-0";
-				} else {
-					moveRecord = "0-0-0";
-				}
-			}
 		} else if (piece instanceof Queen) {
 			moveRecord += "Q";
 		} else if (piece instanceof Bishop) {
