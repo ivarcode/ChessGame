@@ -71,10 +71,8 @@ public class Game {
 					rookSrc = new Location(7, move.getSrc().getRank());
 					rookDest = new Location(5, move.getSrc().getRank());
 				} else /*if (move.getDest().getFileByInt() == 2) */{
-					rookSrc = new Location(0, move.getSrc().getRank());
-					rookDest = new Location(3, move.getSrc().getRank());
+					
 				}
-				board.movePiece(rookSrc, rookDest);
 			}
 			changeTurn();
 			board.movePiece(move.getSrc(), move.getDest());

@@ -57,43 +57,22 @@ public class Game {
 	public void makeMove(Move move) {
 		if (isLegalMove(move)) {
 			//System.out.println("isLegalMove");
-			boolean check = false, checkmate = false, stalemate = false,
-					capture = false, castling = false;
-			if (getPiece(move.getDest()) != null) {
-				capture = true;
-			}
-			if (getPiece(move.getSrc()) instanceof King 
-					&& Math.abs(move.getSrc().getFileByInt() - move.getDest().getFileByInt()) == 2) {
-				castling = true;
-				Location rookSrc;
-				Location rookDest;
-				if (move.getDest().getFileByInt() == 6) {
-					rookSrc = new Location(7, move.getSrc().getRank());
-					rookDest = new Location(5, move.getSrc().getRank());
-				} else /*if (move.getDest().getFileByInt() == 2) */{
-					rookSrc = new Location(0, move.getSrc().getRank());
-					rookDest = new Location(3, move.getSrc().getRank());
-				}
-				board.movePiece(rookSrc, rookDest);
-			}
+			boolean check = false, checkmate = false,
+					capture = false, casting = false;
 			changeTurn();
 			board.movePiece(move.getSrc(), move.getDest());
+			//TODO check for if castling, if so, make second move (rook)
 			
-			if (kingInCheck(board)) {
-				check = true;
-			}
-			
-			//TODO check if there is a legal move: result with checkmate or stalemate
-
-			recordMove(move, check, checkmate, stalemate, capture, castling);
-			
-			//TODO execute end of game if checkmate or stalemate
+			recordMove(move);
+			//TODO check for mate
 		}
 	}
 	private void recordMove(Move move, 
-			boolean check, boolean checkmate, boolean stalemate, 
+			boolean check, boolean checkmate, 
 			boolean capture, boolean castling) {
-		//TODO record moves
+		//TODO record castling properly
+		//TODO record captures properly
+		//TODO record checks properly
 		record.add(move);
 	}
 
@@ -350,7 +329,7 @@ public class Game {
 
 		return false;
 	}
-
+	
 	private boolean kingInCheck(Board b) {		
 		Location loc = null;
 		for (int i = 0; i < 8; i++) {
@@ -366,7 +345,7 @@ public class Game {
 			System.out.println("NO [" + turn + "] KING ON BOARD");
 			return false;
 		}
-
+		
 		return squareIsThreatened(b,loc);
 	}
 
@@ -502,7 +481,7 @@ public class Game {
 		ArrayList<Move> arr = new ArrayList<Move>();
 		arr.addAll(bishopMoves(loc));
 		arr.addAll(rookMoves(loc));
-
+		
 		return arr;
 	}
 	private ArrayList<Move> bishopMoves(Location loc) {
