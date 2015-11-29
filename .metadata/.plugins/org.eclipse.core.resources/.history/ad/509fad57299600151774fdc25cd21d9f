@@ -126,35 +126,21 @@ public class Game {
 			samePieceMoves = queenMoves(move.getDest());
 		} else if (piece instanceof Bishop) {
 			moveRecord += "B";
-			samePieceMoves = bishopMoves(move.getDest());
 		} else if (piece instanceof Knight) {
 			moveRecord += "N";
-			samePieceMoves = knightMoves(move.getDest());
 		} else if (piece instanceof Rook) {
 			moveRecord += "R";
-			samePieceMoves = rookMoves(move.getDest());
 		} else /*piece instanceof pawn*/{
-			if (move.getSrc().getFileByInt() != move.getDest().getFileByInt()) {
-				if (move.getSrc().getFileByInt() > move.getDest().getFileByInt()) {
-					if (getPiece(new Location(move.getSrc().getFileByInt()-2,move.getSrc().getRank())) instanceof Pawn &&
-							getPiece(new Location(move.getSrc().getFileByInt()-2,move.getSrc().getRank())).getColor() == piece.getColor()) {
-						moveRecord += move.getSrc().getFile();
-					}
-				} else {
-					if (getPiece(new Location(move.getSrc().getFileByInt()+2,move.getSrc().getRank())) instanceof Pawn &&
-							getPiece(new Location(move.getSrc().getFileByInt()+2,move.getSrc().getRank())).getColor() == piece.getColor()) {
-						moveRecord += move.getSrc().getFile();
-					}
-				}
-			}
+			
 		}
 		for (int i = 0; i < samePieceMoves.size(); i++) {
 			if (getPiece(samePieceMoves.get(i).getDest()).getClass().equals(piece.getClass()) &&
 					getPiece(samePieceMoves.get(i).getDest()).getColor() == piece.getColor()) {
 				System.out.print("two pieces of one kind can move to that square");
-				moveRecord += move.getSrc().getFile();
 			}
 		}
+		
+		//TODO add original file if another piece of same type can go to dest
 		if (capture) {
 			moveRecord += "x";
 		}

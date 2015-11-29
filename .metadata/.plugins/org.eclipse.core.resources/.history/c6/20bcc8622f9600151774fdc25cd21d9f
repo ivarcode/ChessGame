@@ -136,15 +136,11 @@ public class Game {
 		} else /*piece instanceof pawn*/{
 			if (move.getSrc().getFileByInt() != move.getDest().getFileByInt()) {
 				if (move.getSrc().getFileByInt() > move.getDest().getFileByInt()) {
-					if (getPiece(new Location(move.getSrc().getFileByInt()-2,move.getSrc().getRank())) instanceof Pawn &&
-							getPiece(new Location(move.getSrc().getFileByInt()-2,move.getSrc().getRank())).getColor() == piece.getColor()) {
-						moveRecord += move.getSrc().getFile();
+					if (getPiece(new Location(move.getSrc().getFileByInt()-2,move.getSrc().getRank())) instanceof Pawn)) {
+						
 					}
 				} else {
-					if (getPiece(new Location(move.getSrc().getFileByInt()+2,move.getSrc().getRank())) instanceof Pawn &&
-							getPiece(new Location(move.getSrc().getFileByInt()+2,move.getSrc().getRank())).getColor() == piece.getColor()) {
-						moveRecord += move.getSrc().getFile();
-					}
+					
 				}
 			}
 		}
@@ -155,6 +151,8 @@ public class Game {
 				moveRecord += move.getSrc().getFile();
 			}
 		}
+		
+		//TODO add original file if another piece of same type can go to dest
 		if (capture) {
 			moveRecord += "x";
 		}

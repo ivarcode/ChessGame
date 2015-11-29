@@ -155,6 +155,8 @@ public class Game {
 				moveRecord += move.getSrc().getFile();
 			}
 		}
+		
+		//TODO add original file if another piece of same type can go to dest
 		if (capture) {
 			moveRecord += "x";
 		}
