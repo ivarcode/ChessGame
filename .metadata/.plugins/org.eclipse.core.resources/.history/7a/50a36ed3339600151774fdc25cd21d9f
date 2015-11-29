@@ -154,7 +154,7 @@ public class Game {
 					getPiece(samePieceMoves.get(i).getDest()).getColor() == piece.getColor()) {
 				System.out.print("two pieces of one kind can move to that square");
 				moveRecord += move.getSrc().getFile();
-				break;
+				i--;
 			}
 		}
 		if (capture) {
