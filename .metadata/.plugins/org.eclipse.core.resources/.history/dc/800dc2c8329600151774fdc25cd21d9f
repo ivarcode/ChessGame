@@ -857,7 +857,7 @@ public class Game {
 						lastMove.getDest().getFileByInt() == file-1 &&
 						lastMove.getDest().getRank() == rank &&
 						lastMove.getSrc().getRank() == 1) {
-					arr.add(new Move(loc,new Location(file-1,rank-1)));
+					arr.add(new Move(loc,new Location(file-1,rank+1)));
 				}
 				piece = getPiece(new Location(file+1,rank));
 				lastMove = record.get(record.size()-1);
@@ -865,7 +865,7 @@ public class Game {
 						lastMove.getDest().getFileByInt() == file+1 &&
 						lastMove.getDest().getRank() == rank &&
 						lastMove.getSrc().getRank() == 1) {
-					arr.add(new Move(loc,new Location(file+1,rank-1)));
+					arr.add(new Move(loc,new Location(file+1,rank+1)));
 				}
 			}
 		}

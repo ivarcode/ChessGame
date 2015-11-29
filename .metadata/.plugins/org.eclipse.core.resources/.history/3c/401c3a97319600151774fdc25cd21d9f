@@ -786,6 +786,9 @@ public class Game {
 		ArrayList<Move> arr = new ArrayList<Move>();
 		int file = loc.getFileByInt();
 		int rank = loc.getRank();
+		Piece piece;
+		piece = getPiece(new Location(file-1,rank));
+		Move lastMove = record.get(record.size()-1);
 
 		if (color == "white") {
 			if (rank == 1
@@ -806,25 +809,6 @@ public class Game {
 				if (getPiece(new Location(file-1,rank+1)) != null 
 						&& !getPiece(new Location(file-1,rank+1)).getColor().equals(turn)) {
 					arr.add(new Move(loc,new Location(file-1,rank+1)));
-				}
-			}
-			if (rank == 4) {
-				Piece piece;
-				piece = getPiece(new Location(file-1,rank));
-				Move lastMove = record.get(record.size()-1);
-				if (piece instanceof Pawn && piece.getColor() != color &&
-						lastMove.getDest().getFileByInt() == file-1 &&
-						lastMove.getDest().getRank() == rank &&
-						lastMove.getSrc().getRank() == 6) {
-					arr.add(new Move(loc,new Location(file-1,rank+1)));
-				}
-				piece = getPiece(new Location(file+1,rank));
-				lastMove = record.get(record.size()-1);
-				if (piece instanceof Pawn && piece.getColor() != color &&
-						lastMove.getDest().getFileByInt() == file+1 &&
-						lastMove.getDest().getRank() == rank &&
-						lastMove.getSrc().getRank() == 6) {
-					arr.add(new Move(loc,new Location(file+1,rank+1)));
 				}
 			}
 		}
@@ -849,25 +833,12 @@ public class Game {
 					arr.add(new Move(loc,new Location(file+1,rank-1)));
 				}
 			}
-			if (rank == 3) {
-				Piece piece;
-				piece = getPiece(new Location(file-1,rank));
-				Move lastMove = record.get(record.size()-1);
-				if (piece instanceof Pawn && piece.getColor() != color &&
-						lastMove.getDest().getFileByInt() == file-1 &&
-						lastMove.getDest().getRank() == rank &&
-						lastMove.getSrc().getRank() == 1) {
-					arr.add(new Move(loc,new Location(file-1,rank-1)));
-				}
-				piece = getPiece(new Location(file+1,rank));
-				lastMove = record.get(record.size()-1);
-				if (piece instanceof Pawn && piece.getColor() != color &&
-						lastMove.getDest().getFileByInt() == file+1 &&
-						lastMove.getDest().getRank() == rank &&
-						lastMove.getSrc().getRank() == 1) {
-					arr.add(new Move(loc,new Location(file+1,rank-1)));
-				}
-			}
+		}
+		
+		if (piece instanceof Pawn && piece.getColor() != color &&
+				lastMove.getDest().getFileByInt() == file-1 &&
+				lastMove.getDest().getRank() == rank) {
+			
 		}
 		
 		return arr;
