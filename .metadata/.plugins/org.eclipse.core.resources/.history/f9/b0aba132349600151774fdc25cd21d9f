@@ -150,8 +150,7 @@ public class Game {
 			}
 		}
 		for (int i = 0; i < samePieceMoves.size(); i++) {
-			if (getPiece(samePieceMoves.get(i).getDest()) != null && 
-					getPiece(samePieceMoves.get(i).getDest()).getClass().equals(piece.getClass()) &&
+			if (getPiece(samePieceMoves.get(i).getDest()).getClass().equals(piece.getClass()) &&
 					getPiece(samePieceMoves.get(i).getDest()).getColor() == piece.getColor()) {
 				System.out.print("two pieces of one kind can move to that square");
 				moveRecord += move.getSrc().getFile();
