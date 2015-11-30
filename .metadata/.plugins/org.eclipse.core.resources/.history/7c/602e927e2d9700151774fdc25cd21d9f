@@ -538,7 +538,6 @@ public class Game {
 							&& !getPiece(new Location(file+3,rank)).hasMoved()
 							&& !squareIsThreatened(board,new Location(file,rank))
 							&& !squareIsThreatened(board,new Location(file+1,rank))) {
-						System.out.println("reached this point");
 						arr.add(new Move(loc,new Location(file+2,rank)));
 					}
 					if (getPiece(new Location(file-1,rank)) == null
@@ -944,7 +943,7 @@ public class Game {
 		} else if (piece instanceof Pawn) {
 			System.out.print("");
 		}
-		System.out.println(""+move.getDest().getFile()+(move.getDest().getRank()+1));
+		System.out.print(""+move.getDest().getFile()+(move.getDest().getRank()+1));
 	}
 	public void boardCopy(Board a, Board b) {
 		for (int i = 0; i < 8; i++) {
