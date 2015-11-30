@@ -537,6 +537,7 @@ public class Game {
 							&& !getPiece(new Location(file+3,rank)).hasMoved()
 							&& !squareIsThreatened(board,new Location(file,rank))
 							&& !squareIsThreatened(board,new Location(file+1,rank))) {
+						getPiece(new Location(file,rank)).setHasMoved(true);
 						arr.add(new Move(loc,new Location(file+2,rank)));
 					}
 					if (getPiece(new Location(file-1,rank)) == null

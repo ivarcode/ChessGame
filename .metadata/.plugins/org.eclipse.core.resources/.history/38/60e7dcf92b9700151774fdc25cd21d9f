@@ -77,10 +77,12 @@ public class Game {
 					rookDest = new Location(3, move.getSrc().getRank());
 				}
 				board.movePiece(rookSrc, rookDest);
+				getPiece(new Location(rookDest.getFile(),rookDest.getRank())).setHasMoved(true);
 			}
 			//TODO detect en passant and capture piece
 			changeTurn();
 			board.movePiece(move.getSrc(), move.getDest());
+			getPiece(new Location(move.getDest().getFile(),move.getDest().getRank())).setHasMoved(true);
 			
 			if (kingInCheck(board)) {
 				check = true;

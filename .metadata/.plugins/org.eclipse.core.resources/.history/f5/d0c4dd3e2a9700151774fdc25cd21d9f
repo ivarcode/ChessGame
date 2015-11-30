@@ -168,13 +168,12 @@ public class Game {
 		} else if (checkmate) {
 			moveRecord += "#";
 		} else if (stalemate) {
-			moveRecord = "Draw by stalemate";
+			moveRecord = "Draw";
 		}
 		
 		move.setRecord(moveRecord);
 		record.add(move);
 	}
-
 	private boolean isLegalMove(Move move) {
 		ArrayList<Move> moves = getMoveOptions();
 		for (int i = 0; i < moves.size(); i++) {

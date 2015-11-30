@@ -81,6 +81,7 @@ public class Game {
 			//TODO detect en passant and capture piece
 			changeTurn();
 			board.movePiece(move.getSrc(), move.getDest());
+			getPiece(new Location(move.getSrc())).setHasMoved(true);
 			
 			if (kingInCheck(board)) {
 				check = true;
