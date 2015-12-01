@@ -544,6 +544,7 @@ public class Game {
 		if (turn == "white") {
 			if (file == 4 && rank == 0) {
 				if (!getPiece(new Location(file,rank)).hasMoved()) {
+					System.out.print("ayy");
 					if (getPiece(new Location(file+1,rank)) == null
 							&& getPiece(new Location(file+2,rank)) == null
 							&& getPiece(new Location(file+3,rank)) instanceof Rook
