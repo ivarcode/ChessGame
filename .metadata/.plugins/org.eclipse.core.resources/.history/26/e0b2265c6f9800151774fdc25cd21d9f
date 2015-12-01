@@ -83,6 +83,7 @@ public class Board {
 		//TODO move piece to array displaying captured pieces
 		placePiece(getPiece(src),dest);
 		placePiece(null,src);
+		getPiece(new Location(dest.getFile(),dest.getRank())).setHasMoved(true);
 	}
 	public void takeBack() {
 		placePiece(getPiece(lastDest),lastSrc);

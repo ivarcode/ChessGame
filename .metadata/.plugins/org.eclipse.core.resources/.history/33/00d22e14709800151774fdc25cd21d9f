@@ -83,7 +83,7 @@ public class Game {
 			changeTurn();
 			board.movePiece(move.getSrc(), move.getDest());
 			getPiece(new Location(move.getDest().getFile(),move.getDest().getRank())).setHasMoved(true);
-
+			
 			if (kingInCheck(board)) {
 				check = true;
 			}
@@ -107,7 +107,7 @@ public class Game {
 			}
 
 			recordMove(move, piece, check, checkmate, stalemate, capture, castling);
-
+			
 			//TODO execute end of game if checkmate or stalemate
 		}
 	}
@@ -172,10 +172,10 @@ public class Game {
 		} else if (stalemate) {
 			moveRecord = "Draw by stalemate";
 		}
-
+		
 		move.setRecord(moveRecord);
 		printMove(move);
-
+		
 		record.add(move);
 	}
 
@@ -383,22 +383,14 @@ public class Game {
 		rank = loc.getRank();
 
 		//King
-		if ((b.getPiece(new Location(file+1,rank)) instanceof King &&
-				b.getPiece(new Location(file+1,rank)).getColor() != turn)
-				|| (b.getPiece(new Location(file-1,rank)) instanceof King &&
-						b.getPiece(new Location(file-1,rank)).getColor() != turn)
-				|| (b.getPiece(new Location(file,rank+1)) instanceof King &&
-						b.getPiece(new Location(file,rank+1)).getColor() != turn)
-				|| (b.getPiece(new Location(file,rank-1)) instanceof King &&
-						b.getPiece(new Location(file,rank-1)).getColor() != turn)
-				|| (b.getPiece(new Location(file+1,rank+1)) instanceof King &&
-						b.getPiece(new Location(file+1,rank+1)).getColor() != turn)
-				|| (b.getPiece(new Location(file+1,rank-1)) instanceof King &&
-						b.getPiece(new Location(file+1,rank-1)).getColor() != turn)
-				|| (b.getPiece(new Location(file-1,rank+1)) instanceof King &&
-						b.getPiece(new Location(file-1,rank+1)).getColor() != turn)
-				|| (b.getPiece(new Location(file-1,rank-1)) instanceof King &&
-						b.getPiece(new Location(file-1,rank-1)).getColor() != turn)) {
+		if (b.getPiece(new Location(file+1,rank)) instanceof King
+				|| b.getPiece(new Location(file-1,rank)) instanceof King
+				|| b.getPiece(new Location(file,rank+1)) instanceof King
+				|| b.getPiece(new Location(file,rank-1)) instanceof King
+				|| b.getPiece(new Location(file+1,rank+1)) instanceof King
+				|| b.getPiece(new Location(file+1,rank-1)) instanceof King
+				|| b.getPiece(new Location(file-1,rank+1)) instanceof King
+				|| b.getPiece(new Location(file-1,rank-1)) instanceof King) {
 			return true;
 		}
 
@@ -463,7 +455,7 @@ public class Game {
 	//PieceMoves
 	private ArrayList<Move> kingMoves(Location loc) {
 		ArrayList<Move> arr = new ArrayList<Move>();
-
+		
 		int file = loc.getFileByInt();
 		int rank = loc.getRank();
 
@@ -545,12 +537,12 @@ public class Game {
 				if (!getPiece(new Location(file,rank)).hasMoved()) {
 					System.out.print("ayy");
 					if (getPiece(new Location(file+1,rank)) == null
-							&& getPiece(new Location(file+2,rank)) == null
+							/*&& getPiece(new Location(file+2,rank)) == null
 							&& getPiece(new Location(file+3,rank)) instanceof Rook
 							&& !getPiece(new Location(file+3,rank)).hasMoved()
 							&& !squareIsThreatened(board,new Location(file,rank))
-							&& !squareIsThreatened(board,new Location(file+1,rank))) {
-						arr.add(new Move(loc,new Location(file+2,rank)));
+							&& !squareIsThreatened(board,new Location(file+1,rank))*/) {
+						System.out.println("reached this point");arr.add(new Move(loc,new Location(file+2,rank)));
 					}
 					if (getPiece(new Location(file-1,rank)) == null
 							&& getPiece(new Location(file-2,rank)) == null
@@ -887,7 +879,7 @@ public class Game {
 				}
 			}
 		}
-
+		
 		return arr;
 	}
 	//
