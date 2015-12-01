@@ -163,9 +163,7 @@ public class Game {
 		if (capture) {
 			moveRecord += "x";
 		}
-		if (!castling) {
-			moveRecord += ""+move.getDest().getFile()+(move.getDest().getRank()+1);
-		}
+		moveRecord += ""+move.getDest().getFile()+(move.getDest().getRank()+1);
 		if (check && !checkmate) {
 			moveRecord += "+";
 		} else if (checkmate) {
