@@ -81,7 +81,7 @@ public class Game {
 			if (getPiece(move.getSrc()) instanceof Pawn
 					&& getPiece(move.getDest()) == null
 					&& move.getSrc().getFileByInt() != move.getDest().getFileByInt()) {
-				capture = true;
+				
 			}
 			changeTurn();
 			board.movePiece(move.getSrc(), move.getDest());

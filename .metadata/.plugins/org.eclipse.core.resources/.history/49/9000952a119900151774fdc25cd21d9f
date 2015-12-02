@@ -78,10 +78,8 @@ public class Game {
 				board.movePiece(rookSrc, rookDest);
 				getPiece(new Location(rookDest.getFile(), rookDest.getRank()));
 			}
-			if (getPiece(move.getSrc()) instanceof Pawn
-					&& getPiece(move.getDest()) == null
-					&& move.getSrc().getFileByInt() != move.getDest().getFileByInt()) {
-				capture = true;
+			if (getPiece(move.getSrc()) instanceof Pawn) {
+				
 			}
 			changeTurn();
 			board.movePiece(move.getSrc(), move.getDest());
