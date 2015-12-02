@@ -141,40 +141,17 @@ public class Board {
 					if (src.getRank() == 4
 							&& src.getFile() != dest.getFile()) {
 						if (getPiece(new Location(dest.getFile(),dest.getRank()-1)) instanceof Pawn) {
-							boolean done = false;
 							for (int i = 0; i < blackPieceAdv.size(); i++) {
 								if (blackPieceAdv.get(i) instanceof Pawn) {
-									blackPieceAdv.remove(i);
-									done = true;
+									
 								}
 							}
-							if (!done) {
-								whitePieceAdv.add(getPiece(new Location(dest.getFile(),dest.getRank()-1)));
-							}
-							materialAdv += 1;
 						} else {
 							throw new RuntimeException("Illegal pawn move");
 						}
 					}
 				} else {
-					if (src.getRank() == 3
-							&& src.getFile() != dest.getFile()) {
-						if (getPiece(new Location(dest.getFile(),dest.getRank()+1)) instanceof Pawn) {
-							boolean done = false;
-							for (int i = 0; i < whitePieceAdv.size(); i++) {
-								if (whitePieceAdv.get(i) instanceof Pawn) {
-									whitePieceAdv.remove(i);
-									done = true;
-								}
-							}
-							if (!done) {
-								blackPieceAdv.add(getPiece(new Location(dest.getFile(),dest.getRank()+1)));
-							}
-							materialAdv -= 1;
-						} else {
-							throw new RuntimeException("Illegal pawn move");
-						}
-					}
+
 				}
 			}
 		}
