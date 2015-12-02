@@ -106,7 +106,7 @@ public class Board {
 					}
 				}
 				if (!done) {
-					blackPieceAdv.add(piece);
+					
 				}
 				materialAdv -= piece.getPointValue();
 			} else {
@@ -127,7 +127,7 @@ public class Board {
 					}
 				}
 				if (!done) {
-					whitePieceAdv.add(piece);
+
 				}
 				materialAdv += piece.getPointValue();
 			}
@@ -136,7 +136,6 @@ public class Board {
 		placePiece(null,src);
 	}
 	public void takeBack() {
-		//FIXME include taking back from the captured pieces
 		placePiece(getPiece(lastDest),lastSrc);
 		placePiece(lastCapPiece,lastDest);
 	}

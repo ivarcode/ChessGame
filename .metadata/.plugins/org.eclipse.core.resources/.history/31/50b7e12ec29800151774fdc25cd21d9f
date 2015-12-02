@@ -94,49 +94,46 @@ public class Board {
 					if ((whitePieceAdv.get(i) instanceof Queen 
 							&& piece instanceof Queen) || 
 							(whitePieceAdv.get(i) instanceof Bishop 
-									&& piece instanceof Bishop) || 
+							&& piece instanceof Bishop) || 
 							(whitePieceAdv.get(i) instanceof Knight 
-									&& piece instanceof Knight) || 
+							&& piece instanceof Knight) || 
 							(whitePieceAdv.get(i) instanceof Rook 
-									&& piece instanceof Rook) || 
+							&& piece instanceof Rook) || 
 							(whitePieceAdv.get(i) instanceof Pawn 
-									&& piece instanceof Pawn)) {
+							&& piece instanceof Pawn)) {
 						whitePieceAdv.remove(i);
+						materialAdv -= piece.getPointValue();
 						done = true;
 					}
 				}
 				if (!done) {
-					blackPieceAdv.add(piece);
+					
 				}
-				materialAdv -= piece.getPointValue();
 			} else {
 				boolean done = false;
 				for (int i = 0; i < blackPieceAdv.size(); i++) {
 					if ((blackPieceAdv.get(i) instanceof Queen 
 							&& piece instanceof Queen) || 
 							(blackPieceAdv.get(i) instanceof Bishop 
-									&& piece instanceof Bishop) || 
+							&& piece instanceof Bishop) || 
 							(blackPieceAdv.get(i) instanceof Knight 
-									&& piece instanceof Knight) || 
+							&& piece instanceof Knight) || 
 							(blackPieceAdv.get(i) instanceof Rook 
-									&& piece instanceof Rook) || 
+							&& piece instanceof Rook) || 
 							(blackPieceAdv.get(i) instanceof Pawn 
-									&& piece instanceof Pawn)) {
+							&& piece instanceof Pawn)) {
 						blackPieceAdv.remove(i);
+						materialAdv += piece.getPointValue();
 						done = true;
 					}
 				}
-				if (!done) {
-					whitePieceAdv.add(piece);
-				}
-				materialAdv += piece.getPointValue();
+				
 			}
 		}
 		placePiece(getPiece(src),dest);
 		placePiece(null,src);
 	}
 	public void takeBack() {
-		//FIXME include taking back from the captured pieces
 		placePiece(getPiece(lastDest),lastSrc);
 		placePiece(lastCapPiece,lastDest);
 	}
