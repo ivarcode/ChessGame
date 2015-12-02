@@ -131,16 +131,6 @@ public class Board {
 				}
 				materialAdv += piece.getPointValue();
 			}
-		} else {
-			Piece piece = getPiece(src);
-			if (piece instanceof Pawn) {
-				//TODO include queening and include en passant
-				if (piece.getColor() == "white") {
-					
-				} else {
-
-				}
-			}
 		}
 		placePiece(getPiece(src),dest);
 		placePiece(null,src);
