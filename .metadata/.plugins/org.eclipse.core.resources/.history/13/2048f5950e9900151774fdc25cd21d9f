@@ -942,7 +942,6 @@ public class Game {
 	}
 	//
 
-	
 	public void printMove(Move move) {
 		if (move.getRecord() != null) {
 			System.out.println(move.getRecord());
