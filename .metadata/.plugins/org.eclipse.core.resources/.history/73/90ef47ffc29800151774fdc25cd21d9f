@@ -251,6 +251,7 @@ public class Board {
 	public void setWhitePieceAdv(ArrayList<Piece> whitePieceAdv) {
 		this.whitePieceAdv = whitePieceAdv;
 	}
+
 	public ArrayList<Piece> getBlackPieceAdv() {
 		return blackPieceAdv;
 	}
