@@ -17,7 +17,7 @@ public class Board {
 	private BufferedImage wKingi, bKingi, wQueeni, bQueeni, wBishopi, bBishopi,
 	wKnighti, bKnighti, wRooki, bRooki, wPawni, bPawni;
 	private Location lastSrc, lastDest;
-	private Piece lastCapPiece;//not sure what to use this for yet
+	private Piece lastCapPiece;
 
 	public Board() {
 		board = new Piece[8][8];
