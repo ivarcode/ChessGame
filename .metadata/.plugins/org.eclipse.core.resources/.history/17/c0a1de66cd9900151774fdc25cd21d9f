@@ -16,7 +16,7 @@ public class Game {
 	public Game(int sW, int tH, int sD) {
 		System.out.println("Preparing new game...");
 		setTurn("white");
-		promoting = false;
+		queening = false;
 		board = new Board();
 		checkBoard = new Board();
 		record = new ArrayList<Move>();
