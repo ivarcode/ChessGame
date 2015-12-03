@@ -951,6 +951,7 @@ public class Game {
 	public void drawSquareTinted(Graphics g, Location loc) {
 		if ((loc.getFileByInt()+loc.getRank())%2 == 0) {
 			g.setColor(new Color(245,184,0));
+			g.setColor(new Color(245,184,0));
 		} else {
 			g.setColor(Color.YELLOW);
 		}
