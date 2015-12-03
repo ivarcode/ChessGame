@@ -86,11 +86,6 @@ public class Board {
 	}
 
 	public void movePiece(Location src, Location dest) {
-		//TODO include promotion
-		if (src.getFile() == dest.getFile()
-				&& src.getRank() == dest.getRank()) {
-			
-		}
 		if (getPiece(dest) != null) {
 			Piece piece = getPiece(dest);
 			if (piece.getColor() == "white") {

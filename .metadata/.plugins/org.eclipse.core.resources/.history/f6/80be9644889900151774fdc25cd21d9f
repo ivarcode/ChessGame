@@ -80,16 +80,9 @@ public class Game {
 					board.movePiece(rookSrc, rookDest);
 					getPiece(new Location(rookDest.getFile(), rookDest.getRank()));
 				}
-				if (getPiece(move.getSrc()) instanceof Pawn) {
-					if (getPiece(move.getDest()) == null
+				if (getPiece(move.getSrc()) instanceof Pawn && getPiece(move.getDest()) == null
 						&& move.getSrc().getFileByInt() != move.getDest().getFileByInt()) {
-						capture = true;
-					}
-					if (move.getDest().getRank() == 7 && getPiece(move.getSrc()).getColor() == "white") {
-						
-					} else if (move.getDest().getRank() == 0 && getPiece(move.getSrc()).getColor() == "black") {
-						
-					}
+					capture = true;
 				}
 				changeTurn();
 				board.movePiece(move.getSrc(), move.getDest());
@@ -154,7 +147,6 @@ public class Game {
 			moveRecord += "R";
 			samePieceMoves = rookMoves(move.getDest());
 		} else /*piece instanceof pawn*/{
-			//TODO include promotion
 			if (move.getSrc().getFileByInt() != move.getDest().getFileByInt()) {
 				if (move.getSrc().getFileByInt() > move.getDest().getFileByInt()) {
 					if (getPiece(new Location(move.getSrc().getFileByInt()-2,move.getSrc().getRank())) instanceof Pawn &&

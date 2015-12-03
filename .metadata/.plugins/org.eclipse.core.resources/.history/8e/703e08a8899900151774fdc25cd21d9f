@@ -86,11 +86,6 @@ public class Board {
 	}
 
 	public void movePiece(Location src, Location dest) {
-		//TODO include promotion
-		if (src.getFile() == dest.getFile()
-				&& src.getRank() == dest.getRank()) {
-			
-		}
 		if (getPiece(dest) != null) {
 			Piece piece = getPiece(dest);
 			if (piece.getColor() == "white") {
@@ -141,6 +136,7 @@ public class Board {
 		} else {
 			Piece piece = getPiece(src);
 			if (piece instanceof Pawn) {
+				//TODO include queening
 				if (piece.getColor() == "white") {
 					if (src.getRank() == 4
 							&& src.getFile() != dest.getFile()) {
