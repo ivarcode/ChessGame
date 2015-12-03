@@ -14,7 +14,7 @@ public class Piece {
 	private boolean hasMoved;
 	
 	public Piece() {
-		//null constructor
+		//nullPiece def
 	}
 	
 	public Piece(Location loc, String color, BufferedImage img) {

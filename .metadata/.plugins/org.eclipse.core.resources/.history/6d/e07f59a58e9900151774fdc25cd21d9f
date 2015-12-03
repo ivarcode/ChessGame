@@ -101,7 +101,6 @@ public class Board {
 									&& piece instanceof Knight) || 
 							(blackPieceAdv.get(i) instanceof Rook 
 									&& piece instanceof Rook)) {
-						//TODO add piece to last rank
 						blackPieceAdv.remove(i);
 						done = true;
 						break;

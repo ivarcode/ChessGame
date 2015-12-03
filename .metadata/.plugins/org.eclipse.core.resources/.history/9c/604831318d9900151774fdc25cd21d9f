@@ -101,7 +101,6 @@ public class Board {
 									&& piece instanceof Knight) || 
 							(blackPieceAdv.get(i) instanceof Rook 
 									&& piece instanceof Rook)) {
-						//TODO add piece to last rank
 						blackPieceAdv.remove(i);
 						done = true;
 						break;
@@ -111,48 +110,11 @@ public class Board {
 					whitePieceAdv.add(piece);
 				}
 				done = false;
-				for (int i = 0; i < whitePieceAdv.size(); i++) {
-					if (whitePieceAdv.get(i) instanceof Pawn) {
-						whitePieceAdv.remove(i);
-						done = true;
-						break;
-					}
-				}
-				if (!done) {
-					blackPieceAdv.add(new Pawn());
-				}
+				for (for (int i = 0; i < blackPieceAdv.size(); i++) {
+					if ((blackPieceAdv.get(i) instanceof Pawn)
 				materialAdv += piece.getPointValue()-1;
 			} else {
-				boolean done = false;
-				for (int i = 0; i < whitePieceAdv.size(); i++) {
-					if ((whitePieceAdv.get(i) instanceof Queen 
-							&& piece instanceof Queen) || 
-							(whitePieceAdv.get(i) instanceof Bishop 
-									&& piece instanceof Bishop) || 
-							(whitePieceAdv.get(i) instanceof Knight 
-									&& piece instanceof Knight) || 
-							(whitePieceAdv.get(i) instanceof Rook 
-									&& piece instanceof Rook)) {
-						whitePieceAdv.remove(i);
-						done = true;
-						break;
-					}
-				}
-				if (!done) {
-					blackPieceAdv.add(piece);
-				}
-				done = false;
-				for (int i = 0; i < blackPieceAdv.size(); i++) {
-					if (blackPieceAdv.get(i) instanceof Pawn) {
-						blackPieceAdv.remove(i);
-						done = true;
-						break;
-					}
-				}
-				if (!done) {
-					whitePieceAdv.add(new Pawn());
-				}
-				materialAdv -= piece.getPointValue()+1;
+				
 			}
 		} else if (getPiece(dest) != null) {
 			Piece piece = getPiece(dest);

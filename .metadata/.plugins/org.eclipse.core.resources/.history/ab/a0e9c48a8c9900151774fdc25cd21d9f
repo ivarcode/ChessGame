@@ -92,38 +92,6 @@ public class Board {
 			Piece piece = getPiece(src);
 			if (piece.getColor() == "whiteAlt") {
 				boolean done = false;
-				for (int i = 0; i < blackPieceAdv.size(); i++) {
-					if ((blackPieceAdv.get(i) instanceof Queen 
-							&& piece instanceof Queen) || 
-							(blackPieceAdv.get(i) instanceof Bishop 
-									&& piece instanceof Bishop) || 
-							(blackPieceAdv.get(i) instanceof Knight 
-									&& piece instanceof Knight) || 
-							(blackPieceAdv.get(i) instanceof Rook 
-									&& piece instanceof Rook)) {
-						//TODO add piece to last rank
-						blackPieceAdv.remove(i);
-						done = true;
-						break;
-					}
-				}
-				if (!done) {
-					whitePieceAdv.add(piece);
-				}
-				done = false;
-				for (int i = 0; i < whitePieceAdv.size(); i++) {
-					if (whitePieceAdv.get(i) instanceof Pawn) {
-						whitePieceAdv.remove(i);
-						done = true;
-						break;
-					}
-				}
-				if (!done) {
-					blackPieceAdv.add(new Pawn());
-				}
-				materialAdv += piece.getPointValue()-1;
-			} else {
-				boolean done = false;
 				for (int i = 0; i < whitePieceAdv.size(); i++) {
 					if ((whitePieceAdv.get(i) instanceof Queen 
 							&& piece instanceof Queen) || 
@@ -132,7 +100,9 @@ public class Board {
 							(whitePieceAdv.get(i) instanceof Knight 
 									&& piece instanceof Knight) || 
 							(whitePieceAdv.get(i) instanceof Rook 
-									&& piece instanceof Rook)) {
+									&& piece instanceof Rook) || 
+							(whitePieceAdv.get(i) instanceof Pawn 
+									&& piece instanceof Pawn)) {
 						whitePieceAdv.remove(i);
 						done = true;
 						break;
@@ -141,19 +111,8 @@ public class Board {
 				if (!done) {
 					blackPieceAdv.add(piece);
 				}
-				done = false;
-				for (int i = 0; i < blackPieceAdv.size(); i++) {
-					if (blackPieceAdv.get(i) instanceof Pawn) {
-						blackPieceAdv.remove(i);
-						done = true;
-						break;
-					}
-				}
-				if (!done) {
-					whitePieceAdv.add(new Pawn());
-				}
-				materialAdv -= piece.getPointValue()+1;
-			}
+				materialAdv -= piece.getPointValue();
+			} else
 		} else if (getPiece(dest) != null) {
 			Piece piece = getPiece(dest);
 			if (piece.getColor() == "white") {
