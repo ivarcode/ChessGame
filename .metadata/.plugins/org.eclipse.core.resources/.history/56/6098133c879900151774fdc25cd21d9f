@@ -11,7 +11,7 @@ public class Game {
 	private Board board, checkBoard;
 	private ArrayList<Move> record;
 	private int sideWidth, topHeight, sqDim;
-	private boolean promoting;
+	private boolean queening;
 	
 	public Game(int sW, int tH, int sD) {
 		System.out.println("Preparing new game...");
@@ -57,7 +57,7 @@ public class Game {
 	//
 
 	public boolean makeMove(Move move) {
-		if (!promoting) {
+		if (!queening) {
 			if (isLegalMove(move)) {
 				//System.out.println("isLegalMove");
 				boolean check = false, checkmate = false, stalemate = false, capture = false, castling = false;
@@ -116,9 +116,8 @@ public class Game {
 			}
 		} else {
 			
-			promoting = false;
 		}
-		return promoting;
+		return queening;
 	}
 	private void recordMove(Move move, Piece piece, 
 			boolean check, boolean checkmate, boolean stalemate, 
