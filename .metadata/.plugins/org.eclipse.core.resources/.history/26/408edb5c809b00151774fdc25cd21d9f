@@ -12,13 +12,11 @@ public class Game {
 	private ArrayList<Move> record;
 	private int sideWidth, topHeight, sqDim;
 	private boolean promoting;
-	Piece[] pieceStore;
 	
 	public Game(int sW, int tH, int sD) {
 		System.out.println("Preparing new game...");
 		setTurn("white");
 		promoting = false;
-		pieceStore = new Piece[4];
 		board = new Board();
 		checkBoard = new Board();
 		record = new ArrayList<Move>();
@@ -59,17 +57,7 @@ public class Game {
 	//
 
 	public boolean makeMove(Move move) {
-		if (getPiece(move.getSrc()) instanceof Pawn) {
-			if (move.getDest().getRank() == 7 && getPiece(move.getSrc()).getColor() == "white") {
-				promoting = true;
-				for (int i = 0; i < 4; i++) {
-					
-				}
-			} else if (move.getDest().getRank() == 0 && getPiece(move.getSrc()).getColor() == "black") {
-				promoting = true;
-			}
-		}
-		else if (!promoting) {
+		if (!promoting) {
 			if (isLegalMove(move)) {
 				//System.out.println("isLegalMove");
 				boolean check = false, checkmate = false, stalemate = false, capture = false, castling = false;
