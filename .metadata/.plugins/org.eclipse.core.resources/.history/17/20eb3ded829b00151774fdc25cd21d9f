@@ -60,7 +60,14 @@ public class Game {
 	//
 
 	public boolean makeMove(Move move) {
-		if (!promoting) {
+		if (getPiece(move.getSrc()) instanceof Pawn) {
+			if (move.getDest().getRank() == 7 && getPiece(move.getSrc()).getColor() == "white") {
+				
+			} else if (move.getDest().getRank() == 0 && getPiece(move.getSrc()).getColor() == "black") {
+				
+			}
+		}
+		else if (!promoting) {
 			if (isLegalMove(move)) {
 				//System.out.println("isLegalMove");
 				boolean check = false, checkmate = false, stalemate = false, capture = false, castling = false;
@@ -120,7 +127,9 @@ public class Game {
 				//TODO execute end of game if checkmate or stalemate
 			}
 		} else {
-			if () {
+			if (move.getSrc().getFile() == move.getDest().getFile()
+					&& move.getSrc().getRank() == move.getDest().getRank()
+					&& ) {
 				
 			}
 			promoting = false;
