@@ -99,7 +99,11 @@ public class Main extends JApplet {
 			}
 			public void mouseReleased(MouseEvent e)
 			{
-				game.makeMove(new Move(src,dest));
+				if (game.makeMove(new Move(src,dest))) {
+					inDrag = false;
+					repaint();
+					inDrag = true;
+				}
 
 				a = -1000;
 				b = -1000; 

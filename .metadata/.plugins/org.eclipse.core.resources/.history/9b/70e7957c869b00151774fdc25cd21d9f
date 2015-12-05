@@ -59,7 +59,7 @@ public class Game {
 	}
 	//
 
-	public void makeMove(Move move) {
+	public boolean makeMove(Move move) {
 		if (getPiece(move.getSrc()) instanceof Pawn) {
 			if ((move.getDest().getRank() == 7 && getPiece(move.getSrc()).getColor() == "white")
 					|| (move.getDest().getRank() == 0 && getPiece(move.getSrc()).getColor() == "black")) {
@@ -131,6 +131,7 @@ public class Game {
 			}
 			promoting = false;
 		}
+		return promoting;
 	}
 	private void recordMove(Move move, Piece piece, 
 			boolean check, boolean checkmate, boolean stalemate, 
