@@ -127,7 +127,7 @@ public class Game {
 			}
 		} else {
 			if () {
-				
+
 			}
 			promoting = false;
 		}

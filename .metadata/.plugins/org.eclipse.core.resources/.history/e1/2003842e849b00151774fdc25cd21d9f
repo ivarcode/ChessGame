@@ -61,9 +61,10 @@ public class Game {
 
 	public boolean makeMove(Move move) {
 		if (getPiece(move.getSrc()) instanceof Pawn) {
-			if ((move.getDest().getRank() == 7 && getPiece(move.getSrc()).getColor() == "white")
-					|| (move.getDest().getRank() == 0 && getPiece(move.getSrc()).getColor() == "black")) {
+			if (move.getDest().getRank() == 7 && getPiece(move.getSrc()).getColor() == "white") {
 				promoting = true;
+			} else if (move.getDest().getRank() == 0 && getPiece(move.getSrc()).getColor() == "black") {
+				
 			}
 		}
 		if (!promoting) {
@@ -127,7 +128,7 @@ public class Game {
 			}
 		} else {
 			if () {
-				
+
 			}
 			promoting = false;
 		}
