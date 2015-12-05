@@ -126,11 +126,10 @@ public class Game {
 				//TODO execute end of game if checkmate or stalemate
 			}
 		} else {
-			if (move.getSrc().getFile() == move.getDest().getFile()
-					&& move.getSrc().getRank() == move.getDest().getRank()) {
+			if () {
 				
-				promoting = false;
 			}
+			promoting = false;
 		}
 	}
 	private void recordMove(Move move, Piece piece, 
