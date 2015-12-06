@@ -60,8 +60,7 @@ public class Game {
 	//
 
 	public void makeMove(Move move) {
-		if (getPiece(move.getSrc()) instanceof Pawn
-				&& isLegalMove(move)) {
+		if (getPiece(move.getSrc()) instanceof Pawn) {
 			if ((move.getDest().getRank() == 7 && getPiece(move.getSrc()).getColor() == "white")
 					|| (move.getDest().getRank() == 0 && getPiece(move.getSrc()).getColor() == "black")) {
 				promoting = true;

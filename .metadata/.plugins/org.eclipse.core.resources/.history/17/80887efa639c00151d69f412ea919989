@@ -261,7 +261,7 @@ public class Board {
 	}
 
 	public void promo(Move move) {
-		//TODO complete promo method
+		
 	}
 	
 	private void loadPieceImages() {

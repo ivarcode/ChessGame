@@ -260,10 +260,6 @@ public class Board {
 		board[loc.getFileByInt()][loc.getRank()] = piece;
 	}
 
-	public void promo(Move move) {
-		//TODO complete promo method
-	}
-	
 	private void loadPieceImages() {
 		try {
 			bRooki = ImageIO.read(new URL(
