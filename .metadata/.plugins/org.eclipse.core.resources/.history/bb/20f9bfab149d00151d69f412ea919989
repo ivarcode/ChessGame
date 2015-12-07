@@ -71,11 +71,6 @@ public class Game {
 		if (!promoting) {
 			if (isLegalMove(move)) {
 				//System.out.println("isLegalMove");
-				if (move.getSrc().getFile() == move.getDest().getFile()
-						&& move.getSrc().getRank() == move.getDest().getRank()) {
-					//TODO place promoted piece on pawn and then make move with that piece
-				}
-				
 				boolean check = false, checkmate = false, stalemate = false, capture = false, castling = false;
 				if (getPiece(move.getDest()) != null) {
 					capture = true;
@@ -133,7 +128,11 @@ public class Game {
 				//TODO execute end of game if checkmate or stalemate
 			}
 		} else {
-			promoting = false;
+			if (move.getSrc().getFile() == move.getDest().getFile()
+					&& move.getSrc().getRank() == move.getDest().getRank()) {
+				
+				promoting = false;
+			}
 		}
 	}
 	private void recordMove(Move move, Piece piece, 
