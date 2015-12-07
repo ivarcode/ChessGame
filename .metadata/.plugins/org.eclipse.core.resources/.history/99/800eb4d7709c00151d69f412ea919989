@@ -64,7 +64,6 @@ public class Game {
 				&& isLegalMove(move)) {
 			if ((move.getDest().getRank() == 7 && getPiece(move.getSrc()).getColor() == "white")
 					|| (move.getDest().getRank() == 0 && getPiece(move.getSrc()).getColor() == "black")) {
-				board.promo(move);
 				promoting = true;
 			}
 		}
