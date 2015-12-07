@@ -154,8 +154,6 @@ public class Board {
 					whitePieceAdv.add(new Pawn());
 				}
 				materialAdv -= piece.getPointValue()+1;
-			} else {
-				//not a promo piece so do nothing
 			}
 		} else if (getPiece(dest) != null) {
 			Piece piece = getPiece(dest);

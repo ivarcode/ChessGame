@@ -123,7 +123,7 @@ public class Board {
 					blackPieceAdv.add(new Pawn());
 				}
 				materialAdv += piece.getPointValue()-1;
-			} else if (piece.getColor() == "blackAlt") {
+			} else {
 				boolean done = false;
 				for (int i = 0; i < whitePieceAdv.size(); i++) {
 					if ((whitePieceAdv.get(i) instanceof Queen 
@@ -154,8 +154,6 @@ public class Board {
 					whitePieceAdv.add(new Pawn());
 				}
 				materialAdv -= piece.getPointValue()+1;
-			} else {
-				//not a promo piece so do nothing
 			}
 		} else if (getPiece(dest) != null) {
 			Piece piece = getPiece(dest);
