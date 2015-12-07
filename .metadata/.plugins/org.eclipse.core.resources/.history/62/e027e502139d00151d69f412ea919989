@@ -277,7 +277,7 @@ public class Board {
 			placePiece(n,new Location(move.getDest().getFile(),5));
 			placePiece(r,new Location(move.getDest().getFile(),4));
 		} else {
-			//TODO complete black case
+			
 		}
 	}
 	

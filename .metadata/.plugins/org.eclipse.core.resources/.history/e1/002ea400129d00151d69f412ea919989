@@ -12,7 +12,6 @@ import camden.ivarcode.net.piece.*;
 public class Board {
 
 	private Piece[][] board;
-	private Piece[] savedPieces;
 	private ArrayList<Piece> whitePieceAdv, blackPieceAdv;
 	int materialAdv;
 	private BufferedImage wKingi, bKingi, wQueeni, bQueeni, wBishopi, bBishopi,
@@ -266,18 +265,11 @@ public class Board {
 		Piece r,n,b,q;
 		if (move.getDest().getRank() == 7) {
 			q = new Queen(new Location(move.getDest().getFile(),7), "white", wQueeni);
-			b = new Bishop(new Location(move.getDest().getFile(),6), "white", wBishopi);
-			n = new Knight(new Location(move.getDest().getFile(),5), "white", wKnighti);
-			r = new Rook(new Location(move.getDest().getFile(),4), "white", wRooki);
-			for (int i = 0; i < 4; i++) {
-				savedPieces[i] = getPiece(new Location(move.getDest().getFile(),7-i));
-			}
-			placePiece(q,move.getDest());
-			placePiece(b,new Location(move.getDest().getFile(),6));
-			placePiece(n,new Location(move.getDest().getFile(),5));
-			placePiece(r,new Location(move.getDest().getFile(),4));
+			b = new Bishop(new Location(move.getDest().getFile(),7), "white", wQueeni);
+			n = new Knight(new Location(move.getDest().getFile(),7), "white", wQueeni);
+			r = new Rook(new Location(move.getDest().getFile(),7), "white", wQueeni);
 		} else {
-			//TODO complete black case
+			
 		}
 	}
 	

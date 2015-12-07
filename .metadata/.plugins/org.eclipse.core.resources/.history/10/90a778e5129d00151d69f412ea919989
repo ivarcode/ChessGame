@@ -270,14 +270,14 @@ public class Board {
 			n = new Knight(new Location(move.getDest().getFile(),5), "white", wKnighti);
 			r = new Rook(new Location(move.getDest().getFile(),4), "white", wRooki);
 			for (int i = 0; i < 4; i++) {
-				savedPieces[i] = getPiece(new Location(move.getDest().getFile(),7-i));
+				savedPieces[i] = getPiece(move.getDest().getFileByInt(),7-i);
 			}
 			placePiece(q,move.getDest());
 			placePiece(b,new Location(move.getDest().getFile(),6));
 			placePiece(n,new Location(move.getDest().getFile(),5));
 			placePiece(r,new Location(move.getDest().getFile(),4));
 		} else {
-			//TODO complete black case
+			
 		}
 	}
 	
