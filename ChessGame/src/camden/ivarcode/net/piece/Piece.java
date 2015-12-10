@@ -11,9 +11,10 @@ public class Piece {
 	private BufferedImage img;
 	private int pointValue;
 	private String ID;
+	private boolean hasMoved;
 	
 	public Piece() {
-		//nullPiece def
+		//null constructor
 	}
 	
 	public Piece(Location loc, String color, BufferedImage img) {
@@ -60,6 +61,14 @@ public class Piece {
 
 	public void setID(String iD) {
 		ID = iD;
+	}
+
+	public boolean hasMoved() {
+		return hasMoved;
+	}
+
+	public void setHasMoved(boolean hasMoved) {
+		this.hasMoved = hasMoved;
 	}
 	
 }

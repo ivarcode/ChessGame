@@ -11,5 +11,9 @@ public class Pawn extends Piece {
 		setID("Pawn");
 		setPointValue(1);
 	}
+	
+	public Pawn() {
+		//null constructor
+	}
 
 }

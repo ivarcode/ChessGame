@@ -1,13 +1,15 @@
 package camden.ivarcode.net;
 
 public class Move {
-	
+
 	private Location src;
 	private Location dest;
-	
+	private String move;
+
 	public Move(Location src, Location dest) {
 		setSrc(src);
 		setDest(dest);
+		setRecord(null);
 	}
 
 	public Location getSrc() {
@@ -25,10 +27,21 @@ public class Move {
 	public void setDest(Location dest) {
 		this.dest = dest;
 	}
-	
-	public void print() {
-		System.out.println(""+src.getFile()+(src.getRank()+1)+
-				" --> "+dest.getFile()+(dest.getRank()+1));
+
+	public String print() {
+		if (move == null) {
+			return ""+src.getFile()+(src.getRank()+1)+
+					" --> "+dest.getFile()+(dest.getRank()+1);	
+		}
+		return move;
+	}
+
+	public String getRecord() {
+		return move;
+	}
+
+	public void setRecord(String move) {
+		this.move = move;
 	}
 
 }

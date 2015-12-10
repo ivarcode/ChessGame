@@ -10,6 +10,7 @@ public class Rook extends Piece {
 		super(loc, color, img);
 		setID("Rook");
 		setPointValue(5);
+		setHasMoved(false);
 	}
 
 }

@@ -3,6 +3,7 @@ package camden.ivarcode.net;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -11,17 +12,21 @@ import camden.ivarcode.net.piece.*;
 public class Board {
 
 	private Piece[][] board;
+	private Piece[] savedPieces;
+	private ArrayList<Piece> whitePieceAdv, blackPieceAdv;
+	int materialAdv;
 	private BufferedImage wKingi, bKingi, wQueeni, bQueeni, wBishopi, bBishopi,
 	wKnighti, bKnighti, wRooki, bRooki, wPawni, bPawni;
 	private Location lastSrc, lastDest;
-	private Piece lastCapPiece;
+	private Piece lastCapPiece;//not sure what to use this for yet
 
 	public Board() {
 		board = new Piece[8][8];
 		loadPieceImages();
 		loadPieces();
-		print();
-		//TODO
+		setWhitePieceAdv(new ArrayList<Piece>());
+		setBlackPieceAdv(new ArrayList<Piece>());
+		materialAdv = 0;
 	}
 
 	protected void print() {
@@ -82,13 +87,174 @@ public class Board {
 	}
 
 	public void movePiece(Location src, Location dest) {
-		if (getPiece(dest) != null) {
-			//TODO move to captured pieces column/s
+		//TODO include promotion
+		if (src.getFile() == dest.getFile()
+				&& src.getRank() == dest.getRank()) {
+			Piece piece = getPiece(src);
+			if (piece.getColor() == "whiteAlt") {
+				boolean done = false;
+				for (int i = 0; i < blackPieceAdv.size(); i++) {
+					if ((blackPieceAdv.get(i) instanceof Queen 
+							&& piece instanceof Queen) || 
+							(blackPieceAdv.get(i) instanceof Bishop 
+									&& piece instanceof Bishop) || 
+							(blackPieceAdv.get(i) instanceof Knight 
+									&& piece instanceof Knight) || 
+							(blackPieceAdv.get(i) instanceof Rook 
+									&& piece instanceof Rook)) {
+						//TODO add piece to last rank
+						blackPieceAdv.remove(i);
+						done = true;
+						break;
+					}
+				}
+				if (!done) {
+					whitePieceAdv.add(piece);
+				}
+				done = false;
+				for (int i = 0; i < whitePieceAdv.size(); i++) {
+					if (whitePieceAdv.get(i) instanceof Pawn) {
+						whitePieceAdv.remove(i);
+						done = true;
+						break;
+					}
+				}
+				if (!done) {
+					blackPieceAdv.add(new Pawn());
+				}
+				materialAdv += piece.getPointValue()-1;
+			} else if (piece.getColor() == "blackAlt") {
+				boolean done = false;
+				for (int i = 0; i < whitePieceAdv.size(); i++) {
+					if ((whitePieceAdv.get(i) instanceof Queen 
+							&& piece instanceof Queen) || 
+							(whitePieceAdv.get(i) instanceof Bishop 
+									&& piece instanceof Bishop) || 
+							(whitePieceAdv.get(i) instanceof Knight 
+									&& piece instanceof Knight) || 
+							(whitePieceAdv.get(i) instanceof Rook 
+									&& piece instanceof Rook)) {
+						whitePieceAdv.remove(i);
+						done = true;
+						break;
+					}
+				}
+				if (!done) {
+					blackPieceAdv.add(piece);
+				}
+				done = false;
+				for (int i = 0; i < blackPieceAdv.size(); i++) {
+					if (blackPieceAdv.get(i) instanceof Pawn) {
+						blackPieceAdv.remove(i);
+						done = true;
+						break;
+					}
+				}
+				if (!done) {
+					whitePieceAdv.add(new Pawn());
+				}
+				materialAdv -= piece.getPointValue()+1;
+			} else {
+				//not a promo piece so do nothing
+			}
+		} else if (getPiece(dest) != null) {
+			Piece piece = getPiece(dest);
+			if (piece.getColor() == "white") {
+				boolean done = false;
+				for (int i = 0; i < whitePieceAdv.size(); i++) {
+					if ((whitePieceAdv.get(i) instanceof Queen 
+							&& piece instanceof Queen) || 
+							(whitePieceAdv.get(i) instanceof Bishop 
+									&& piece instanceof Bishop) || 
+							(whitePieceAdv.get(i) instanceof Knight 
+									&& piece instanceof Knight) || 
+							(whitePieceAdv.get(i) instanceof Rook 
+									&& piece instanceof Rook) || 
+							(whitePieceAdv.get(i) instanceof Pawn 
+									&& piece instanceof Pawn)) {
+						whitePieceAdv.remove(i);
+						done = true;
+						break;
+					}
+				}
+				if (!done) {
+					blackPieceAdv.add(piece);
+				}
+				materialAdv -= piece.getPointValue();
+			} else {
+				boolean done = false;
+				for (int i = 0; i < blackPieceAdv.size(); i++) {
+					if ((blackPieceAdv.get(i) instanceof Queen 
+							&& piece instanceof Queen) || 
+							(blackPieceAdv.get(i) instanceof Bishop 
+									&& piece instanceof Bishop) || 
+							(blackPieceAdv.get(i) instanceof Knight 
+									&& piece instanceof Knight) || 
+							(blackPieceAdv.get(i) instanceof Rook 
+									&& piece instanceof Rook) || 
+							(blackPieceAdv.get(i) instanceof Pawn 
+									&& piece instanceof Pawn)) {
+						blackPieceAdv.remove(i);
+						done = true;
+						break;
+					}
+				}
+				if (!done) {
+					whitePieceAdv.add(piece);
+				}
+				materialAdv += piece.getPointValue();
+			}
+		} else {
+			Piece piece = getPiece(src);
+			if (piece instanceof Pawn) {
+				if (piece.getColor() == "white") {
+					if (src.getRank() == 4
+							&& src.getFile() != dest.getFile()) {
+						if (getPiece(new Location(dest.getFile(),dest.getRank()-1)) instanceof Pawn) {
+							boolean done = false;
+							for (int i = 0; i < blackPieceAdv.size(); i++) {
+								if (blackPieceAdv.get(i) instanceof Pawn) {
+									blackPieceAdv.remove(i);
+									done = true;
+								}
+							}
+							if (!done) {
+								whitePieceAdv.add(getPiece(new Location(dest.getFile(),dest.getRank()-1)));
+							}
+							placePiece(null,new Location(dest.getFile(),dest.getRank()-1));
+							materialAdv += 1;
+						} else {
+							throw new RuntimeException("Illegal pawn move");
+						}
+					}
+				} else {
+					if (src.getRank() == 3
+							&& src.getFile() != dest.getFile()) {
+						if (getPiece(new Location(dest.getFile(),dest.getRank()+1)) instanceof Pawn) {
+							boolean done = false;
+							for (int i = 0; i < whitePieceAdv.size(); i++) {
+								if (whitePieceAdv.get(i) instanceof Pawn) {
+									whitePieceAdv.remove(i);
+									done = true;
+								}
+							}
+							if (!done) {
+								blackPieceAdv.add(getPiece(new Location(dest.getFile(),dest.getRank()+1)));
+							}
+							placePiece(null,new Location(dest.getFile(),dest.getRank()+1));
+							materialAdv -= 1;
+						} else {
+							throw new RuntimeException("Illegal pawn move");
+						}
+					}
+				}
+			}
 		}
 		placePiece(getPiece(src),dest);
 		placePiece(null,src);
 	}
 	public void takeBack() {
+		//FIXME include taking back from the captured pieces
 		placePiece(getPiece(lastDest),lastSrc);
 		placePiece(lastCapPiece,lastDest);
 	}
@@ -97,6 +263,26 @@ public class Board {
 		board[loc.getFileByInt()][loc.getRank()] = piece;
 	}
 
+	public void promo(Move move) {
+		//TODO complete promo method
+		Piece r,n,b,q;
+		if (move.getDest().getRank() == 7) {
+			q = new Queen(new Location(move.getDest().getFile(),7), "whiteAlt", wQueeni);
+			b = new Bishop(new Location(move.getDest().getFile(),6), "whiteAlt", wBishopi);
+			n = new Knight(new Location(move.getDest().getFile(),5), "whiteAlt", wKnighti);
+			r = new Rook(new Location(move.getDest().getFile(),4), "whiteAlt", wRooki);
+			for (int i = 0; i < 4; i++) {
+				savedPieces[i] = getPiece(new Location(move.getDest().getFile(),7-i));
+			}
+			placePiece(q,move.getDest());
+			placePiece(b,new Location(move.getDest().getFile(),6));
+			placePiece(n,new Location(move.getDest().getFile(),5));
+			placePiece(r,new Location(move.getDest().getFile(),4));
+		} else {
+			//TODO complete black case
+		}
+	}
+	
 	private void loadPieceImages() {
 		try {
 			bRooki = ImageIO.read(new URL(
@@ -193,6 +379,21 @@ public class Board {
 		board[5][6] = new Pawn(new Location('f',6), "black", bPawni);
 		board[6][6] = new Pawn(new Location('g',6), "black", bPawni);
 		board[7][6] = new Pawn(new Location('h',6), "black", bPawni);
+	}
+
+
+	public ArrayList<Piece> getWhitePieceAdv() {
+		return whitePieceAdv;
+	}
+
+	public void setWhitePieceAdv(ArrayList<Piece> whitePieceAdv) {
+		this.whitePieceAdv = whitePieceAdv;
+	}
+	public ArrayList<Piece> getBlackPieceAdv() {
+		return blackPieceAdv;
+	}
+	public void setBlackPieceAdv(ArrayList<Piece> blackPieceAdv) {
+		this.blackPieceAdv = blackPieceAdv;
 	}
 
 }
