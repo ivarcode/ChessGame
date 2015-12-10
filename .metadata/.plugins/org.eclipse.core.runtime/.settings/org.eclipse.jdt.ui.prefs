@@ -1,3 +1,6 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=develop
 content_assist_completion_replacement_background=200,200,0
 content_assist_completion_replacement_foreground=200,0,0
 content_assist_disabled_computers=org.eclipse.jdt.ui.textProposalCategory\u0000org.eclipse.recommenders.calls.rcp.proposalCategory.templates\u0000org.eclipse.mylyn.java.ui.javaAllProposalCategory\u0000org.eclipse.jdt.ui.javaAllProposalCategory\u0000org.eclipse.jdt.ui.javaTypeProposalCategory\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\u0000org.eclipse.recommenders.chain.rcp.proposalCategory.chain\u0000
@@ -39,8 +42,6 @@ pf_coloring_comment=102,102,102
 pf_coloring_key=255,255,255
 pf_coloring_value=0,164,15
 proposalOrderMigrated=true
-<<<<<<< HEAD
-=======
 semanticHighlighting.abstractClass.bold=true
 semanticHighlighting.abstractClass.color=62,171,230
 semanticHighlighting.abstractClass.enabled=true
@@ -84,7 +85,6 @@ semanticHighlighting.typeArgument.color=217,176,172
 semanticHighlighting.typeArgument.enabled=true
 semanticHighlighting.typeParameter.color=205,177,173
 semanticHighlighting.typeParameter.enabled=true
->>>>>>> develop
 spelling_ignore_ampersand_in_properties=true
 spelling_ignore_digits=true
 spelling_ignore_java_strings=true
