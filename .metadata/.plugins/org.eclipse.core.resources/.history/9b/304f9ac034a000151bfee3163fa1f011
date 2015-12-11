@@ -14,14 +14,6 @@ public class Game {
 	private boolean promoting;
 	Piece[] pieceStore, promoPieces;
 
-	
-	/* TODO
-	 * restructuring code again
-	 * rule: everything above = new
-	 * 		 everything below = old
-	 */
-	
-	
 	public Game(int sW, int tH, int sD) {
 		System.out.println("Preparing new game...");
 		setTurn("white");

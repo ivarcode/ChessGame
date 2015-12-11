@@ -15,7 +15,7 @@ public class Game {
 	Piece[] pieceStore, promoPieces;
 
 	
-	/* TODO
+	/*
 	 * restructuring code again
 	 * rule: everything above = new
 	 * 		 everything below = old
