@@ -17,7 +17,7 @@ public class Game {
 
 	
 	/* TODO
-	 * restructuring code again (feature/restructure_i1)
+	 * restructuring code again
 	 * rule: everything above = new
 	 * 		 everything below = old
 	 */
