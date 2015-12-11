@@ -10,7 +10,7 @@ https://github.com/awesomemancam/ChessGame/
 
 Notes:
  - reworking code for better implementation and organization (working in branch develop)
- 	https://github.com/awesomemancam/ChessGame/tree/develop
+ 	https://github.com/awesomemancam/ChessGame/tree/feature/restructure_i1
  - Completing functionality of the game before beginning work on chess bots.
  - First bot selected: Bot Gerald
  
