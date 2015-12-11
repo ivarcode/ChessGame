@@ -1,4 +1,4 @@
-package camden.ivarcode.net;
+package net.ivarcode.camden;
 
 public class Location {
 

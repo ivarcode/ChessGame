@@ -2,7 +2,7 @@ package camden.ivarcode.net.piece;
 
 import java.awt.image.BufferedImage;
 
-import camden.ivarcode.net.Location;
+import net.ivarcode.camden.Location;
 
 public class Bishop extends Piece {
 	
