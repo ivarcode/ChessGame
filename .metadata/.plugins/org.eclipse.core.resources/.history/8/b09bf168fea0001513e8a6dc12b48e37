@@ -1,5 +1,7 @@
 package net.ivarcode.camden;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -7,6 +9,10 @@ import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JApplet;
 
+import net.ivarcode.camden.reference.Game;
+import net.ivarcode.camden.reference.Location;
+import net.ivarcode.camden.reference.Move;
+import net.ivarcode.camden.reference.Piece;
 
 /*
  * ChessGame
@@ -21,25 +27,19 @@ public class Main extends JApplet {
 	 * serial version
 	 */
 	private static final long serialVersionUID = 1L;
-	private boolean inDrag = false;
-	private int clickX,clickY,currX,currY,releaseX,releaseY;
 
 	public void init() {
 
 		addMouseListener(new MouseAdapter() {
 
 			public void mousePressed(MouseEvent e) {
-				clickX = e.getX ();
-				clickY = e.getY ();
+				int x = e.getX ();
+				int y = e.getY ();
 				
-				inDrag = true;
 			}
-			public void mouseReleased(MouseEvent e) {
-				releaseX = e.getX ();
-				releaseY = e.getY ();
-				
-				if (inDrag)
-					inDrag = false;
+			public void mouseReleased(MouseEvent e)
+			{
+
 			}
 		});
 		// Attach a mouse motion listener to the applet. That listener listens
@@ -54,6 +54,14 @@ public class Main extends JApplet {
 	}
 
 	public void paint(Graphics g) {
+		
+	}
+	
+	private void drawPieces(Graphics g) {
+		
+	}
+
+	public void updateSquares(Graphics g) {
 		
 	}
 

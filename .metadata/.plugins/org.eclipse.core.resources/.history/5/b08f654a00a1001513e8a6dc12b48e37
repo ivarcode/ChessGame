@@ -38,8 +38,6 @@ public class Main extends JApplet {
 				releaseX = e.getX ();
 				releaseY = e.getY ();
 				
-				if (inDrag)
-					inDrag = false;
 			}
 		});
 		// Attach a mouse motion listener to the applet. That listener listens

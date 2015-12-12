@@ -21,7 +21,6 @@ public class Main extends JApplet {
 	 * serial version
 	 */
 	private static final long serialVersionUID = 1L;
-	private boolean inDrag = false;
 	private int clickX,clickY,currX,currY,releaseX,releaseY;
 
 	public void init() {
@@ -29,17 +28,13 @@ public class Main extends JApplet {
 		addMouseListener(new MouseAdapter() {
 
 			public void mousePressed(MouseEvent e) {
-				clickX = e.getX ();
-				clickY = e.getY ();
+				int x = e.getX ();
+				int y = e.getY ();
 				
-				inDrag = true;
 			}
-			public void mouseReleased(MouseEvent e) {
-				releaseX = e.getX ();
-				releaseY = e.getY ();
-				
-				if (inDrag)
-					inDrag = false;
+			public void mouseReleased(MouseEvent e)
+			{
+
 			}
 		});
 		// Attach a mouse motion listener to the applet. That listener listens
