@@ -1,7 +1,5 @@
 package net.ivarcode.camden;
 
-import javax.swing.JApplet;
-
 /*
  * ChessGame
  * Camden I Wagner
@@ -9,8 +7,6 @@ import javax.swing.JApplet;
  */
 
 
-public class Main extends JApplet {
-	
-	
+public class Main {
 
 }

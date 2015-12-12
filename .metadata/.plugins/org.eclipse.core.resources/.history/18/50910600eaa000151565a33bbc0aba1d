@@ -1,7 +1,5 @@
 package net.ivarcode.camden;
 
-import javax.swing.JApplet;
-
 /*
  * ChessGame
  * Camden I Wagner
