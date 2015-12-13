@@ -91,12 +91,8 @@ public class Game {
 				}
 			}
 			
-			if (promoting) {
-				return "promoting";
-			} else {
-				recordMove(move, piece, check, checkmate, stalemate, capture, castling);
-				//TODO check what to return
-			}
+			
+			recordMove(move, piece, check, checkmate, stalemate, capture, castling);
 
 			//TODO execute end of game if checkmate or stalemate
 		}

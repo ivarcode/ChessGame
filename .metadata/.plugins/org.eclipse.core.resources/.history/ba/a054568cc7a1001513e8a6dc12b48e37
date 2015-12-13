@@ -35,7 +35,6 @@ public class Game {
 
 	
 	public String makeMove(Move move) {
-		boolean promoting;
 		if (isLegalMove(move)) {
 			boolean check = false, checkmate = false, stalemate = false, capture = false, castling = false;
 			if (getPiece(move.getDest()) != null) {
@@ -60,9 +59,6 @@ public class Game {
 				if (getPiece(move.getDest()) == null
 						&& move.getSrc().getFileByInt() != move.getDest().getFileByInt()) {
 					capture = true;
-				}
-				if (move.getDest().getRank() == 0 || move.getDest().getRank() == 7) {
-					promoting = true;
 				}
 			}
 			changeTurn();
@@ -90,13 +86,8 @@ public class Game {
 					System.out.print("stalemate");
 				}
 			}
-			
-			if (promoting) {
-				return "promoting";
-			} else {
-				recordMove(move, piece, check, checkmate, stalemate, capture, castling);
-				//TODO check what to return
-			}
+
+			recordMove(move, piece, check, checkmate, stalemate, capture, castling);
 
 			//TODO execute end of game if checkmate or stalemate
 		}
