@@ -90,7 +90,6 @@ public class Game {
 					System.out.print("stalemate");
 				}
 			}
-			//
 			
 			if (promoting) {
 				return "promoting";

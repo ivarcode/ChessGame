@@ -39,8 +39,8 @@ public class Main extends JApplet {
 	boolean promoting = false, inDrag = false;
 	int mouseX, mouseY;
 	
-	boolean inGame = false, vs_bot = false, vs_human = false; //TODO use these vars
-	String human_color = null, bot_color;
+	boolean inGame = false, vs_computer = false, vs_human = false; //TODO use these vars
+	String human_color = null;
 	
 	public void init() {
 		
