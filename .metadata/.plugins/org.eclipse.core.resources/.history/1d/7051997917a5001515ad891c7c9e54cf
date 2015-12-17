@@ -50,6 +50,7 @@ public class Main extends JApplet {
 			String input = scanner.next();
 			
 			
+			
 		}
 		
 		System.out.println("Welcome to Cam's Chess Engine.");

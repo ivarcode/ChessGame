@@ -44,14 +44,6 @@ public class Main extends JApplet {
 	public void init() {
 		
 		Scanner scanner = new Scanner(new InputStreamReader(System.in));
-		
-		while (true) {
-			System.out.print("\nLOGIN> ");
-			String input = scanner.next();
-			
-			
-		}
-		
 		System.out.println("Welcome to Cam's Chess Engine.");
 		System.out.println("Type 'HELP' or 'h' for help.");
 
@@ -60,7 +52,7 @@ public class Main extends JApplet {
 			String input = scanner.next();
 			if (input.equals("HELP")) {
 				System.out.print(input);
-			}
+			} 
 			
 			//default error
 			else {
