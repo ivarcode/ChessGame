@@ -99,9 +99,9 @@ public class Main extends JApplet {
 			{
 				
 				if (!promoting) {
-					//promoting = game.makeMove(new Move(src,dest));					
+					promoting = game.makeMove(new Move(src,dest));					
 				} else {
-					//game.promote
+					game.promote
 				}
 
 				a = -1000;

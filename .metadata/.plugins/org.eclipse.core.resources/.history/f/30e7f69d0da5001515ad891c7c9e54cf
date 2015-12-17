@@ -16,7 +16,6 @@ public class Game {
 	private ArrayList<Move> record;
 	private int sideWidth, topHeight, sqDim;
 	Piece[] pieceStore, promoPieces;
-	private boolean promoting;
 
 
 	public Game(int sW, int tH, int sD) {
@@ -37,7 +36,7 @@ public class Game {
 	
 	public boolean makeMove(Move move) {
 		boolean promoting = false;
-		/*if (isLegalMove(move)) {
+		if (isLegalMove(move)) {
 			boolean check = false, checkmate = false, stalemate = false, capture = false, castling = false;
 			if (getPiece(move.getDest()) != null) {
 				capture = true;
@@ -51,7 +50,7 @@ public class Game {
 				if (move.getDest().getFileByInt() == 6) {
 					rookSrc = new Location(7, move.getSrc().getRank());
 					rookDest = new Location(5, move.getSrc().getRank());
-				} else if (move.getDest().getFileByInt() == 2)  {
+				} else /*if (move.getDest().getFileByInt() == 2) */ {
 					rookSrc = new Location(0, move.getSrc().getRank());
 					rookDest = new Location(3, move.getSrc().getRank());
 				}
@@ -90,17 +89,16 @@ public class Game {
 					stalemate = true;
 					System.out.print("stalemate");
 				}
-			}*/
+			}
 			//
 			
 			if (promoting) {
 				return true;
 			} else {
-				//recordMove(move, piece, check, checkmate, stalemate, capture, castling);
+				recordMove(move, piece, check, checkmate, stalemate, capture, castling);
 				//TODO check what to return
 			}
-			return false;
-		//}
+		}
 	}
 	
 	

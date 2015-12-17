@@ -16,7 +16,6 @@ public class Game {
 	private ArrayList<Move> record;
 	private int sideWidth, topHeight, sqDim;
 	Piece[] pieceStore, promoPieces;
-	private boolean promoting;
 
 
 	public Game(int sW, int tH, int sD) {
@@ -96,11 +95,10 @@ public class Game {
 			if (promoting) {
 				return true;
 			} else {
-				//recordMove(move, piece, check, checkmate, stalemate, capture, castling);
+				recordMove(move, piece, check, checkmate, stalemate, capture, castling);
 				//TODO check what to return
 			}
-			return false;
-		//}
+		}
 	}
 	
 	

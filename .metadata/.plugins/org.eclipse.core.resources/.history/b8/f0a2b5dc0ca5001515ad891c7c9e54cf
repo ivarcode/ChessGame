@@ -6,8 +6,6 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.io.InputStreamReader;
-import java.util.Scanner;
 
 import javax.swing.JApplet;
 
@@ -45,11 +43,6 @@ public class Main extends JApplet {
 	String human_color = null, bot_color;
 	
 	public void init() {
-		
-		Scanner scanner = new Scanner(new InputStreamReader(System.in));
-		System.out.println("Welcome to Cam's Chess Engine.");
-		System.out.println("Type 'HELP' or 'h' for help.");
-		System.out.println("\nCHESS> ");
 		
 		game = new Game(sideWidth, topHeight, sqDim);
 
@@ -99,9 +92,9 @@ public class Main extends JApplet {
 			{
 				
 				if (!promoting) {
-					//promoting = game.makeMove(new Move(src,dest));					
+					promoting = game.makeMove(new Move(src,dest));					
 				} else {
-					//game.promote
+					game.promote
 				}
 
 				a = -1000;

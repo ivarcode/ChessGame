@@ -48,8 +48,7 @@ public class Main extends JApplet {
 		
 		Scanner scanner = new Scanner(new InputStreamReader(System.in));
 		System.out.println("Welcome to Cam's Chess Engine.");
-		System.out.println("Type 'HELP' or 'h' for help.");
-		System.out.println("\nCHESS> ");
+		System.out.println("\n");
 		
 		game = new Game(sideWidth, topHeight, sqDim);
 
@@ -99,9 +98,9 @@ public class Main extends JApplet {
 			{
 				
 				if (!promoting) {
-					//promoting = game.makeMove(new Move(src,dest));					
+					promoting = game.makeMove(new Move(src,dest));					
 				} else {
-					//game.promote
+					game.promote
 				}
 
 				a = -1000;

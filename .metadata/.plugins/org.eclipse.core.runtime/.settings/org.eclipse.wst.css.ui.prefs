@@ -20,4 +20,4 @@ STRING=\#00A40F | \#000000 | null | null | null | null
 UNIVERSAL=\#F7C527 | \#000000 | null | null | null | null
 URI=\#00A40F | \#000000 | null | null | null | null
 eclipse.preferences.version=1
-overriddenByCSS=,COMMENT,CURLY_BRACE,ID,MEDIA,NORMAL,PROPERTY_NAME,PROPERTY_VALUE,PSEUDO,SELECTOR,SEMI_COLON,STRING,UNIVERSAL,URI,
+overriddenByCSS=,

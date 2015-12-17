@@ -99,7 +99,6 @@ public class Game {
 				//recordMove(move, piece, check, checkmate, stalemate, capture, castling);
 				//TODO check what to return
 			}
-			return false;
 		//}
 	}
 	
