@@ -21,7 +21,7 @@ import net.ivarcode.camden.piece.Piece;
  */
 
 
-public class Main extends JApplet {
+public class GameTypeOne extends JApplet {
 	
 	/**
 	 * serial version
@@ -55,11 +55,6 @@ public class Main extends JApplet {
 			}	
 		}
 		
-		
-		
-	}
-	
-	public void GameTypeOne() {
 		game = new Game(sideWidth, topHeight, sqDim);
 
 		addMouseListener(new MouseAdapter() {
@@ -172,7 +167,8 @@ public class Main extends JApplet {
 					
 				}
 			}
-		});		
+		});
+		
 	}
 	
 
