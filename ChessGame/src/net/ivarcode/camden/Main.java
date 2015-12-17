@@ -11,10 +11,8 @@ import java.util.Scanner;
 
 import javax.swing.JApplet;
 
-import net.ivarcode.camden.reference.Game;
-import net.ivarcode.camden.reference.Location;
-import net.ivarcode.camden.reference.Move;
-import net.ivarcode.camden.reference.Piece;
+import net.ivarcode.camden.piece.Game;
+import net.ivarcode.camden.piece.Piece;
 
 
 /*

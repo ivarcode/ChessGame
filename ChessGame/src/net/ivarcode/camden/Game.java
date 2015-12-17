@@ -2,12 +2,7 @@ package net.ivarcode.camden;
 
 import java.util.ArrayList;
 
-import net.ivarcode.camden.reference.Board;
-import net.ivarcode.camden.reference.King;
-import net.ivarcode.camden.reference.Location;
-import net.ivarcode.camden.reference.Move;
-import net.ivarcode.camden.reference.Pawn;
-import net.ivarcode.camden.reference.Piece;
+import net.ivarcode.camden.piece.Piece;
 
 public class Game {
 
