@@ -16,7 +16,6 @@ public class Main {
 			String input = scanner.nextLine();
 			if (input == "\n") {
 				System.out.print("ayy");
-				GameTypeOne game = new GameTypeOne();
 			}
 		}
 
