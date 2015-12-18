@@ -68,9 +68,8 @@ public class Main extends JApplet {
 		while (USER == input) {
 			System.out.print("\nCHESS> ");
 			String in = scanner.next();
-			if (in.equals("HELP") || in.equals("h")) {
-				System.out.print("#HELP:");
-				System.out.print("\n");
+			if (in.equals("HELP") || in.equals(anObject)) {
+				System.out.print(in);
 			} else if (in.equals("logout")) {
 				USER = null;
 			} else if (in.equals("exit")) {

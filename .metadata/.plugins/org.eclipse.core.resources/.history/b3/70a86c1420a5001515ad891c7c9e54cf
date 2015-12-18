@@ -70,7 +70,6 @@ public class Main extends JApplet {
 			String in = scanner.next();
 			if (in.equals("HELP") || in.equals("h")) {
 				System.out.print("#HELP:");
-				System.out.print("\n");
 			} else if (in.equals("logout")) {
 				USER = null;
 			} else if (in.equals("exit")) {
