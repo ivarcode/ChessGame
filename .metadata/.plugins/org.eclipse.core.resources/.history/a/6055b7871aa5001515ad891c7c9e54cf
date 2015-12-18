@@ -71,11 +71,9 @@ public class Main extends JApplet {
 			if (in.equals("HELP")) {
 				System.out.print(in);
 			} else if (in.equals("logout")) {
-				USER = null;
+				USER = null'
 			}
 			else if (in.equals("exit")) {
-				System.out.print("Program killed");
-				//System.out.print("\nReload webpage to restart the program.");
 				break;
 			}
 			

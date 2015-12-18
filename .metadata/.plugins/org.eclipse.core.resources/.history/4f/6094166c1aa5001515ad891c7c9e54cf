@@ -67,15 +67,10 @@ public class Main extends JApplet {
 
 		while (USER == input) {
 			System.out.print("\nCHESS> ");
-			String in = scanner.next();
-			if (in.equals("HELP")) {
-				System.out.print(in);
-			} else if (in.equals("logout")) {
-				USER = null;
-			}
-			else if (in.equals("exit")) {
-				System.out.print("Program killed");
-				//System.out.print("\nReload webpage to restart the program.");
+			String in1 = scanner.next();
+			if (in1.equals("HELP")) {
+				System.out.print(in1);
+			} else if (in1.equals("exit")) {
 				break;
 			}
 			

@@ -45,7 +45,7 @@ public class Main extends JApplet {
 		
 		Scanner scanner = new Scanner(new InputStreamReader(System.in));
 		String USER = null;
-		String input = null;
+		String input = null
 		
 		while (true) {
 			System.out.print("LOGIN> ");
@@ -67,15 +67,10 @@ public class Main extends JApplet {
 
 		while (USER == input) {
 			System.out.print("\nCHESS> ");
-			String in = scanner.next();
-			if (in.equals("HELP")) {
-				System.out.print(in);
-			} else if (in.equals("logout")) {
-				USER = null;
-			}
-			else if (in.equals("exit")) {
-				System.out.print("Program killed");
-				//System.out.print("\nReload webpage to restart the program.");
+			String input = scanner.next();
+			if (input.equals("HELP")) {
+				System.out.print(input);
+			} else if (input.equals("exit")) {
 				break;
 			}
 			
