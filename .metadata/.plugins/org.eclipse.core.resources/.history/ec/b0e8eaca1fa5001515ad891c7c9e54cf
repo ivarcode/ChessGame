@@ -84,7 +84,7 @@ public class Main extends JApplet {
 				System.out.print("   ERROR:");
 				System.out.print("\n      Your command '"+in+"' was not recognized.");
 				System.out.print("\n    Type 'HELP' or 'h' for help.");
-				System.out.print("!~\n");
+				System.out.print("!~"\n");
 			}
 		}
 		

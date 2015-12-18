@@ -52,8 +52,8 @@ public class Main extends JApplet {
 			input = scanner.next();
 			if (input.equals("l")) {
 				System.out.print("user: ");
-				input = scanner.next();
-				if (input.equals("admin")) {
+				String in = scanner.next();
+				if (in.equals("admin")) {
 					USER = input;
 					break;
 				}
@@ -80,11 +80,7 @@ public class Main extends JApplet {
 			
 			//default error
 			else {
-				System.out.print("\n!~");
-				System.out.print("   ERROR:");
-				System.out.print("\n      Your command '"+in+"' was not recognized.");
-				System.out.print("\n    Type 'HELP' or 'h' for help.");
-				System.out.print("!~\n");
+				
 			}
 		}
 		
