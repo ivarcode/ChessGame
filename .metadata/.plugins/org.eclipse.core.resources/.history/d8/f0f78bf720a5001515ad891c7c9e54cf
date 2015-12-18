@@ -47,9 +47,9 @@ public class Main extends JApplet {
 		String USER = null;
 		String input = null;
 
-		boolean killed = false;
-		while (!killed) {
-			/*while (true) {
+		while (true) {
+			boolean killed = false;
+			while (true) {
 				System.out.print("LOGIN> ");
 				input = scanner.next();
 				if (input.equals("l")) {
@@ -62,7 +62,7 @@ public class Main extends JApplet {
 				}
 
 
-			}*/
+			}
 
 			System.out.println("\nWelcome to Cam's Chess Engine.");
 			System.out.println("Type 'HELP' or 'h' for help.");
@@ -76,7 +76,7 @@ public class Main extends JApplet {
 				} else if (in.equals("logout")) {
 					USER = null;
 				} else if (in.equals("exit")) {
-					System.out.print("Program killed.");
+					System.out.print("Program killed");
 					//System.out.print("\nReload webpage to restart the program.");
 					killed = true;
 					break;
