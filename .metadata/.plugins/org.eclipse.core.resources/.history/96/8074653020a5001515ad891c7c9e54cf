@@ -22,12 +22,12 @@ import net.ivarcode.camden.piece.Piece;
 
 
 public class Main extends JApplet {
-
+	
 	/**
 	 * serial version
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	private static int sqDim = 60;
 	private static int sideWidth = 150;
 	private static int topHeight = 50;
@@ -37,62 +37,60 @@ public class Main extends JApplet {
 	private Location old_dest;
 	boolean promoting = false, inDrag = false;
 	int mouseX, mouseY;
-
+	
 	boolean inGame = false, vs_bot = false, vs_human = false; //TODO use these vars
 	String human_color = null, bot_color;
-
+	
 	public void init() {
-
+		
 		Scanner scanner = new Scanner(new InputStreamReader(System.in));
 		String USER = null;
 		String input = null;
-
+		
 		while (true) {
-			while (true) {
-				System.out.print("LOGIN> ");
+			System.out.print("LOGIN> ");
+			input = scanner.next();
+			if (input.equals("l")) {
+				System.out.print(": ");
 				input = scanner.next();
-				if (input.equals("l")) {
-					System.out.print(":: ");
-					input = scanner.next();
-					if (input.equals("admin")) {
-						USER = input;
-						break;
-					}
-				}
-
-
-			}
-
-			System.out.println("\nWelcome to Cam's Chess Engine.");
-			System.out.println("Type 'HELP' or 'h' for help.");
-
-			while (USER == input) {
-				System.out.print("\nCHESS> ");
-				String in = scanner.next();
-				if (in.equals("HELP") || in.equals("h")) {
-					System.out.print("#HELP:");
-					System.out.print("\n");
-				} else if (in.equals("logout")) {
-					USER = null;
-				} else if (in.equals("exit")) {
-					System.out.print("Program killed");
-					//System.out.print("\nReload webpage to restart the program.");
+				if (input.equals("admin")) {
+					USER = input;
 					break;
 				}
+			}
+			
+			
+		}
+		
+		System.out.println("Welcome to Cam's Chess Engine.");
+		System.out.println("Type 'HELP' or 'h' for help.");
 
-				//default error
-				else {
-					System.out.print("\n!~");
-					System.out.print("\n   ERROR:");
-					System.out.print("\n      Your command '"+in+"' was not recognized.");
-					System.out.print("\n      Type 'HELP' or 'h' for help.");
-					System.out.print("\n!~\n");
-				}
+		while (USER == input) {
+			System.out.print("\nCHESS> ");
+			String in = scanner.next();
+			if (in.equals("HELP") || in.equals("h")) {
+				System.out.print("#HELP:");
+				System.out.print("\n");
+			} else if (in.equals("logout")) {
+				USER = null;
+			} else if (in.equals("exit")) {
+				System.out.print("Program killed");
+				//System.out.print("\nReload webpage to restart the program.");
+				break;
+			}
+			
+			//default error
+			else {
+				System.out.print("\n!~");
+				System.out.print("\n   ERROR:");
+				System.out.print("\n      Your command '"+in+"' was not recognized.");
+				System.out.print("\n      Type 'HELP' or 'h' for help.");
+				System.out.print("\n!~\n");
 			}
 		}
-
+		
 	}
-
+	
 	public void GameTypeOne() {
 		game = new Game(sideWidth, topHeight, sqDim);
 
@@ -124,7 +122,7 @@ public class Main extends JApplet {
 				} else {
 					//do nothing as of now
 				}
-
+				
 				if (a < 8 && a > -1 && b < 8 && b > -1) {
 					src = new Location(a,b);
 					dest = src;
@@ -140,7 +138,7 @@ public class Main extends JApplet {
 			}
 			public void mouseReleased(MouseEvent e)
 			{
-
+				
 				if (!promoting) {
 					//promoting = game.makeMove(new Move(src,dest));					
 				} else {
@@ -152,7 +150,7 @@ public class Main extends JApplet {
 				c = -1000;
 				d = -1000;
 				clickedPiece = nullPiece;
-
+				
 				repaint();
 
 				// When mouse is released, clear inDrag (to
@@ -174,7 +172,7 @@ public class Main extends JApplet {
 					int a = -1000, b = -1000;
 					int x = e.getX();
 					int y = e.getY();
-
+					
 					if (x < sideWidth) {
 						//do nothing mouse off screen
 					} else if (x < sideWidth+(sqDim*8)) {
@@ -193,7 +191,7 @@ public class Main extends JApplet {
 					} else {
 						//do nothing as of now
 					}
-
+					
 					if (a < 8 && a > -1 && b < 8 && b > -1) {
 						if (a != dest.getFileByInt() || 
 								b != dest.getRank()) {
@@ -203,17 +201,17 @@ public class Main extends JApplet {
 							repaint();
 						}
 					}
-
+					
 				}
 			}
 		});		
 	}
+	
 
-
-	/*
+/*
 	public void paint(Graphics g) {
-
-
+		
+		
 		if (inDrag) {
 			updateSquares(g);
 		} else {
@@ -244,5 +242,5 @@ public class Main extends JApplet {
 		game.drawSquare(g, src);
 		game.drawPieceAt(g, src, dest);
 	}
-	 */
+*/
 }
