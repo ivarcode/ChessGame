@@ -197,28 +197,14 @@ public class Main extends JApplet {
 			}
 		});		
 	}
-
-
+	
+	
 	private void bash() {
 		System.out.print("\nCHESS> ");
 		String in = scanner.next();
-		switch (in) {
-		case "HELP":
-		case "h": {
+		if (in.equals("HELP") || in.equals("h")) {
 			System.out.print(HELP_LOG);
 			System.out.print("\n");
-		}
-		case "logout":
-		case "l": {
-			USER = null;
-		}
-		case "exit": {
-			
-		}
-		}
-
-		if (in.equals("HELP") || in.equals("h")) {
-			
 		} else if (in.equals("logout")) {
 			USER = null;
 		} else if (in.equals("exit")) {
