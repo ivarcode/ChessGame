@@ -222,9 +222,10 @@ public class Main extends JApplet {
 			//play a game
 		}
 		default: {
-			System.out.print("\n!~  ERROR:");
-			System.out.print("\n    Your command '"+in+"' was not recognized.");
-			System.out.print("\n    Type 'HELP' or 'h' for help.");
+			System.out.print("\n!~");
+			System.out.print("\n   ERROR:");
+			System.out.print("\n      Your command '"+in+"' was not recognized.");
+			System.out.print("\n      Type 'HELP' or 'h' for help.");
 			System.out.print("\n!~\n");
 		}
 		}
