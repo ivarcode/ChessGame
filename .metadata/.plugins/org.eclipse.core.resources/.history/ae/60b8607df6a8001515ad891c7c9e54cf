@@ -28,11 +28,7 @@ public class Main extends JApplet {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final String HELP_LOG = "#HELP#\n"
-			+ "play (p)     Play a game.\n"
-			+ "   -t [set time control]\n"
-			+ "record (r)   Record a game for your database.\n"
-			+ "analyze (a)  Analyze a game from your database.\n";
+	private static final String HELP_LOG = 
 	private static int sqDim = 60;
 	private static int sideWidth = 150;
 	private static int topHeight = 50;
