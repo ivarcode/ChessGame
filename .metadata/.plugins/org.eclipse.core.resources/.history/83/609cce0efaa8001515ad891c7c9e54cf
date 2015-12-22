@@ -75,7 +75,7 @@ public class Main extends JApplet {
 			 * By default, USER == input because both are initialized to null
 			 * This will change when I implement a userbase and login function
 			 */
-			while (USER == input && !killed) {
+			while (USER == input) {
 				bash();
 			}
 		}

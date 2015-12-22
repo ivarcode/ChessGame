@@ -45,13 +45,14 @@ public class Main extends JApplet {
 
 	boolean inGame = false, vs_bot = false, vs_human = false; //TODO use these vars
 	String human_color = null, bot_color;
-	Scanner scanner = new Scanner(new InputStreamReader(System.in));
-	boolean killed = false;
-	String USER = null;
 
 	public void init() {
 
+		Scanner scanner = new Scanner(new InputStreamReader(System.in));
+		String USER = null;
 		String input = null;
+
+		boolean killed = false;
 		while (!killed) {
 			/*while (true) {
 				System.out.print("LOGIN> ");
@@ -71,12 +72,31 @@ public class Main extends JApplet {
 			System.out.println("\nWelcome to Cam's Chess Engine.");
 			System.out.println("Type 'HELP' or 'h' for help.");
 
-			/*
-			 * By default, USER == input because both are initialized to null
-			 * This will change when I implement a userbase and login function
-			 */
-			while (USER == input && !killed) {
-				bash();
+			while (USER == input) {
+				System.out.print("\nCHESS> ");
+				String in = scanner.next();
+				if (in.equals("HELP") || in.equals("h")) {
+					System.out.print(HELP_LOG);
+					System.out.print("\n");
+				} else if (in.equals("logout")) {
+					USER = null;
+				} else if (in.equals("exit")) {
+					System.out.print("Program killed.");
+					//System.out.print("\nReload webpage to restart the program.");
+					killed = true;
+					break;
+				} else if (in.equals("play") || in.equals("p")) {
+					//play
+				}
+
+				//default error
+				else {
+					System.out.print("\n!~");
+					System.out.print("\n   ERROR:");
+					System.out.print("\n      Your command '"+in+"' was not recognized.");
+					System.out.print("\n      Type 'HELP' or 'h' for help.");
+					System.out.print("\n!~\n");
+				}
 			}
 		}
 
@@ -196,33 +216,6 @@ public class Main extends JApplet {
 				}
 			}
 		});		
-	}
-	
-	
-	private void bash() {
-		System.out.print("\nCHESS> ");
-		String in = scanner.next();
-		if (in.equals("HELP") || in.equals("h")) {
-			System.out.print(HELP_LOG);
-			System.out.print("\n");
-		} else if (in.equals("logout")) {
-			USER = null;
-		} else if (in.equals("exit")) {
-			System.out.print("Program killed.");
-			//System.out.print("\nReload webpage to restart the program.");
-			killed = true;
-		} else if (in.equals("play") || in.equals("p")) {
-			//play
-		}
-
-		//default error
-		else {
-			System.out.print("\n!~");
-			System.out.print("\n   ERROR:");
-			System.out.print("\n      Your command '"+in+"' was not recognized.");
-			System.out.print("\n      Type 'HELP' or 'h' for help.");
-			System.out.print("\n!~\n");
-		}
 	}
 
 

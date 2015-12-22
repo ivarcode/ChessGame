@@ -51,7 +51,10 @@ public class Main extends JApplet {
 
 	public void init() {
 
+		
 		String input = null;
+
+		
 		while (!killed) {
 			/*while (true) {
 				System.out.print("LOGIN> ");
@@ -71,11 +74,7 @@ public class Main extends JApplet {
 			System.out.println("\nWelcome to Cam's Chess Engine.");
 			System.out.println("Type 'HELP' or 'h' for help.");
 
-			/*
-			 * By default, USER == input because both are initialized to null
-			 * This will change when I implement a userbase and login function
-			 */
-			while (USER == input && !killed) {
+			while (USER == input) {
 				bash();
 			}
 		}
@@ -211,6 +210,7 @@ public class Main extends JApplet {
 			System.out.print("Program killed.");
 			//System.out.print("\nReload webpage to restart the program.");
 			killed = true;
+			break;
 		} else if (in.equals("play") || in.equals("p")) {
 			//play
 		}
