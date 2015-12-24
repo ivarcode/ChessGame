@@ -38,7 +38,7 @@ public class Main extends JApplet {
 	private static final int TOP_HEIGHT = 50;
 	private Piece clickedPiece;
 	private Game game;
-	private Location src, dest;	
+	private Location src, dest;
 	private Location old_dest;
 	boolean promoting = false, inDrag = false;
 	int mouseX, mouseY;
