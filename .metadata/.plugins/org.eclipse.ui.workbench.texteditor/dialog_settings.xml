@@ -2,36 +2,37 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="if (!kingInCheck()) {" key="selection"/>
+		<item value="SIDE_WIDTH" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="sideWidth"/>
+			<item value="topHeight"/>
+			<item value="sqDim"/>
 			<item value="if (!kingInCheck()) {"/>
 			<item value="getPiece"/>
 			<item value="l.getFileByInt(),l.getRank()"/>
 			<item value="l.getFileByInt(), l.getRank()"/>
 			<item value="j"/>
-			<item value="pieces"/>
-			<item value="white"/>
-			<item value="arr.add(l);"/>
 		</list>
 		<list key="replacehistory">
+			<item value="SIDE_WIDTH"/>
+			<item value="TOP_HEIGHT"/>
+			<item value="SQ_DIM"/>
 			<item value="arr.add(new Move(loc,l));"/>
 			<item value="b.getPiece"/>
 			<item value="l"/>
 			<item value="7-j"/>
 			<item value="board"/>
-			<item value="boardd"/>
-			<item value="black"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="353" key="DIALOG_WIDTH"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		<item value="513" key="DIALOG_HEIGHT"/>
-		<item value="1287" key="DIALOG_X_ORIGIN"/>
-		<item value="343" key="DIALOG_Y_ORIGIN"/>
+		<item value="1510" key="DIALOG_X_ORIGIN"/>
+		<item value="287" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

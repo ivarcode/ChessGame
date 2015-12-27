@@ -7,3 +7,4 @@ ENABLED_DECORATORS=org.eclipse.jst.ws.jaxws.dom.integration.navigator.WebService
 PLUGINS_NOT_ACTIVATED_ON_STARTUP=org.eclipse.m2e.discovery;
 RUN_IN_BACKGROUND=true
 eclipse.preferences.version=1
+org.eclipse.ui.commands=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<org.eclipse.ui.commands>\r\n<keyBinding contextId\="org.eclipse.debug.ui.debugging" keyConfigurationId\="org.eclipse.ui.defaultAcceleratorConfiguration" keySequence\="CTRL+F2"/>\r\n<keyBinding commandId\="org.eclipse.debug.ui.commands.Terminate" contextId\="org.eclipse.jdt.ui.javaEditorScope" keyConfigurationId\="org.eclipse.ui.defaultAcceleratorConfiguration" keySequence\="CTRL+F2"/>\r\n</org.eclipse.ui.commands>

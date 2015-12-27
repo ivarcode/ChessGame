@@ -207,9 +207,6 @@ public class Main extends JApplet {
 			return;
 		String[] args = in.split("\\s+");//splits String in at spaces
 		int num_args = args.length;
-		for (int i = 0; i < num_args; i++) {
-			System.out.print(args[i]);
-		}System.out.print("kek");
 		
 		switch (args[0]) {
 		case "HELP":
@@ -237,10 +234,10 @@ public class Main extends JApplet {
 		default: {
 			System.out.print("\n!~  ERROR:");
 			System.out.print("\n!~  Your command '"+in+"' was not recognized.");
-			System.out.print("\n!~  Type 'HELP' or 'h' for help.\n");
+			System.out.print("\n!~  Type 'HELP' or 'h' for help.\n\n");
 		}
 		}
-		System.out.println();
+
 	}
 
 

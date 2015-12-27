@@ -77,7 +77,7 @@ public class Main extends JApplet {
 			 * This will change when I implement a userbase and login function
 			 */
 			while (USER == input && !killed) {
-				System.out.print("CHESS> ");
+				System.out.print("\nCHESS> ");
 				String in = scanner.nextLine();
 				bash(in);
 			}
@@ -203,15 +203,10 @@ public class Main extends JApplet {
 
 
 	private void bash(String in) {
-		if (in.length() == 0)
-			return;
 		String[] args = in.split("\\s+");//splits String in at spaces
-		int num_args = args.length;
-		for (int i = 0; i < num_args; i++) {
-			System.out.print(args[i]);
-		}System.out.print("kek");
 		
-		switch (args[0]) {
+		
+		switch (in) {
 		case "HELP":
 		case "h": {
 			System.out.print(HELP_LOG);
@@ -240,7 +235,7 @@ public class Main extends JApplet {
 			System.out.print("\n!~  Type 'HELP' or 'h' for help.\n");
 		}
 		}
-		System.out.println();
+
 	}
 
 

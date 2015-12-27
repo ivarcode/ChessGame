@@ -207,9 +207,6 @@ public class Main extends JApplet {
 			return;
 		String[] args = in.split("\\s+");//splits String in at spaces
 		int num_args = args.length;
-		for (int i = 0; i < num_args; i++) {
-			System.out.print(args[i]);
-		}System.out.print("kek");
 		
 		switch (args[0]) {
 		case "HELP":

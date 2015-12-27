@@ -209,7 +209,7 @@ public class Main extends JApplet {
 		int num_args = args.length;
 		for (int i = 0; i < num_args; i++) {
 			System.out.print(args[i]);
-		}System.out.print("kek");
+		}
 		
 		switch (args[0]) {
 		case "HELP":
