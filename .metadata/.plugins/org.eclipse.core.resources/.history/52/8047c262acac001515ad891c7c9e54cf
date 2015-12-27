@@ -76,9 +76,7 @@ public class Main extends JApplet {
 			 * This will change when I implement a userbase and login function
 			 */
 			while (USER == input && !killed) {
-				System.out.print("\nCHESS> ");
-				String in = scanner.nextLine();
-				bash(in);
+				bash();
 			}
 		}
 

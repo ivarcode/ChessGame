@@ -77,7 +77,7 @@ public class Main extends JApplet {
 			 */
 			while (USER == input && !killed) {
 				System.out.print("\nCHESS> ");
-				String in = scanner.nextLine();
+				String in = scanner.next();
 				bash(in);
 			}
 		}

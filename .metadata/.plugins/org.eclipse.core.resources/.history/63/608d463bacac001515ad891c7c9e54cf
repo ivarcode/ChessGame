@@ -76,9 +76,7 @@ public class Main extends JApplet {
 			 * This will change when I implement a userbase and login function
 			 */
 			while (USER == input && !killed) {
-				System.out.print("\nCHESS> ");
-				String in = scanner.nextLine();
-				bash(in);
+				bash();
 			}
 		}
 
@@ -201,8 +199,9 @@ public class Main extends JApplet {
 	}
 
 
-	private void bash(String in) {
-		//TODO work for multiple args
+	private void bash() {
+		System.out.print("\nCHESS> ");
+		String in = scanner.next();
 		switch (in) {
 		case "HELP":
 		case "h": {
@@ -221,10 +220,6 @@ public class Main extends JApplet {
 		case "play":
 		case "p": {
 			//play a game
-		}
-		case "analyze":
-		case "a": {
-			//analyze
 		}
 		default: {
 			System.out.print("\n!~  ERROR:");
