@@ -221,7 +221,6 @@ public class Main extends JApplet {
 		case "logout":
 		case "l": {
 			USER = null;
-			break;
 		}
 		case "exit": {
 			System.out.print("Program killed.");

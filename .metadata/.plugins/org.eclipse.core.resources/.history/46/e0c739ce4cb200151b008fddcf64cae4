@@ -221,34 +221,28 @@ public class Main extends JApplet {
 		case "logout":
 		case "l": {
 			USER = null;
-			break;
 		}
 		case "exit": {
 			System.out.print("Program killed.");
 			//System.out.print("\nReload webpage to restart the program.");
 			killed = true;
-			break;
 		}
 		case "play":
 		case "p": {
 			//play a game
-			break;
 		}
 		case "analyze":
 		case "a": {
 			//analyze
-			break;
 		}
 		case "record":
 		case "r": {
 			//record a game for database
-			break;
 		}
 		default: {
 			System.out.print("\n!~  ERROR:");
 			System.out.print("\n!~  Your command '"+in+"' was not recognized.");
 			System.out.print("\n!~  Type 'HELP' or 'h' for help.\n");
-			break;
 		}
 		}
 		System.out.println();
