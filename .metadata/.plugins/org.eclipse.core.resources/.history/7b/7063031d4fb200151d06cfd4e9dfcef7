@@ -240,17 +240,6 @@ public class Main extends JApplet {
 				color = scanner.next();
 			}
 			System.out.println(color);
-			if (color.equals("w") || color.equals("white")) {
-				System.out.println("Starting new game as white.");
-				color = "white";
-			} else if (color.equals("b") || color.equals("black")) {
-				System.out.println("Starting new game as black.");
-				color = "black";
-			} else {
-				System.out.println("Color not recognized, randomizing color (type 'w', 'white', 'b', or 'black')");
-				color = "random";
-			}
-			
 			break;
 		}
 		case "analyze":
