@@ -1,32 +1,12 @@
 INDEX VERSION 1.127+C:\Users\Camden\Documents\GitHub\ChessGame\.metadata\.plugins\org.eclipse.jdt.core
-<<<<<<< HEAD
-2959957318.index
-3706135349.index
-2345470644.index
-3414683811.index
-3618673065.index
-3349413686.index
-4020602821.index
-185975254.index
-2690778029.index
-1429456332.index
-3000975533.index
-51467596.index
-1233791618.index
-2899965704.index
-1870255979.index
-452330869.index
-1923297441.index
-2292250293.index
-=======
 1442487239.index
-3867579341.index
-2963538765.index
+2330857962.index
 1106408436.index
+2963538765.index
 1248407149.index
 3184717171.index
-2330857962.index
 963700148.index
+3867579341.index
 2775202610.index
 349556966.index
 214424834.index
@@ -38,5 +18,4 @@ INDEX VERSION 1.127+C:\Users\Camden\Documents\GitHub\ChessGame\.metadata\.plugin
 4232502288.index
 3793391456.index
 3544518797.index
->>>>>>> feature/restructure_i1
 3970190816.index
