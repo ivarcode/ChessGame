@@ -14,10 +14,6 @@ public class Main extends JApplet {
 	
 	
 	public void paint(Graphics g) {
-		Dimension d = getSize();
-		g.setColor(Color.WHITE);
-		g.fillRect(0, 0, d.width, d.height);
-		
 		/*if (inDrag) {
 			updateSquares(g);
 		} else {

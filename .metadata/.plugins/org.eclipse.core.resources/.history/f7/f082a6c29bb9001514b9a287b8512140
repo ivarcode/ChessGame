@@ -1,0 +1,9 @@
+package net.ivarcode.camden;
+
+import javax.swing.JApplet;
+
+public class Main extends JApplet {
+	
+	
+	
+}
