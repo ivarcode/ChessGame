@@ -6,10 +6,6 @@ import javax.swing.JApplet;
 
 public class Main extends JApplet {
 	
-	private static final int SQ_DIM = 60;
-	private static final int SIDE_WIDTH = 150;
-	private static final int TOP_HEIGHT = 50;
-	
 	public void init() {
 		repaint();
 	}
@@ -20,7 +16,6 @@ public class Main extends JApplet {
 	
 	
 	public void paint(Graphics g) {
-		setSize(600,600);
 		Dimension d = getSize();
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, d.width, d.height);
